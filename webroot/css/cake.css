@@ -197,7 +197,6 @@ th {
     height: 100vh;
     justify-content: center;
 }
-
 @media screen and (max-width: 640px) {
     .top-nav {
         margin: 0 auto;

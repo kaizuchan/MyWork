@@ -15,25 +15,25 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
+<nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
 
-        <a class="navbar-brand" href="">MyWork</a>
+        <a href="">MyWork</a>
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive">
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="">管理者</a>
+                    <a href="">管理者</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="">勤怠履歴</a>
+                    <a href="">勤怠履歴</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="">ログアウト</a>
+                    <a href="">ログアウト</a>
                 </li>
             </ul>
         </div>

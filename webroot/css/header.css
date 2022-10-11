@@ -1,12 +1,26 @@
 nav{
     margin-bottom: 5rem;
     opacity: 0.9;
+    background-color: #1F78B4;
 }
 a{
-    font-size: 2rem;
-    margin: 0 1rem;
+    font-size: 1.6rem;
+    margin: 1rem 3rem;
+    color: #fff;
+}
+a:hover{
+    color: #fff;
+}
+li{
+    margin: 0 0 0 0;
+}
+button{
+    color: #fff;
 }
 @media screen and (max-width: 767px){
+    li{
+        padding: 1rem 0;
+    }
     a{
         font-size: 1.5rem;
     }
