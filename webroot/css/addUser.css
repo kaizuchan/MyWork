@@ -1,0 +1,29 @@
+h1{
+    font-size: 3rem;
+    text-align: center;
+}
+h2{
+    font-size: 1.8rem;
+}
+.input-group-text{
+    height: 38px;
+}
+.form-check-group{
+ display: flex;
+}
+.form-check label{
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+.woman-radioButton{
+    margin-left: 2rem;
+}
+.form-select{
+    width: 34%;
+}
+.birth-select{
+    display:flex;
+}
+.form-prefectures{
+    width: 100%;
+}
