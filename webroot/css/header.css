@@ -1,0 +1,13 @@
+nav{
+    margin-bottom: 5rem;
+    opacity: 0.9;
+}
+a{
+    font-size: 2rem;
+    margin: 0 1rem;
+}
+@media screen and (max-width: 767px){
+    a{
+        font-size: 1.5rem;
+    }
+}
