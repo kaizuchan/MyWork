@@ -5,10 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理者画面</title>
-    <?php echo $this->Html->css("home"); ?>
+    <?php echo $this->Html->css("administrator"); ?>
+    <!-- 戻るアイコンボタン　コンポーネントリンク -->
+    <?php echo $this->Html->css("backButton"); ?>
 </head>
 <body>
     <div id="main">
+
+        <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
+
         <div class="input-group">
             <form id="searchBox">
                 <input type="text" class="form-control" placeholder="社員名を入力してください">

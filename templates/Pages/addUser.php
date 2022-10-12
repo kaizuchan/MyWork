@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>社員登録</title>
   <?php echo $this->Html->css("addUser"); ?>
+    <!-- 戻るアイコンボタン　コンポーネントリンク -->
+  <?php echo $this->Html->css("backButton"); ?>
 </head>
 <body>
 
   <h1>社員登録</h1>
+  
+  <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
 
   <form class="was-validated">
 

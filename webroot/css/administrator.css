@@ -2,16 +2,6 @@
 p{
     margin: 0 0 0 0;
 }
-button{
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-    border: transparent;
-    background-color:transparent;
-}
-button:hover{
-    border: transparent;
-    background-color:transparent;
-}
 /* メイン全体 */
 #main{
     height: 80vh;
@@ -89,10 +79,10 @@ input[type="text"]{
 @media screen and (max-width: 480px){ 
     /* 検索フォーム全体 */
     .input-group{
-        justify-content: center;
+        justify-content: flex-end;
     }
     /* input type="text" */
     input[type="text"]{
-        width: 85vw;
+        width: 50vw;
     }
 }

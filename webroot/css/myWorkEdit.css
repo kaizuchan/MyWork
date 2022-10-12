@@ -1,0 +1,111 @@
+/* 戻るアイコンボタン */
+#backButton{
+    color: #000;
+    position: fixed;
+    top: 8rem;
+    left: 4rem;
+}
+/* 右上の社員ID,名 */
+#userId_Name{
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2rem;
+}
+/* ページタイトル */
+#pageTitle{
+    font-size: 4rem;
+    text-align: center;
+}
+/* 日付 */
+#pageDate{
+    margin-top: 2rem;
+    font-size: 3rem;
+    text-align: center;
+}
+/* テーブルタグ */
+table{
+    padding: 3rem;
+    margin-top: 15vh;
+    border: 1px solid #000;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* テーブル th td */
+table th, td{
+    border: none;
+    text-align: center;
+    font-size: 2.4rem;
+}
+/* 保存ボタン、キャンセルボタンの位置 */
+#buttonBox{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4vh;
+}
+/* 保存ボタン、キャンセルボタンのデザイン */
+#buttonBox button{
+    width: 30vw;
+    font-size: 2rem;
+    padding: 2rem;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* 保存ボタン */
+#changeButton button{
+    background-color: #1F78B4;
+}
+/* キャンセルボタンボタン */
+#cancelButton button{
+    background-color: #fff;
+    color: #1F78B4;
+    border: 1px solid #1F78B4;
+}
+/* スマホ、タブレット用(767px以下デザイン) */
+@media screen and (max-width: 767px){
+    #userId_Name{
+        margin-right: 1rem;
+        font-size: 1.6rem;
+    }
+    #pageTitle{
+        font-size: 3rem;
+    }
+    #pageDate{
+        margin-top: 2rem;
+        font-size: 2.5rem;
+    }  
+    table{
+        justify-content: center;
+        padding: 0;
+    }    
+    table th{
+        font-size: 2rem;
+    }
+    #buttonBox button{
+        font-size: 1.5rem;
+    }
+}
+/* スマホ用(480px以下デザイン) */
+@media screen and (max-width: 480px){
+    #pageTitle{
+        font-size: 1.8rem;
+    }
+    #userId_Name{
+        margin-right: 1rem;
+        font-size: 1.4rem;
+    }
+    #pageDate{
+        margin-top: 2rem;
+        font-size: 1.4rem;
+    }
+    table tr{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    } 
+}
