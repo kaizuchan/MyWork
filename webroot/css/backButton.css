@@ -1,0 +1,28 @@
+button{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: transparent;
+    background-color:transparent;
+}
+button:hover{
+    border: transparent;
+    background-color:transparent;
+}
+#backButton{
+    color: #000;
+    position: fixed;
+    top: 8rem;
+    left: 4rem;
+}
+@media screen and (max-width: 767px){
+    #backButton{
+        top: 7rem;
+        left: 3rem;
+    }
+}
+@media screen and (max-width: 480px){
+    #backButton{
+        top: 6rem;
+        left: 2rem;
+    }
+}
