@@ -28,13 +28,23 @@ use Cake\ORM\Locator\TableLocator;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
 
+// Authentication関連 追加コード
+use Authentication\AuthenticationService;
+use Authentication\AuthenticationServiceInterface;
+use Authentication\AuthenticationServiceProviderInterface;
+use Authentication\Middleware\AuthenticationMiddleware;
+use Cake\Routing\Router;
+use Psr\Http\Message\ServerRequestInterface;
+
 /**
  * Application setup class.
  *
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-class Application extends BaseApplication
+
+// implementsを追加
+class Application extends BaseApplication implements AuthenticationServiceProviderInterface
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -64,6 +74,7 @@ class Application extends BaseApplication
         }
 
         // Load more plugins here
+        $this->addPlugin('Authentication'); // ← 追加
     }
 
     /**
@@ -101,7 +112,9 @@ class Application extends BaseApplication
             // https://book.cakephp.org/4/en/security/csrf.html#cross-site-request-forgery-csrf-middleware
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
-            ]));
+            ]))
+
+            ->add(new AuthenticationMiddleware($this)); // ← 追加
 
         return $middlewareQueue;
     }
@@ -132,5 +145,37 @@ class Application extends BaseApplication
         $this->addPlugin('Migrations');
 
         // Load more plugins here
+    }
+    
+    // ↓追加
+    public function getAuthenticationService(ServerRequestInterface $request): AuthenticationServiceInterface
+    {
+        $service = new AuthenticationService();
+        $service->setConfig([
+            'unauthenticatedRedirect' => Router::url('/users/login'),
+            'queryParam' => 'redirect',
+        ]);
+        
+        $service->loadAuthenticator('Authentication.Session');
+
+        // 識別子をロードして、電子メールとパスワードのフィールドを確認します
+        $service->loadIdentifier('Authentication.Password', [
+            'fields' => [
+                'username' => 'employee_id',
+                'password' => 'password',
+            ]
+        ]);
+        // メールとパスワードを選択するためのフォームデータチェックの設定
+        $service->loadAuthenticator('Authentication.Form', [
+            'fields' => [
+                'username' => 'employee_id',
+                'password' => 'password',
+            ],
+            'loginUrl' => '/users/login',
+        ]);
+        //$service->loadAuthenticator('Authentication.Form');
+        $service->loadIdentifier('Authentication.Password');
+
+        return $service;
     }
 }

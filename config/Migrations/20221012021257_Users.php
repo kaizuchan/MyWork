@@ -18,7 +18,7 @@ class Users extends AbstractMigration
         $table = $this->table('users');
         $table
               ->addColumn('enterprise_id', 'integer')
-              ->addColumn('employee_id', 'integer')
+              ->addColumn('employee_id', 'string')
               ->addColumn('last_name', 'string')
               ->addColumn('first_name', 'string')
               ->addColumn('last_name_kana', 'string')
