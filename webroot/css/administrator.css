@@ -1,0 +1,88 @@
+/* リセット */
+p{
+    margin: 0 0 0 0;
+}
+/* メイン全体 */
+#main{
+    height: 80vh;
+}
+/* 検索フォーム全体 */
+.input-group{
+    justify-content: flex-end;
+}
+#searchBox{
+    display: flex;
+    margin-bottom: 3rem;
+    position: relative;
+    top: -4rem;
+}
+/* input type="text" */
+input[type="text"]{
+    width: 30vw;
+}
+#userListItem{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+}
+#userList{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 0 1rem;
+    margin: 2rem 0;
+    border: 1px solid #000;
+    border-radius: 10px
+}
+#userId{
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+#userName{
+    font-size: 1.5rem;
+}
+#add-deleteButton{
+    position: fixed;
+    right: 5rem;
+    bottom: 2rem;
+}
+#addButton{
+    color: #555;
+    margin: 0 2rem;
+}
+#deleteButton{
+    color: #f00;
+    margin: 0 1rem;
+}
+@media screen and (max-width: 767px){
+    /* 検索フォーム全体 */
+    .input-group{
+        justify-content: flex-end;
+    } 
+    #searchBox{
+        display: flex;
+        margin-bottom: 3rem;
+        position: relative;
+        top: 0;
+    }
+    /* input type="text" */
+    input[type="text"]{
+        width: 40vw;
+    }
+    #add-deleteButton{
+        right: 0;
+    }
+}
+@media screen and (max-width: 480px){ 
+    /* 検索フォーム全体 */
+    .input-group{
+        justify-content: flex-end;
+    }
+    /* input type="text" */
+    input[type="text"]{
+        width: 50vw;
+    }
+}

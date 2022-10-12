@@ -1,20 +1,26 @@
+/* ページタイトル */
 h1{
     font-size: 3rem;
     text-align: center;
 }
+/* 入力項目名 */
 h2{
     font-size: 1.8rem;
 }
+/* 入力項目名の高さ調整 */
 .input-group-text{
     height: 38px;
 }
+/* 性別横並び */
 .form-check-group{
  display: flex;
 }
+
 .form-check label{
     font-weight: 300;
     font-size: 1.5rem;
 }
+/* 女性ラジオボタン */
 .woman-radioButton{
     margin-left: 2rem;
 }
