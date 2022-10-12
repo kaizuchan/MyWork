@@ -11,10 +11,10 @@
     <h1>ログイン</h1>
     <form id="loginForm">
       <div class="mb-3">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
+        <input type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
       </div>
       <div class="mb-3">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID">
+        <input type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID">
       </div>
       <div class="mb-3">
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">

@@ -1,75 +1,142 @@
-/* Home page styles */
-@font-face {
-    font-family: 'cakefont';
-    src: url('../font/cakedingbats-webfont.eot');
-    src: url('../font/cakedingbats-webfont.eot?#iefix') format('embedded-opentype'),
-    url('../font/cakedingbats-webfont.woff2') format('woff2'),
-    url('../font/cakedingbats-webfont.woff') format('woff'),
-    url('../font/cakedingbats-webfont.ttf') format('truetype'),
-    url('../font/cakedingbats-webfont.svg#cake_dingbatsregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
+/* メイン全体 */
+#main{
+    display:flex;
+    justify-content: space-around;
 }
-body {
-    padding: 60px 0;
+/* 現在の日付、曜日 */
+#nowDate{
+    font-size: 4rem;
+    display: flex;
+    flex-direction: column; 
 }
-header {
-    margin-bottom: 60px;
+/* 現在の時刻 */
+#nowTime{
+    font-size: 10rem;
 }
-img {
-    margin-bottom: 30px;
+/* 打刻ボタン全て */
+.engButton{
+    margin: 10px;
+    height: 20vh;
+    width: 44%;
+    border-radius: 10px;
+    font-size: 2.5rem;
 }
-h1 {
-    font-weight: bold;
+/* ユーザー一覧全体 */
+#userList{
+    border: 1px solid #000;
+    height: 72vh;
+    width: 30vw;
+    padding: 1rem 0;
+    border-radius: 10px;
 }
-ul {
-    list-style-type: none;
-    margin: 0 0 30px 0;
-    padding-left: 25px;
+/* 登録社員タイトル */
+#userListTitle{
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-a {
-    color: #0071BC;
-    text-decoration: underline;
+/* 出勤ボタン */
+#attendanceButton{
+    background-color: #9BE9AD;
+    border: 1px solid #9BE9AD;
 }
-hr {
-    border-bottom: 1px solid #e7e7e7;
-    border-top: 0;
-    margin-bottom: 35px;
+/* 出勤ボタンホバー */
+#attendanceButton:hover{
+    background-color: #777;
+    border: 1px solid #777;
 }
-
-.text-center {
-    text-align: center;
+/* 退勤ボタン */
+#leavingButton{
+    background-color: #E6A3A3;
+    border: 1px solid #E6A3A3;
 }
-.links a {
-    margin-right: 10px;
+/* 退勤ボタンホバー */
+#leavingButton:hover{
+    background-color: #777;
+    border: 1px solid #777;
 }
-.release-name {
-    color: #D33C43;
-    font-weight: 400;
-    font-style: italic;
+/* 休憩開始ボタン */
+#restStartButton{
+    background-color: #A3B1D8;
+    border: 1px solid #A3B1D8;
 }
-.bullet:before {
-    font-family: 'cakefont', sans-serif;
-    font-size: 18px;
-    display: inline-block;
-    margin-left: -1.3em;
-    width: 1.2em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    vertical-align: -1px;
+/* 休憩開始ボタンホバー */
+#restStartButton:hover{
+    background-color: #777;
+    border: 1px solid #777;
 }
-.success:before {
-    color: #88c671;
-    content: "\0056";
+/* 休憩終了ボタン */
+#restFinishButton{
+    background-color: #F2DCA0;
+    border: 1px solid #F2DCA0;
 }
-.problem:before {
-    color: #d33d44;
-    content: "\0057";
+/* 休憩終了ボタンホバー */
+#restFinishButton:hover{
+    background-color: #777;
+    border: 1px solid #777;
 }
-.cake-error {
-    padding: 10px;
-    margin: 10px 0;
+/* 検索フォーム全体 */
+.input-group{
+    justify-content: center
 }
-#url-rewriting-warning {
-    display: none;
+#searchBox{
+    display: flex;
+}
+/* input type="text" */
+input[type="text"]{
+    width: 25vw;
+}
+#userNameList{
+    font-size: 1.8rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#userName{
+    margin: 0 0 0 0;
+}
+#userLabel{
+    border: 1px solid #000;
+    border-radius: 15px;
+    padding: 0.6rem 1.2rem;
+}
+/* 767px以下 (タブレット、スマホ用のデザイン) */
+@media screen and (max-width: 767px){
+    #main{
+        flex-direction: column;
+    }
+    #nowDate{
+        font-size: 3rem;
+        text-align: center;
+    }
+    #nowTime{
+        font-size: 8rem;
+    }
+    .buttonFlex{
+        display:flex;
+        justify-content: center;
+    }
+    #userList{
+        width: 90vw;
+        margin: 0 auto;
+    }
+    input[type="text"]{
+        width: 60vw;
+    }
+}
+/* 480px以下（スマホ用デザイン） */
+@media screen and (max-width: 480px){
+    #nowDate{
+        font-size: 2rem;
+        text-align: center;
+    }
+    #nowTime{
+        font-size: 6rem;
+    }
+    input[type="text"]{
+        width: 70vw;
+    }
 }
