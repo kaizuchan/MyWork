@@ -8,6 +8,8 @@
     <?php echo $this->Html->css("home"); ?>
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
     <?php echo $this->Html->css("backButton"); ?>
+    <!-- ヘッダー部分 -->
+    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
     <div>

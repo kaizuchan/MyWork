@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <?php echo $this->Html->css("home"); ?>
+    <!-- ヘッダー部分 -->
+    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
+    
+
     <div id="main">
         <div>
             <div id="nowDate">2022/10/3(月)<span id="nowTime">14:44:10</span></div>

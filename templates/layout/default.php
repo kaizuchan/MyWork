@@ -37,17 +37,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    
-<!-- コンポーネント -->
-  <?php echo $this->element('components/header'); ?>
-
 
 
     <main class="main">
-        <div class="container">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
-        </div>
     </main>
     <footer>
     </footer>
