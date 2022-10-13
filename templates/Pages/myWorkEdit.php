@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>勤務履歴表編集画面</title>
     <?php echo $this->Html->css("home"); ?>
-    <!-- 戻るアイコンボタン　コンポーネントリンク -->
+    <!-- 戻るアイコンボタン -->
     <?php echo $this->Html->css("backButton"); ?>
+    <!-- ヘッダー -->
+    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
     <div>

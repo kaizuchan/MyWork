@@ -3,13 +3,19 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>
         勤務表
     </title>
     <?= $this->Html->css("User_table") ?>
+    <!-- 戻るアイコンボタン -->
+    <?php echo $this->Html->css("backButton"); ?>
+    <!-- ヘッダー -->
+    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
+    
+    <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
+
     <div class="id_name">
         <h6>ID:123456</h6>
         <h6>横田守生</h6>
