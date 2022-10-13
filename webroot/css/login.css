@@ -1,19 +1,61 @@
 body {
-    text-align: center;
     margin: 0;
     padding: 0;
 }
-#loginForm {
-    width: 50rem;
-    margin: 0 auto 0 auto;
-    height: 100vh;
+#errMessage{
+    position: fixed;
+    bottom: 2rem;
+    right: 4rem;
 }
-.mb-3 {
-    width: 50rem;
-    padding-top: 2rem;
+h1{
+    height: 30vh;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+form input{
+    height: 5vh;
+}
+#loginForm {
+    height: 70vh;
     margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mb-3{
+    width: 50vw;
 }
 #loginForm>button {
-    width: 50rem;
+    width: 50vw;
     margin-top: 2rem;
+    background-color: #1F78B4;
+}
+#loginForm>button:hover{
+    background-color: #1F78B2;
+}
+
+@media screen and (max-width: 767px){
+    #errMessage{
+        position: fixed;
+        top: 2rem;
+        left: 4.6rem;
+        margin: 0 auto;
+    }
+    h1{
+        font-size: 4rem;
+    }
+    form{
+        margin: 2rem
+    }
+}
+@media screen and (max-width: 480px){
+    h1{
+        font-size: 3rem;
+    }
+    form{
+        margin: 2rem
+    }
 }
