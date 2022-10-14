@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use Migrations\AbstractMigration;
+use Phinx\Db\Adapter\MysqlAdapter;
 
 class Punches extends AbstractMigration
 {
@@ -15,14 +16,36 @@ class Punches extends AbstractMigration
     public function change()
     {
         // テーブルの作成
-        $table = $this->table('punches');
+        $table = $this->table('punches', ['id' => false, 'primary_key' => 'id']);
         $table
-              ->addColumn('user_id', 'string')
-              ->addColumn('date', 'date')
-              ->addColumn('time', 'time')
-              ->addColumn('identify', 'integer')
-              ->addColumn('punched_by', 'integer')
-              ->addColumn('modified_info', 'boolean')
-              ->create();
+            ->addColumn('id', 'integer', [
+                'default' => null,
+                'limit' => MysqlAdapter::INT_BIG,
+                'null' => false,
+            ])
+            ->addColumn('user_id', 'integer', [
+                'default' => null,
+                'limit' => MysqlAdapter::INT_BIG,
+                'null' => false,
+            ])
+            ->addColumn('date', 'date')
+            ->addColumn('time', 'time')
+            ->addColumn('identify', 'integer', [
+                'default' => null,
+                'limit' => MysqlAdapter::INT_TINY,
+                'null' => false,
+            ])
+            ->addColumn('punched_by', 'integer', [
+                'default' => null,
+                'limit' => MysqlAdapter::INT_BIG,
+                'null' => false,
+            ])
+            ->addColumn('modified_info', 'boolean', [
+                'default' => false,
+                'null' => false,
+            ])
+            ->addForeignKey('user_id', 'users', 'id')
+            ->addForeignKey('punched_by', 'users', 'id')
+            ->create();
     }
 }
