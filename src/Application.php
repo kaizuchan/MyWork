@@ -144,6 +144,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 
         $this->addPlugin('Migrations');
 
+        
         // Load more plugins here
     }
     
@@ -161,14 +162,14 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // 識別子をロードして、電子メールとパスワードのフィールドを確認します
         $service->loadIdentifier('Authentication.Password', [
             'fields' => [
-                'username' => 'employee_id',
+                'username' => 'id',
                 'password' => 'password',
             ]
         ]);
         // メールとパスワードを選択するためのフォームデータチェックの設定
         $service->loadAuthenticator('Authentication.Form', [
             'fields' => [
-                'username' => 'employee_id',
+                'username' => 'id',
                 'password' => 'password',
             ],
             'loginUrl' => '/users/login',
