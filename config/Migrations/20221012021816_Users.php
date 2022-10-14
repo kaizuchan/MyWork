@@ -20,6 +20,7 @@ class Users extends AbstractMigration
         $table
             ->addColumn('id', 'integer', [
                 'default' => null,
+                'identity' => true,
                 'limit' => MysqlAdapter::INT_BIG,
                 'null' => false,
             ])
@@ -45,7 +46,10 @@ class Users extends AbstractMigration
             ])
             ->addColumn('city', 'string')
             ->addColumn('block', 'string')
-            ->addColumn('building', 'string')
+            ->addColumn('building', 'string', [
+                'default' => null,
+                'null' => true,
+            ])
             ->addColumn('role', 'integer', [
                 'default' => 1,
                 'limit' => MysqlAdapter::INT_TINY,

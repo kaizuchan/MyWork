@@ -10,29 +10,29 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property int $enterprise_id
- * @property int $employee_id
+ * @property string $employee_id
  * @property string $last_name
  * @property string $first_name
  * @property string $last_name_kana
  * @property string $first_name_kana
  * @property string $phone_number
  * @property string $email
- * @property int $gender
+ * @property bool $gender
  * @property \Cake\I18n\FrozenDate $birthday
  * @property string $postalcode
  * @property int $prefecture_id
  * @property string $city
  * @property string $block
- * @property string $building
+ * @property string|null $building
  * @property int $role
  * @property string $password
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $modified_at
- * @property \Cake\I18n\FrozenTime $deleted_at
+ * @property \Cake\I18n\FrozenTime|null $deleted_at
  *
  * @property \App\Model\Entity\Enterprise $enterprise
  * @property \App\Model\Entity\Prefecture $prefecture
- * @property \App\Model\Entity\UserLogin[] $user_logins
+ * @property \App\Model\Entity\Punch[] $punches
  */
 class User extends Entity
 {
@@ -68,7 +68,7 @@ class User extends Entity
         'deleted_at' => true,
         'enterprise' => true,
         'prefecture' => true,
-        'user_logins' => true,
+        'punches' => true,
     ];
 
     /**

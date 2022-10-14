@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\UsersTable;
+use App\Model\Table\EnterprisesTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\UsersTable Test Case
+ * App\Model\Table\EnterprisesTable Test Case
  */
-class UsersTableTest extends TestCase
+class EnterprisesTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\UsersTable
+     * @var \App\Model\Table\EnterprisesTable
      */
-    protected $Users;
+    protected $Enterprises;
 
     /**
      * Fixtures
@@ -24,10 +24,8 @@ class UsersTableTest extends TestCase
      * @var array<string>
      */
     protected $fixtures = [
-        'app.Users',
         'app.Enterprises',
-        'app.Prefectures',
-        'app.Punches',
+        'app.Users',
     ];
 
     /**
@@ -38,8 +36,8 @@ class UsersTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Users') ? [] : ['className' => UsersTable::class];
-        $this->Users = $this->getTableLocator()->get('Users', $config);
+        $config = $this->getTableLocator()->exists('Enterprises') ? [] : ['className' => EnterprisesTable::class];
+        $this->Enterprises = $this->getTableLocator()->get('Enterprises', $config);
     }
 
     /**
@@ -49,7 +47,7 @@ class UsersTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Users);
+        unset($this->Enterprises);
 
         parent::tearDown();
     }
@@ -58,20 +56,9 @@ class UsersTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\UsersTable::validationDefault()
+     * @uses \App\Model\Table\EnterprisesTable::validationDefault()
      */
     public function testValidationDefault(): void
-    {
-        $this->markTestIncomplete('Not implemented yet.');
-    }
-
-    /**
-     * Test buildRules method
-     *
-     * @return void
-     * @uses \App\Model\Table\UsersTable::buildRules()
-     */
-    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
