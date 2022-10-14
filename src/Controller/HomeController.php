@@ -13,7 +13,7 @@ class HomeController extends AppController
     public function home($id = null)
     {
     }
-    public function work()
+    public function works()
     {
     }
 }
