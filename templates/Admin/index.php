@@ -28,17 +28,14 @@
                 <div><p id="userChangeButtonItem">編集</p></div>
             </div>
 
-            <div id="userList">
-                <div><input type="checkbox"><label for="userId" id="userId">1</label></div>
-                <div><p id="userName">豊﨑崇良</p></div>
-                <div><i class="fas fa-pencil-alt fa-2x"></i></div>
-            </div>
-
-            <div id="userList">
-                <div><input type="checkbox"><label for="userId" id="userId">1</label></div>
-                <div><p id="userName">豊﨑崇良</p></div>
-                <div><i class="fas fa-pencil-alt fa-2x"></i></div>
-            </div>
+            <?php foreach ($users as $user): ?>
+                <div id="userList">
+                    <div><input type="checkbox"><label for="userId" id="userId"><?= $user->employee_id ?></label></div>
+                    <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
+                    <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                </div>
+            <?php endforeach; ?>
+            
         </div>
         
 
