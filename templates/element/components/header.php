@@ -18,7 +18,7 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
 
-        <a href="">MyWork</a>
+        <a href="/">MyWork</a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
@@ -27,13 +27,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a href="">管理者</a>
+                    <a href="/admin">管理者</a>
                 </li>
                 <li class="nav-item active">
                     <a href="">勤怠履歴</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="">ログアウト</a>
+                    <a href="/logout">ログアウト</a>
                 </li>
             </ul>
         </div>

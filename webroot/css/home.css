@@ -3,11 +3,13 @@
     display:flex;
     justify-content: space-around;
 }
+#now{
+    display: flex;
+    flex-direction: column; 
+}
 /* 現在の日付、曜日 */
 #nowDate{
     font-size: 4rem;
-    display: flex;
-    flex-direction: column; 
 }
 /* 現在の時刻 */
 #nowTime{
@@ -114,6 +116,7 @@ input[type="text"]{
     }
     #nowTime{
         font-size: 8rem;
+        text-align: center;
     }
     .buttonFlex{
         display:flex;
@@ -135,6 +138,7 @@ input[type="text"]{
     }
     #nowTime{
         font-size: 6rem;
+        text-align: center;
     }
     input[type="text"]{
         width: 70vw;
