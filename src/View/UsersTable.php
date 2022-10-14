@@ -144,7 +144,8 @@ class UsersTable extends Table
         $validator
             ->scalar('building')
             ->maxLength('building', 255)
-            ->allowEmptyString('building');
+            ->requirePresence('building', 'create')
+            ->notEmptyString('building');
 
         $validator
             ->notEmptyString('role');
@@ -179,6 +180,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
+        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
         $rules->add($rules->existsIn('enterprise_id', 'Enterprises'), ['errorField' => 'enterprise_id']);
         $rules->add($rules->existsIn('prefecture_id', 'Prefectures'), ['errorField' => 'prefecture_id']);
 
