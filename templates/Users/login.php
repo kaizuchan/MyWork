@@ -8,8 +8,10 @@
     <?php echo $this->Html->css("login");?>
 </head>
 <body>
+    
     <h1>ログイン</h1>
-    <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+
+    <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
     <form id="loginForm" method="POST" action="/users">
       <div class="mb-3">
         <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
