@@ -15,7 +15,7 @@ class Punches extends AbstractMigration
     public function change()
     {
         // テーブルの作成
-        $table = $this->table('user_logins');
+        $table = $this->table('punches');
         $table
               ->addColumn('user_id', 'string')
               ->addColumn('date', 'date')

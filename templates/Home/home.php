@@ -26,18 +26,34 @@
         </div>
         <div>
             <div id="userList">
+
                 <h2 id="userListTitle">登録社員</h2>
-                <div class="input-group">
-                    <form id="searchBox">
-                        <input type="text" class="form-control" placeholder="社員名を入力してください">
-                        <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-                    </form>
-                </div>
-                <!-- 社員名一覧 -->
-                <div id="userNameList">
-                    <p id="userName">豊﨑崇良</p>
-                    <div id="userLabel">出勤</div>
-                </div>
+                    
+                
+                    <!-- 検索ボックス -->
+                    <div class="input-group">
+                        <div id="searchBox"><?= $this->Form->create(null, ['type' => 'post']) ?></div>
+                        <div class="form-control"><?php echo $this->Form->input('find',['label'=>['text'=>'社員名を入力してください'],'required'=>'required']); ?></div>
+                        <div><?php echo $this->Form->button('検索'); ?></div>
+                        <!-- <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i></button> -->
+                        <?= $this->Form->end() ?>
+                    </div>
+
+                    <?php foreach ($searchUsers as $searchUser): ?>
+                        <div id="userNameList">
+                            <p id="userName"><?= h($searchUser->last_name) ?></p>
+                            <div id="userLabel">出勤</div>
+                        </div>
+                    <?php endforeach; ?>
+
+                    <?php foreach ($users as $user): ?>
+                        <div id="userNameList">
+                            <p id="userName"><?= h($user->last_name) ?></p>
+                            <div id="userLabel">出勤</div>
+                        </div>
+                    <?php endforeach; ?>
+
+
             </div>
         </div>
     </div>
