@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <?php echo $this->Html->css("home"); ?>
-    <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
     <div id="main">
