@@ -13,7 +13,7 @@ class AdminController extends AppController
     {
     }
 
-    public function work()
+    public function works()
     {
     }
 
