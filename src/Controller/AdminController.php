@@ -12,4 +12,12 @@ class AdminController extends AppController
     public function adduser($id = null)
     {
     }
+
+    public function work()
+    {
+    }
+
+    public function workedit()
+    {
+    }
 }
