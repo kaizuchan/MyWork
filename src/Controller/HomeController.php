@@ -38,4 +38,7 @@ class HomeController extends AppController
 
         $this->set('users', $query);
     }
+    public function works()
+    {
+    }
 }

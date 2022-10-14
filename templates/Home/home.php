@@ -8,11 +8,21 @@
     <?php echo $this->Html->css("home"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/header'); ?>
+    <?php echo $this->Html->script("home"); ?>
 </head>
 <body>
     <div id="main">
         <div>
-            <div id="nowDate">2022/10/3(月)<span id="nowTime">14:44:10</span></div>
+            <div id="now">
+                <div id="nowDate">
+                    <!-- 日時 -->
+                    <!-- ページ読込の際のダミーデータ -->0000/00/00
+                </div>
+                <div id="nowTime">
+                    <!-- 現在時刻 -->
+                    <!-- ページ読込の際のダミーデータ -->00:00:00
+                </div>
+            </div>
             <form>
                 <div class="buttonFlex">
                     <button class="engButton" id="attendanceButton">出勤</a></button>
