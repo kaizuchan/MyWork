@@ -24,10 +24,21 @@ class HomeController extends AppController
     {   
 
         if ($this->request->is('post')) {
-            $searchUsers = [];
-            $find = $this->request->getData('find');
-            // debug($find);
-            $searchUsers = $this->users->find('all')->where(['last_name LIKE' => '%'.$find.'%']);
+
+                // 配列
+                $searchUsers = [];
+                
+                // 入力値受け取り
+                $find = $this->request->getData('find');
+                // debug($find);
+
+                // 入力値が条件に合うかどうか検索
+                $searchUsers = $this->users->find('all')->where(['or' => [
+                    ['last_name LIKE' => '%'.$find.'%',],
+                    ['first_name LIKE' => '%'.$find.'%']
+                ]
+            ]);
+            // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
         }
         

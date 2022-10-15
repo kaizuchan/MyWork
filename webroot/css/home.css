@@ -85,10 +85,20 @@
 }
 #searchBox{
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
-/* input type="text" */
-input[type="text"]{
-    width: 25vw;
+#searchBox input{
+    width: 24vw;
+    border-radius: 5px;
+}
+#searchBox button{
+    color: #fff;
+    border: 1px solid #1F78B4;
+    background-color: #1F78B4;
+    padding: 0 1rem;
+    border-radius: 5px;
+    height: 3vh;
 }
 #userNameList{
     font-size: 1.8rem;
@@ -126,8 +136,8 @@ input[type="text"]{
         width: 90vw;
         margin: 0 auto;
     }
-    input[type="text"]{
-        width: 60vw;
+    #searchBox input{
+        width: 70vw;
     }
 }
 /* 480px以下（スマホ用デザイン） */
