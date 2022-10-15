@@ -8,19 +8,21 @@
     <?php echo $this->Html->css("administrator"); ?>
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
     <?php echo $this->Html->css("backButton"); ?>
+    <!-- ヘッダー -->
+    <?php echo $this->element('components/header'); ?>
 </head>
 <body>
     <div id="main">
 
         <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
 
-        <div class="input-group">
-            <form id="searchBox">
-                <input type="text" class="form-control" placeholder="社員名を入力してください">
-                <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i></button>
-            </form>
+        <!-- 検索ボックス -->
+        <div id="searchBox">
+            <?= $this->Form->create(null, ['type' => 'post']); ?>
+                <?php echo $this->Form->input('find',['label'=>['text'=>'社員名を入力してください'],'required'=>'required']); ?>
+                <?php echo $this->Form->button('検索',['name'=>'searchButton']); ?>
+            <?= $this->Form->end() ?>
         </div>
-        
         <div>
             <div id="userListItem">
                 <div><p id="userIdItem">社員ID</p></div>
@@ -28,13 +30,23 @@
                 <div><p id="userChangeButtonItem">編集</p></div>
             </div>
 
-            <?php foreach ($users as $user): ?>
+            <?php if(isset($_POST['searchButton'])){ ?>
                 <div id="userList">
-                    <div><input type="checkbox"><label for="userId" id="userId"><?= $user->employee_id ?></label></div>
-                    <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
-                    <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                    <?php foreach ($searchUsers as $searchUser): ?>
+                        <div><input type="checkbox"><label for="userId" id="userId"><?= $searchUser->employee_id ?></label></div>
+                        <div><p id="userName"><?= $searchUser->last_name.$searchUser->first_name ?></p></div>
+                        <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                    <?php endforeach; ?>
                 </div>
-            <?php endforeach; ?>
+                <?php }else{ ?>
+                    <div id="userList">
+                        <?php foreach ($users as $user): ?>
+                                <div><input type="checkbox"><label for="userId" id="userId"><?= $user->employee_id ?></label></div>
+                                <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
+                                <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php } ?>
             
         </div>
         

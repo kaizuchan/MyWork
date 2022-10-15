@@ -16,6 +16,25 @@ class AdminController extends AppController
         $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id]);
         // データセット
         $this->set(compact('users'));
+
+        // 検索
+        if ($this->request->is('post')) {
+
+            // 配列
+            $searchUsers = [];
+            
+            // 入力値受け取り
+            $find = $this->request->getData('find');
+            // debug($find);
+            // 入力値が条件に合うかどうか検索
+            $searchUsers = $this->Users->find('all')->where(['or' => [
+                ['last_name LIKE' => '%'.$find.'%',],
+                ['first_name LIKE' => '%'.$find.'%']
+            ]
+            ]);
+            // 条件にあったデータを渡す
+            $this->set('searchUsers', $searchUsers);
+        }
     }
 
     public function adduser()

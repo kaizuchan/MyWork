@@ -1,31 +1,29 @@
-/* リセット */
-p{
-    margin: 0 0 0 0;
-}
 /* メイン全体 */
 #main{
     height: 80vh;
 }
-/* 検索フォーム全体 */
-.input-group{
-    justify-content: flex-end;
-}
 #searchBox{
     display: flex;
-    margin-bottom: 3rem;
-    position: relative;
-    top: -4rem;
+    justify-content: flex-end;
+    margin: 0 5rem 5rem 0px;
 }
-/* input type="text" */
-input[type="text"]{
+#searchBox input{
     width: 30vw;
+    border-radius: 5px;
+}
+#searchBox button{
+    color: #fff;
+    background-color: #1F78B4;
+    padding: 0 1rem;
+    border-radius: 5px;
+    height: 3vh;
 }
 #userListItem{
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
-    padding: 0 2rem;
+    margin: 0 7rem;
 }
 #userList{
     display: flex;
@@ -33,9 +31,12 @@ input[type="text"]{
     justify-content: space-between;
     border-radius: 10px;
     padding: 0 1rem;
-    margin: 2rem 0;
+    margin: 2rem 5rem;
     border: 1px solid #000;
     border-radius: 10px
+}
+#userList p{
+    margin: 0 0 0 0;
 }
 #userId{
     font-weight: 500;
