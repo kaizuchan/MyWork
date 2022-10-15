@@ -8,7 +8,6 @@
     <?php echo $this->Html->css("home"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/header'); ?>
-    <?php echo $this->Html->script("home"); ?>
 </head>
 <body>
     <div id="main">
@@ -67,5 +66,6 @@
             </div>
         </div>
     </div>
+    <?php echo $this->Html->script("home"); ?>
 </body>
 </html>

@@ -10,6 +10,8 @@
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/header'); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
 </head>
 <body>
     <div>
@@ -42,9 +44,21 @@
 
             <div id="buttonBox">
                     <div id="changeButton"><button type="button">保存する</button></div>
-                    <div id="cancelButton"><button type="button">キャンセル</button></div>
+                    <div id="cancelButton"><button id="open" type="button">キャンセル</button></div>
             </div>
+            
+            <div id="mask" class="hidden"></div>
+            <section id="modal" class="hidden">
+                <p>編集が完了してません。<br>終了してよろしいですか？</p>
+                <div id="close">
+                    <p>はい</p>
+                </div>
+                <div id="close">
+                    <p>いいえ</p>
+                </div>
+            </section>
         
     </div>
+    <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
