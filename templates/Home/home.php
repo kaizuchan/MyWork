@@ -42,18 +42,20 @@
                     <!-- 検索ボックス -->
                     <div class="input-group">
                         <div id="searchBox"><?= $this->Form->create(null, ['type' => 'post']) ?></div>
-                        <div class="form-control"><?php echo $this->Form->input('find',['label'=>['text'=>'社員名を入力してください'],'required'=>'required']); ?></div>
-                        <div><?php echo $this->Form->button('検索'); ?></div>
+                        <?php echo $this->Form->input('find',['label'=>['text'=>'社員名を入力してください'],'required'=>'required']); ?>
+                        <div><?php echo $this->Form->button('検索',['name'=>'searchButton']); ?></div>
                         <!-- <button class="btn btn-outline-success" type="button" id="button-addon2"><i class="fas fa-search"></i></button> -->
                         <?= $this->Form->end() ?>
                     </div>
-
-                    <?php foreach ($searchUsers as $searchUser): ?>
-                        <div id="userNameList">
-                            <p id="userName"><?= h($searchUser->last_name) ?></p>
-                            <div id="userLabel">出勤</div>
-                        </div>
-                    <?php endforeach; ?>
+                    
+                    <?php if(isset($_POST['searchButton'])){ ?>
+                        <?php foreach ($searchUsers as $searchUser): ?>
+                            <div id="userNameList">
+                                <p id="userName"><?= h($searchUser->last_name) ?></p>
+                                <div id="userLabel">出勤</div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php } ?>
 
                     <?php foreach ($users as $user): ?>
                         <div id="userNameList">

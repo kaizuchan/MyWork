@@ -26,7 +26,7 @@ class HomeController extends AppController
         if ($this->request->is('post')) {
             $searchUsers = [];
             $find = $this->request->getData('find');
-            debug($find);
+            // debug($find);
             $searchUsers = $this->users->find('all')->where(['last_name LIKE' => '%'.$find.'%']);
             $this->set('searchUsers', $searchUsers);
         }
