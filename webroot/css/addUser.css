@@ -7,6 +7,17 @@ h1{
 h2{
     font-size: 1.8rem;
 }
+form{
+    margin: 4rem 18rem;
+}
+form .input-group{
+    margin: 2rem 0;
+}
+button.btn{
+    color: #fff;
+    margin: 3rem 0;
+    background-color: #1F78B4;
+}
 /* 入力項目名の高さ調整 */
 .input-group-text{
     height: 38px;
@@ -32,4 +43,9 @@ h2{
 }
 .form-prefectures{
     width: 100%;
+}
+@media screen and (max-width: 767px){
+    form{
+        margin: 4rem 2rem;
+    }
 }

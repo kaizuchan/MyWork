@@ -9,12 +9,13 @@
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
+    <?php echo $this->element('components/headerAdmin'); ?>
 </head>
 <body>
     <div id="main">
 
-        <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
+        <!-- 戻るボタン -->
+        <?php echo $this->element('components/backButton'); ?>
 
         <!-- 検索ボックス -->
         <div id="searchBox">
@@ -52,10 +53,8 @@
         
 
         <div id="add-deleteButton">
-            <form>
-                <button id="addButton"><i   class="fas fa-plus fa-3x"></i></button>
-                <button id="deleteButton"><i  class="fas fa-trash-alt fa-3x"></i></button>
-            </form>
+                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                <a href="/" id="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></a>
         </div>
     </div>
 </body>

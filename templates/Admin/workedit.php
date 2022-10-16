@@ -15,7 +15,9 @@
 </head>
 <body>
     <div>
-        <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
+
+        <!-- 戻るボタン -->
+        <?php echo $this->element('components/backButton'); ?>
 
         <div id="userId_Name">
             <div><p>ID:123456</p></div>
