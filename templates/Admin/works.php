@@ -13,8 +13,9 @@
     <?php echo $this->element('components/header'); ?>
 </head>
 <body>
-    <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
-
+    <!-- 戻るボタン -->
+    <?php echo $this->element('components/backButton'); ?>
+    
     <div class="id_name">
         <h6>ID:123456</h6>
         <h6>横田守生</h6>

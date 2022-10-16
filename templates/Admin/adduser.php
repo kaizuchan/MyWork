@@ -8,18 +8,21 @@
   <?php echo $this->Html->css("addUser"); ?>
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
   <?php echo $this->Html->css("backButton"); ?>
+    <!-- ヘッダー -->
+    <?php echo $this->element('components/headerAdmin'); ?>
 </head>
 <body>
 
   <h1>社員登録</h1>
   
-  <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
+  <!-- 戻るボタン -->
+  <?php echo $this->element('components/backButton'); ?>
 
   <form class="was-validated" method="POST">
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">社員ID</span>
-      <input name="employee_id" type="text" id="validationTextarea" class="form-control" placeholder="社員ID" aria-label="社員ID" aria-describedby="basic-addon1">
+      <input name="employee_id" type="text" id="validationTextarea" class="form-control" placeholder="社員ID" aria-label="社員ID" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3">
@@ -89,7 +92,7 @@
           ?>
         </select>
       <label class="input-group-text" for="inputGroupSelect01">日</label> -->
-      <input type="date" name="birthday" id="">
+      <input type="date" name="birthday" id="" class="form-control">
     </div>
 
     
@@ -145,7 +148,7 @@
       </div>
 
       <div class="d-grid gap-2">
-        <button class="btn btn-primary" type="submit">登録</button>
+        <button class="btn" type="submit">登録</button>
       </div>
 
   </form>

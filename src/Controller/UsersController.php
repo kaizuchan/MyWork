@@ -32,7 +32,8 @@ class UsersController extends AppController
             $query = 'SELECT id FROM enterprises where login_id = "'.$data['enterprise_id'].'";';
             $enterprise = $connection->execute($query)->fetch('assoc');
             //debug($enterprise['id']);
-            $query = 'SELECT id FROM users where enterprise_id = '.$enterprise['id'].' and employee_id = "'.$data['employee_id'].'";';
+            //$query = 'SELECT id FROM users where enterprise_id = '.$enterprise['id'].' and employee_id = "'.$data['employee_id'].'";';
+            $query = 'SELECT id FROM users';
             $user = $connection->execute($query)->fetch('assoc');
             //debug($user['id']);
             $this->request = $this->request->withData('id', (string) $user['id']);

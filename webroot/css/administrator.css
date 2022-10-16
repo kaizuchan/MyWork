@@ -53,10 +53,12 @@
 #addButton{
     color: #555;
     margin: 0 2rem;
+    font-size: 1rem;
 }
 #deleteButton{
     color: #f00;
     margin: 0 1rem;
+    font-size: 1rem;
 }
 @media screen and (max-width: 767px){
     /* 検索フォーム全体 */
