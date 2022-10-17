@@ -110,7 +110,7 @@ class HomeController extends AppController
                         ['last_name LIKE' => '%'.$find.'%',],
                         ['first_name LIKE' => '%'.$find.'%']
                     ],
-                    'not' => ['role' => '1']
+                    'not' => ['role' => '9']
                 ]);
             // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
