@@ -1,10 +1,10 @@
-button{
+#backButtonBox button{
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     border: transparent;
     background-color:transparent;
 }
-button:hover{
+#backButtonBox button:hover{
     border: transparent;
     background-color:transparent;
 }

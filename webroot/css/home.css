@@ -1,3 +1,13 @@
+button{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    border: transparent;
+    background-color:transparent;
+}
+button:hover{
+    border: transparent;
+    background-color:transparent;
+}
 /* メイン全体 */
 #main{
     display:flex;
