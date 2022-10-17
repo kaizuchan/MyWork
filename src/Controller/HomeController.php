@@ -57,7 +57,11 @@ class HomeController extends AppController
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
                 $punches->time = date("H:i:s");
+<<<<<<< HEAD
                 $punches->identify = 2;
+=======
+                $punches->identify = 4;
+>>>>>>> 29c2a7e058d71afdb118f21e4654001bdb67ef40
 
                 try {
                     $this->punch->saveOrFail($punches);
@@ -72,7 +76,11 @@ class HomeController extends AppController
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
                 $punches->time = date("H:i:s");
+<<<<<<< HEAD
                 $punches->identify = 3;
+=======
+                $punches->identify = 2;
+>>>>>>> 29c2a7e058d71afdb118f21e4654001bdb67ef40
 
                 try {
                     $this->punch->saveOrFail($punches);
@@ -87,7 +95,11 @@ class HomeController extends AppController
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
                 $punches->time = date("H:i:s");
+<<<<<<< HEAD
                 $punches->identify = 4;
+=======
+                $punches->identify = 3;
+>>>>>>> 29c2a7e058d71afdb118f21e4654001bdb67ef40
 
                 try {
                     $this->punch->saveOrFail($punches);
@@ -105,11 +117,21 @@ class HomeController extends AppController
                 // debug($find);
 
                 // 入力値が条件に合うかどうか検索
+<<<<<<< HEAD
                 $searchUsers = $this->users->find('all')->where(['role' => '1','or' => [
                     ['last_name LIKE' => '%'.$find.'%',],
                     ['first_name LIKE' => '%'.$find.'%']
                 ]
             ]);
+=======
+                $searchUsers = $this->users->find('all')->where([
+                    'or' => [
+                        ['last_name LIKE' => '%'.$find.'%',],
+                        ['first_name LIKE' => '%'.$find.'%']
+                    ],
+                    'not' => ['role' => '9']
+                ]);
+>>>>>>> 29c2a7e058d71afdb118f21e4654001bdb67ef40
             // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
 
@@ -121,7 +143,14 @@ class HomeController extends AppController
 
         }
 
+<<<<<<< HEAD
         $query = $this->users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'role' => '1']);
+=======
+        $query = $this->users->find('all')->where([
+            ['enterprise_id' => $user->enterprise_id],
+            'not' => ['role'=>9]
+        ]);
+>>>>>>> 29c2a7e058d71afdb118f21e4654001bdb67ef40
 
         $this->set('users', $query);
 
