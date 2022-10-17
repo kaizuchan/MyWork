@@ -14,7 +14,7 @@ class AdminController extends AppController
         // 使うモデルの選択
         $this->loadModel('Users');
         // データの取り出し
-        $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'role' => '1']);
+        $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'not' => ['role' => '9']]);
         //debug($users);
         // データセット
         $this->set(compact('users'));
@@ -30,9 +30,10 @@ class AdminController extends AppController
                 $find = $this->request->getData('find');
                 // debug($find);
                 // 入力値が条件に合うかどうか検索
-                $searchUsers = $this->Users->find('all')->where(['role' => '1','or' => [
+                $searchUsers = $this->Users->find('all')->where(['or' => [
                     ['last_name LIKE' => '%'.$find.'%',],
                     ['first_name LIKE' => '%'.$find.'%'],
+                    'not' => ['role' => '9']
                 ]
                 ]);
                 // 条件にあったデータを渡す
