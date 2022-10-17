@@ -105,7 +105,7 @@ class HomeController extends AppController
                 // debug($find);
 
                 // 入力値が条件に合うかどうか検索
-                $searchUsers = $this->users->find('all')->where(['or' => [
+                $searchUsers = $this->users->find('all')->where(['role' => '1','or' => [
                     ['last_name LIKE' => '%'.$find.'%',],
                     ['first_name LIKE' => '%'.$find.'%']
                 ]
@@ -121,7 +121,7 @@ class HomeController extends AppController
 
         }
 
-        $query = $this->users->find('all')->where(['enterprise_id' => $user->enterprise_id]);
+        $query = $this->users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'role' => '1']);
 
         $this->set('users', $query);
 

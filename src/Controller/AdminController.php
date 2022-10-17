@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\I18n\FrozenTime;
 
 class AdminController extends AppController
 {
@@ -13,30 +14,57 @@ class AdminController extends AppController
         // 使うモデルの選択
         $this->loadModel('Users');
         // データの取り出し
-        $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id]);
+        $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'role' => '1']);
+        //debug($users);
         // データセット
         $this->set(compact('users'));
 
         // 検索
         if ($this->request->is('post')) {
 
-            // 配列
-            $searchUsers = [];
-            
-            // 入力値受け取り
-            $find = $this->request->getData('find');
-            // debug($find);
-            // 入力値が条件に合うかどうか検索
-            $searchUsers = $this->Users->find('all')->where(['or' => [
-                ['last_name LIKE' => '%'.$find.'%',],
-                ['first_name LIKE' => '%'.$find.'%']
-            ]
-            ]);
-            // 条件にあったデータを渡す
-            $this->set('searchUsers', $searchUsers);
+            if(isset($_POST['find'])){
+                // 配列
+                $searchUsers = [];
+                            
+                // 入力値受け取り
+                $find = $this->request->getData('find');
+                // debug($find);
+                // 入力値が条件に合うかどうか検索
+                $searchUsers = $this->Users->find('all')->where(['role' => '1','or' => [
+                    ['last_name LIKE' => '%'.$find.'%',],
+                    ['first_name LIKE' => '%'.$find.'%'],
+                ]
+                ]);
+                // 条件にあったデータを渡す
+                $this->set('searchUsers', $searchUsers);
+            }
+
+            if(isset($_POST['deleteButton'])){
+                // データ取得                                                                                                                                                       
+                $userId = $this->request->getData('delete');
+                //debug($userId);
+                // 現在時刻
+                $time = FrozenTime::now();
+
+                // 書き換える部分
+                $data = array(
+                    'users.role' => '9',
+                    'users.deleted_at' => $time,
+                );
+                //debug($data);
+                
+                foreach($userId as $i){
+                    // 条件
+                    $where = array(
+                        'users.id' => $i,
+                    );
+                    //debug($where);
+                    $this->Users->updateAll($data, $where);
+                }
+            }
+
         }
     }
-
     public function adduser()
     {
         /*
