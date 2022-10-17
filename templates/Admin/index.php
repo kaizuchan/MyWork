@@ -31,31 +31,39 @@
                 <div><p id="userChangeButtonItem">編集</p></div>
             </div>
 
-            <?php if(isset($_POST['searchButton'])){ ?>
-                <div id="userList">
-                    <?php foreach ($searchUsers as $searchUser): ?>
-                        <div><input type="checkbox"><label for="userId" id="userId"><?= $searchUser->employee_id ?></label></div>
-                        <div><p id="userName"><?= $searchUser->last_name.$searchUser->first_name ?></p></div>
-                        <div><i class="fas fa-pencil-alt fa-2x"></i></div>
-                    <?php endforeach; ?>
-                </div>
-                <?php }else{ ?>
-                    <div id="userList">
-                        <?php foreach ($users as $user): ?>
-                                <div><input type="checkbox"><label for="userId" id="userId"><?= $user->employee_id ?></label></div>
-                                <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
+            <div id="form">
+                <?= $this->Form->create(null, ['type' => 'post']); ?>
+                    <?php if(isset($_POST['searchButton'])){ ?>
+                            <?php foreach ($searchUsers as $searchUser): ?>
+                                <div class="userList">
+                                <div>
+                                    <?php echo $this->Form->checkbox('delete[]',
+                                    ['value' => $searchUser->id,'hiddenField' => false]); ?>
+                                    <label for="userId" id="userId"><?= $searchUser->employee_id ?></label></div>
+                                <div><p id="userName"><?= $searchUser->last_name.$searchUser->first_name ?></p></div>
                                 <div><i class="fas fa-pencil-alt fa-2x"></i></div>
-                        <?php endforeach; ?>
-                    </div>
-                <?php } ?>
+                            </div>
+                            <?php endforeach; ?>
+                        <?php }else{ ?>
+                                <?php foreach ($users as $user): ?>
+                                    <div class="userList">
+                                        <div>
+                                            <input type="checkbox" name="delete[]" value="<?= $user->id ?>">
+                                            <label for="userId" id="userId"><?= $user->employee_id ?></label>
+                                        </div>
+                                        <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
+                                        <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                                    </div>
+                                <?php endforeach; ?>
+                        <?php } ?>
             
-        </div>
-        
 
-        <div id="add-deleteButton">
-                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
-                <a href="/" id="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></a>
-        </div>
+                <div id="add-deleteButton">
+                        <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                        <div id="deleteButton"><button name="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></button></div>
+                </div>
+            </div>
+        <?= $this->Form->end() ?>
     </div>
 </body>
-</html>
+</html> 
