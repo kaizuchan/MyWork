@@ -25,23 +25,23 @@ class HomeController extends AppController
 
     public function home($id = null)
     {   
+        // ログイン中のユーザー情報取得
+        $me = $this->Authentication->getIdentity();
 
         $user = $this->Authentication->getIdentity();
 
         if ($this->request->is('post')) {
 
+            // 打刻処理
             if(isset($_POST['attend'])) {
                     
                 // エンティティーの生成
                 $punches = $this->punch->newEmptyEntity();
 
-                $punches->id = 5;
-                $punches->user_id = 0;
-                $punches->date = "2022-10-15";
-                $punches->time = "12:00:00";
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
                 $punches->identify = 1;
-                $punches->punched_by = 0;
-                $punches->modified_info = 0;
 
                 // データ登録
                 try {
@@ -50,7 +50,51 @@ class HomeController extends AppController
                     echo $e->getEntity();
                 }
             }
+            if(isset($_POST['leave'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
 
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 2;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['restStart'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 3;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['restFinish'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 4;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
             if(isset($_POST['searchButton'])) {
 
                 // 配列
