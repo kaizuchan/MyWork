@@ -39,31 +39,38 @@ class AdminController extends AppController
                 // 条件にあったデータを渡す
                 $this->set('searchUsers', $searchUsers);
             }
-
+            
+            // 削除処理
             if(isset($_POST['deleteButton'])){
                 // データ取得                                                                                                                                                       
                 $userId = $this->request->getData('delete');
-                //debug($userId);
-                // 現在時刻
-                $time = FrozenTime::now();
+                if($userId == null){
+                    // 何も選択されてない場合　なにもしない
+                    header('Location: /admin');
+                    exit();
+                }else{
+                    // 削除処理
+                    //debug($userId);
+                    // 現在時刻
+                    $time = FrozenTime::now();
 
-                // 書き換える部分
-                $data = array(
-                    'users.role' => '9',
-                    'users.deleted_at' => $time,
-                );
-                //debug($data);
-                
-                foreach($userId as $i){
-                    // 条件
-                    $where = array(
-                        'users.id' => $i,
+                    // 書き換える部分
+                    $data = array(
+                        'users.role' => '9',
+                        'users.deleted_at' => $time,
                     );
-                    //debug($where);
-                    $this->Users->updateAll($data, $where);
+                    //debug($data);
+                    
+                    foreach($userId as $i){
+                        // 条件
+                        $where = array(
+                            'users.id' => $i,
+                        );
+                        //debug($where);
+                        $this->Users->updateAll($data, $where);
+                    }
                 }
             }
-
         }
     }
     public function adduser()
