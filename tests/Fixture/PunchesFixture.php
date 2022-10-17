@@ -20,11 +20,10 @@ class PunchesFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'user_id' => 'Lorem ipsum dolor sit amet',
-                'date' => '2022-10-14',
-                'time' => '10:06:59',
+                'user_id' => 1,
+                'date' => '2022-10-17',
+                'time' => '10:10:19',
                 'identify' => 1,
-                'punched_by' => 1,
                 'modified_info' => 1,
             ],
         ];
