@@ -46,21 +46,21 @@
                         <?php echo $this->Form->button('検索',['name'=>'searchButton']); ?>
                         <?= $this->Form->end() ?>
                     </div>
-                    
+                    <?php $i=0; ?>
                     <?php if(isset($_POST['searchButton'])){ ?>
                         <?php foreach ($searchUsers as $searchUser): ?>
                             <div id="userNameList">
                                 <p id="userName"><?= h($searchUser->last_name) ?><?= h($searchUser->first_name) ?></p>
-                                <div id="userLabel">出勤</div>
+                                <div id="userLabel"><?= $searchStatus[$i] ?></div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
                     <?php }else{ ?>
                         <?php foreach ($users as $user): ?>
                             <div id="userNameList">
                                 <p id="userName"><?= h($user->last_name) ?><?= h($user->first_name) ?></p>
-                                <div id="userLabel">出勤</div>
+                                <div id="userLabel"><?= $status[$i] ?></div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
                     <?php } ?>
 
 
