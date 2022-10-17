@@ -58,8 +58,6 @@ class PunchesTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('user_id')
-            ->maxLength('user_id', 255)
             ->notEmptyString('user_id');
 
         $validator
@@ -73,18 +71,11 @@ class PunchesTable extends Table
             ->notEmptyTime('time');
 
         $validator
-            ->integer('identify')
             ->requirePresence('identify', 'create')
             ->notEmptyString('identify');
 
         $validator
-            ->integer('punched_by')
-            ->requirePresence('punched_by', 'create')
-            ->notEmptyString('punched_by');
-
-        $validator
             ->boolean('modified_info')
-            ->requirePresence('modified_info', 'create')
             ->notEmptyString('modified_info');
 
         return $validator;

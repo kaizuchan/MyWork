@@ -56,6 +56,9 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/works', ['controller' => 'home', 'action' => 'works']);
         $builder->connect('/admin', ['controller' => 'admin', 'action' => 'index']);
         $builder->connect('/admin/add-user', ['controller' => 'admin', 'action' => 'adduser']);
+        $builder->connect('/admin/edit-user/:id', ['controller' => 'admin', 'action' => 'edituser'])
+                ->setPatterns(['id' => '\d+'])
+                ->setPass(['id']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.
