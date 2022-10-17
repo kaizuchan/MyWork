@@ -21,7 +21,7 @@
 
         <div id="userId_Name">
             <div><p>ID:123456</p></div>
-            <div><p>社員名:横田守生</p></div>
+            <div><p>横田守生</p></div>
         </div>
 
         <div><h1 id="pageTitle">勤務表履歴</h1></div>
@@ -51,14 +51,17 @@
             
             <div id="mask" class="hidden"></div>
             <section id="modal" class="hidden">
-                <p>編集が完了してません。<br>終了してよろしいですか？</p>
-                <div id="close">
-                    <p>はい</p>
-                </div>
-                <div id="close">
-                    <p>いいえ</p>
+                <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
+                <div  id="selectButton">
+                    <div class="close">
+                        <p id="yesButton">はい</p>
+                    </div>
+                    <div class="close">
+                        <p id="noButton">いいえ</p>
+                    </div>
                 </div>
             </section>
+            
         
     </div>
     <?php echo $this->Html->script("modal"); ?>

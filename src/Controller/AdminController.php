@@ -33,37 +33,44 @@ class AdminController extends AppController
                 $searchUsers = $this->Users->find('all')->where(['or' => [
                     ['last_name LIKE' => '%'.$find.'%',],
                     ['first_name LIKE' => '%'.$find.'%'],
-                    'not' => ['role' => '9']
-                ]
+                ],
+                'not' => ['role' => '9']
                 ]);
                 // 条件にあったデータを渡す
                 $this->set('searchUsers', $searchUsers);
             }
-
+            
+            // 削除処理
             if(isset($_POST['deleteButton'])){
                 // データ取得                                                                                                                                                       
                 $userId = $this->request->getData('delete');
-                //debug($userId);
-                // 現在時刻
-                $time = FrozenTime::now();
+                if($userId == null){
+                    // 何も選択されてない場合　なにもしない
+                    header('Location: /admin');
+                    exit();
+                }else{
+                    // 削除処理
+                    //debug($userId);
+                    // 現在時刻
+                    $time = FrozenTime::now();
 
-                // 書き換える部分
-                $data = array(
-                    'users.role' => '9',
-                    'users.deleted_at' => $time,
-                );
-                //debug($data);
-                
-                foreach($userId as $i){
-                    // 条件
-                    $where = array(
-                        'users.id' => $i,
+                    // 書き換える部分
+                    $data = array(
+                        'users.role' => '9',
+                        'users.deleted_at' => $time,
                     );
-                    //debug($where);
-                    $this->Users->updateAll($data, $where);
+                    //debug($data);
+                    
+                    foreach($userId as $i){
+                        // 条件
+                        $where = array(
+                            'users.id' => $i,
+                        );
+                        //debug($where);
+                        $this->Users->updateAll($data, $where);
+                    }
                 }
             }
-
         }
     }
     public function adduser()
@@ -85,6 +92,10 @@ class AdminController extends AppController
             $user = $this->Users->patchEntity($user, $this->request->getData());
 
             // 誕生日のみ連結処理が必要
+            $year = $this->request->getData("birthday_year");
+            $month = $this->request->getData("birthday_month");
+            $date = $this->request->getData("birthday_date");
+            $user->birthday = mktime(0,0,0,$month,$date,$year);
 
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('登録しました'));
@@ -106,7 +117,13 @@ class AdminController extends AppController
         if ($this->request->is('post')) {
             // 3.4.0 より前は $this->request->data() が使われました。
             $user = $this->Users->patchEntity($user, $this->request->getData());
+
             // 誕生日のみ連結処理が必要
+            $year = $this->request->getData("birthday_year");
+            $month = $this->request->getData("birthday_month");
+            $date = $this->request->getData("birthday_date");
+
+            $user->birthday = mktime(0,0,0,$month,$date,$year);
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('更新しました'));
                 return $this->redirect(['controller' => 'admin', 'action' => 'index']);

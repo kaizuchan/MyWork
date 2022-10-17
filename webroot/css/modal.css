@@ -1,18 +1,31 @@
 #open,
-#close {
-  cursor: pointer;
-  width: 200px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+.close {
+  width: 30vw;
   text-align: center;
-  padding: 12px;
-  margin: 16px auto 0;
-  background: #1F78B4;
-  color: white;
-  position: relative;
-  top: 30%;
 }
-
+/* はい、いいえボックス*/
+#selectButton{
+  display: flex;
+}
+/* はい、いいえ pタグ共通部分 */
+.close p{
+  height: 5vh;
+  border-radius: 5px;
+  border: 2px solid #1F78B4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* メッセージ */
+#editMessage{
+  text-align: center;
+  font-size: 1.6rem;
+}
+/* はいボタン */
+#yesButton{
+  background-color: #1F78B4;
+}
+/* 背景 */
 #mask {
   background: rgba(0, 0, 0, 0.4);
   position: fixed;
@@ -22,31 +35,45 @@
   left: 0;
   z-index: 1;
 }
-
+/* モーダル */
 #modal {
-  background: #fff;
+  height: 40vh;
+  width: 30vw;
+  padding: 2rem;
   color: #555;
-  width: 300px;
-  padding: 40px;
-  border-radius: 4px;
+  background: #fff;
+  border-radius: 10px;
   position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -webkit-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-  margin: 0 auto;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
-
+/* モーダルのpタグ */
 #modal p {
-  margin: 0;
+  margin: 0 1rem;
 }
-
+/* 隠す */
 #mask.hidden {
   display: none;
 }
-
+/* 隠す */
 #modal.hidden {
   display: none;
+}
+/* スマホ、タブレット用 */
+@media screen and (max-width: 767px){
+  /* 幅 */
+  #modal{
+    width: 70vw;
+  }
+  /* メッセージのフォントサイズ */
+  #editMessage{
+    font-size: 1rem;
+  }
 }

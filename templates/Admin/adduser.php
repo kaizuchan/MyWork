@@ -65,7 +65,7 @@
     
     <h2>生年月日</h2>
     <div class="input-group birth-select mb-3">
-      <!-- <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年">
+      <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年">
           <option value=""></option>
           <?php
           for ($i = 1920; $i <= 2022; $i++) {
@@ -91,8 +91,7 @@
           }
           ?>
         </select>
-      <label class="input-group-text" for="inputGroupSelect01">日</label> -->
-      <input type="date" name="birthday" id="" class="form-control" required>
+      <label class="input-group-text" for="inputGroupSelect01">日</label>
     </div>
 
     
