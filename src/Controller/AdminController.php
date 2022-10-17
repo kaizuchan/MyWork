@@ -73,7 +73,7 @@ class AdminController extends AppController
         $this->set(compact('me'));
 
         $this->loadModel('Users');
-        $user = $this->Users->newEmptyEntity();
+        $user = $this->Users->get($id);
         if ($this->request->is('post')) {
             // 3.4.0 より前は $this->request->data() が使われました。
             $user = $this->Users->patchEntity($user, $this->request->getData());

@@ -148,7 +148,7 @@
       </div>
 
       <div class="d-grid gap-2">
-        <button class="btn" type="submit">登録</button>
+        <button class="btn" type="submit">変更</button>
       </div>
 
   </form>
