@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Cake\ORM\Table;
+use Punches;
 
 /**
  * Home Controller
@@ -18,12 +19,38 @@ class HomeController extends AppController
         parent::initialize();
         // テーブル取得
         $this->users = TableRegistry::getTableLocator()->get('users');
+        $this->punch = TableRegistry::getTableLocator()->get('punches');
     }
 
     public function home($id = null)
     {   
 
+        $user = $this->Authentication->getIdentity();
+
         if ($this->request->is('post')) {
+
+            if(isset($_POST['attend'])) {
+                    
+                // エンティティーの生成
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->id = 5;
+                $punches->user_id = 0;
+                $punches->date = "2022-10-15";
+                $punches->time = "12:00:00";
+                $punches->identify = 1;
+                $punches->punched_by = 0;
+                $punches->modified_info = 0;
+
+                // データ登録
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+
+            if(isset($_POST['searchButton'])) {
 
                 // 配列
                 $searchUsers = [];
@@ -40,15 +67,16 @@ class HomeController extends AppController
             ]);
             // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
-        }
-        
+            }
 
-        $user = $this->Authentication->getIdentity();
+        }
 
         $query = $this->users->find('all')->where(['enterprise_id' => $user->enterprise_id]);
 
         $this->set('users', $query);
+
     }
+
     public function works()
     {
     }
