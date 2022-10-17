@@ -23,15 +23,18 @@
                     <!-- ページ読込の際のダミーデータ -->00:00:00
                 </div>
             </div>
-            <form>
+            <form method="POST">
                 <div class="buttonFlex">
-                    <button class="engButton" id="attendanceButton">出勤</a></button>
-                    <button class="engButton" id="leavingButton">退勤</button>
+                    <button name="attend" class="engButton" id="attendanceButton">出勤</a></button>
+                    <button name="leave" class="engButton" id="leavingButton">退勤</button>
                 </div>
                 <div class="buttonFlex">
-                    <button class="engButton" id="restStartButton">休憩開始</button>
-                    <button class="engButton" id="restFinishButton">休憩終了</button>
+                    <button name="restStart" class="engButton" id="restStartButton">休憩開始</button>
+                    <button name="restFinish" class="engButton" id="restFinishButton">休憩終了</button>
                 </div>
+                <input
+                        type="hidden" name="_csrfToken" autocomplete="off"
+                        value="<?= $this->request->getAttribute('csrfToken') ?>">
             </form>
         </div>
         <div>
