@@ -60,7 +60,11 @@
                 <th class="fir_row"scope="col">総勤務時間</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody><? for($i=1; $i<=31; $i++){
+                   echo "
+                
+                        "; }
+                ?>
             <tr>
                 <th class="date">1日</th>
                 <td data-label="出勤時間" class="time">-</td>
@@ -71,6 +75,7 @@
                 <td data-label="休憩時間" class="time">-</td>
                 <td data-label="残業時間" class="time">-</td>
                 <td data-label="総労働時間" class="time">-</td>
+                
             </tr>
             <tr>
                 <th class="date">2日</th>
@@ -400,6 +405,17 @@
                 <td data-label="休憩時間" class="time">1</td>
                 <td data-label="残業時間" class="time">-</td>
                 <td data-label="総労働時間" class="time">8</td>
+            </tr>
+            <tr>
+                <th class="date">合計</th>
+                <td data-label="出勤時間" class="time">-</td>
+                <td data-label="退勤時間" class="time">-</td>
+                <td data-label="休憩開始時間" class="time">-</td>
+                <td data-label="休憩終了時間" class="time">-</td>
+                <td data-label="労働時間" class="time">152時間</td>
+                <td data-label="休憩時間" class="time">9時間</td>
+                <td data-label="残業時間" class="time">161時間</td>
+                <td data-label="総労働時間" class="time">19時間</td>
             </tr>
         </tbody>
     </table>   

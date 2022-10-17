@@ -51,5 +51,12 @@ class HomeController extends AppController
     }
     public function works()
     {
+        // 勤怠履歴用のやつ
+        $this->loadModel('Punches');
+        $res = $this->Punches->find('all')->where(['user_id'=>1])->all();
+        foreach($res as $r){
+            debug($r->date);
+        }
+        
     }
 }

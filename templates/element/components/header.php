@@ -30,7 +30,7 @@
                     <a href="/admin">管理者</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="">勤怠履歴</a>
+                    <a href="works">勤怠履歴</a>
                 </li>
                 <li class="nav-item active">
                     <a href="/logout">ログアウト</a>
