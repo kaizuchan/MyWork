@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Cake\ORM\Table;
+use Punches;
 use Migrations\Command\Phinx\Dump;
 
 /**
@@ -19,12 +20,82 @@ class HomeController extends AppController
         parent::initialize();
         // テーブル取得
         $this->users = TableRegistry::getTableLocator()->get('users');
+        $this->punch = TableRegistry::getTableLocator()->get('punches');
     }
 
     public function home($id = null)
     {   
+        // ログイン中のユーザー情報取得
+        $me = $this->Authentication->getIdentity();
+
+        $user = $this->Authentication->getIdentity();
 
         if ($this->request->is('post')) {
+
+            // 打刻処理
+            if(isset($_POST['attend'])) {
+                    
+                // エンティティーの生成
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 1;
+
+                // データ登録
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['leave'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 2;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['restStart'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 3;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['restFinish'])) {
+                    
+                $punches = $this->punch->newEmptyEntity();
+
+                $punches->user_id = $me->id;
+                $punches->date = date("Y/m/d");
+                $punches->time = date("H:i:s");
+                $punches->identify = 4;
+
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
+            }
+            if(isset($_POST['searchButton'])) {
 
                 // 配列
                 $searchUsers = [];
@@ -41,23 +112,25 @@ class HomeController extends AppController
             ]);
             // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
-            
+
             // 出勤状況表示部分
             $searchStatus = $this->solve($searchUsers);
             $this->set('searchStatus', $searchStatus);
-        }
-        
+            }
+    
 
-        $user = $this->Authentication->getIdentity();
+        }
 
         $query = $this->users->find('all')->where(['enterprise_id' => $user->enterprise_id]);
 
         $this->set('users', $query);
+
         
         // 出勤状況表示部分
         $status = $this->solve($query);
         $this->set('status', $status);
     }
+
     public function works()
     {
     }
