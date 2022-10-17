@@ -23,15 +23,19 @@
                     <!-- ページ読込の際のダミーデータ -->00:00:00
                 </div>
             </div>
-            <form>
+            <form method="POST">
                 <div class="buttonFlex">
-                    <button class="engButton" id="attendanceButton">出勤</a></button>
-                    <button class="engButton" id="leavingButton">退勤</button>
+                    <button name="attend" class="engButton" id="attendanceButton">出勤</a></button>
+                    <button name="leave" class="engButton" id="leavingButton">退勤</button>
+
                 </div>
                 <div class="buttonFlex">
-                    <button class="engButton" id="restStartButton">休憩開始</button>
-                    <button class="engButton" id="restFinishButton">休憩終了</button>
+                    <button name="restStart" class="engButton" id="restStartButton">休憩開始</button>
+                    <button name="restFinish" class="engButton" id="restFinishButton">休憩終了</button>
                 </div>
+                <input
+                        type="hidden" name="_csrfToken" autocomplete="off"
+                        value="<?= $this->request->getAttribute('csrfToken') ?>">
             </form>
         </div>
         <div>
@@ -46,21 +50,21 @@
                         <?php echo $this->Form->button('検索',['name'=>'searchButton']); ?>
                         <?= $this->Form->end() ?>
                     </div>
-                    
+                    <?php $i=0; ?>
                     <?php if(isset($_POST['searchButton'])){ ?>
                         <?php foreach ($searchUsers as $searchUser): ?>
                             <div id="userNameList">
                                 <p id="userName"><?= h($searchUser->last_name) ?><?= h($searchUser->first_name) ?></p>
-                                <div id="userLabel">出勤</div>
+                                <div id="userLabel"><?= $searchStatus[$i] ?></div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
                     <?php }else{ ?>
                         <?php foreach ($users as $user): ?>
                             <div id="userNameList">
                                 <p id="userName"><?= h($user->last_name) ?><?= h($user->first_name) ?></p>
-                                <div id="userLabel">出勤</div>
+                                <div id="userLabel"><?= $status[$i] ?></div>
                             </div>
-                        <?php endforeach; ?>
+                        <?php $i++; endforeach; ?>
                     <?php } ?>
 
 
