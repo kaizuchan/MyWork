@@ -19,6 +19,7 @@ class Punches extends AbstractMigration
         $table = $this->table('punches', ['id' => false, 'primary_key' => 'id']);
         $table
             ->addColumn('id', 'integer', [
+                'identity' => true,
                 'default' => null,
                 'identity' => true,
                 'limit' => MysqlAdapter::INT_BIG,
