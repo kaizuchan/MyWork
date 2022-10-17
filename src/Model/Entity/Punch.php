@@ -9,11 +9,10 @@ use Cake\ORM\Entity;
  * Punch Entity
  *
  * @property int $id
- * @property string $user_id
+ * @property int $user_id
  * @property \Cake\I18n\FrozenDate $date
  * @property \Cake\I18n\Time $time
  * @property int $identify
- * @property int $punched_by
  * @property bool $modified_info
  *
  * @property \App\Model\Entity\User $user
@@ -34,7 +33,6 @@ class Punch extends Entity
         'date' => true,
         'time' => true,
         'identify' => true,
-        'punched_by' => true,
         'modified_info' => true,
         'user' => true,
     ];

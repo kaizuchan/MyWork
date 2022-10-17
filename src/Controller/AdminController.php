@@ -65,6 +65,32 @@ class AdminController extends AppController
         }
     }
 
+    public function edituser($id)
+    {
+        // ログイン中のユーザー情報取得
+        $me = $this->Authentication->getIdentity();
+        // データセット
+        $this->set(compact('me'));
+
+        $this->loadModel('Users');
+        $user = $this->Users->get($id);
+        if ($this->request->is('post')) {
+            // 3.4.0 より前は $this->request->data() が使われました。
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            // 誕生日のみ連結処理が必要
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('更新しました'));
+                return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+            }
+            $this->Flash->error(__('社員更新に失敗しました'));
+        }else{
+            // 初めに動く処理
+            // idが合致するユーザー情報を取得
+            $user = $this->Users->find('all')->where(['id' => $id])->first();
+            $this->set(compact('user'));
+        }
+    }
+
     public function works()
     {
     }
