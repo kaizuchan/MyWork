@@ -27,23 +27,24 @@ class UsersController extends AppController
         // 受け取ったパスワードを$_POST['password']として、/users/loginへリダイレクト
         if ($this->request->is('post')) {
             $data = $this->request->getData();
-            //debug($data);
-            $connection = ConnectionManager::get('default');
-            $query = 'SELECT id FROM enterprises where login_id = "'.$data['enterprise_id'].'";';
-            $enterprise = $connection->execute($query)->fetch('assoc');
-            //debug($enterprise['id']);
-            $query = 'SELECT id FROM users where enterprise_id = '.$enterprise['id'].' and employee_id = "'.$data['employee_id'].'";';
-            //$query = 'SELECT id FROM users';
-            $user = $connection->execute($query)->fetch('assoc');
-            //debug($user['id']);
-            $this->request = $this->request->withData('id', (string) $user['id']);
-            $_POST['id'] = (string) $user['id'];
+            $this->loadModel('Enterprises');
+            $enterprise = $this->Enterprises->find('all')->where([
+                'login_id'=>$data['enterprise_id'],
+            ])->first();
+            if($enterprise != null){
+                $res = $this->Users->find('all')->where([
+                    'enterprise_id'=>$enterprise->id,
+                    'employee_id'=>$data['employee_id'],
+                ])->first();
+            }else{
+                $res = null;
+            }
         }
 
         // 無理やりリダイレクト処理書いてます...
         // 要変更
         echo '<form method="post" action="/users/login" id="myform">';
-        echo '<input type="hidden" name="id" value="'. $user["id"].'" />';
+        echo '<input type="hidden" name="id" value="'. $res["id"].'" />';
         echo '<input type="hidden" name="password" value="'.$data["password"].'" />';
         echo '<input type="hidden" name="_csrfToken" autocomplete="off"
         value="'.$this->request->getAttribute('csrfToken').'">';
