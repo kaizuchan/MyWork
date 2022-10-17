@@ -20,6 +20,7 @@ class Enterprises extends AbstractMigration
         $table
             ->addColumn('id', 'integer', [
                 'default' => null,
+                'identity' => true,
                 'limit' => MysqlAdapter::INT_BIG,
                 'null' => false,
             ])

@@ -19,6 +19,7 @@ class Punches extends AbstractMigration
         $table = $this->table('punches', ['id' => false, 'primary_key' => 'id']);
         $table
             ->addColumn('id', 'integer', [
+                'identity' => true,
                 'default' => null,
                 'limit' => MysqlAdapter::INT_BIG,
                 'null' => false,
@@ -35,17 +36,11 @@ class Punches extends AbstractMigration
                 'limit' => MysqlAdapter::INT_TINY,
                 'null' => false,
             ])
-            ->addColumn('punched_by', 'integer', [
-                'default' => null,
-                'limit' => MysqlAdapter::INT_BIG,
-                'null' => false,
-            ])
             ->addColumn('modified_info', 'boolean', [
                 'default' => false,
                 'null' => false,
             ])
             ->addForeignKey('user_id', 'users', 'id')
-            ->addForeignKey('punched_by', 'users', 'id')
             ->create();
     }
 }
