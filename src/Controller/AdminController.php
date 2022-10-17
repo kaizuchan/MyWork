@@ -82,9 +82,10 @@ class AdminController extends AppController
                 $this->Flash->success(__('更新しました'));
                 return $this->redirect(['controller' => 'admin', 'action' => 'index']);
             }
-            $this->Flash->error(__('社員登録に失敗しました'));
+            $this->Flash->error(__('社員更新に失敗しました'));
         }else{
-            // 初めに動くページ
+            // 初めに動く処理
+            // idが合致するユーザー情報を取得
             $user = $this->Users->find('all')->where(['id' => $id])->first();
             $this->set(compact('user'));
         }
