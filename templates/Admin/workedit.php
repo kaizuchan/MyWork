@@ -26,41 +26,47 @@
 
         <div><h1 id="pageTitle">勤務表履歴</h1></div>
         <div><p id="pageDate">10月3日</p></div>
-
-            <div>
-                <table>
-                    <tr>
-                        <th>出勤時間</th>
-                        <th>退勤時間</th>
-                        <th>休憩開始時間</th>
-                        <th>休憩終了時間</th>
-                    </tr>
-                    <tr>
-                        <td><input type="time" value="09:00" ></td>
-                        <td><input type="time" value="09:00"></td>
-                        <td><input type="time" value="09:00"></td>
-                        <td><input type="time" value="09:00"></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div id="buttonBox">
-                    <div id="changeButton"><button type="button">保存する</button></div>
-                    <div id="cancelButton"><button id="open" type="button">キャンセル</button></div>
-            </div>
-            
-            <div id="mask" class="hidden"></div>
-            <section id="modal" class="hidden">
-                <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
-                <div  id="selectButton">
-                    <div class="close">
-                        <p id="yesButton">はい</p>
-                    </div>
-                    <div class="close">
-                        <p id="noButton">いいえ</p>
-                    </div>
+        
+            <form method="post">
+                <div>
+                    <table>
+                        <tr>
+                            <th>出勤時間</th>
+                            <th>退勤時間</th>
+                            <th>休憩開始時間</th>
+                            <th>休憩終了時間</th>
+                        </tr>
+                        <tr>
+                            <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
+                            <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
+                            <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
+                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
+                        </tr>
+                    </table>
                 </div>
-            </section>
+
+                <input
+                    type="hidden" name="_csrfToken" autocomplete="off"
+                    value="<?= $this->request->getAttribute('csrfToken') ?>">
+
+                <div id="buttonBox">
+                        <div id="changeButton"><button type="submit">保存する</button></div>
+                        <div id="cancelButton"><button id="open" type="button">キャンセル</button></div>
+                </div>
+                
+                <div id="mask" class="hidden"></div>
+                <section id="modal" class="hidden">
+                    <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
+                    <div  id="selectButton">
+                        <div class="close">
+                            <p id="yesButton">はい</p>
+                        </div>
+                        <div class="close">
+                            <p id="noButton">いいえ</p>
+                        </div>
+                    </div>
+                </section>
+            </form>
             
         
     </div>
