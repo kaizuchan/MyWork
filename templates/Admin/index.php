@@ -82,7 +82,7 @@
             
             </div>
         <?= $this->Form->end() ?>
-        <div id="add-deleteButton"
+        <div id="add-deleteButton">
                 <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
                 <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
         </div>
