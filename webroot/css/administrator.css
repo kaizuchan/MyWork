@@ -89,6 +89,11 @@ form#searchForm{
     align-items: center;
 }
 @media screen and (max-width: 767px){
+    .message.success {
+        position: fixed;
+        top: 5rem;
+        left: 0;
+    }
     /* 検索フォーム全体 */
     .input-group{
         justify-content: flex-end;

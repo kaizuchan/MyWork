@@ -1,0 +1,22 @@
+.message.success,.error {
+    width: 100%;
+    height: 9vh;
+    position: fixed;
+    top: 5rem;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+@media screen and (max-width: 767px){
+    .message.success,.error {
+        position: fixed;
+        top: 5rem;
+        left: 0;
+    }
+}
+@media screen and (max-width: 480px){ 
+    
+}

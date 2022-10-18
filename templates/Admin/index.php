@@ -12,8 +12,13 @@
     <?php echo $this->element('components/headerAdmin'); ?>
     <!-- モーダルウィンドウ -->
     <?php echo $this->Html->css("modal"); ?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
 </head>
 <body>
+
+    <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+
     <div id="main">
 
         <!-- 戻るボタン -->
