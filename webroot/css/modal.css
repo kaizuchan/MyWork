@@ -1,31 +1,39 @@
 #open,
 #yesClose,
 #noClose {
-  width: 30vw;
   text-align: center;
 }
 /* はい、いいえボックス*/
 #selectButton{
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 /* はい、いいえ pタグ共通部分 */
 #yesClose button,
-#noClose button{
+#noClose p{
   height: 5vh;
+  width: 8vw;
   border-radius: 5px;
   border: 2px solid #1F78B4;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+#noButton{
+  color: #1F78B4;
+}
 /* メッセージ */
 #editMessage{
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 1.5rem;
 }
 /* はいボタン */
 #yesButton{
   background-color: #1F78B4;
+}
+#exclamation-triangleIcon{
+  color: #f00;
 }
 /* 背景 */
 #mask {
@@ -68,8 +76,39 @@
 #modal.hidden {
   display: none;
 }
+/* タブレット用 */
+@media screen and (max-width: 1000px){
+  #yesClose button,
+  #noClose button{
+    height: 5vh;
+    width: 15vw;
+    border-radius: 5px;
+    border: 2px solid #1F78B4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  /* 幅 */
+  #modal{
+    width: 50vw;
+  }
+  /* メッセージのフォントサイズ */
+  #editMessage{
+    font-size: 1.4rem;
+  }
+}
 /* スマホ、タブレット用 */
 @media screen and (max-width: 767px){
+  #yesClose button,
+  #noClose button{
+    height: 5vh;
+    width: 20vw;
+    border-radius: 5px;
+    border: 2px solid #1F78B4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   /* 幅 */
   #modal{
     width: 70vw;
