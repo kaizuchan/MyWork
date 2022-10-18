@@ -7,6 +7,13 @@ use Migrations\Command\Phinx\Dump;
 
 class AdminController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $me = $this->Authentication->getIdentity();
+        $this->set(compact('me'));
+    }
+
     public function index()
     {
         $me = $this->Authentication->getIdentity();
@@ -92,28 +99,37 @@ class AdminController extends AppController
          * ↑ 自動生成のままだと、emailはuniqueとして扱われる
          * 原則同じメールアドレスは使われないはずだが、消しておいたほうがいい
          */
-        // ログイン中のユーザー情報取得
-        $me = $this->Authentication->getIdentity();
-        // データセット
-        $this->set(compact('me'));
-
-        $this->loadModel('Users');
-        $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            // 3.4.0 より前は $this->request->data() が使われました。
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-
-            // 誕生日のみ連結処理が必要
-            $year = $this->request->getData("birthday_year");
-            $month = $this->request->getData("birthday_month");
-            $date = $this->request->getData("birthday_date");
-            $user->birthday = mktime(0,0,0,$month,$date,$year);
-
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('登録しました'));
-                return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+            // 同じ社員IDを持ったユーザーがいないかの確認
+            $me = $this->Authentication->getIdentity();
+            $this->loadModel('Users');
+            $employee_id = $this->request->getData('employee_id');
+            debug($me->enterprise_id);
+            $res = $this->Users->find('all')->where([
+                'enterprise_id' => $me->enterprise_id,
+                'employee_id'   => $employee_id
+            ]);
+            if($res == null){
+                $user = $this->Users->newEmptyEntity();
+                // 送信されたデータを登録
+                $user = $this->Users->patchEntity($user, $this->request->getData());
+    
+                // 誕生日のみ連結処理が必要
+                $year = $this->request->getData("birthday_year");
+                $month = $this->request->getData("birthday_month");
+                $date = $this->request->getData("birthday_date");
+                $user->birthday = mktime(0,0,0,$month,$date,$year);
+    
+                if ($this->Users->save($user)) {
+                    // 登録成功
+                    $this->Flash->success(__('登録しました'));
+                    return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+                }
+                    // 登録失敗
+                $this->Flash->error(__('社員登録に失敗しました'));
+            }else{
+                $this->Flash->error(__('同じ社員IDが既に存在します'));
             }
-            $this->Flash->error(__('社員登録に失敗しました'));
         }
     }
 

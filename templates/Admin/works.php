@@ -15,7 +15,6 @@
 <body>
     <!-- 戻るボタン -->
     <?php echo $this->element('components/backButton'); ?>
-    
     <div class="id_name">
         <h6>ID:123456</h6>
         <h6>横田守生</h6>
