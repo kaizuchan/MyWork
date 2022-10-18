@@ -140,10 +140,14 @@ class HomeController extends AppController
     {
         // 勤怠履歴用のやつ
         $this->loadModel('Punches');
-        $res = $this->Punches->find('all')->where(['user_id'=>1])->all();
-        foreach($res as $r){
-            // debug($r->date);
-        }
+        
+        $log_me = $this->Authentication->getIdentity();
+
+        $res = $this->Punches->find('all')->where(['user_id'=>$log_me->id])->all();
+        //debug($res);
+        // Viewに渡す
+        $this->set('res', $res);
+        
         
     }
 
