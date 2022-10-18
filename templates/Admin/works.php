@@ -66,10 +66,10 @@
                 <tr>
                     <td class="edit"><button class="btn" type="button">編集</button></td>
                     <th class="date"><?= $date['date'] ?>日</th>
-                    <td data-label="出勤時間" class="time">-</td>
-                    <td data-label="退勤時間" class="time">-</td>
-                    <td data-label="休憩開始時間" class="time">-</td>
-                    <td data-label="休憩終了時間" class="time">-</td>
+                    <td data-label="出勤時間" class="time"><?= $date['start_work'] ?></td>
+                    <td data-label="退勤時間" class="time"><?= $date['end_work'] ?></td>
+                    <td data-label="休憩開始時間" class="time"><?= $date['start_break'] ?></td>
+                    <td data-label="休憩終了時間" class="time"><?= $date['end_break'] ?></td>
                     <td data-label="労働時間" class="time">-</td>
                     <td data-label="休憩時間" class="time">-</td>
                     <td data-label="残業時間" class="time">-</td>

@@ -38,9 +38,9 @@
                         </tr>
                         <tr>
                             <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
+                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                             <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
                             <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
-                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                         </tr>
                     </table>
                 </div>
