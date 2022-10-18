@@ -22,8 +22,8 @@
         <h1 class="title">勤務時間表</h1>
         <h2 class="oct"><?= $dates['month'] ?>月</h2>
     <div class="month">
-        <h3>前の月へ</h3>
-        <h3>次の月へ</h3>
+        <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']-1,1,2022)); ?>">前の月へ</a></h3>
+        <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']+1,1,2022)); ?>">次の月へ</a></h3>
     </div>
 
     <div class="total">
