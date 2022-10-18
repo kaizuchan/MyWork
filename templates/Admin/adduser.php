@@ -77,7 +77,7 @@
         <input name="gender" value="0" type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
         <label for="validationFormCheck2" class="form-check-label">男性</label>
       </div>
-      <div class="form-check mb-3 woman-radioButton">
+      <div class="form-check woman-radioButton">
         <input name="gender" value="1" type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked">
         <label for="validationFormCheck3" class="form-check-label">女性</label>
       </div>
