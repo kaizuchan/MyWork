@@ -18,6 +18,7 @@
 
         <!-- 戻るボタン -->
         <?php echo $this->element('components/backButton'); ?>
+        <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
 
         <div id="userId_Name">
             <div><p>ID:123456</p></div>
@@ -58,10 +59,10 @@
                 <section id="modal" class="hidden">
                     <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
                     <div  id="selectButton">
-                        <div class="close">
-                            <p id="yesButton">はい</p>
+                        <div id="yesClose">
+                            <button id="yesButton">はい</button>
                         </div>
-                        <div class="close">
+                        <div id="noClose">
                             <p id="noButton">いいえ</p>
                         </div>
                     </div>

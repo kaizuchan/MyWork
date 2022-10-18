@@ -1,7 +1,8 @@
 'use strict';
 {
   const open = document.getElementById('open');
-  const close = document.getElementById('yesClose');
+  const yesClose = document.getElementById('yesClose');
+  const noClose = document.getElementById('noClose');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
 
@@ -9,7 +10,11 @@
     modal.classList.remove('hidden');
     mask.classList.remove('hidden');
   });
-  close.addEventListener('click', function () {
+  yesClose.addEventListener('click', function () {
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+  });  
+  noClose.addEventListener('click', function () {
     modal.classList.add('hidden');
     mask.classList.add('hidden');
   });
