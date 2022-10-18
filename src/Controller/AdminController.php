@@ -26,8 +26,6 @@ class AdminController extends AppController
         // データの取り出し
         $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'not' => ['role' => '9']]);
         //debug($users);
-        // データセット
-        $this->set(compact('users'));
 
         // 検索
         if ($this->request->is('post')) {
@@ -40,22 +38,16 @@ class AdminController extends AppController
                 $find = $this->request->getData('find');
                 // debug($find);
                 // 入力値が条件に合うかどうか検索
-                $searchUsers = $this->Users->find('all')->where(['or' => [
+                $users = $this->Users->find('all')->where(['or' => [
                     ['last_name LIKE' => '%'.$find.'%',],
                     ['first_name LIKE' => '%'.$find.'%'],
                 ],
                 'not' => ['role' => '9']
                 ]);
 
-                $count = $this->Users->find('all')->where([
-                    'or' => [
-                        ['last_name LIKE' => '%'.$find.'%',],
-                        ['first_name LIKE' => '%'.$find.'%']
-                    ],
-                    'not' => ['role' => '9']
-                ])->count();
+                $count = $users->count();
                 // 条件にあったデータを渡す
-                $this->set('searchUsers', $searchUsers);
+                $this->set('searchUsers', $users);
                 $this->set('count', $count);
             }
             
@@ -91,6 +83,9 @@ class AdminController extends AppController
                 }
             }
         }
+        
+        // データセット
+        $this->set(compact('users'));
     }
     public function adduser()
     {
