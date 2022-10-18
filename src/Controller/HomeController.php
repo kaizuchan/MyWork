@@ -33,6 +33,15 @@ class HomeController extends AppController
 
         $user = $this->Authentication->getIdentity();
 
+
+        // 勤務状況表示
+        
+        $users = $this->users->find('all')->where([
+            ['enterprise_id' => $user->enterprise_id],
+            'not' => ['role'=>9]
+        ]);
+
+
         if ($this->request->is('post')) {
 
             // 打刻処理
@@ -98,6 +107,7 @@ class HomeController extends AppController
                     echo $e->getEntity();
                 }
             }
+            // 社員検索処理
             if(isset($_POST['searchButton'])) {
 
                 // 配列
@@ -108,7 +118,7 @@ class HomeController extends AppController
                 // debug($find);
 
                 // 入力値が条件に合うかどうか検索
-                $searchUsers = $this->users->find('all')->where([
+                $users = $this->users->find('all')->where([
                     'or' => [
                         ['last_name LIKE' => '%'.$find.'%',],
                         ['first_name LIKE' => '%'.$find.'%']
@@ -116,42 +126,31 @@ class HomeController extends AppController
                     'not' => ['role' => '9']
                 ]);
 
-                $count = $this->users->find('all')->where([
-                    'or' => [
-                        ['last_name LIKE' => '%'.$find.'%',],
-                        ['first_name LIKE' => '%'.$find.'%']
-                    ],
-                    'not' => ['role' => '9']
-                ])->count();
+                //ユーザーの人数を取得
                 //debug($count);
-            // 条件にあったデータを渡す
-            $this->set('searchUsers', $searchUsers);
+                // 条件にあったデータを渡す
+                //$this->set('searchUsers', $searchUsers);
+                $count = $users->count();
             $this->set('count', $count);
-
-            // 出勤状況表示部分
-            $searchStatus = $this->solve($searchUsers);
-            $this->set('searchStatus', $searchStatus);
+            
+                // 出勤状況表示部分
+                $searchStatus = $this->solve($searchUsers);
+                $this->set('searchStatus', $searchStatus);
             }
-    
-
         }
-
-        $query = $this->users->find('all')->where([
-            ['enterprise_id' => $user->enterprise_id],
-            'not' => ['role'=>9]
-        ]);
-
-        $this->set('users', $query);
-
         
         // 出勤状況表示部分
-        $status = $this->solve($query);
+        $status = $this->solve($users);
         $this->set('status', $status);
+        
+        // Viewへの受け渡し
+        $this->set('users', $users);
     }
 
-    public function works()
+    public function works($month = null, $year = null)
     {
-        $data = $this->getMonthlyData();
+        $me = $this->Authentication->getIdentity()->get('id');
+        $data = $this->getMonthlyData($me, $month, $year);
         $this->set(compact('data'));
 
     }

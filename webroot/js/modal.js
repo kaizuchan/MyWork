@@ -23,3 +23,19 @@
     mask.classList.add('hidden');
   });
 }
+
+function myCheck() {
+  var checkbox = document.getElementsByClassName('check');
+  var flag = false;
+
+  for (var i = 0; i < checkbox.length; i++) {
+ 
+    if (checkbox[i].checked) {
+      flag = true;
+    }
+  }
+   
+  if (!flag) {
+    // alert("項目が選択されていません。");
+  }
+}

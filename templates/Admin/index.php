@@ -47,28 +47,16 @@
             
             <div id="form">
                 <?= $this->Form->create(null, ['type' => 'post']); ?>
-                    <?php if(isset($_POST['searchButton'])){ ?>
-                            <?php foreach ($searchUsers as $searchUser): ?>
-                                <div class="userList">
-                                <div>
-                                    <input type="checkbox" name="delete[]" value="<?= $searchUser->id ?>">
-                                    <label for="userId" id="userId"><?= $searchUser->employee_id ?></label></div>
-                                <div><p id="userName"><?= $searchUser->last_name.$searchUser->first_name ?></p></div>
-                                <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                    <?php foreach ($users as $user): ?>
+                        <div class="userList">
+                            <div>
+                                <input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>">
+                                <label for="userId" id="userId"><?= $user->employee_id ?></label>
                             </div>
-                            <?php endforeach; ?>
-                        <?php }else{ ?>
-                                <?php foreach ($users as $user): ?>
-                                    <div class="userList">
-                                        <div>
-                                            <input type="checkbox" name="delete[]" value="<?= $user->id ?>">
-                                            <label for="userId" id="userId"><?= $user->employee_id ?></label>
-                                        </div>
-                                        <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
-                                        <div><i class="fas fa-pencil-alt fa-2x"></i></div>
-                                    </div>
-                                <?php endforeach; ?>
-                        <?php } ?>
+                            <div><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></div>
+                            <div><a href="/admin/edit-user/<?= $user->id ?>">編集</a><i class="fas fa-pencil-alt fa-2x"></i></div>
+                        </div>
+                    <?php endforeach; ?>
                     <div id="mask" class="hidden"></div>
                     <section id="modal" class="hidden">
                         <p id="editMessage">
@@ -88,8 +76,8 @@
             </div>
         <?= $this->Form->end() ?>
         <div id="add-deleteButton">
-                <a href="/Admin/adduser" id="addButton"><i class="fas fa-user-plus fa-3x"></i></a>
-                <div id="deleteButton"><button id="open" name="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></button></div>
+                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
         </div>
 
     </div>

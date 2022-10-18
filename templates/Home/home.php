@@ -54,27 +54,20 @@
                     
                 <div class="scroll_bar">
                     <?php $i=0; ?>
-                    <!-- 検索結果 -->
+                    <!-- 検索で１人も当てはまらなかった場合 -->
                     <?php if(isset($count)): ?>
                         <p id="searchMessage">
                             <?php if($count == 0): echo '検索結果が見つかりません'; endif; ?>
                         </p>
                     <?php endif; ?>
-                    <?php if(isset($_POST['searchButton'])){ ?>
-                        <?php foreach ($searchUsers as $searchUser): ?>
-                            <div id="userNameList">
-                                <p id="userName"><?= h($searchUser->last_name) ?><?= h($searchUser->first_name) ?></p>
-                                <div id="userLabel"><?= $searchStatus[$i] ?></div>
-                            </div>
-                        <?php $i++; endforeach; ?>
-                    <?php }else{ ?>
-                        <?php foreach ($users as $user): ?>
-                            <div id="userNameList">
-                                <p id="userName"><?= h($user->last_name) ?><?= h($user->first_name) ?></p>
-                                <div id="userLabel"><?= $status[$i] ?></div>
-                            </div>
-                        <?php $i++; endforeach; ?>
-                    <?php } ?>
+                    
+                    <?php $i = 0; ?>
+                    <?php foreach ($users as $user): ?>
+                        <div id="userNameList">
+                            <p id="userName"><?= h($user->last_name) ?><?= h($user->first_name) ?></p>
+                            <div id="userLabel"><?= $status[$i] ?></div>
+                        </div>
+                    <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>
