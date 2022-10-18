@@ -104,11 +104,10 @@ class AdminController extends AppController
             $me = $this->Authentication->getIdentity();
             $this->loadModel('Users');
             $employee_id = $this->request->getData('employee_id');
-            debug($me->enterprise_id);
             $res = $this->Users->find('all')->where([
                 'enterprise_id' => $me->enterprise_id,
                 'employee_id'   => $employee_id
-            ]);
+            ])->first();
             if($res == null){
                 $user = $this->Users->newEmptyEntity();
                 // 送信されたデータを登録
