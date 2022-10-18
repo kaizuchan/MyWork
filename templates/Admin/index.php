@@ -60,7 +60,10 @@
                         <?php } ?>
                     <div id="mask" class="hidden"></div>
                     <section id="modal" class="hidden">
-                        <p id="editMessage">上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません。)</p>
+                        <p id="editMessage">
+                            <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
+                            上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません。)
+                        </p>
                         <div  id="selectButton">
                             <div id="yesClose">
                                 <button id="yesButton" name="yesButton">OK</button>
