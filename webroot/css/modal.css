@@ -1,5 +1,6 @@
 #open,
-.close {
+#yesClose,
+#noClose {
   width: 30vw;
   text-align: center;
 }
@@ -8,7 +9,8 @@
   display: flex;
 }
 /* はい、いいえ pタグ共通部分 */
-.close p{
+#yesClose button,
+#noClose button{
   height: 5vh;
   border-radius: 5px;
   border: 2px solid #1F78B4;

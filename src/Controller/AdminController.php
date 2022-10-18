@@ -41,7 +41,7 @@ class AdminController extends AppController
             }
             
             // 削除処理
-            if(isset($_POST['deleteButton'])){
+            if(isset($_POST['yesButton'])){
                 // データ取得                                                                                                                                                       
                 $userId = $this->request->getData('delete');
                 if($userId == null){
