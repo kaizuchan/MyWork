@@ -56,7 +56,7 @@
                                 <?php foreach ($users as $user): ?>
                                     <div class="userList">
                                         <div>
-                                            <input type="checkbox" name="delete[]" value="<?= $user->id ?>">
+                                            <input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>">
                                             <label for="userId" id="userId"><?= $user->employee_id ?></label>
                                         </div>
                                         <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
@@ -82,9 +82,9 @@
             
             </div>
         <?= $this->Form->end() ?>
-        <div id="add-deleteButton">
-                <a href="/Admin/adduser" id="addButton"><i class="fas fa-user-plus fa-3x"></i></a>
-                <div id="deleteButton"><button id="open" name="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></button></div>
+        <div id="add-deleteButton"
+                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
         </div>
 
     </div>
