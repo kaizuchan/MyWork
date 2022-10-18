@@ -10,6 +10,21 @@
   <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    <script>
+            function CheckPassword(password_confirm) {
+                // 入力値取得
+                var input1 = userpass.value;
+                var input2 = password_confirm.value;
+                // パスワード比較
+                if (input1 != input2) {
+                    password_confirm.setCustomValidity("入力値が一致しません。");
+                } else {
+                    password_confirm.setCustomValidity('');
+                }
+            }
+    </script>
+    
 </head>
 <body>
 
@@ -18,7 +33,8 @@
   <!-- 戻るボタン -->
   <?php echo $this->element('components/backButton'); ?>
 
-  <form class="was-validated" method="POST">
+  <form class="was-validated h-adr" method="POST">
+  <input type="hidden" class="p-country-name" value="Japan">
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">社員ID</span>
@@ -98,12 +114,12 @@
     <h2>住所</h2>
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">郵便番号</span>
-      <input name="postalcode" type="text" id="validationTextarea" class="form-control" placeholder="xxx-xxxx" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
+      <input name="postalcode" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="xxx-xxxx" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
     </div>
 
     <div class="input-group mb-3">
       <label class="input-group-text" for="inputGroupSelect01">都道府県</label>
-      <select name="prefecture_id" class="form-select" id="inputGroupSelect01" aria-label="都道府県" required>
+      <select name="prefecture_id" class="form-select p-region" id="inputGroupSelect01" aria-label="都道府県" required>
         <option value=""></option>
         <option value="1">北海道</option>
         <option value="2">青森県</option>
@@ -157,7 +173,7 @@
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">市区町村</span>
-      <input name="city" type="text" id="validationTextarea" class="form-control" placeholder="市区町村" aria-label="市区町村" aria-describedby="basic-addon1" required>
+      <input name="city" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="市区町村" aria-label="市区町村" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3 ">
@@ -172,12 +188,12 @@
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">パスワード</span>
-      <input name="password" type="password" id="validationTextarea" class="form-control" placeholder="パスワード" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+      <input name="password" type="password" id="userpass" class="form-control" placeholder="パスワード" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
     </div>
     
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-      <input type="password" id="validationTextarea" class="form-control" placeholder="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+      <input type="password" id="password_confirm" class="form-control" placeholder="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
     </div>
 
     <input
