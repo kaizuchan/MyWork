@@ -1,7 +1,7 @@
 'use strict';
 {
   const open = document.getElementById('open');
-  const close = document.getElementsByClassName('close');
+  const close = document.getElementById('yesClose');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
 

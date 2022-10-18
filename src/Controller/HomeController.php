@@ -112,8 +112,18 @@ class HomeController extends AppController
                     ],
                     'not' => ['role' => '9']
                 ]);
+
+                $count = $this->users->find('all')->where([
+                    'or' => [
+                        ['last_name LIKE' => '%'.$find.'%',],
+                        ['first_name LIKE' => '%'.$find.'%']
+                    ],
+                    'not' => ['role' => '9']
+                ])->count();
+                //debug($count);
             // 条件にあったデータを渡す
             $this->set('searchUsers', $searchUsers);
+            $this->set('count', $count);
 
             // 出勤状況表示部分
             $searchStatus = $this->solve($searchUsers);

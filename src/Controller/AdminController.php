@@ -41,7 +41,7 @@ class AdminController extends AppController
             }
             
             // 削除処理
-            if(isset($_POST['deleteButton'])){
+            if(isset($_POST['yesButton'])){
                 // データ取得                                                                                                                                                       
                 $userId = $this->request->getData('delete');
                 if($userId == null){
@@ -137,11 +137,133 @@ class AdminController extends AppController
         }
     }
 
-    public function works()
+    public function works($id)
     {
+        $dates = $this->getDays();
+        $this->set(compact('dates'));
+        $this->getData(1, '2022/10/17', 1);
     }
 
-    public function workedit()
+    public function workedit($id, $date)
     {
+        // 該当する打刻データを取得して、Viewに送信
+        $times = $this->setPunchdData($date, $id); 
+        $this->set(compact('times'));
+
+        // データベース登録処理
+        //debug($times);
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            //debug($data);
+            $this->loadModel('Punches');
+
+            $identify = array('start_work', 'start_break', 'end_break', 'end_work');
+            
+            $stmt = false;
+            for ($i = 1; $i <= 4; $i++) {
+                // 更新されたデータを特定し、そのデータのみ登録処理を行う
+                if($times[$identify[$i-1]] != $data[$identify[$i-1]]){
+                    $punche = $this->Punches->newEmptyEntity();
+                    $punche->user_id = $id;
+                    $punche->date = $date;
+                    $punche->time = $data[$identify[$i-1]];
+                    $punche->identify = $i;
+                    $punche->modified_info = 1;
+                    $stmt = $this->Punches->save($punche);
+                }
+            }
+
+            if ($stmt) {
+                $this->Flash->success(__('更新しました'));
+                return $this->redirect(['controller' => 'admin', 'action' => 'works', $id]);
+            }else{
+                $this->Flash->error(__('更新に失敗しました'));
+            }
+        }
+        // 
     }
+
+
+    // 自作関数
+    // 指定した年/月の日付＆曜日を配列に格納して返す
+    private function getDays($month = null, $year = null)
+    {
+        if($month == null){
+            $month = (int) date('m');
+        }
+        if($year == null){
+            $year = (int) date('Y');
+        }
+        // 空の配列を用意
+        $array = [
+            'year'=>$year,
+            'month' => $month,
+            'dates' => array(),
+        ];
+
+        for ($i = 1; $i <= date('t', strtotime($year.'-'.$month)); $i++) {
+            $a = [
+                'date' => $i,
+                'day'  => date('w', strtotime($year.'-'.$month.'-'.$i)),
+            ];
+            array_push($array['dates'], $a);
+        }
+        return $array;
+    }
+    // 対象ユーザーの対象の日にちの情報をデータベースから取得
+    private function getData($user_id ,$date, $identify)
+    {
+        $this->loadModel('Punches');
+        $res = $this->Punches->find('all')->where([
+            'user_id' => $user_id,
+            'date' => $date,
+            'identify' => $identify,
+        ])->last();
+        return $res;
+    }
+    // 配列にユーザーの勤怠データを登録する。
+    private function setPunchdData($date, $user_id = null)
+    {
+        // $user_idがnullなら、ログイン中のユーザーのIDをセット
+        if($user_id == null){
+            $user_id = $this->Authentication->getIdentity()->get('id');
+        }
+        $identify = [
+            1 => 'start_work',
+            2 => 'start_break',
+            3 => 'end_break',
+            4 => 'end_work',
+        ];
+        $data = array();
+        for ($i = 1; $i <= 4; $i++) {
+            $res = $this->getData($user_id, $date, $i);
+            if($res != null){
+                $data = array_merge($data, [$identify[$i] => date('H:i', strtotime($res->time))]);
+            }else{
+                $data = array_merge($data, [$identify[$i] => null]);
+            }
+        }
+        return $data;
+    }
+    // 配列にユーザーの勤怠データを登録する。
+    private function setUserData($array, $user_id = null)
+    {
+        // $user_idがnullなら、ログイン中のユーザーのIDをセット
+        if($user_id == null){
+            $user_id = $this->Authentication->getIdentity()->get('id');
+        }
+        $identify = [
+            1 => 'start_work',
+            2 => 'start_break',
+            3 => 'end_break',
+            4 => 'end_work',
+        ];
+        foreach ($array['dates'] as $date){
+            for ($i = 1; $i <= 4; $i++) {
+                $data = $this->getData($user_id, $array['year'].'/'.$array['month'].'/'.$array['year'], $i);
+                
+            }
+        }
+    }
+    
 }

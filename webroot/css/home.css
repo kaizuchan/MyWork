@@ -35,7 +35,7 @@ button:hover{
 }
 /* ユーザー一覧全体 */
 #userList{
-    border: 1px solid #000;
+    border: 2px solid #000;
     height: 72vh;
     width: 30vw;
     padding: 1rem 0;
@@ -56,8 +56,8 @@ button:hover{
 }
 /* 出勤ボタンホバー */
 #attendanceButton:hover{
-    background-color: #777;
-    border: 1px solid #777;
+    background-color: #C0ECCB;
+    border: 1px solid #C0ECCB;
 }
 /* 退勤ボタン */
 #leavingButton{
@@ -66,8 +66,8 @@ button:hover{
 }
 /* 退勤ボタンホバー */
 #leavingButton:hover{
-    background-color: #777;
-    border: 1px solid #777;
+    background-color: #F3C2C2;
+    border: 1px solid #F3C2C2;
 }
 /* 休憩開始ボタン */
 #restStartButton{
@@ -76,8 +76,8 @@ button:hover{
 }
 /* 休憩開始ボタンホバー */
 #restStartButton:hover{
-    background-color: #777;
-    border: 1px solid #777;
+    background-color: #C6CEE3;
+    border: 1px solid #C6CEE3;
 }
 /* 休憩終了ボタン */
 #restFinishButton{
@@ -86,10 +86,32 @@ button:hover{
 }
 /* 休憩終了ボタンホバー */
 #restFinishButton:hover{
-    background-color: #777;
-    border: 1px solid #777;
+    background-color: #F0E2BD;
+    border: 1px solid #F0E2BD;
 }
+/* スクロールバー */
+.scroll_bar{
+    height: 60vh;
+    overflow-y: scroll;
+ }
+ .scroll_bar::-webkit-scrollbar{
+    width: 1rem;
+ }
+ .scroll_bar::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 5px;
+ }
+ .scroll_bar::-webkit-scrollbar-thumb{
+    background-color: #777;
+    border-radius: 5px;
+ }
+ 
 /* 検索フォーム全体 */
+#searchMessage{
+    margin: 3rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
 .input-group{
     justify-content: center
 }
@@ -99,12 +121,12 @@ button:hover{
     justify-content: center;
 }
 #searchBox input{
+    height: 3vh;
     width: 24vw;
     border-radius: 5px;
 }
 #searchBox button{
     color: #fff;
-    border: 1px solid #1F78B4;
     background-color: #1F78B4;
     padding: 0 1rem;
     border-radius: 5px;
@@ -113,8 +135,9 @@ button:hover{
 #userNameList{
     font-size: 1.8rem;
     margin-top: 2rem;
+    padding: 0 8rem;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 #userName{
@@ -123,7 +146,7 @@ button:hover{
 #userLabel{
     border: 1px solid #000;
     border-radius: 15px;
-    padding: 0.6rem 1.2rem;
+    padding: 0.2rem 1rem;
 }
 /* 767px以下 (タブレット、スマホ用のデザイン) */
 @media screen and (max-width: 767px){
@@ -145,6 +168,9 @@ button:hover{
     #userList{
         width: 90vw;
         margin: 0 auto;
+    }
+    #userNameList{
+        padding: 0 3rem;
     }
     #searchBox input{
         width: 70vw;

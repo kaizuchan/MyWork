@@ -55,6 +55,12 @@ return static function (RouteBuilder $routes) {
         
         $builder->connect('/works', ['controller' => 'home', 'action' => 'works']);
         $builder->connect('/admin', ['controller' => 'admin', 'action' => 'index']);
+        $builder->connect('/admin/works/:id', ['controller' => 'admin', 'action' => 'works'])
+                ->setPatterns(['id' => '\d+'])
+                ->setPass(['id']);
+        $builder->connect('/admin/works/:id/edit/:date', ['controller' => 'admin', 'action' => 'workedit'])
+                ->setPatterns(['id' => '\d+'])
+                ->setPass(['id', 'date']);
         $builder->connect('/admin/add-user', ['controller' => 'admin', 'action' => 'adduser']);
         $builder->connect('/admin/edit-user/:id', ['controller' => 'admin', 'action' => 'edituser'])
                 ->setPatterns(['id' => '\d+'])
