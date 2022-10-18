@@ -10,6 +10,8 @@
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
 </head>
 <body>
     <div id="main">
@@ -56,14 +58,27 @@
                                     </div>
                                 <?php endforeach; ?>
                         <?php } ?>
+                    <div id="mask" class="hidden"></div>
+                    <section id="modal" class="hidden">
+                        <p id="editMessage">上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません。)</p>
+                        <div  id="selectButton">
+                            <div id="yesClose">
+                                <button id="yesButton" name="yesButton">OK</button>
+                            </div>
+                            <div id="noClose">
+                                <button id="noButton">キャンセル</button>
+                            </div>
+                        </div>
+                    </section>
             
-
-                <div id="add-deleteButton">
-                        <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
-                        <div id="deleteButton"><button name="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></button></div>
-                </div>
             </div>
         <?= $this->Form->end() ?>
+        <div id="add-deleteButton">
+                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                <div id="deleteButton"><button id="open" name="deleteButton"><i class="fas fa-trash-alt fa-3x"></i></button></div>
+        </div>
+
     </div>
+    <?php echo $this->Html->script("modal"); ?>
 </body>
 </html> 
