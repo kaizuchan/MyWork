@@ -137,11 +137,71 @@ class AdminController extends AppController
         }
     }
 
-    public function works()
+    public function works($id)
     {
+        $dates = $this->getDays();
+        $this->set(compact('dates'));
+        $this->getData(1, '2022/10/17', 1);
     }
 
-    public function workedit()
+    public function workedit($id, $date)
     {
+
+    }
+
+
+    // 自作関数
+    // 指定した年/月の日付＆曜日を配列に格納して返す
+    private function getDays($month = null, $year = null)
+    {
+        if($month == null){
+            $month = (int) date('m');
+        }
+        if($year == null){
+            $year = (int) date('Y');
+        }
+        // 空の配列を用意
+        $array = [
+            'year'=>$year,
+            'month' => $month,
+            'dates' => array(),
+        ];
+
+        for ($i = 1; $i <= date('t', strtotime($year.'-'.$month)); $i++) {
+            $a = [
+                'date' => $i,
+                'day'  => date('w', strtotime($year.'-'.$month.'-'.$i)),
+            ];
+            array_push($array['dates'], $a);
+        }
+        return $array;
+    }
+    // 対象ユーザーの対象の日にちの情報を取得
+    private function getData($user ,$date, $identify)
+    {
+        $this->loadModel('Punches');
+        $res = $this->Punches->find('all')->where([
+            'user_id' => $user,
+            'date' => $date,
+            'identify' => $identify,
+        ])->last();
+        debug($res);
+    }
+    // 配列にユーザーの勤怠データを登録する。
+    private function setUserData($array, $user_id = null)
+    {
+        if($user_id == null)
+        $identify = [
+            1 => 'start_work',
+            2 => 'start_break',
+            3 => 'end_break',
+            4 => 'end_work',
+        ];
+        foreach ($array['dates'] as $date){
+            for ($i = 1; $i <= 4; $i++) {
+                $data = $this->getData($user_id, $array['year'].'/'.$array['month'].'/'.$array['year'], $i);
+                
+            }
+        }
     }
 }
