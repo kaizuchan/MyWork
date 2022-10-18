@@ -36,8 +36,17 @@ class AdminController extends AppController
                 ],
                 'not' => ['role' => '9']
                 ]);
+
+                $count = $this->Users->find('all')->where([
+                    'or' => [
+                        ['last_name LIKE' => '%'.$find.'%',],
+                        ['first_name LIKE' => '%'.$find.'%']
+                    ],
+                    'not' => ['role' => '9']
+                ])->count();
                 // 条件にあったデータを渡す
                 $this->set('searchUsers', $searchUsers);
+                $this->set('count', $count);
             }
             
             // 削除処理

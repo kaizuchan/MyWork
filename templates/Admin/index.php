@@ -22,8 +22,8 @@
         <!-- 検索ボックス -->
         <div id="searchBox">
             <?= $this->Form->create(null, ['type' => 'post']); ?>
-                <?php echo $this->Form->input('find',['label'=>['text'=>'社員名を入力してください'],'required'=>'required']); ?>
-                <?php echo $this->Form->button('検索',['name'=>'searchButton']); ?>
+                <?php echo $this->Form->input('find',['placeholder'=>'社員名を入力してください','required'=>'required']); ?>
+                <button name="searchButton"><i class="fas fa-search"></i></button>
             <?= $this->Form->end() ?>
         </div>
         <div>
@@ -33,6 +33,13 @@
                 <div><p id="userChangeButtonItem">編集</p></div>
             </div>
 
+            <!-- 検索結果 -->
+            <?php if(isset($count)): ?>
+                <p id="searchMessage">
+                    <?php if($count == 0): echo '検索結果が見つかりません'; endif; ?>
+                </p>
+            <?php endif; ?>
+            
             <div id="form">
                 <?= $this->Form->create(null, ['type' => 'post']); ?>
                     <?php if(isset($_POST['searchButton'])){ ?>
