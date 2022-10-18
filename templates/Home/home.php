@@ -45,9 +45,10 @@
                     
 
                     <!-- 検索ボックス -->
-                    <div id="searchBox"><?= $this->Form->create(null, ['type' => 'post']) ?>
-                        <?php echo $this->Form->input('find',['placeholder'=>'社員名を入力してください','required'=>'required']); ?>
-                        <button name="searchButton"><i class="fas fa-search"></i></button>
+                    <div id="searchBox">
+                        <?= $this->Form->create(null, ['type' => 'post']) ?>
+                            <?php echo $this->Form->input('find',['placeholder'=>'社員名を入力してください','required'=>'required']); ?>
+                            <button name="searchButton"><i class="fas fa-search"></i></button>
                         <?= $this->Form->end() ?>
                     </div>
                     

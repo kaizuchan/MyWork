@@ -11,7 +11,7 @@
 }
 /* はい、いいえ pタグ共通部分 */
 #yesClose button,
-#noClose button{
+#noClose p{
   height: 5vh;
   width: 8vw;
   border-radius: 5px;

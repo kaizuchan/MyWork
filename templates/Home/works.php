@@ -21,7 +21,7 @@
         <h6>横田守生</h6>
     </div>
         <h1 class="title">勤務時間表</h1>
-        <h2 class="oct">10月</h2>
+        <h2 class="oct"><?= $data['month'] ?>月</h2>    
     <div class="month">
         <h3>前の月へ</h3>
         <h3>次の月へ</h3>
@@ -61,29 +61,19 @@
             </tr>
         </thead>
         <tbody>
-            <?php for($i=1; $i<=31; $i++){ ?>
-            <tr>
-                <th class="date"><?php echo $i; ?>日</th>
-                <?php 
-                    foreach($res as $r){
-                        // debug($r->date);
-                        if($r->identify == 1){
-
-                            $time = $r->time;
-                            debug($time);
-                ?>
-                <td data-label="出勤時間" class="shukkin"><?php echo $time; ?></td>
-                    <?php } ?>
-                <?php } ?>
-                <td data-label="退勤時間" class="taikin">18:00</td>
-                <td data-label="休憩開始時間" class="kyushi">12:00</td>
-                <td data-label="休憩終了時間" class="kyukei">13:00</td>
-                <td data-label="労働時間" class="roudou">8</td>
-                <td data-label="休憩時間" class="kyukei">1</td>
-                <td data-label="残業時間" class="zangyou">-</td>
-                <td data-label="総労働時間" class="souroudou">8</td>
-            </tr>
-            <?php } ?>
+            <?php foreach ($data['dates'] as $date): ?>
+                <tr>
+                    <th class="date"><?= $date['date'] ?>日</th>
+                    <td data-label="出勤時間" class="time"><?= $date['start_work'] ?></td>
+                    <td data-label="退勤時間" class="time"><?= $date['end_work'] ?></td>
+                    <td data-label="休憩開始時間" class="time"><?= $date['start_break'] ?></td>
+                    <td data-label="休憩終了時間" class="time"><?= $date['end_break'] ?></td>
+                    <td data-label="労働時間" class="time">-</td>
+                    <td data-label="休憩時間" class="time">-</td>
+                    <td data-label="残業時間" class="time">-</td>
+                    <td data-label="総労働時間" class="time">-</td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>   
 </body>

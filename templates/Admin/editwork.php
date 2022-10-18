@@ -18,6 +18,7 @@
 
         <!-- 戻るボタン -->
         <?php echo $this->element('components/backButton'); ?>
+        <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
 
         <div id="userId_Name">
             <div><p>ID:123456</p></div>
@@ -25,7 +26,11 @@
         </div>
 
         <div><h1 id="pageTitle">勤務表履歴</h1></div>
-        <div><p id="pageDate">10月3日</p></div>
+        <?php 
+            $month = (int) substr($date, 4, 2); 
+            $date = (int) substr($date, 6, 2); 
+        ?>
+        <div><p id="pageDate"><?= $month ?>月<?= $date ?>日</p></div>
         
             <form method="post">
                 <div>
@@ -38,9 +43,9 @@
                         </tr>
                         <tr>
                             <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
+                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                             <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
                             <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
-                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                         </tr>
                     </table>
                 </div>
@@ -58,10 +63,10 @@
                 <section id="modal" class="hidden">
                     <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
                     <div  id="selectButton">
-                        <div class="close">
-                            <p id="yesButton">はい</p>
+                        <div id="yesClose">
+                            <button id="yesButton">はい</button>
                         </div>
-                        <div class="close">
+                        <div id="noClose">
                             <p id="noButton">いいえ</p>
                         </div>
                     </div>
