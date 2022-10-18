@@ -147,9 +147,10 @@ class HomeController extends AppController
         $this->set('users', $users);
     }
 
-    public function works()
+    public function works($month = null, $year = null)
     {
-        $data = $this->getMonthlyData();
+        $me = $this->Authentication->getIdentity()->get('id');
+        $data = $this->getMonthlyData($me, $month, $year);
         $this->set(compact('data'));
 
     }

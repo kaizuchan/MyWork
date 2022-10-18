@@ -17,14 +17,14 @@
     <div><button id="backButton"><i class="fas fa-arrow-circle-left fa-3x"></i></button></div>
 
     <div class="id_name">
-        <h6>ID:123456</h6>
-        <h6>横田守生</h6>
+        <h6>ID:<?= $me->employee_id ?></h6>
+        <h6><?= $me->last_name.$me->first_name ?></h6>
     </div>
         <h1 class="title">勤務時間表</h1>
-        <h2 class="oct"><?= $data['month'] ?>月</h2>    
+        <h2 class="oct"><?= (int) $data['month'] ?>月</h2>    
     <div class="month">
-        <h3>前の月へ</h3>
-        <h3>次の月へ</h3>
+        <h3><a href="/works/<?php echo date('m/Y', mktime(0,0,0,$data['month']-1,1,2022)); ?>">前の月へ</a></h3>
+        <h3><a href="/works/<?php echo date('m/Y', mktime(0,0,0,$data['month']+1,1,2022)); ?>">次の月へ</a></h3>
     </div>
 
     <div class="total">

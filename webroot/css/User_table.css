@@ -56,7 +56,9 @@ font-size: 20px;
     display: flex;
     justify-content: space-between;
   }
-
+  .month h3 a{
+    color: #000;
+  }
   .total{
     display: flex;
     justify-content: space-between;
