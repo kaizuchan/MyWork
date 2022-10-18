@@ -12,13 +12,16 @@
     <?php echo $this->element('components/header'); ?>
     <!-- モーダルウィンドウ -->
     <?php echo $this->Html->css("modal"); ?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
 </head>
 <body>
     <div>
 
+        <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+
         <!-- 戻るボタン -->
         <?php echo $this->element('components/backButton'); ?>
-        <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
 
         <div id="userId_Name">
             <div><p>ID:123456</p></div>
@@ -67,7 +70,7 @@
                             <button id="yesButton">はい</button>
                         </div>
                         <div id="noClose">
-                            <p id="noButton">いいえ</p>
+                            <button id="noButton">いいえ</button>
                         </div>
                     </div>
                 </section>

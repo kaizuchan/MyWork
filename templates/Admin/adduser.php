@@ -10,6 +10,9 @@
   <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
+
     <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
     <script>
             function CheckPassword(password_confirm) {
@@ -27,6 +30,8 @@
     
 </head>
 <body>
+  
+  <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
 
   <h1>社員登録</h1>
   
@@ -69,10 +74,10 @@
 
     <div class="form-check-group">
       <div class="form-check">
-        <input name="gender" value="0" type="radio" class="form-check-input" name="radio-stacked" required>
+        <input name="gender" value="0" type="radio" class="form-check-input" id="validationFormCheck2" name="radio-stacked" required>
         <label for="validationFormCheck2" class="form-check-label">男性</label>
       </div>
-      <div class="form-check mb-3 woman-radioButton">
+      <div class="form-check woman-radioButton">
         <input name="gender" value="1" type="radio" class="form-check-input" id="validationFormCheck3" name="radio-stacked">
         <label for="validationFormCheck3" class="form-check-label">女性</label>
       </div>
@@ -81,7 +86,7 @@
     
     <h2>生年月日</h2>
     <div class="input-group birth-select mb-3">
-      <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年">
+      <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年" required>
           <option value=""></option>
           <?php
           for ($i = 1920; $i <= 2022; $i++) {
@@ -90,7 +95,7 @@
           ?>
         </select>
       <label class="input-group-text" for="inputGroupSelect01">年</label>
-      <select name="birthday-month"  class="form-select" aria-label="月">
+      <select name="birthday-month"  class="form-select" aria-label="月" required>
           <option value=""></option>
           <?php
           for ($i = 1; $i <= 12; $i++) {
@@ -99,7 +104,7 @@
           ?>
         </select>
       <label class="input-group-text" for="inputGroupSelect01">月</label>
-        <select name="birthday-date" class="form-select" aria-label="日">
+        <select name="birthday-date" class="form-select" aria-label="日" required>
           <option value=""></option>
           <?php
           for ($i = 1; $i <= 31; $i++) {
@@ -202,8 +207,8 @@
     <input type="hidden" name="enterprise_id" value="<?= $me->enterprise_id ?>">
 
       <div class="form-check" id="checkBox">
-        <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked">
-        <label for="validationFormCheck2" class="form-check-label">管理者として登録する場合はチェック</label>
+        <input name="role" value="2" type="checkbox" class="form-check-input" id="validationFormCheck4" name="radio-stacked">
+        <label for="validationFormCheck4" class="form-check-label">管理者として登録する場合はチェック</label>
       </div>
 
       <div class="d-grid gap-2">

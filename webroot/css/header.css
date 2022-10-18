@@ -3,28 +3,28 @@ nav{
     opacity: 0.9;
     background-color: #1F78B4;
 }
-a{
+nav a{
     font-size: 1.6rem;
     margin: 1rem 3rem;
     color: #fff;
 }
-a:hover{
+nav a:hover{
     color: #fff;
 }
-li{
+nav li{
     margin: 0 0 0 0;
 }
-button{
+#logoButton{
     color: #fff;
 }
 @media screen and (max-width: 767px){
     nav{
         margin-bottom: 3rem;
     }
-    li{
+    nav li{
         padding: 1rem 0;
     }
-    a{
+    nav a{
         font-size: 1.5rem;
     }
 }
