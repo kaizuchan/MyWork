@@ -44,6 +44,11 @@ button.btn{
 .form-prefectures{
     width: 100%;
 }
+#checkBox{
+    display: flex;
+    align-items: center;
+    padding: 2rem 0 0 2rem;
+}
 @media screen and (max-width: 767px){
     form{
         margin: 4rem 2rem;
