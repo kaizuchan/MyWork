@@ -64,7 +64,8 @@
         <tbody>
             <?php foreach ($dates['dates'] as $date): ?>
                 <tr>
-                    <td class="edit"><button class="btn" type="button">編集</button></td>
+                    <?php $d = date('Ymd', mktime(0, 0, 0, $dates['month'], $date['date'], $dates['year'])); ?>
+                    <td class="edit"><button onclick="location.href='/admin/works/<?= $id ?>/edit/<?= $d ?>'" class="btn" type="button">編集</button></td>
                     <th class="date"><?= $date['date'] ?>日</th>
                     <td data-label="出勤時間" class="time"><?= $date['start_work'] ?></td>
                     <td data-label="退勤時間" class="time"><?= $date['end_work'] ?></td>

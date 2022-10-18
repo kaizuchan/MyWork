@@ -26,7 +26,11 @@
         </div>
 
         <div><h1 id="pageTitle">勤務表履歴</h1></div>
-        <div><p id="pageDate">10月3日</p></div>
+        <?php 
+            $month = (int) substr($date, 4, 2); 
+            $date = (int) substr($date, 6, 2); 
+        ?>
+        <div><p id="pageDate"><?= $month ?>月<?= $date ?>日</p></div>
         
             <form method="post">
                 <div>
