@@ -11,9 +11,10 @@
 }
 /* はい、いいえ pタグ共通部分 */
 #yesClose button,
-#noClose p{
+#noClose button{
   height: 5vh;
   width: 8vw;
+  font-size: 1.5rem;
   border-radius: 5px;
   border: 2px solid #1F78B4;
   display: flex;
@@ -67,6 +68,8 @@
 /* モーダルのpタグ */
 #modal p {
   margin: 0 1rem;
+  font-size: 1.6rem;
+  line-height: 4rem;
 }
 /* 隠す */
 #mask.hidden {

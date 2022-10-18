@@ -21,7 +21,7 @@
 
         <!-- 検索ボックス -->
         <div id="searchBox">
-            <?= $this->Form->create(null, ['type' => 'post']); ?>
+            <?= $this->Form->create(null, ['type' => 'post', 'id' => 'searchForm']); ?>
                 <?php echo $this->Form->input('find',['placeholder'=>'社員名を入力してください','required'=>'required']); ?>
                 <button name="searchButton"><i class="fas fa-search"></i></button>
             <?= $this->Form->end() ?>
@@ -46,8 +46,7 @@
                             <?php foreach ($searchUsers as $searchUser): ?>
                                 <div class="userList">
                                 <div>
-                                    <?php echo $this->Form->checkbox('delete[]',
-                                    ['value' => $searchUser->id,'hiddenField' => false]); ?>
+                                    <input type="checkbox" name="delete[]" value="<?= $searchUser->id ?>">
                                     <label for="userId" id="userId"><?= $searchUser->employee_id ?></label></div>
                                 <div><p id="userName"><?= $searchUser->last_name.$searchUser->first_name ?></p></div>
                                 <div><i class="fas fa-pencil-alt fa-2x"></i></div>
@@ -69,7 +68,7 @@
                     <section id="modal" class="hidden">
                         <p id="editMessage">
                             <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
-                            上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません。)
+                            上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません)
                         </p>
                         <div  id="selectButton">
                             <div id="yesClose">
@@ -83,7 +82,7 @@
             
             </div>
         <?= $this->Form->end() ?>
-        <div id="add-deleteButton">
+        <div id="add-deleteButton"
                 <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
                 <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
         </div>
