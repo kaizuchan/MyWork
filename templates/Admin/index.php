@@ -48,8 +48,8 @@
                                 <input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>">
                                 <label for="userId" id="userId"><?= $user->employee_id ?></label>
                             </div>
-                            <div><p id="userName"><?= $user->last_name.$user->first_name ?></p></div>
-                            <div><i class="fas fa-pencil-alt fa-2x"></i></div>
+                            <div><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></div>
+                            <div><a href="/admin/edit-user/<?= $user->id ?>">編集</a><i class="fas fa-pencil-alt fa-2x"></i></div>
                         </div>
                     <?php endforeach; ?>
                     <div id="mask" class="hidden"></div>
