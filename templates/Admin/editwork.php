@@ -26,7 +26,11 @@
         </div>
 
         <div><h1 id="pageTitle">勤務表履歴</h1></div>
-        <div><p id="pageDate">10月3日</p></div>
+        <?php 
+            $month = (int) substr($date, 4, 2); 
+            $date = (int) substr($date, 6, 2); 
+        ?>
+        <div><p id="pageDate"><?= $month ?>月<?= $date ?>日</p></div>
         
             <form method="post">
                 <div>
@@ -39,9 +43,9 @@
                         </tr>
                         <tr>
                             <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
+                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                             <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
                             <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
-                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
                         </tr>
                     </table>
                 </div>
