@@ -1,3 +1,12 @@
+<?php
+  function getValue($name){
+    $res = "";
+    if(isset($_POST['employee_id'])){
+      $res = $_POST[$name];
+    }
+    echo $res;
+  }
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -43,31 +52,31 @@
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">社員ID</span>
-      <input name="employee_id" type="text" id="validationTextarea" class="form-control" placeholder="社員ID" aria-label="社員ID" aria-describedby="basic-addon1" required>
+      <input name="employee_id" value="<?= getValue('employee_id') ?>" type="text" id="validationTextarea" class="form-control" placeholder="社員ID" aria-label="社員ID" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3">
       <span class="input-group-text">姓</span>
-      <input name="last_name" type="text" class="form-control" placeholder="姓" aria-label="姓" required>
+      <input name="last_name" value="<?= getValue('last_name') ?>" type="text" class="form-control" placeholder="姓" aria-label="姓" required>
       <span class="input-group-text">名</span>
-      <input name="first_name" type="text" class="form-control" placeholder="名" aria-label="名" required>
+      <input name="first_name" value="<?= getValue('first_name') ?>" type="text" class="form-control" placeholder="名" aria-label="名" required>
     </div>
 
     <div class="input-group mb-3">
       <span class="input-group-text">セイ</span>
-      <input name="last_name_kana" type="text" class="form-control" placeholder="セイ" aria-label="セイ" pattern="[\u30A1-\u30F6]*" required>
+      <input name="last_name_kana" value="<?= getValue('last_name_kana') ?>" type="text" class="form-control" placeholder="セイ" aria-label="セイ" pattern="[\u30A1-\u30F6]*" required>
       <span class="input-group-text">メイ</span>
-      <input name="first_name_kana" type="text" class="form-control" placeholder="メイ" aria-label="メイ" pattern="[\u30A1-\u30F6]*" required>
+      <input name="first_name_kana" value="<?= getValue('first_name_kana') ?>" type="text" class="form-control" placeholder="メイ" aria-label="メイ" pattern="[\u30A1-\u30F6]*" required>
     </div>
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">電話番号</span>
-      <input name="phone_number" type="text" id="validationTextarea" class="form-control" placeholder="電話番号" aria-label="電話番号" aria-describedby="basic-addon1" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" required>
+      <input name="phone_number" value="<?= getValue('phone_number') ?>" type="text" id="validationTextarea" class="form-control" placeholder="電話番号" aria-label="電話番号" aria-describedby="basic-addon1" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" required>
     </div>
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">メールアドレス</span>
-      <input name="email" type="email" id="validationTextarea" class="form-control" placeholder="メールアドレス" aria-label="メールアドレス" aria-describedby="basic-addon1" required>
+      <input name="email" value="<?= getValue('email') ?>" type="email" id="validationTextarea" class="form-control" placeholder="メールアドレス" aria-label="メールアドレス" aria-describedby="basic-addon1" required>
     </div>
 
     <h2>性別</h2>
@@ -119,7 +128,7 @@
     <h2>住所</h2>
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">郵便番号</span>
-      <input name="postalcode" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="xxx-xxxx" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
+      <input name="postalcode" value="<?= getValue('postalcode') ?>" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="xxx-xxxx" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
     </div>
 
     <div class="input-group mb-3">
@@ -178,17 +187,17 @@
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">市区町村</span>
-      <input name="city" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="市区町村" aria-label="市区町村" aria-describedby="basic-addon1" required>
+      <input name="city" value="<?= getValue('city') ?>" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="市区町村" aria-label="市区町村" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">番地</span>
-      <input name="block" type="text" id="validationTextarea" class="form-control" placeholder="○丁目○番地" aria-label="番地" aria-describedby="basic-addon1" required>
+      <input name="block" value="<?= getValue('block') ?>" type="text" id="validationTextarea" class="form-control" placeholder="○丁目○番地" aria-label="番地" aria-describedby="basic-addon1" required>
     </div>
 
     <div class="input-group mb-3 ">
       <span class="input-group-text" id="basic-addon1">建物名・部屋番号</span>
-      <input name="building" type="text" id="validationTextarea" class="form-control" placeholder="建物名・部屋番号" aria-label="建物名・部屋番号" aria-describedby="basic-addon1">
+      <input name="building" value="<?= getValue('building') ?>" type="text" id="validationTextarea" class="form-control" placeholder="建物名・部屋番号" aria-label="建物名・部屋番号" aria-describedby="basic-addon1">
     </div>
 
     <div class="input-group mb-3 ">
