@@ -152,14 +152,14 @@ class AdminController extends AppController
     public function works($id)
     {
         $dates = $this->getMonthlyData($id);
-        $this->set(compact('dates'));
+        $this->set(compact('dates', 'id'));
     }
 
-    public function workedit($id, $date)
+    public function editwork($id, $date)
     {
         // 該当する打刻データを取得して、Viewに送信
         $times = $this->getPunchdData($date, $id); 
-        $this->set(compact('times'));
+        $this->set(compact('times', 'date'));
 
         // データベース登録処理
         //debug($times);
