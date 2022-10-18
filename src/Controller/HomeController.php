@@ -24,7 +24,6 @@ class HomeController extends AppController
         $this->punch = TableRegistry::getTableLocator()->get('punches');
         $me = $this->Authentication->getIdentity();
         $this->set(compact('me'));
-
     }
 
     public function home($id = null)
@@ -160,10 +159,6 @@ class HomeController extends AppController
     // 実験用
     public function index()
     {
-        $this->loadModel('Punches');
-        $this->Punches->getMonthlyData();
-        debug(AppUtility::add(1,2));
-        debug($this->solveStatus(1));
     }
     
     //内部処理

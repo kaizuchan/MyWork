@@ -7,6 +7,13 @@ use Migrations\Command\Phinx\Dump;
 
 class AdminController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+        $me = $this->Authentication->getIdentity();
+        $this->set(compact('me'));
+    }
+
     public function index()
     {
         $me = $this->Authentication->getIdentity();
