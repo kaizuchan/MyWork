@@ -49,7 +49,7 @@
                     <table class="table table-hover">
                         <thead  class="table-light">
                             <tr id="thead">
-                                <th scope="col">#</th>
+                                <th scope="col"><i class="fas fa-check-square"></i></th>
                                 <th scope="col">社員ID</th>
                                 <th scope="col">社員名</th>
                                 <th scope="col">編集</th>
@@ -58,12 +58,11 @@
                         <tbody>
                             <?= $this->Form->create(null, ['type' => 'post']); ?>
                                 <?php foreach ($users as $user): ?>
-                                    <div class="userList">
-                                    <tr>    
+                                    <tr id="tbody">    
                                         <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
-                                        <td id="userId" class="userInfo"><label for="userId" id="userId"><?= $user->employee_id ?></label></td>
-                                        <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></td>
-                                        <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="fas fa-pencil-alt fa-2x"></i></a></td>
+                                        <td id="userId" class="userInfo"><p><?= $user->employee_id ?></p></td>
+                                        <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p><?= $user->last_name.$user->first_name ?></p></a></td>
+                                        <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="far fa-edit fa-2x"></i></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
                         </tbody>
@@ -90,7 +89,7 @@
             </div>
         <?= $this->Form->end() ?>
         <div id="add-deleteButton">
-                <a href="/Admin/adduser" id="addButton"><i class="fas fa-plus fa-3x"></i></a>
+                <a href="/Admin/adduser" id="addButton"><i class="fas fa-user-plus fa-3x"></i></a>
                 <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
         </div>
 
