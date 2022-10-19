@@ -117,9 +117,9 @@
     $workday = 0;
     foreach($data['dates'] as $date){
       if($date['end_work'] != null){
-        $work += $date['work'];
-        $total += $date['total'];
-        $overtime += $date['overtime'];
+        $work += (int) $date['work'];
+        $total += (int) $date['total'];
+        $overtime += (int) $date['overtime'];
         $workday += 1;
       }
     }
