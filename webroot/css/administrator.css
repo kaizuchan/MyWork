@@ -11,13 +11,25 @@ button:hover{
 }
 /* メイン全体 */
 #main{
-    height: 80vh;
+    height: 92vh;
+    background-color: #D7EEFF;
+}
+.Card{
+    position: fixed;
+    inset: 0;
+    margin: 8vh auto;
+    width: 80vw;
+    height: 92vh;
+    padding: 4rem;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
 /* 検索全体 */
 #searchBox{
+    margin: 0 1rem 0 0;
     display: flex;
     justify-content: flex-end;
-    margin: 0 15rem 5rem 0px;
 }
 /* 検索入力欄 */
 #searchBox input{
@@ -39,7 +51,8 @@ form#searchForm{
 /* 検索結果0の時のメッセージ */
 #searchMessage {
     text-align: center;
-    margin: 4rem 0 0 0;
+    margin: 2rem 0 2rem 0;
+    font-size: 1.5rem;
 }
 /* テーブル全体 */
 #form table{
@@ -88,10 +101,10 @@ form#searchForm{
 }
 /* 社員追加、削除全体 */
 #add-deleteButton{
-    display: flex;align-items: center;
-    position: fixed;
-    right: 1.2rem;
-    bottom: 2rem;
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 /* 社員追加 */
 #addButton{
@@ -109,6 +122,13 @@ form#searchForm{
 }
 /* タブレット用、スマホ用 */
 @media screen and (max-width: 767px){
+    .Card{
+        margin: 6rem auto;
+        padding: 0;
+        width: 100vw;
+        border-radius: 0;
+        box-shadow: 20px 0 20px 0 rgb(0 0 0 / 20%);
+    }
     /* 社員登録時のメッセージ */
     .message.success {
         position: fixed;
@@ -121,49 +141,43 @@ form#searchForm{
     } 
     /* 検索全体 */
     #searchBox{
-        margin: 10vh 0 3rem 0;
-        position: relative;
-        top: 0;
-        margin: 0 7rem 2rem 0px;
-    }
-    form#searchForm{
-        margin: 5vh 0 0 0;
+        margin: 5rem 1rem 0 0;
     }
     /* input type="text" */
     #searchBox input{
         width: 65vw;
     }
     #form table{
-        margin: 15vh 0 0 0;
+        width: 100vw;
+        margin: 5vh auto 0 auto;
     }
     #form table tr td{
-        height: 10vh;
+        height: 15vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #form table tr th{
-        height: 10vh;
+        height: 15vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #add-deleteButton{
-        right: 1rem;
+        margin: 5rem 0 0 0;
     }
 }
 @media screen and (max-width: 480px){ 
     /* 検索フォーム全体 */
     #searchBox{
+        margin: 5rem 0 0 0;
         display: flex;
         justify-content: center;
-        margin: 0;
     }
     .input-group{
         justify-content: flex-end;
     }
-    /* input type="text" */
-    input[type="text"]{
-        width: 50vw;
+    #searchBox input {
+        width: 80vw;
     }
 }
