@@ -1,15 +1,26 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #fff;
 }
 #errMessage{
     position: fixed;
     bottom: 2rem;
     right: 4rem;
 }
+#loginCard{
+    width: 35vw;
+    height: 65vh;
+    background-color: #fff;
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
 h1{ 
     height: 30vh;
-    margin: 0;
+    margin: 3rem 0 0 0;
+    font-size: 3rem;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -18,7 +29,8 @@ form input{
     height: 5vh;
 }
 #loginForm {
-    height: 70vh;
+    height: 50vh;
+    width: 80%;
     margin: 0 auto 0 auto;
     display: flex;
     flex-direction: column;
@@ -26,36 +38,33 @@ form input{
     align-items: center;
 }
 .mb-3{
-    width: 50vw;
+    width: 25vw;
 }
 #loginForm>button {
-    width: 50vw;
+    width: 25vw;
     margin-top: 2rem;
     background-color: #1F78B4;
 }
 #loginForm>button:hover{
     background-color: #1F78B2;
 }
-
+/* スマホ用、タブレット用 */
 @media screen and (max-width: 767px){
+    #loginCard{
+        width: 90vw;
+    }
+    .mb-3{
+        width: 75vw;
+    }
+    #loginForm>button {
+        width: 75vw;
+    }
     #errMessage{
         position: fixed;
         top: 2rem;
         left: 4.6rem;
         margin: 0 auto;
     }
-    h1{
-        font-size: 4rem;
-    }
-    form{
-        margin: 2rem
-    }
 }
 @media screen and (max-width: 480px){
-    h1{
-        font-size: 3rem;
-    }
-    form{
-        margin: 2rem
-    }
 }

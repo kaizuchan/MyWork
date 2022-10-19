@@ -155,7 +155,9 @@ form#searchForm{
 @media screen and (max-width: 480px){ 
     /* 検索フォーム全体 */
     #searchBox{
-        margin: 0 4rem 2rem 0px;
+        display: flex;
+        justify-content: center;
+        margin: 0;
     }
     .input-group{
         justify-content: flex-end;
