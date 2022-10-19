@@ -136,7 +136,8 @@ class AdminController extends AppController
             $employee_id = $this->request->getData('employee_id');
             $res = $this->Users->find('all')->where([
                 'enterprise_id' => $me->enterprise_id,
-                'employee_id'   => $employee_id
+                'employee_id'   => $employee_id,
+                'not' => ['id' => $id],
             ])->first();
             if($res == null){
 
