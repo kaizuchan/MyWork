@@ -77,7 +77,7 @@ class Users extends AbstractMigration
             $password = '$2y$10$chRR/dnRQgyJ4gVlscsIc.aiDsFs1QUT/.AiCfPf.Rru5LixtAfP6';
             $rows = [
                     "enterprise_id" => 2,
-                    "employee_id" => "masaru",
+                    "employee_id" => "202210031",
                     "last_name" => "谷",
                     "first_name" => "まさる",
                     "last_name_kana" => "タニ",
@@ -85,7 +85,7 @@ class Users extends AbstractMigration
                     "phone_number" => "052-551-1001",
                     "email" => "nagoya-hal@hal.ac.jp",
                     "gender" => 0,
-                    "birthday" => 1936-01-01,
+                    "birthday" => '1936-01-01',
                     "postalcode" => "4500002",
                     "prefecture_id" => 23,
                     "city" => "名古屋市中村区",
