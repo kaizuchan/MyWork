@@ -1,3 +1,4 @@
+/* リセット */
 button{
     margin: 0 0 0 0;
     padding: 0 0 0 0;
@@ -12,16 +13,19 @@ button:hover{
 #main{
     height: 80vh;
 }
+/* 検索全体 */
 #searchBox{
     display: flex;
     justify-content: flex-end;
     margin: 0 15rem 5rem 0px;
 }
+/* 検索入力欄 */
 #searchBox input{
     height: 4vh;
     width: 35vw;
     border-radius: 5px 0 0 5px;
 }
+/* 検索ボタン */
 #searchBox button{
     height: 4vh;
     color: #fff;
@@ -32,55 +36,70 @@ button:hover{
 form#searchForm{
     display: flex;
 }
+/* 検索結果0の時のメッセージ */
 #searchMessage {
     text-align: center;
-    font-size: 1.5rem;
     margin: 4rem 0 0 0;
 }
-#userListItem{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+/* テーブル全体 */
+#form table{
+    width: 80vw;
     font-size: 1.5rem;
-    margin: 0 16rem;
+    margin: 0 auto;
 }
-.userList{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    padding: 0 1rem;
-    margin: 2rem 15rem;
-    border: 1px solid #000;
-    border-radius: 10px
+/* テーブルのpタグ */
+#form table p{
+    margin: 0;
 }
-.userList p{
-    margin: 0 0 0 0;
+/* テーブルの項目欄全体 */
+#thead{
+    border-bottom: 1px solid #000;
 }
-#userIdItem{
-    padding: 0 0 0 3rem;
+/* テーブルの項目欄 */
+#thead th{
+    font-size: 1.2rem;
+    font-weight: 400;
 }
-#userNameItem{
-    padding: 0 0 0 2rem;
+/* ユーザー一覧全体 */
+#tbody{
+    height: 6vh;
 }
+/* 縦真ん中　寄せ */
+#form table tr td,th{
+    vertical-align: middle;
+}
+/* 社員ID */
 #userId{
-    font-weight: 500;
-    margin-left: 0.5rem;
+    font-weight: 400;
 }
-#userName{
-    font-size: 1.5rem;
+/* 社員名 */
+#userName a{
+    font-size: 1.6rem;
+    color: #000;
 }
+/* 編集ボタン */
+#editButton a{
+    font-size: 1rem;
+    color: #007bff;
+}
+/* 編集ボタン　ホバー */
+#editButton a:hover{
+    text-decoration: underline;
+}
+/* 社員追加、削除全体 */
 #add-deleteButton{
     display: flex;align-items: center;
     position: fixed;
     right: 1.2rem;
     bottom: 2rem;
 }
+/* 社員追加 */
 #addButton{
     color: #555;
     margin: 0 2rem;
     font-size: 1rem;
 }
+/* 社員削除 */
 #deleteButton button{
     color: #f00;
     margin: 0 1rem;
@@ -88,7 +107,9 @@ form#searchForm{
     display: flex;
     align-items: center;
 }
+/* タブレット用、スマホ用 */
 @media screen and (max-width: 767px){
+    /* 社員登録時のメッセージ */
     .message.success {
         position: fixed;
         top: 5rem;
@@ -98,25 +119,37 @@ form#searchForm{
     .input-group{
         justify-content: flex-end;
     } 
+    /* 検索全体 */
     #searchBox{
-        margin-bottom: 3rem;
+        margin: 10vh 0 3rem 0;
         position: relative;
         top: 0;
         margin: 0 7rem 2rem 0px;
+    }
+    form#searchForm{
+        margin: 5vh 0 0 0;
     }
     /* input type="text" */
     #searchBox input{
         width: 65vw;
     }
+    #form table{
+        margin: 15vh 0 0 0;
+    }
+    #form table tr td{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #form table tr th{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     #add-deleteButton{
         right: 1rem;
-    }
-    #userListItem{
-        margin: 0 7rem;
-    }
-    .userList{
-        width: 80vw;
-        margin: 2rem auto;
     }
 }
 @media screen and (max-width: 480px){ 
@@ -130,8 +163,5 @@ form#searchForm{
     /* input type="text" */
     input[type="text"]{
         width: 50vw;
-    }
-    #userListItem{
-        margin: 0 5rem;
     }
 }
