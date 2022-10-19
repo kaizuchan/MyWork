@@ -30,22 +30,21 @@
     <div class="total">
         <table>
                 <th>総労働時間</th>
-                <td>152時間</td>
+                <td><?= $data['total'] ?>時間</td>
         </table>
         <table>
                 <th>総残業時間</th>
-                <td>９時間</td>
+                <td><?= $data['overtime'] ?>時間</td>
         </table>
         <table>
                 <th>総勤務時間</th>
-                <td>161時間</td>
+                <td><?= $data['work'] ?>時間</td>
         </table>
         <table>
                 <th>出勤日数</th>
-                <td>19日</td>
+                <td><?= $data['workday'] ?>日</td>
         </table>
     </div>
-
     <table class="glaf">
         <thead>
             <tr>

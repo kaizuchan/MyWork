@@ -305,6 +305,7 @@ class HomeController extends AppController
             $array['dates'][$i] = array_merge($array['dates'][$i], $res);
             $i++;
         }
+        $array = calculateMonthlyHours($array);
         return $array;
     }
     
