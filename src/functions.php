@@ -1,5 +1,6 @@
 <?php
-// template/admin/adduser.php内で使用 
+// template/admin/adduser.php及び 
+// template/admin/edituser.php内で使用 
   // postで受け取ったデータがあるなら返す
   function getValue($name){
     $res = "";
