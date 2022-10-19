@@ -159,9 +159,9 @@ class AdminController extends AppController
         }
     }
 
-    public function works($id)
+    public function works($id, $month = null, $year = null)
     {
-        $dates = $this->getMonthlyData($id);
+        $dates = $this->getMonthlyData($id, $month, $year);
         $this->set(compact('dates', 'id'));
     }
 

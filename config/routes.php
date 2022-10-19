@@ -64,6 +64,13 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/admin/works/:id', ['controller' => 'admin', 'action' => 'works'])
                 ->setPatterns(['id' => '\d+'])
                 ->setPass(['id']);
+        $builder->connect('/admin/works/:id/:month/:year', ['controller' => 'admin', 'action' => 'works'])
+                ->setPatterns([
+                        'month' => '0[1-9]|1[012]',
+                        'year' => '[12][0-9]{3}',
+                        'id' => '\d+',
+                        ])
+                ->setPass(['id','month', 'year']);
         $builder->connect('/admin/works/:id/edit/:date', ['controller' => 'admin', 'action' => 'editwork'])
                 ->setPatterns([
                         'id' => '\d+',
