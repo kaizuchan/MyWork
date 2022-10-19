@@ -91,7 +91,7 @@ button:hover{
 }
 /* スクロールバー */
 .scroll_bar{
-    height: 60vh;
+    height: 58vh;
     overflow-y: scroll;
  }
  .scroll_bar::-webkit-scrollbar{
