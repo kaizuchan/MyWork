@@ -16,8 +16,8 @@
     <!-- 戻るボタン -->
     <?php echo $this->element('components/backButton'); ?>
     <div class="id_name">
-        <h6>ID:123456</h6>
-        <h6>横田守生</h6>
+        <h6>ID:<?= $user->employee_id ?></h6>
+        <h6><?= $user->last_name.$user->first_name ?></h6>
     </div>
         <h1 class="title">勤務時間表</h1>
         <h2 class="oct"><?= $dates['month'] ?>月</h2>
@@ -29,19 +29,19 @@
     <div class="total">
         <table>
                 <th>総労働時間</th>
-                <td>152時間</td>
+                <td><?= $dates['total'] ?>時間</td>
         </table>
         <table>
                 <th>総残業時間</th>
-                <td>９時間</td>
+                <td><?= $dates['overtime'] ?>時間</td>
         </table>
         <table>
                 <th>総勤務時間</th>
-                <td>161時間</td>
+                <td><?= $dates['work'] ?>時間</td>
         </table>
         <table>
                 <th>出勤日数</th>
-                <td>19日</td>
+                <td><?= $dates['workday'] ?>日</td>
         </table>
     </div>
 
@@ -70,10 +70,10 @@
                     <td data-label="退勤時間" class="time"><?= $date['end_work'] ?></td>
                     <td data-label="休憩開始時間" class="time"><?= $date['start_break'] ?></td>
                     <td data-label="休憩終了時間" class="time"><?= $date['end_break'] ?></td>
-                    <td data-label="労働時間" class="time">-</td>
-                    <td data-label="休憩時間" class="time">-</td>
-                    <td data-label="残業時間" class="time">-</td>
-                    <td data-label="総労働時間" class="time">-</td>
+                    <td data-label="労働時間" class="time"><?= $date['work'] ?></td>
+                    <td data-label="休憩時間" class="time"><?= $date['break'] ?></td>
+                    <td data-label="残業時間" class="time"><?= $date['overtime'] ?></td>
+                    <td data-label="総労働時間" class="time"><?= $date['total'] ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
