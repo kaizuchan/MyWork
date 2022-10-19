@@ -12,6 +12,8 @@ class AdminController extends AppController
         parent::initialize();
         $me = $this->Authentication->getIdentity();
         $this->set(compact('me'));
+        $this->loadComponent("PuncheData");
+        $this->loadComponent("SerchUser");
     }
 
     public function index()
@@ -24,7 +26,7 @@ class AdminController extends AppController
         // 使うモデルの選択
         $this->loadModel('Users');
         // データの取り出し
-        $users = $this->Users->find('all')->where(['enterprise_id' => $user->enterprise_id, 'not' => ['role' => '9']]);
+        $users = $this->SerchUser->getEmployee($me->enterprise_id);
         //debug($users);
 
         // 検索
@@ -38,12 +40,7 @@ class AdminController extends AppController
                 $find = $this->request->getData('find');
                 // debug($find);
                 // 入力値が条件に合うかどうか検索
-                $users = $this->Users->find('all')->where(['or' => [
-                    ['last_name LIKE' => '%'.$find.'%',],
-                    ['first_name LIKE' => '%'.$find.'%'],
-                ],
-                'not' => ['role' => '9']
-                ]);
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
 
                 $count = $users->count();
                 // 条件にあったデータを渡す
@@ -161,8 +158,11 @@ class AdminController extends AppController
 
     public function works($id, $month = null, $year = null)
     {
-        $dates = $this->getMonthlyData($id, $month, $year);
-        $this->set(compact('dates', 'id'));
+        $this->loadModel('Users');
+        $user = $this->Users->find('all')->where(['id'=> $id])->first();
+        $dates = $this->PuncheData->getMonthlyData($id, $month, $year);
+        $this->set(compact('dates', 'id', 'user'));
+
     }
 
     public function editwork($id, $date)
