@@ -9,20 +9,23 @@
     background-color:transparent;
 }
 #backButton{
+    font-size: 3rem;
     color: #000;
-    position: fixed;
-    top: 7rem;
-    left: 4rem;
+    position: relative;
+    top: 1rem;
+    left: 3rem;
+    z-index: 100;
 }
 @media screen and (max-width: 767px){
     #backButton{
-        top: 7rem;
-        left: 3rem;
+        font-size: 2rem;
+        top: 2rem;
+        left: 2rem;
     }
 }
 @media screen and (max-width: 480px){
     #backButton{
-        top: 6rem;
-        left: 2rem;
+        top: 1rem;
+        left: 1rem;
     }
 }
