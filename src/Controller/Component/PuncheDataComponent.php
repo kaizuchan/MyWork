@@ -19,10 +19,9 @@ class PuncheDataComponent extends Component
 
     
     /* 配列に年/月/日の情報と、ユーザーの勤怠データを登録して返す */
-    public function getMonthlyData($user_id = null, $month = null, $year = null)
+    public function getMonthlyData($user_id, $month = null, $year = null)
     {
-        // $user_id,$month,$year がnullの場合の規定値の登録
-        if($user_id == null){$user_id = $this->Authentication->getIdentity()->get('id');}
+        // $month,$year がnullの場合の規定値の登録
         if($month == null){$month = (int) date('m');}
         if($year == null){$year = (int) date('Y');}
 
@@ -53,19 +52,9 @@ class PuncheDataComponent extends Component
         $array = calculateMonthlyHours($array);
         return $array;
     }
-
-
-
-
-
-
     /* 配列にユーザーの勤怠データを登録して返す */
-    private function getPunchdData($date, $user_id = null)
+    public function getPunchdData($date, $user_id)
     {
-        // $user_idがnullなら、ログイン中のユーザーのIDをセット
-        if($user_id == null){
-            $user_id = $this->Authentication->getIdentity()->get('id');
-        }
         $data = array();
         $identify = array('start_work', 'start_break', 'end_break', 'end_work');
         $this->loadModel('Punches');
@@ -87,6 +76,13 @@ class PuncheDataComponent extends Component
         }
         return $data;
     }
+
+
+
+
+
+
+    
     /* 各日ごとの総労働時間、労働時間、残業時間、休憩時間の計算 */
     private function calculateHours($data){
         if($data['end_work'] != ""){
