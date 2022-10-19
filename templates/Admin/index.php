@@ -61,8 +61,8 @@
                                     <div class="userList">
                                     <tr>    
                                         <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
-                                        <td id="userId"><label for="userId" id="userId"><?= $user->employee_id ?></label></td>
-                                        <td id="userName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></td>
+                                        <td id="userId" class="userInfo"><label for="userId" id="userId"><?= $user->employee_id ?></label></td>
+                                        <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></td>
                                         <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="fas fa-pencil-alt fa-2x"></i></a></td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -71,7 +71,7 @@
                     <div id="mask" class="hidden"></div>
                     <section id="modal" class="hidden">
                         <?php foreach ($users as $user): ?>
-                            <input class="deleteList" type="hidden" value="" readonly="readonly">
+                            <input id="deleteList" class="deleteList" type="hidden" value="" readonly="readonly">
                         <?php endforeach; ?>
                         <p id="editMessage">
                             <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
