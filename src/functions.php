@@ -1,6 +1,9 @@
 <?php
-// template/admin/adduser.php及び 
-// template/admin/edituser.php内で使用 
+/* 入力フォームの初期値設定
+  * 使用場所
+  * template/admin/adduser.php
+  * template/admin/edituser.php
+ */
   // postで受け取ったデータがあるなら返す
   function getValue($name){
     $res = "";
@@ -56,5 +59,53 @@
   function setCheckdGender($value, $default){
     if($value == $default){
       echo ' checked="checked"';
+    }
+  }
+
+  
+/* 仕事時間計算
+  * 使用場所
+  * src\Controller\HomeController.php
+ */
+  // 計算結果を配列に格納して返す
+  function calculateHours($data){
+    // 総勤務時間 計算
+    if(strtotime($data['end_work']) > strtotime($data['start_work'])){
+      $total = ((strtotime($data['end_work']) - strtotime($data['start_work'])) / 3600);
+      $total = round($total, 1, PHP_ROUND_HALF_DOWN);
+    }else{
+      $total = ((strtotime($data['end_work']) + 86400 - strtotime($data['start_work'])) / 3600);
+      $total = round($total, 1, PHP_ROUND_HALF_DOWN);
+    }
+    // 休憩時間 計算
+    if(strtotime($data['end_work']) > strtotime($data['start_work'])){
+      $break = ((strtotime($data['end_break']) - strtotime($data['start_break'])) / 3600);
+      $break = round($break, 1, PHP_ROUND_HALF_DOWN);
+    }else{
+      $break = ((strtotime($data['end_break']) + 86400 - strtotime($data['start_break'])) / 3600);
+      $break = round($break, 1, PHP_ROUND_HALF_DOWN);
+    }
+    // 勤務時間 & 残業時間 計算
+    $overtime = 0;
+    $work = $total;
+    if($work > 8){
+      $overtime = $work - 8;
+      $work = 8;
+    }
+    // 計算結果を配列に格納して返却
+    if($total == 0){
+      return array_merge($data, array(
+        'work' => '-',
+        'break' => '-',
+        'overtime' => '-',
+        'total' => '-',
+      ));
+    }else{
+      return array_merge($data, array(
+        'work' => $work,
+        'break' => $break,
+        'overtime' => $overtime,
+        'total' => $total,
+      ));
     }
   }
