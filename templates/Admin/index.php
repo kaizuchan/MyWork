@@ -49,16 +49,19 @@
                 <?= $this->Form->create(null, ['type' => 'post']); ?>
                     <?php foreach ($users as $user): ?>
                         <div class="userList">
-                            <div>
+                            <div class="userInfo">
                                 <input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>">
                                 <label for="userId" id="userId"><?= $user->employee_id ?></label>
                             </div>
-                            <div><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></div>
+                            <div class="uName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></div>
                             <div><a href="/admin/edit-user/<?= $user->id ?>">編集</a><i class="fas fa-pencil-alt fa-2x"></i></div>
                         </div>
                     <?php endforeach; ?>
                     <div id="mask" class="hidden"></div>
                     <section id="modal" class="hidden">
+                        <?php foreach ($users as $user): ?>
+                            <input class="deleteList" type="hidden" value="" readonly="readonly">
+                        <?php endforeach; ?>
                         <p id="editMessage">
                             <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
                             上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません)
