@@ -26,16 +26,17 @@
 
 function myCheck() {
   var checkbox = document.getElementsByClassName('check');
-  var flag = false;
+  var username = document.getElementsByClassName('uName');
+  var userinfo = document.getElementsByClassName('userInfo');
+  var deleteList = document.getElementsByClassName('deleteList');
 
   for (var i = 0; i < checkbox.length; i++) {
  
     if (checkbox[i].checked) {
-      flag = true;
+      deleteList[i].type = 'text';
+      deleteList[i].value = userinfo.item(i).textContent + ':' + username.item(i).textContent;
+    } else {
+      deleteList[i].type = 'hidden';
     }
-  }
-   
-  if (!flag) {
-    // alert("項目が選択されていません。");
   }
 }
