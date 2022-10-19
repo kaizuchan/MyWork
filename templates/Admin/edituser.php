@@ -124,7 +124,7 @@
     <input type="hidden" name="enterprise_id" value="<?= $me->enterprise_id ?>">
 
       <div class="form-check">
-        <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked">
+        <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked"<?= setCheckdAdmin($user['role']); ?>>
         <label for="validationFormCheck2" class="form-check-label">管理者として登録する場合はチェック</label>
       </div>
 

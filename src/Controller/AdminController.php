@@ -10,10 +10,12 @@ class AdminController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $me = $this->Authentication->getIdentity();
-        $this->set(compact('me'));
+        // コンポーネントの読み込み
         $this->loadComponent("PuncheData");
         $this->loadComponent("SerchUser");
+        // ログイン中のユーザー情報を読み込み
+        $me = $this->Authentication->getIdentity();
+        $this->set(compact('me'));
     }
 
     public function index()
@@ -125,24 +127,38 @@ class AdminController extends AppController
         $me = $this->Authentication->getIdentity();
         // データセット
         $this->set(compact('me'));
-
+        
         $this->loadModel('Users');
-        $user = $this->Users->get($id);
+
         if ($this->request->is('post')) {
-            // 3.4.0 より前は $this->request->data() が使われました。
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            // 同じ社員IDを持ったユーザーがいないかの確認
+            $me = $this->Authentication->getIdentity();
+            $employee_id = $this->request->getData('employee_id');
+            $res = $this->Users->find('all')->where([
+                'enterprise_id' => $me->enterprise_id,
+                'employee_id'   => $employee_id
+            ])->first();
+            if($res == null){
 
-            // 誕生日のみ連結処理が必要
-            $year = $this->request->getData("birthday_year");
-            $month = $this->request->getData("birthday_month");
-            $date = $this->request->getData("birthday_date");
 
-            $user->birthday = mktime(0,0,0,$month,$date,$year);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('更新しました'));
-                return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+                $user = $this->Users->get($id);
+                // 3.4.0 より前は $this->request->data() が使われました。
+                $user = $this->Users->patchEntity($user, $this->request->getData());
+
+                // 誕生日のみ連結処理が必要
+                $year = $this->request->getData("birthday_year");
+                $month = $this->request->getData("birthday_month");
+                $date = $this->request->getData("birthday_date");
+
+                $user->birthday = mktime(0,0,0,$month,$date,$year);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('更新しました'));
+                    return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+                }
+                $this->Flash->error(__('社員更新に失敗しました'));
+            }else{
+                $this->Flash->error(__('同じ社員IDが既に存在します'));
             }
-            $this->Flash->error(__('社員更新に失敗しました'));
         }else{
             // 初めに動く処理
             // idが合致するユーザー情報を取得
