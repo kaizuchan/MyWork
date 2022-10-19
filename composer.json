@@ -26,6 +26,9 @@
         "cakephp/repl": "Console tools for a REPL interface for CakePHP applications."
     },
     "autoload": {
+        "files" : [
+			"src/functions.php"
+		],
         "psr-4": {
             "App\\": "src/"
         }
