@@ -12,7 +12,7 @@
 </head>
 <body>
     <div id="main">
-        <div>
+        <div class="Card">
             <div id="now">
                 <div id="nowDate">
                     <!-- 日時 -->
@@ -38,7 +38,7 @@
                         value="<?= $this->request->getAttribute('csrfToken') ?>">
             </form>
         </div>
-        <div>
+        <div class="Card" id="userInfoCard">
             <div id="userList">
 
                 <h2 id="userListTitle">登録社員</h2>
