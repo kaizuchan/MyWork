@@ -301,6 +301,7 @@ class HomeController extends AppController
         $i = 0;
         foreach ($array['dates'] as $date){
             $res = $this->getPunchdData($array['year'].'/'.$array['month'].'/'.$date['date'], $user_id);
+            $res = calculateHours($res);
             $array['dates'][$i] = array_merge($array['dates'][$i], $res);
             $i++;
         }
