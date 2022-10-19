@@ -32,11 +32,11 @@
             <?= $this->Form->end() ?>
         </div>
         <div>
-            <div id="userListItem">
+            <!-- <div id="userListItem">
                 <div><p id="userIdItem">社員ID</p></div>
                 <div><p id="userNameItem">社員名</p></div>
                 <div><p id="userChangeButtonItem">編集</p></div>
-            </div>
+            </div> -->
 
             <!-- 検索結果 -->
             <?php if(isset($count)): ?>
@@ -46,17 +46,28 @@
             <?php endif; ?>
             
             <div id="form">
-                <?= $this->Form->create(null, ['type' => 'post']); ?>
-                    <?php foreach ($users as $user): ?>
-                        <div class="userList">
-                            <div class="userInfo">
-                                <input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>">
-                                <label for="userId" id="userId"><?= $user->employee_id ?></label>
-                            </div>
-                            <div class="uName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></div>
-                            <div><a href="/admin/edit-user/<?= $user->id ?>">編集</a><i class="fas fa-pencil-alt fa-2x"></i></div>
-                        </div>
-                    <?php endforeach; ?>
+                    <table class="table table-hover">
+                        <thead  class="table-light">
+                            <tr id="thead">
+                                <th scope="col">#</th>
+                                <th scope="col">社員ID</th>
+                                <th scope="col">社員名</th>
+                                <th scope="col">編集</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?= $this->Form->create(null, ['type' => 'post']); ?>
+                                <?php foreach ($users as $user): ?>
+                                    <div class="userList">
+                                    <tr>    
+                                        <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
+                                        <td id="userId"><label for="userId" id="userId"><?= $user->employee_id ?></label></td>
+                                        <td id="userName"><a href="/admin/works/<?= $user->id ?>"><p id="userName"><?= $user->last_name.$user->first_name ?></p></a></td>
+                                        <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="fas fa-pencil-alt fa-2x"></i></a></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                        </tbody>
+                        </table>
                     <div id="mask" class="hidden"></div>
                     <section id="modal" class="hidden">
                         <?php foreach ($users as $user): ?>
