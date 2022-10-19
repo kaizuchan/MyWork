@@ -15,7 +15,7 @@ button:hover{
 #searchBox{
     display: flex;
     justify-content: flex-end;
-    margin: 0 15rem 5rem 0px;
+    margin: 0 6rem 5rem 0px;
 }
 #searchBox input{
     height: 4vh;
@@ -34,10 +34,33 @@ form#searchForm{
 }
 #searchMessage {
     text-align: center;
-    font-size: 1.5rem;
     margin: 4rem 0 0 0;
 }
-#userListItem{
+#form table{
+    width: 90vw;
+    font-size: 1.5rem;
+    margin: 0 auto;
+}
+#form table p{
+    margin: 0;
+}
+#thead{
+    border-bottom: 1px solid #000;
+}
+#thead th{
+    font-weight: 400;
+}
+#form table tr td,th{
+    vertical-align: middle;
+}
+#userId{
+    font-weight: 400;
+}
+#userName a{
+    font-size: 1.5rem;
+    color: #000;
+}
+/* #userListItem{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,15 +83,16 @@ form#searchForm{
 #userIdItem{
     padding: 0 0 0 3rem;
 }
-#userNameItem{
-    padding: 0 0 0 2rem;
-}
 #userId{
     font-weight: 500;
     margin-left: 0.5rem;
 }
 #userName{
     font-size: 1.5rem;
+} */
+#editButton a{
+    font-size: 1.2rem;
+    color: #000;
 }
 #add-deleteButton{
     display: flex;align-items: center;
@@ -99,25 +123,43 @@ form#searchForm{
         justify-content: flex-end;
     } 
     #searchBox{
-        margin-bottom: 3rem;
+        margin: 10vh 0 3rem 0;
         position: relative;
         top: 0;
         margin: 0 7rem 2rem 0px;
+    }
+    form#searchForm{
+        margin: 5vh 0 0 0;
     }
     /* input type="text" */
     #searchBox input{
         width: 65vw;
     }
+    #form table{
+        margin: 15vh 0 0 0;
+    }
+    #form table tr td{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #form table tr th{
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
     #add-deleteButton{
         right: 1rem;
     }
-    #userListItem{
+    /* #userListItem{
         margin: 0 7rem;
     }
     .userList{
         width: 80vw;
         margin: 2rem auto;
-    }
+    } */
 }
 @media screen and (max-width: 480px){ 
     /* 検索フォーム全体 */
@@ -131,7 +173,7 @@ form#searchForm{
     input[type="text"]{
         width: 50vw;
     }
-    #userListItem{
+    /* #userListItem{
         margin: 0 5rem;
-    }
+    } */
 }
