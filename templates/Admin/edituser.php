@@ -1,3 +1,14 @@
+<?php
+// 更新失敗した場合に入力された値を保持させる
+if ($this->request->is('post')) {
+  $user = [];
+  $data = $this->request->getData();
+  foreach($data as $k => $d){
+      $user = array_merge($user, [$k => $d]);
+  }
+  $this->set(compact('user'));
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
