@@ -10,41 +10,36 @@ class AdminController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $me = $this->Authentication->getIdentity();
-        $this->set(compact('me'));
+        // コンポーネントの読み込み
         $this->loadComponent("PuncheData");
         $this->loadComponent("SerchUser");
+        // ログイン中のユーザー情報を読み込み
+        $me = $this->Authentication->getIdentity();
+        $this->set(compact('me'));
     }
 
     public function index()
-    {
-        $me = $this->Authentication->getIdentity();
-
+    {        
         // ログイン中のユーザー情報取得
-        $user = $this->Authentication->getIdentity();
+        $me = $this->Authentication->getIdentity();
         
         // 使うモデルの選択
         $this->loadModel('Users');
-        // データの取り出し
-        $users = $this->SerchUser->getEmployee($me->enterprise_id);
-        //debug($users);
 
-        // 検索
+        // 社員全員の情報を取り出す
+        $users = $this->SerchUser->getEmployee($me->enterprise_id);
+
         if ($this->request->is('post')) {
 
+            // 検索
             if(isset($_POST['find'])){
-                // 配列
-                $searchUsers = [];
-                            
                 // 入力値受け取り
                 $find = $this->request->getData('find');
-                // debug($find);
-                // 入力値が条件に合うかどうか検索
+                // 条件に一致する社員の情報を取り出す
                 $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
-
+                // 取り出した社員の人数を数える
                 $count = $users->count();
-                // 条件にあったデータを渡す
-                $this->set('searchUsers', $users);
+                // 人数を渡す
                 $this->set('count', $count);
             }
             
@@ -64,6 +59,7 @@ class AdminController extends AppController
 
                     // 書き換える部分
                     $data = array(
+                        'users.employee_id' => '',
                         'users.role' => '9',
                         'users.deleted_at' => $time,
                     );
@@ -84,6 +80,7 @@ class AdminController extends AppController
         // データセット
         $this->set(compact('users'));
     }
+
     public function adduser()
     {
         /*
@@ -130,24 +127,39 @@ class AdminController extends AppController
         $me = $this->Authentication->getIdentity();
         // データセット
         $this->set(compact('me'));
-
+        
         $this->loadModel('Users');
-        $user = $this->Users->get($id);
+
         if ($this->request->is('post')) {
-            // 3.4.0 より前は $this->request->data() が使われました。
-            $user = $this->Users->patchEntity($user, $this->request->getData());
+            // 同じ社員IDを持ったユーザーがいないかの確認
+            $me = $this->Authentication->getIdentity();
+            $employee_id = $this->request->getData('employee_id');
+            $res = $this->Users->find('all')->where([
+                'enterprise_id' => $me->enterprise_id,
+                'employee_id'   => $employee_id,
+                'not' => ['id' => $id],
+            ])->first();
+            if($res == null){
 
-            // 誕生日のみ連結処理が必要
-            $year = $this->request->getData("birthday_year");
-            $month = $this->request->getData("birthday_month");
-            $date = $this->request->getData("birthday_date");
 
-            $user->birthday = mktime(0,0,0,$month,$date,$year);
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('更新しました'));
-                return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+                $user = $this->Users->get($id);
+                // 3.4.0 より前は $this->request->data() が使われました。
+                $user = $this->Users->patchEntity($user, $this->request->getData());
+
+                // 誕生日のみ連結処理が必要
+                $year = $this->request->getData("birthday_year");
+                $month = $this->request->getData("birthday_month");
+                $date = $this->request->getData("birthday_date");
+
+                $user->birthday = mktime(0,0,0,$month,$date,$year);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('更新しました'));
+                    return $this->redirect(['controller' => 'admin', 'action' => 'index']);
+                }
+                $this->Flash->error(__('社員更新に失敗しました'));
+            }else{
+                $this->Flash->error(__('同じ社員IDが既に存在します'));
             }
-            $this->Flash->error(__('社員更新に失敗しました'));
         }else{
             // 初めに動く処理
             // idが合致するユーザー情報を取得
@@ -168,7 +180,7 @@ class AdminController extends AppController
     public function editwork($id, $date)
     {
         // 該当する打刻データを取得して、Viewに送信
-        $times = $this->getPunchdData($date, $id); 
+        $times = $this->PuncheData->getPunchdData($date, $id); 
         $this->set(compact('times', 'date'));
 
         // データベース登録処理
@@ -204,68 +216,4 @@ class AdminController extends AppController
         // 
     }
 
-
-    // 自作関数
-    // 配列にユーザーの勤怠データを登録して返す
-    private function getPunchdData($date, $user_id = null)
-    {
-        // $user_idがnullなら、ログイン中のユーザーのIDをセット
-        if($user_id == null){
-            $user_id = $this->Authentication->getIdentity()->get('id');
-        }
-        $data = array();
-        $identify = array('start_work', 'start_break', 'end_break', 'end_work');
-        $this->loadModel('Punches');
-        for ($i = 1; $i <= 4; $i++) {
-            // 最新のレコードを１つのみ取得
-            $res = $this->Punches->find('all')->where([
-                'user_id' => $user_id,
-                'date' => $date,
-                'identify' => $i,
-            ])->last();
-
-            // 取得したデータ != null ならば、取得したデータから時間を取得
-            if($res != null){
-                $data = array_merge($data, [$identify[$i-1] => date('H:i', strtotime($res->time))]);
-            }else{
-                $data = array_merge($data, [$identify[$i-1] => null]);
-            }
-        }
-        return $data;
-    }
-    // 配列に年/月/日の情報と、ユーザーの勤怠データを登録して返す
-    private function getMonthlyData($user_id = null, $month = null, $year = null)
-    {
-        // 指定した年/月の日付＆曜日を格納した配列を作成
-        // $month 及び $year がnullの場合、現在の日付を登録する
-        if($month == null){$month = (int) date('m');}
-        if($year == null){$year = (int) date('Y');}
-        // 配列を用意
-        $array = [
-            'year'  => $year,
-            'month' => $month,
-            'dates' => array(),
-        ];
-        // その月の日数のデータを登録する
-        for ($i = 1; $i <= date('t', strtotime($year.'-'.$month)); $i++) {
-            $a = [
-                'date' => $i,
-                'day'  => date('w', strtotime($year.'-'.$month.'-'.$i)),
-            ];
-            array_push($array['dates'], $a);
-        }
-
-        // $user_idがnullなら、ログイン中のユーザーのIDをセット
-        if($user_id == null){
-            $user_id = $this->Authentication->getIdentity()->get('id');
-        }
-        $i = 0;
-        foreach ($array['dates'] as $date){
-            $res = $this->getPunchdData($array['year'].'/'.$array['month'].'/'.$date['date'], $user_id);
-            $array['dates'][$i] = array_merge($array['dates'][$i], $res);
-            $i++;
-        }
-        return $array;
-    }
-    
 }

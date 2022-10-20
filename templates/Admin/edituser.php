@@ -1,3 +1,14 @@
+<?php
+// 更新失敗した場合に入力された値を保持させる
+if ($this->request->is('post')) {
+  $user = [];
+  $data = $this->request->getData();
+  foreach($data as $k => $d){
+      $user = array_merge($user, [$k => $d]);
+  }
+  $this->set(compact('user'));
+}
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -124,7 +135,7 @@
     <input type="hidden" name="enterprise_id" value="<?= $me->enterprise_id ?>">
 
       <div class="form-check">
-        <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked">
+        <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked"<?= setCheckdAdmin($user['role']); ?>>
         <label for="validationFormCheck2" class="form-check-label">管理者として登録する場合はチェック</label>
       </div>
 

@@ -58,20 +58,17 @@
                                         <th scope="col">編集</th>
                                     </tr>
                                 </thead>
-                                    <tbody>
-                                        <?= $this->Form->create(null, ['type' => 'post']); ?>
-                                        
-                                            <?php foreach ($users as $user): ?>
-                                                
-                                                <tr id="tbody">    
-                                                    <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
-                                                    <td id="userId" class="userInfo"><p><?= $user->employee_id ?></p></td>
-                                                    <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p><?= $user->last_name.$user->first_name ?></p></a></td>
-                                                    <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="far fa-edit fa-2x"></i></i></a></td>
-                                                </tr>
-                                            <?php endforeach; ?>      
-                                        </div>
-                                    </tbody>
+                                <tbody>
+                                    <?= $this->Form->create(null, ['type' => 'post']); ?>
+                                        <?php foreach ($users as $user): ?>
+                                            <tr id="tbody">    
+                                                <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
+                                                <td id="userId" class="userInfo"><p><?= $user->employee_id ?></p></td>
+                                                <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p><?= $user->last_name.$user->first_name ?></p></a></td>
+                                                <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="far fa-edit fa-2x"></i></i></a></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                </tbody>
                             </table>
                         </div>
                     </div>
