@@ -88,4 +88,9 @@ class User extends Entity
             return (new DefaultPasswordHasher)->hash($password);
         }
     }
+    // ↓ これを追加
+    protected function _getIsAdmin()
+    {
+        return $this->role === 2;
+    }
 }
