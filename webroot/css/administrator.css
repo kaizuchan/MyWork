@@ -109,7 +109,7 @@ form#searchForm{
 /* 社員追加 */
 #addButton{
     color: #555;
-    margin: 0 2rem;
+    margin: 0 5rem 0 0;
     font-size: 1rem;
 }
 /* 社員削除 */
@@ -120,6 +120,22 @@ form#searchForm{
     display: flex;
     align-items: center;
 }
+/* スクロールバー */
+.scroll_bar{
+    height: 70vh;
+    overflow-y: scroll;
+ }
+ .scroll_bar::-webkit-scrollbar{
+    width: 1rem;
+ }
+ .scroll_bar::-webkit-scrollbar-track{
+    background-color: #ccc;
+    border-radius: 5px;
+ }
+ .scroll_bar::-webkit-scrollbar-thumb{
+    background-color: #777;
+    border-radius: 5px;
+ }
 /* タブレット用、スマホ用 */
 @media screen and (max-width: 767px){
     .Card{
@@ -165,6 +181,9 @@ form#searchForm{
     }
     #add-deleteButton{
         margin: 5rem 0 0 0;
+    }
+    .scroll_bar{
+        overflow-y: none;
     }
 }
 @media screen and (max-width: 480px){ 
