@@ -32,6 +32,9 @@ class SerchUserComponent extends Component
                 ['last_name LIKE' => '%'.$keyword.'%'],
                 ['first_name LIKE' => '%'.$keyword.'%'],
                 ['CONCAT(last_name,first_name) LIKE' => '%'.$keyword.'%'],
+                ['last_name_kana LIKE' => '%'.$keyword.'%'],
+                ['first_name_kana LIKE' => '%'.$keyword.'%'],
+                ['CONCAT(last_name_kana,first_name_kana) LIKE' => '%'.$keyword.'%'],
             ]]);
         }
         $users = $this->Users->find('all')->where($where);
