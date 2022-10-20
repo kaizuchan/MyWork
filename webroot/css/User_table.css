@@ -1,227 +1,229 @@
-body {
-  font-family: 'Yu Mincho Light','YuMincho','Yu Mincho','游明朝体',sans-serif;
-    line-height: 1.25;
+#main{
+  height: 92vh;
+  background-color: #D7EEFF;
+}
+.Card{
+  margin: 0vh auto;
+  width: 80vw;
+  height: 92vh;
+  padding: 4rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
+}
+.id_name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0 5rem 0 0;
+  font-size: 1.5rem;
+}
+h1.title {
+  text-align: center;
+}
+h2.oct {
+  text-align: center;
+}
+.month {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5rem;
+}
+.month h3 a{
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+.month h3 a:hover{
+  text-decoration: underline;
+}
+.nextMonth{
+  margin: 0 1rem;
+}
+.total {
+  display: flex;
+  margin: 3rem auto;
+}
+.total table {
+  display: flex;
+  justify-content: center;
+}
+.total table th{
+  padding: 0 1rem;
+  font-weight: 400;
+  background: #0099CC;
+  color: #fff;
+  border-radius: 10px 0 0 10px;
+}
+.total table td{
+  background: #fff;
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1rem;
+}
+.total table tr{
+  font-size: 2rem;
+}
+table.glaf {
+  width: 80vw;
+  margin: 0 auto;
+  font-size: 2rem;
+  position: relative;
+	border-collapse: collapse; 
+}
+table.glaf thead, tbody{
+  width: 8vw
+  display: block;
+}
+table.glaf thead tr th{
+  background-color: #D7EEFF;
+  height: 6vh;
+  position: sticky;
+	top: 0; 
+}
+table.glaf tr{
+  height: 6vh;
+}
+table.glaf th{
+  font-weight: 500;
+  vertical-align: middle;
+  text-align: center;
+}
+table.glaf td{
+  vertical-align: middle;
+  text-align: center;
+}
+/* スクロールバー */
+.scroll_bar{
+  height: 50vh;
+  overflow-y: scroll;
+}
+.scroll_bar::-webkit-scrollbar{
+  width: 1rem;
+}
+.scroll_bar::-webkit-scrollbar-track{
+  background-color: #ccc;
+  border-radius: 5px;
+}
+.scroll_bar::-webkit-scrollbar-thumb{
+  background-color: #777;
+  border-radius: 5px;
+}
+@media screen and (max-width: 1279px){
+  .total {
+    width: 70vw;
   }
-  ​
-
-
-
-
-  
-
-  table tr {
-    background-color: #fff;
-    border-bottom: 1px solid #8B8B8B;
-  }
-  table td {
-font-size: 20px;
-    text-align: center;
-    border-right: 1px solid #8B8B8B;
-  }
-  table th {
-    font-size: .85em;
-    text-align: center;
-    border-right: 1px solid #8B8B8B;
-  } 
-  table thead tr{
-    font-size: 20px;
-    border-bottom: 1px solid #8B8B8B;
-    background-color: #167F92;
-    color:#fff;
-  }
-  table tbody th {
-    font-size: 15px;
-    background: #78bbc7;
-    color: #fff;
-  }
-  table tbody td{
-    width: 85px;
-    height: 30px;
-  }
-
-
-
-  .id_name{
-    margin: 0;
-  }
-  .title{
-    text-align: center;
-  }
-  .oct{
-    width: 300px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .month{
+  .total table {
     display: flex;
-    justify-content: space-between;
-  }
-  .month h3 a{
-    color: #000;
-  }
-  .total{
-    display: flex;
-    justify-content: space-between;
-  }
-  .total table{
-    margin: 0 5px;
-    border-radius: 10px;
-    border: 1px solid #8B8B8B;
   }
   .total table th{
-    width: 110px;
-    height: 40px;
-    border-radius: 10px 0 0 10px;
-    background-color: #167F92;
+    font-size: 1.2rem;
   }
   .total table td{
-    width: 110px;
-    height: 40px;
-    border-radius: 0 10px 10px 0;
+    font-size: 1.2rem;
   }
-
-  .glaf{
-    margin: 50px auto 100px auto;
-    border-radius: 20px;
-    border: 1px solid #8B8B8B;
-    padding: 0;
+  table.glaf {
+    width: 80vw;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 900px){
+  .month h3 a{
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+  }
+  .total {
+    width: 75vw;
+  }
+  .total table th{
+    font-size: 1.2rem;
+  }
+  .total table td{
+    font-size: 1.2rem;
+  }
+  table.glaf {
+    width: 80vw;
+    margin: 0 auto;
+    font-size: 1.2rem;
+  }
+}
+@media screen and (max-width: 834px){
+  .Card{
+    width: 90vw;
+    padding: 2rem;
+  }
+  .id_name {
+    padding: 0 2rem 0 0;
+  }
+  .month{
+    padding: 0 2rem;
+  }
+  .month h3 a{
+    padding: 2rem 0;
+  }
+  .total {
+    width: 75vw;
+    margin: 1.5rem auto;
+  }
+  .total table th{
+    border-radius: 10px 10px 0 0;
+    font-size: 0.8rem;
+  }
+  .total table td{
     text-align: center;
-    font-size: 10px;
-    table-layout: fixed;
-    color: #8B8B8B;
+    border-radius: 0 0 10px 10px;
+    margin: 0 0 1.5rem 0;
   }
-  .glaf tr:first-child td:first-child{
-    border-radius: 20px 0 0 0;
+  table.glaf th {
+    height: 5vh;
   }
-  .glaf tr:first-child th:last-child{
-    border-radius: 0 20px  0 0;
+  table.glaf td {
+    height: 5vh;
   }
-  .glaf tr:last-child th:first-child{
-    border-radius: 0 0 0 20px;
+}
+@media screen and (max-width: 640px){
+  /* スクロールバー */
+  .scroll_bar{
+    overflow-y: hidden;
   }
-  .glaf tr:last-child td:last-child{
-    border-radius: 0 0 20px 0;
+}
+@media screen and (max-width: 480px){
+  #main{
+    height: 92vh;
   }
-  .glaf td:first-child{
-    width: 50px;
-    height: 30px;
-    text-align: center;
+  .Card{
+    height: 92vh;
   }
-  .ichiretu{
-    width: 110px;
-    height: 30px;
+  .Card{
+    padding: 0rem;
   }
-  .id_name h6{
-    height: 0;
-    text-align: right;
-    font-size: 15px;
+  .id_name {
+    padding: 0 2rem 0 0;
   }
-  .date{
-    width: 50px;
-    height: 30px;
+  .month h3 a{
+    padding: 2rem 0;
   }
-  .txt{
-     font-size: .85em;
+  .total {
+    margin: 1.5rem auto;
+    font-size: 1rem;
   }
-  .price{
-    color: #167F92;
-    font-weight: bold;
-  }
-  .non{
-    background:#fff
-  }
-  @media screen and (max-width: 764px) {
-    body{
-      margin: 0 auto;
-      text-align: right;
-      width: 764px;
+  @media screen and (max-width: 280px){#main{
+    height: 92vh;
     }
-
-    .id_name{
-      margin: 0;
+    .Card{
+      width: 100vw;
+      padding: 0rem;
     }
-    .id_name h6{
-      height: 0;
-      text-align: right;
-      font-size: 15px;
+    .id_name {
+      padding: 0 2rem 0 0;
     }
-    .title{
-      text-align: center;
-      font-size: 40px;
+    .month h3 a{
+      padding: 2rem 0;
     }
-    .month h3{
-      display: flex;
-      justify-content: space-between;
+    .total {
+      width: 98vw;
+      margin: 1.5rem auto;
+      font-size: 1rem;
     }
-    .total table{
-      width: 150px;
-      height: 100px;
-    }
-    .total table th{
-      width: 150px;
-      border-radius: 10px 10px 0 0;
-    }
-    .total table td{
-      width: 150px;
-      text-align: left;
-    }
-
-
-    table th{
-      background-color: #167F92;
-      display: block;
-      border-right: none;
-    }
-    table thead {
-      border: none;
-      clip: rect(0 0 0 0);
-      overflow: hidden;
-      position: absolute;
-    }
-    table tr {
-      display: block;
-      margin-bottom: .625em;
-    }
-     table td {
-      border-bottom: 1px solid #bbb;
-      display: block;
-      font-size: .8em;
-      text-align: right;
-      border-right: none;
-    }
-    .time{
-      position: relative;
-      padding: .625em .625em .625em 4em;
-    }
-    table td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      position: absolute;
-      left: 10px;
-      color: #167F92;
-    }
-    table tbody th {
-      color: #fff;
-    }
-    .glaf table tbody td{
-      position: relative;
-      padding: .625em .625em .625em 4em;
-    }
-    table tbody td {
-      
-      font-size: 30px;
-      text-align: center;
-      width: 190px;
-      height: 70px;
-    }
-    table tbody td::before {
-      font-size: 15px;
-    }
-
-    .hinichi{
-      font-size: 25px;
-      width: 190px;
-      height: 70px;
-    }
-
-  }
+}

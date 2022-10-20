@@ -11,21 +11,11 @@
 #backButton{
     font-size: 3rem;
     color: #000;
-    position: relative;
-    top: 1rem;
-    left: 3rem;
+    position: absolute;
     z-index: 100;
 }
 @media screen and (max-width: 767px){
     #backButton{
         font-size: 2rem;
-        top: 2rem;
-        left: 2rem;
-    }
-}
-@media screen and (max-width: 480px){
-    #backButton{
-        top: 1rem;
-        left: 1rem;
     }
 }

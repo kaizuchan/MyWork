@@ -21,10 +21,10 @@
 
     <div id="main">
 
+        <div class="Card">
+
         <!-- 戻るボタン -->
         <?php echo $this->element('components/backButton'); ?>
-
-        <div class="Card">
 
             <!-- 検索ボックス -->
             <div id="searchBox">
