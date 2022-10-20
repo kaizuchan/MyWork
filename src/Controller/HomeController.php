@@ -27,6 +27,8 @@ class HomeController extends AppController
         $this->punch = TableRegistry::getTableLocator()->get('punches');
         $me = $this->Authentication->getIdentity();
         $this->set(compact('me'));
+        // アクセス制限にかからないよう
+        $this->Authorization->skipAuthorization();
     }
 
     public function home($id = null)

@@ -49,7 +49,7 @@ form input{
     background-color: #1F78B2;
 }
 /* スマホ用、タブレット用 */
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
     #loginCard{
         width: 90vw;
     }
