@@ -77,7 +77,7 @@ class Users extends AbstractMigration
             $password = '$2y$10$chRR/dnRQgyJ4gVlscsIc.aiDsFs1QUT/.AiCfPf.Rru5LixtAfP6';
             $rows = [
                     "enterprise_id" => 2,
-                    "employee_id" => "202210031",
+                    "employee_id" => "20221031",
                     "last_name" => "谷",
                     "first_name" => "まさる",
                     "last_name_kana" => "タニ",
