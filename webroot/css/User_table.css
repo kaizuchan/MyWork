@@ -137,9 +137,11 @@ table.glaf td{
     width: 75vw;
   }
   .total table th{
+    height: 5vh;
     font-size: 1.2rem;
   }
   .total table td{
+    height: 5vh;
     font-size: 1.2rem;
   }
   table.glaf {
@@ -176,7 +178,7 @@ table.glaf td{
 @media screen and (max-width: 640px){
   .total table th{
     border-radius: 10px 10px 0 0;
-    font-size: 0.8rem;
+    font-size: 1.2rem;
   }
   .total table td{
     text-align: center;
@@ -197,6 +199,7 @@ table.glaf td{
   }
   .Card{
     padding: 0rem;
+    height: max-content;
   }
   .id_name {
     padding: 2rem  2rem 0 0;
