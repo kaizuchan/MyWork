@@ -25,7 +25,7 @@ button:hover{
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
 #userInfoCard{
-    width: 30vw;
+    width: 35vw;
 }
 #now{
     display: flex;
@@ -166,8 +166,8 @@ button:hover{
     border-radius: 15px;
     padding: 0.2rem 1rem;
 }
-/* 768px以下 (タブレット、スマホ用のデザイン) */
-@media screen and (max-width: 768px){
+/* 767px以下 (タブレット、スマホ用のデザイン) */
+@media screen and (max-width: 767px){
     #main{
         height: auto;
         flex-direction: column;

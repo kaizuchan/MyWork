@@ -109,7 +109,7 @@ form#searchForm{
 /* 社員追加 */
 #addButton{
     color: #555;
-    margin: 0 5rem 0 0;
+    margin: 0 1rem 0 0;
     font-size: 1rem;
 }
 /* 社員削除 */
@@ -170,19 +170,19 @@ form#searchForm{
         margin: 5vh auto 0 auto;
     }
     #form table tr td{
-        height: 15vh;
+        height: 12vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #form table tr th{
-        height: 15vh;
+        height: 12vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #add-deleteButton{
-        margin: 5rem 0 0 0;
+        margin: 3rem 0 0 0;
     }
     .scroll_bar{
         overflow-y: none;
