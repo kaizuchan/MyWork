@@ -10,7 +10,7 @@
     z-index: 100;
 }
 
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
     .message.success,.error {
         position: fixed;
         top: 5rem;

@@ -137,7 +137,7 @@ form#searchForm{
     border-radius: 5px;
  }
 /* タブレット用、スマホ用 */
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
     .Card{
         margin: 6rem auto;
         padding: 0;
