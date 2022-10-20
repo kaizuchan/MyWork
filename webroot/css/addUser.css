@@ -18,6 +18,19 @@ button.btn{
     margin: 3rem 0;
     background-color: #1F78B4;
 }
+#main{
+    height: auto;
+    background-color: #D7EEFF;
+}
+.Card{
+    margin: 0vh auto;
+    width: 80vw;
+    height: auto;
+    padding: 6rem;
+    border-radius: 10px;
+    background-color: #fff;
+box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
+}
 /* 入力項目名の高さ調整 */
 .input-group-text{
     height: 38px;
@@ -26,7 +39,6 @@ button.btn{
 .form-check-group{
  display: flex;
 }
-
 .form-check label{
     font-weight: 300;
     font-size: 1.5rem;
@@ -46,7 +58,28 @@ button.btn{
     align-items: center;
     padding: 2rem 0 0 2rem;
 }
-@media screen and (max-width: 767px){
+@media screen and (max-width: 1024px){
+    .Card{
+        padding: 5rem;
+    }
+    form{
+        margin: 4rem 2rem;
+    }
+}
+@media screen and (max-width: 768px){
+    .Card{
+        width: 90vw;
+        padding: 5rem;
+    }
+    form{
+        margin: 4rem 2rem;
+    }
+}
+@media screen and (max-width: 480px){
+    .Card{
+        width: 100vw;
+        padding: 2rem;
+    }
     form{
         margin: 4rem 2rem;
     }
