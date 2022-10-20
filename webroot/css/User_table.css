@@ -1,11 +1,11 @@
 #main{
-  height: 92vh;
+  height: auto;
   background-color: #D7EEFF;
 }
 .Card{
   margin: 0vh auto;
   width: 80vw;
-  height: 92vh;
+  height: auto;
   padding: 4rem;
   border-radius: 10px;
   background-color: #fff;
@@ -90,7 +90,7 @@ table.glaf td{
 }
 /* スクロールバー */
 .scroll_bar{
-  height: 50vh;
+  height: 70vh;
   overflow-y: scroll;
 }
 .scroll_bar::-webkit-scrollbar{
