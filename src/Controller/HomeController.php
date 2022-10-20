@@ -36,15 +36,9 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
-        $user = $this->Authentication->getIdentity();
 
-
-        // 勤務状況表示
-        
-        $users = $this->users->find('all')->where([
-            ['enterprise_id' => $user->enterprise_id],
-            'not' => ['role'=>9]
-        ]);
+        // 社員情報を取得
+        $users = $this->SerchUser->getEmployee($me->enterprise_id);
 
 
         if ($this->request->is('post')) {
@@ -114,33 +108,13 @@ class HomeController extends AppController
             }
             // 社員検索処理
             if(isset($_POST['searchButton'])) {
-
-                // 配列
-                $searchUsers = [];
-                
                 // 入力値受け取り
                 $find = $this->request->getData('find');
-                // debug($find);
-
-                // 入力値が条件に合うかどうか検索
-                $users = $this->users->find('all')->where([
-                    'or' => [
-                        ['last_name LIKE' => '%'.$find.'%',],
-                        ['first_name LIKE' => '%'.$find.'%']
-                    ],
-                    'not' => ['role' => '9']
-                ]);
-
+                // 条件に一致する社員の情報を取り出す
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
                 //ユーザーの人数を取得
-                //debug($count);
-                // 条件にあったデータを渡す
-                //$this->set('searchUsers', $searchUsers);
                 $count = $users->count();
-            $this->set('count', $count);
-            
-                // 出勤状況表示部分
-                $searchStatus = $this->solve($searchUsers);
-                $this->set('searchStatus', $searchStatus);
+                $this->set('count', $count);
             }
         }
         
@@ -170,17 +144,13 @@ class HomeController extends AppController
     {
         $array = array();
         foreach($users as $user){
-            //debug($user->id);
             array_push($array, $this->solveStatus($user->id));
         }
-        //debug($array);
         return $array;
     }
     private function solveStatus($id)
     {
         $this->loadModel('Punches');
-
-        //debug(date('Y-m-d'));
         
         // 当日のその人のデータを全て取得
 
@@ -237,7 +207,6 @@ class HomeController extends AppController
         ->find('all')
         ->where(['user_id'=>$id, 'date'=>$date, 'identify'=>$identify])
         ->last();
-        //debug($query->id);
         // 取得したデータが空ならFalse あるならTrueを返す
         if($query == null){
             return false;
