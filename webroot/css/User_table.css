@@ -100,11 +100,9 @@ table.glaf td{
 }
 .scroll_bar::-webkit-scrollbar-track{
   background-color: #ccc;
-  border-radius: 5px;
 }
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
-  border-radius: 5px;
 }
 @media screen and (max-width: 1280px){
   .Card{
@@ -199,7 +197,7 @@ table.glaf td{
     padding: 0rem;
   }
   .id_name {
-    padding: 0 2rem 0 0;
+    padding: 2rem  2rem 0 0;
   }
   .month h3 a{
     padding: 2rem 0;
@@ -216,7 +214,7 @@ table.glaf td{
       padding: 0rem;
     }
     .id_name {
-      padding: 0 2rem 0 0;
+      padding: 1rem 2rem 0 0;
     }
     .month h3 a{
       padding: 2rem 0;

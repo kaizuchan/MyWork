@@ -26,10 +26,10 @@ if ($this->request->is('post')) {
 
 <div id="main">
     <div class="Card">
-      <h1>社員編集</h1>
-      
       <!-- 戻るボタン -->
       <?php echo $this->element('components/backButton'); ?>
+      <h1>社員編集</h1>
+      
 
       <form class="was-validated" method="POST">
 
