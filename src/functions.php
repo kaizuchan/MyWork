@@ -5,9 +5,9 @@
   * template/admin/edituser.php
  */
   // postで受け取ったデータがあるなら返す
-  function getValue($name){
+  function setValue($name){
     $res = "";
-    if(isset($_POST['employee_id'])){
+    if(isset($_POST[$name])){
       $res = $_POST[$name];
     }
     //echo $res;
@@ -58,6 +58,12 @@
   // 性別ラジオボタン 初期値追加
   function setCheckdGender($value, $default){
     if($value == $default){
+      echo ' checked="checked"';
+    }
+  }
+  // 管理者 チェックボックス 初期値
+  function setCheckdAdmin($default = null){
+    if($default == 2){
       echo ' checked="checked"';
     }
   }
@@ -117,9 +123,9 @@
     $workday = 0;
     foreach($data['dates'] as $date){
       if($date['end_work'] != null){
-        $work += $date['work'];
-        $total += $date['total'];
-        $overtime += $date['overtime'];
+        $work += (int) $date['work'];
+        $total += (int) $date['total'];
+        $overtime += (int) $date['overtime'];
         $workday += 1;
       }
     }
