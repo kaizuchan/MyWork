@@ -107,6 +107,7 @@ table.glaf td{
 }
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
+  border-radius: 5px;
 }
 @media screen and (max-width: 1280px){
   .Card{
