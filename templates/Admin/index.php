@@ -47,6 +47,7 @@
                 <?php endif; ?>
 
                     
+                <div class="scroll_bar">
                     <div id="form">
                         <table class="table table-hover">
                                 <thead  class="table-light">
