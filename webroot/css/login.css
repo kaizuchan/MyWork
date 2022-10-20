@@ -3,6 +3,20 @@ body {
     padding: 0;
     background-color: #fff;
 }
+.back{
+    background-image: url(../img/rogo.jpg);
+    margin: 40px auto 0 auto;
+    width: 800px;
+    height: 800px;
+    background-size: 800px 800px;
+    opacity: 0.4;
+}
+img{
+    height: 7vh;
+}
+#logo{
+    margin: 10px auto;
+}
 #errMessage{
     position: fixed;
     bottom: 2rem;

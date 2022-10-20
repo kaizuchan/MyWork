@@ -17,8 +17,14 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
+        <div id="logo">
+            <a href="/">  
+            <?php
+                echo $this->Html->image("rogo.png");
+            ?>
+            </a>   
+        </div>
 
-        <a href="/">MyWork</a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">

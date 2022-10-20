@@ -14,7 +14,7 @@
 #noClose button{
   height: 5vh;
   width: 8vw;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   border-radius: 5px;
   border: 2px solid #1F78B4;
   display: flex;
@@ -68,9 +68,9 @@
 }
 /* モーダルのpタグ */
 #modal p {
-  margin: 0 1rem;
-  font-size: 1.6rem;
-  line-height: 4rem;
+  margin: 1rem 1rem;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
 }
 /* 隠す */
 #mask.hidden {
@@ -83,6 +83,9 @@
 #deleteList {
   border: none;
   text-align: center;
+}
+  #delete_scl{
+    overflow: auto;
 }
 /* タブレット用 */
 @media screen and (max-width: 1000px){
@@ -116,6 +119,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 11px;
 }
   /* 幅 */
   #modal{
@@ -123,6 +127,8 @@
   }
   /* メッセージのフォントサイズ */
   #editMessage{
+    margin: 1rem 1rem;
     font-size: 1rem;
+    line-height: 2.2rem;
   }
 }
