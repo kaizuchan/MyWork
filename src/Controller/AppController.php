@@ -50,5 +50,6 @@ class AppController extends Controller
          */
         //$this->loadComponent('FormProtection');
         $this->loadComponent('Authentication.Authentication'); // ← 追加
+        $this->loadComponent('Authorization.Authorization'); // ← 追加
     }
 }

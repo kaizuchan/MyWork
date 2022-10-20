@@ -15,6 +15,8 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         $this->Authentication->allowUnauthenticated(['index', 'login', 'logout']);
+        // アクセス制限にかからないよう
+        $this->Authorization->skipAuthorization();
     }
 
     public function index()
