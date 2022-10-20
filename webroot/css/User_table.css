@@ -71,13 +71,9 @@ table.glaf {
   position: relative;
 	border-collapse: collapse; 
 }
-table.glaf thead, tbody{
-  width: 8vw
-  display: block;
-}
 table.glaf thead tr th{
-  background-color: #D7EEFF;
-  height: 6vh;
+  background-color: #0099CC;
+  color: #fff;
   position: sticky;
 	top: 0; 
 }
@@ -85,7 +81,6 @@ table.glaf tr{
   height: 6vh;
 }
 table.glaf th{
-  font-weight: 500;
   vertical-align: middle;
   text-align: center;
 }
@@ -103,11 +98,9 @@ table.glaf td{
 }
 .scroll_bar::-webkit-scrollbar-track{
   background-color: #ccc;
-  border-radius: 5px;
 }
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
-  border-radius: 5px;
 }
 @media screen and (max-width: 1279px){
   .total {
