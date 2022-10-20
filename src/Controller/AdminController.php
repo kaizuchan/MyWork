@@ -16,12 +16,19 @@ class AdminController extends AppController
         // ログイン中のユーザー情報を読み込み
         $me = $this->Authentication->getIdentity();
         $this->set(compact('me'));
+        // アクセス制限
+        $this->loadModel('Users');
+        $user = $this->Users->get($me->id);
+        $this->Authorization->authorize($user, 'view');
     }
 
     public function index()
     {        
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
+/*         $this->loadModel('Users');
+        $user = $this->Users->get($me->id);
+        $this->Authorization->authorize($user, 'view'); */
         
         // 使うモデルの選択
         $this->loadModel('Users');

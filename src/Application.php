@@ -35,6 +35,13 @@ use Authentication\AuthenticationServiceProviderInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Routing\Router;
 use Psr\Http\Message\ServerRequestInterface;
+// Authorization関連 追加コード
+use Authorization\AuthorizationService;
+use Authorization\AuthorizationServiceInterface;
+use Authorization\AuthorizationServiceProviderInterface;
+use Authorization\Middleware\AuthorizationMiddleware;
+use Authorization\Policy\OrmResolver;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Application setup class.
@@ -43,8 +50,10 @@ use Psr\Http\Message\ServerRequestInterface;
  * want to use in your application.
  */
 
-// implementsを追加
-class Application extends BaseApplication implements AuthenticationServiceProviderInterface
+// ↓ implements に AuthenticationServiceProviderInterface を追加
+// ↓ implements に AuthorizationServiceProviderInterface を追加
+class Application extends BaseApplication implements 
+AuthenticationServiceProviderInterface, AuthorizationServiceProviderInterface
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -75,6 +84,7 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 
         // Load more plugins here
         $this->addPlugin('Authentication'); // ← 追加
+        $this->addPlugin('Authorization'); // ← 追加
     }
 
     /**
@@ -114,7 +124,8 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 'httponly' => true,
             ]))
 
-            ->add(new AuthenticationMiddleware($this)); // ← 追加
+            ->add(new AuthenticationMiddleware($this)) // ← 追加
+            ->add(new AuthorizationMiddleware($this));  // ← 追加
 
         return $middlewareQueue;
     }
@@ -178,5 +189,12 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $service->loadIdentifier('Authentication.Password');
 
         return $service;
+    }
+    // ↓ これを追加
+    public function getAuthorizationService(ServerRequestInterface $request): AuthorizationServiceInterface
+    {
+        $resolver = new OrmResolver();
+
+        return new AuthorizationService($resolver);
     }
 }
