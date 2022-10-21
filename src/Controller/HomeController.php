@@ -130,6 +130,7 @@ class HomeController extends AppController
     {
         $me = $this->Authentication->getIdentity()->get('id');
         $data = $this->PuncheData->getMonthlyData($me, $month, $year);
+        debug($data);
         $this->set(compact('data'));
 
     }
