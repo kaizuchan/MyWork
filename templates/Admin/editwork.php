@@ -20,64 +20,112 @@
 
         <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
 
-        <!-- 戻るボタン -->
-        <?php echo $this->element('components/backButton'); ?>
+        <div id="main">
+            <div class="Card">
+                <!-- 戻るボタン -->
+                <?php echo $this->element('components/backButton'); ?>
 
-        <div id="userId_Name">
-            <div><p>ID:123456</p></div>
-            <div><p>横田守生</p></div>
+                <div class="id_name">
+                    <p>ID:123456</p>
+                    <p>横田守生</p>
+                </div>
+
+                <div><h1 class="title">勤務表履歴</h1></div>
+                <?php 
+                    $month = (int) substr($date, 4, 2); 
+                    $date = (int) substr($date, 6, 2); 
+                ?>
+                    <h2 class="oct"><?= $month ?>月<?= $date ?>日</h2>
+
+                    <form method="post">
+                        <div id="editTable">
+                            <table class="table">
+                                <thead  class="table-light">
+                                    <tr>
+                                        <th>打刻種別</th>
+                                        <th>打刻時間</th>
+                                        <th>打刻時間</th>
+                                        <th>保存</th>
+                                        <th>削除</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>出勤時間</td>
+                                        <td>
+                                            <select>
+                                                <option value="">当日</option>
+                                                <option value="">翌日</option>
+                                            </select>
+                                        </td>
+                                        <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
+                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
+                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>退勤時間</td>
+                                        <td>
+                                            <select>
+                                                <option value="">当日</option>
+                                                <option value="">翌日</option>
+                                            </select>
+                                        </td>
+                                        <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
+                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
+                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>休憩開始時間</td>
+                                        <td>
+                                            <select>
+                                                <option value="">当日</option>
+                                                <option value="">翌日</option>
+                                            </select>
+                                        </td>
+                                        <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
+                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
+                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>休憩終了時間</td>
+                                        <td>
+                                            <select>
+                                                <option value="">当日</option>
+                                                <option value="">翌日</option>
+                                            </select>
+                                        </td>
+                                        <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
+                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
+                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
+                                    </tr>   
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <input
+                            type="hidden" name="_csrfToken" autocomplete="off"
+                            value="<?= $this->request->getAttribute('csrfToken') ?>">
+
+                        
+                        <div id="mask" class="hidden"></div>
+                        <section id="modal" class="hidden">
+                            <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
+                            <div  id="selectButton">
+                                <div id="yesClose">
+                                    <button id="yesButton">はい</button>
+                                </div>
+                                <div id="noClose">
+                                    <button id="noButton">いいえ</button>
+                                </div>
+                            </div>
+                        </section>
+                    </form>
+                    
+
+                </div>
+                <?php echo $this->Html->script("modal"); ?>
+            </div>
         </div>
-
-        <div><h1 id="pageTitle">勤務表履歴</h1></div>
-        <?php 
-            $month = (int) substr($date, 4, 2); 
-            $date = (int) substr($date, 6, 2); 
-        ?>
-        <div><p id="pageDate"><?= $month ?>月<?= $date ?>日</p></div>
         
-            <form method="post">
-                <div>
-                    <table>
-                        <tr>
-                            <th>出勤時間</th>
-                            <th>退勤時間</th>
-                            <th>休憩開始時間</th>
-                            <th>休憩終了時間</th>
-                        </tr>
-                        <tr>
-                            <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
-                            <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
-                            <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
-                            <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <input
-                    type="hidden" name="_csrfToken" autocomplete="off"
-                    value="<?= $this->request->getAttribute('csrfToken') ?>">
-
-                <div id="buttonBox">
-                        <div id="changeButton"><button type="submit">保存する</button></div>
-                        <div id="cancelButton"><button id="open" type="button">キャンセル</button></div>
-                </div>
-                
-                <div id="mask" class="hidden"></div>
-                <section id="modal" class="hidden">
-                    <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
-                    <div  id="selectButton">
-                        <div id="yesClose">
-                            <button id="yesButton">はい</button>
-                        </div>
-                        <div id="noClose">
-                            <button id="noButton">いいえ</button>
-                        </div>
-                    </div>
-                </section>
-            </form>
-            
-        
-    </div>
-    <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
