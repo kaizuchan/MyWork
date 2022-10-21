@@ -23,8 +23,6 @@
 
         <div class="Card">
 
-        <!-- 戻るボタン -->
-        <?php echo $this->element('components/backButton'); ?>
 
             <!-- 検索ボックス -->
             <div id="searchBox">
