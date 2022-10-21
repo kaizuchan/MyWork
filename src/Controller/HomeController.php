@@ -53,7 +53,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 1;
 
                 // データ登録
@@ -69,7 +69,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 4;
 
                 try {
@@ -84,7 +84,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 2;
 
                 try {
@@ -99,7 +99,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 3;
 
                 try {
@@ -133,8 +133,9 @@ class HomeController extends AppController
     {
         $me = $this->Authentication->getIdentity()->get('id');
         $data = $this->PuncheData->getMonthlyData($me, $month, $year);
-        debug($data);
         $this->set(compact('data'));
+        //debug($this->PuncheData->getPunchedData(1, '2022-10-21', 1));
+        debug($data);
 
     }
 
