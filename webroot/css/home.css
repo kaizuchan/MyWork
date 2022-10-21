@@ -167,7 +167,7 @@ button:hover{
     padding: 0.2rem 1rem;
 }
 /* 767px以下 (タブレット、スマホ用のデザイン) */
-@media screen and (max-width: 767px){
+@media screen and (max-width: 912px){
     #main{
         height: max-content;
         flex-direction: column;
@@ -192,8 +192,8 @@ button:hover{
     }
     /* 打刻ボタン全て */
     .engButton{
-        width: 40%;
-}
+        width: 30vw;
+    }
     .buttonFlex{
         display:flex;
         justify-content: center;
@@ -203,7 +203,7 @@ button:hover{
         margin: 0 auto;
     }
     #userNameList{
-        padding: 0 3rem;
+        padding: 0 8rem;
     }
     #searchBox input{
         width: 70vw;
@@ -219,7 +219,14 @@ button:hover{
         font-size: 6rem;
         text-align: center;
     }
+    /* 打刻ボタン全て */
+    .engButton{
+        width: 40vw;
+    }
     input[type="text"]{
         width: 70vw;
     }
+    /* スクロールバー */
+    .scroll_bar{
+        height: 54vh;
 }
