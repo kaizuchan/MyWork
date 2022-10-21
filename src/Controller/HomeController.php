@@ -38,7 +38,9 @@ class HomeController extends AppController
 
 
         // 社員情報を取得
-        $users = $this->SerchUser->getEmployee($me->enterprise_id);
+        $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
+        //debug($users);
+        //$users = $users->where(['not' => ['id' => $me->id]]);
 
 
         if ($this->request->is('post')) {
@@ -62,7 +64,7 @@ class HomeController extends AppController
                 }
             }
             if(isset($_POST['leave'])) {
-                    
+                
                 $punches = $this->punch->newEmptyEntity();
 
                 $punches->user_id = $me->id;
@@ -111,7 +113,7 @@ class HomeController extends AppController
                 // 入力値受け取り
                 $find = $this->request->getData('find');
                 // 条件に一致する社員の情報を取り出す
-                $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id, $find);
                 //ユーザーの人数を取得
                 $count = $users->count();
                 $this->set('count', $count);
