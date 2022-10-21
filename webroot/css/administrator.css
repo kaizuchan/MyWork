@@ -19,7 +19,7 @@ button:hover{
     inset: 0;
     margin: 8vh auto;
     width: 80vw;
-    height: max-content;
+    height: 92vh        
     padding: 4rem;
     border-radius: 10px;
     background-color: #fff;
@@ -72,6 +72,8 @@ form#searchForm{
 #thead th{
     font-size: 1.2rem;
     font-weight: 400;
+    position: sticky;
+      top: 0;
 }
 /* ユーザー一覧全体 */
 #tbody{
@@ -170,24 +172,36 @@ form#searchForm{
         margin: 5vh auto 0 auto;
     }
     #form table tr td{
-        height: 12vh;
+        height: 10vh;
+        vertical-align: middle;
+        text-align: center;
+    }
+    #form table tr th{
+        height: 10vh;
+        vertical-align: middle;
+        text-align: center;
+    }
+    #add-deleteButton{
+        margin: 3rem 0 0 0;
+    }
+}
+/* テーブルが横スクロールに切り替えるpx */
+@media screen and (max-width: 640px){
+    #form table tr td{
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #form table tr th{
-        height: 12vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    #add-deleteButton{
-        margin: 3rem 0 0 0;
-    }
+    /* スクロールバー隠す */
     .scroll_bar{
-        overflow-y: none;
+      overflow-y: hidden;
     }
-}
+  }
 @media screen and (max-width: 480px){ 
     /* 検索フォーム全体 */
     #searchBox{
