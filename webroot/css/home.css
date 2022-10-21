@@ -169,13 +169,13 @@ button:hover{
 /* 767px以下 (タブレット、スマホ用のデザイン) */
 @media screen and (max-width: 767px){
     #main{
-        height: auto;
+        height: max-content;
         flex-direction: column;
     }
     .Card{
         margin: 2rem 0 0 0;
         padding: 4rem 0 0 0;
-        height: 80vh;
+        height: max-content;
         width: 100vw;
         box-shadow: 20px 0 20px 0 rgb(0 0 0 / 20%);
     } 

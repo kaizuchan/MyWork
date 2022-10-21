@@ -18,8 +18,8 @@
         <!-- 戻るボタン -->
         <?php echo $this->element('components/backButton'); ?>
             <div class="id_name">
-                <h6>ID:<?= $user->employee_id ?></h6>
-                <h6><?= $user->last_name.$user->first_name ?></h6>
+                <p>ID:<?= $user->employee_id ?></p>
+                <p><?= $user->last_name.$user->first_name ?></p>
             </div>
                 <h1 class="title">勤務時間表</h1>
                 <h2 class="oct"><?= $dates['month'] ?>月</h2>
@@ -54,13 +54,13 @@
                             <th class="fir_row"scope="col">編集</th>
                             <th class="fir_row"scope="col">日付</th>
                             <th class="fir_row"scope="col">出勤時間</th>
-                            <th class="fir_wow"scope="col">退勤時間</th>
-                            <th class="fir_wow"scope="col">休憩開始時間</th>
+                            <th class="fir_row"scope="col">退勤時間</th>
+                            <th class="fir_row"scope="col">休憩開始時間</th>
                             <th class="fir_row"scope="col">休憩終了時間</th>
-                            <th class="fir_wow"scope="col">労働時間</th>
-                            <th class="fir_wow"scope="col">休憩時間</th>
-                            <th class="fir_wow"scope="col">残業時間</th>
-                            <th class="fir_wow"scope="col">総勤務時間</th>
+                            <th class="fir_row"scope="col">労働時間</th>
+                            <th class="fir_row"scope="col">休憩時間</th>
+                            <th class="fir_row"scope="col">残業時間</th>
+                            <th class="fir_row"scope="col">総勤務時間</th>
                         </tr>
                     </thead>
                     <tbody>
