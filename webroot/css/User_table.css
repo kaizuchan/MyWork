@@ -1,11 +1,11 @@
 #main{
-  height: 92vh;
+  height: auto;
   background-color: #D7EEFF;
 }
 .Card{
   margin: 0vh auto;
-  width: 80vw;
-  height: 92vh;
+  width: 90vw;
+  height: auto;
   padding: 4rem;
   border-radius: 10px;
   background-color: #fff;
@@ -90,7 +90,9 @@ table.glaf td{
 }
 /* スクロールバー */
 .scroll_bar{
-  height: 50vh;
+  width: max-content;
+  height: 70vh;
+  margin: 0 auto;
   overflow-y: scroll;
 }
 .scroll_bar::-webkit-scrollbar{
@@ -98,11 +100,16 @@ table.glaf td{
 }
 .scroll_bar::-webkit-scrollbar-track{
   background-color: #ccc;
+  border-radius: 5px;
 }
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
+  border-radius: 5px;
 }
-@media screen and (max-width: 1279px){
+@media screen and (max-width: 1280px){
+  .Card{
+    width: 95vw;
+  }
   .total {
     width: 70vw;
   }
@@ -130,9 +137,11 @@ table.glaf td{
     width: 75vw;
   }
   .total table th{
+    height: 5vh;
     font-size: 1.2rem;
   }
   .total table td{
+    height: 5vh;
     font-size: 1.2rem;
   }
   table.glaf {
@@ -143,7 +152,7 @@ table.glaf td{
 }
 @media screen and (max-width: 834px){
   .Card{
-    width: 90vw;
+    width: 100vw;
     padding: 2rem;
   }
   .id_name {
@@ -159,15 +168,6 @@ table.glaf td{
     width: 75vw;
     margin: 1.5rem auto;
   }
-  .total table th{
-    border-radius: 10px 10px 0 0;
-    font-size: 0.8rem;
-  }
-  .total table td{
-    text-align: center;
-    border-radius: 0 0 10px 10px;
-    margin: 0 0 1.5rem 0;
-  }
   table.glaf th {
     height: 5vh;
   }
@@ -176,6 +176,15 @@ table.glaf td{
   }
 }
 @media screen and (max-width: 640px){
+  .total table th{
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
+  }
+  .total table td{
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    margin: 0 0 1.5rem 0;
+  }
   /* スクロールバー */
   .scroll_bar{
     overflow-y: hidden;
@@ -190,9 +199,10 @@ table.glaf td{
   }
   .Card{
     padding: 0rem;
+    height: max-content;
   }
   .id_name {
-    padding: 0 2rem 0 0;
+    padding: 2rem  2rem 0 0;
   }
   .month h3 a{
     padding: 2rem 0;
@@ -209,7 +219,7 @@ table.glaf td{
       padding: 0rem;
     }
     .id_name {
-      padding: 0 2rem 0 0;
+      padding: 1rem 2rem 0 0;
     }
     .month h3 a{
       padding: 2rem 0;

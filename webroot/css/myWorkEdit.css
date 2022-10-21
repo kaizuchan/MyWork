@@ -67,8 +67,8 @@ table th, td{
     color: #1F78B4;
     border: 1px solid #1F78B4;
 }
-/* スマホ、タブレット用(767px以下デザイン) */
-@media screen and (max-width: 767px){
+/* スマホ、タブレット用(768px以下デザイン) */
+@media screen and (max-width: 768px){
     #userId_Name{
         margin-right: 1rem;
         font-size: 1.6rem;
