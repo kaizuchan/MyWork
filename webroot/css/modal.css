@@ -109,7 +109,7 @@
   }
 }
 /* スマホ、タブレット用 */
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
   #yesClose button,
   #noClose button{
     height: 5vh;

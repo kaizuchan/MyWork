@@ -1,6 +1,6 @@
 #backButtonBox button{
     margin: 0 0 0 0;
-    padding: 0 0 0 0;
+    padding: 1rem;
     border: transparent;
     background-color:transparent;
 }
@@ -9,12 +9,12 @@
     background-color:transparent;
 }
 #backButton{
-    font-size: 3rem;
     color: #000;
+    font-size: 3rem;
     position: absolute;
     z-index: 100;
 }
-@media screen and (max-width: 767px){
+@media screen and (max-width: 768px){
     #backButton{
         font-size: 2rem;
     }

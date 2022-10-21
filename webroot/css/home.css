@@ -25,7 +25,7 @@ button:hover{
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
 #userInfoCard{
-    width: 30vw;
+    width: 35vw;
 }
 #now{
     display: flex;
