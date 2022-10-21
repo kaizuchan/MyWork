@@ -37,10 +37,6 @@ class HomeController extends AppController
         $me = $this->Authentication->getIdentity();
 
         $times = $this->PuncheData->getPunchStatement(1, '2022-10-07');
-        debug($times);
-        foreach($times as $time){
-            debug($time);
-        }
 
         // 社員情報を取得
         $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
