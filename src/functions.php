@@ -148,7 +148,10 @@
       if($i != 0){
         echo '<br>';
       }
-      echo $d;
+      echo date('H:i', strtotime($d));
       $i++;
+    }
+    if($i == 0){
+      echo '-';
     }
   }
