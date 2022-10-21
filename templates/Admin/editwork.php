@@ -9,7 +9,7 @@
     <!-- 戻るアイコンボタン -->
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
+    <?php echo $this->element('components/headerAdmin'); ?>
     <!-- モーダルウィンドウ -->
     <?php echo $this->Html->css("modal"); ?>
     <!-- エラーメッセージや成功メッセージ -->
