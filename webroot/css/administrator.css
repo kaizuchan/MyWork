@@ -11,7 +11,7 @@ button:hover{
 }
 /* メイン全体 */
 #main{
-    height: 92vh;
+    height: max-content;
     background-color: #D7EEFF;
 }
 .Card{
@@ -19,7 +19,7 @@ button:hover{
     inset: 0;
     margin: 8vh auto;
     width: 80vw;
-    height: 92vh;
+    height: max-content;
     padding: 4rem;
     border-radius: 10px;
     background-color: #fff;
