@@ -36,8 +36,6 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
-        // ログイン中ユーザーの勤怠情報を送信
-        $flag = $this->PuncheData->getPunchStatement($me->id);
 
         // 社員情報を取得
         $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
@@ -53,7 +51,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 1;
 
                 // データ登録
@@ -69,7 +67,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 4;
 
                 try {
@@ -84,7 +82,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 2;
 
                 try {
@@ -99,7 +97,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 3;
 
                 try {
@@ -123,6 +121,8 @@ class HomeController extends AppController
         // 出勤状況表示部分
         $status = $this->solve($users);
         $this->set('status', $status);
+        // ログイン中ユーザーの勤怠情報を送信
+        $flag = $this->PuncheData->getPunchStatement($me->id);
         
         // Viewへの受け渡し
         $this->set('users', $users);
@@ -133,8 +133,9 @@ class HomeController extends AppController
     {
         $me = $this->Authentication->getIdentity()->get('id');
         $data = $this->PuncheData->getMonthlyData($me, $month, $year);
-        debug($data);
         $this->set(compact('data'));
+        //debug($this->PuncheData->getPunchedData(1, '2022-10-21', 1));
+        debug($data);
 
     }
 
