@@ -1,21 +1,3 @@
-<?php
-    if(!isset($_SESSION['date'])){
-        $_SESSION['date'] = "";
-    }
-    if(isset($_POST['attend'])) {
-        $_SESSION['flag'] = 1;
-        $_SESSION['date'] = date('Y/m/d');
-    }
-    if(isset($_POST['leave'])) {
-        $_SESSION['flag'] = 2;
-    }
-    if(isset($_POST['restStart'])) {
-        $_SESSION['flag'] = 3;
-    }
-    if(isset($_POST['restFinish'])) {
-        $_SESSION['flag'] = 4;
-    }
-?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -43,13 +25,13 @@
             </div>
             <form method="POST">
                 <div class="buttonFlex">
-                    <button name="attend" class="engButton" id="attendanceButton" <?php echo $_SESSION['date'] == "" || isset($_SESSION['flag']) && $_SESSION['flag'] == 2 && $_SESSION['date'] != date('Y/m/d') ? '' : 'disabled' ?> value="出勤">出勤</a></button>
-                    <button name="leave" class="engButton" id="leavingButton" <?php echo isset($_SESSION['flag']) && $_SESSION['flag'] == 1 || isset($_SESSION['flag']) && $_SESSION['flag'] == 4 ? '' : 'disabled' ?> value="退勤">退勤</button>
+                    <button name="attend" class="engButton" id="attendanceButton" <?php echo $flag == "" || $flag == 4  ? '' : 'disabled' ?>>出勤</a></button>
+                    <button name="leave" class="engButton" id="leavingButton" <?php echo $flag == 1 || $flag == 3 ? '' : 'disabled' ?>>退勤</button>
 
                 </div>
                 <div class="buttonFlex">
-                    <button name="restStart" class="engButton" id="restStartButton" <?php echo isset($_SESSION['flag']) && $_SESSION['flag'] == 1 ? '' : 'disabled' ?> value="休憩開始">休憩開始</button>
-                    <button name="restFinish" class="engButton" id="restFinishButton" <?php echo isset($_SESSION['flag']) && $_SESSION['flag'] == 3 ? '' : 'disabled' ?> value="休憩終了">休憩終了</button>
+                    <button name="restStart" class="engButton" id="restStartButton" <?php echo $flag == 1 || $flag == 3 ? '' : 'disabled' ?>>休憩開始</button>
+                    <button name="restFinish" class="engButton" id="restFinishButton" <?php echo $flag == 2 ? '' : 'disabled' ?>>休憩終了</button>
                 </div>
                 <input
                         type="hidden" name="_csrfToken" autocomplete="off"
