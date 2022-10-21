@@ -86,6 +86,8 @@ table.glaf {
 table.glaf thead tr th{
   background-color: #0099CC;
   color: #fff;
+  position: sticky;
+	top: 0;
   vertical-align: middle;
   text-align: center;
 }
