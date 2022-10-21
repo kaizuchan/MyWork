@@ -15,12 +15,15 @@
     </div>
 
       <div class="card" id="loginCard">
-        <h1>MyWork</h1>
+        <h1>
         <div id="logo">
-          <a><?php
+          <a>
+            <?php
             echo $this->Html->image("rogo.png");
-          ?></a>
-        </div>
+            ?>
+          </a>
+          MyWork
+        </h1>
         <div class="card-body">
           <form id="loginForm" method="POST" action="/users">
             <div class="mb-3">

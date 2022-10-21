@@ -1,19 +1,19 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background-color: #D7EEFF;
 }
-.back{
+/* .back{
     background-image: url(../img/rogo.jpg);
     margin: 0 auto 0 auto;
     height: 100vh;
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    opacity: 0.4;
-}
+    opacity: 0.4; */
+/* } */
 img{
-    height: 7vh;
+    height: 6vh;
 }
 #logo{
     margin: 10px auto;
@@ -54,7 +54,6 @@ input.form-control{
 }
 .mb-3{
     width: 25vw;
-
 }
 #loginForm>button {
     width: 25vw;
@@ -75,11 +74,10 @@ input.form-control{
     }
     
     #loginForm{
-        margin: -2rem auto 0 auto;
+        margin: 0rem auto 0 auto;
     }
     .mb-3{
         width: 50vw;
-        margin-bottom: 2rem;
     }
     #pass{
         height: 5vh;
@@ -87,7 +85,6 @@ input.form-control{
     #loginForm>button {
         width: 50vw;
         height: 5vh;
-        margin-top: 4rem;
     }
     #errMessage{
         position: fixed;
@@ -97,6 +94,12 @@ input.form-control{
     }
 }
 @media screen and (max-width: 481px){
+    img{
+        height: 4vh;
+    }
+    h1{ 
+        font-size: 3vh;
+    }
     .back{
         background-image: url(../img/rogo.jpg);
         margin: auto;
@@ -115,8 +118,5 @@ input.form-control{
     }
     #loginForm{
         margin: -5rem auto 0 auto;
-    }
-    #loginForm>button {
-        margin-top: 1rem;
     }
 }
