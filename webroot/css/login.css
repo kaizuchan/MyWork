@@ -40,7 +40,7 @@ h1{
     align-items: flex-end;
     justify-content: center;
 }
-form input{
+input.form-control{
     height: 5vh;
 }
 #loginForm {
@@ -54,6 +54,7 @@ form input{
 }
 .mb-3{
     width: 25vw;
+
 }
 #loginForm>button {
     width: 25vw;
@@ -64,15 +65,29 @@ form input{
     background-color: #1F78B2;
 }
 /* スマホ用、タブレット用 */
-@media screen and (max-width: 768px){
+@media screen and (max-width: 820px){
     #loginCard{
-        width: 90vw;
+        width: 60vw;
+        height: 60vh;
+    }
+    .form-control{
+        margin-bottom: 4rem;
+    }
+    
+    #loginForm{
+        margin: -2rem auto 0 auto;
     }
     .mb-3{
-        width: 75vw;
+        width: 50vw;
+        margin-bottom: 2rem;
+    }
+    #pass{
+        height: 5vh;
     }
     #loginForm>button {
-        width: 75vw;
+        width: 50vw;
+        height: 5vh;
+        margin-top: 4rem;
     }
     #errMessage{
         position: fixed;
@@ -81,17 +96,27 @@ form input{
         margin: 0 auto;
     }
 }
-@media screen and (max-width: 480px){
-    body{
-        height: 667px;
-    }
+@media screen and (max-width: 481px){
     .back{
         background-image: url(../img/rogo.jpg);
         margin: auto;
-        width: 100%;
+        width: 100vw;
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;
         opacity: 0.4;
+    }
+    .form-control{
+        margin-bottom: 1rem;
+    }
+    #loginCard{
+        width: 75vw;
+        height: 55vh;
+    }
+    #loginForm{
+        margin: -5rem auto 0 auto;
+    }
+    #loginForm>button {
+        margin-top: 1rem;
     }
 }
