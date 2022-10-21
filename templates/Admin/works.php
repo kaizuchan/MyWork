@@ -10,7 +10,7 @@
     <!-- 戻るアイコンボタン -->
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
+    <?php echo $this->element('components/headerAdmin'); ?>
 </head>
 <body>
     <div id="main">

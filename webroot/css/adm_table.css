@@ -221,6 +221,23 @@ table.glaf td{
     align-items: center;
     justify-items: center;
   }
+  table.glaf tbody tr td{
+    padding: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  table.glaf tbody tr td{
+    padding: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  table.glaf tbody tr th{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
   /* スクロールバー隠す */
   .scroll_bar{
     overflow-y: hidden;
