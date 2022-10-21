@@ -8,7 +8,6 @@
     <?php echo $this->Html->css("home"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/header'); ?>
-    <?php echo $this->Html->script("home"); ?>
 </head>
 <body>
     <div id="main">
@@ -25,7 +24,7 @@
             </div>
             <form method="POST">
                 <div class="buttonFlex">
-                    <button name="attend" class="engButton" id="attendanceButton" <?php echo $flag == "" || $flag == 4  ? '' : 'disabled' ?>>出勤</a></button>
+                    <button name="attend" class="engButton" id="attendanceButton" <?php echo $flag == "" || $flag == 4  ? '' : 'disabled' ?>>出勤</button>
                     <button name="leave" class="engButton" id="leavingButton" <?php echo $flag == 1 || $flag == 3 ? '' : 'disabled' ?>>退勤</button>
 
                 </div>
@@ -65,12 +64,13 @@
                     <?php foreach ($users as $user): ?>
                         <div id="userNameList">
                             <p id="userName"><?= h($user->last_name) ?><?= h($user->first_name) ?></p>
-                            <div id="userLabel"><?= $status[$i] ?></div>
+                            <div id="userLabel" class="userLabel"><?= $status[$i] ?></div>
                         </div>
                     <?php $i++; endforeach; ?>
                 </div>
             </div>
         </div>
     </div>
+    <?php echo $this->Html->script("home"); ?>
 </body>
 </html>

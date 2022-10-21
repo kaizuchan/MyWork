@@ -162,9 +162,10 @@ button:hover{
     margin: 0 0 0 0;
 }
 #userLabel{
-    border: 1px solid #000;
     border-radius: 15px;
     padding: 0.2rem 1rem;
+    background-color: #fff;
+    color: #fff;
 }
 /* 767px以下 (タブレット、スマホ用のデザイン) */
 @media screen and (max-width: 912px){
