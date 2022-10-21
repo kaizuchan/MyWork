@@ -1,48 +1,55 @@
+/* メイン全体 */
 #main{
-  height: auto;
+  height: max-content;
   background-color: #D7EEFF;
 }
+/* カード */
 .Card{
   margin: 0vh auto;
   width: 90vw;
-  height: auto;
+  height: max-content;
   padding: 4rem;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
+/* 名前とID */
 .id_name {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding: 0 5rem 0 0;
-}
-.id_name h6{
   font-size: 1.5rem;
 }
+/* タイトル */
 h1.title {
   text-align: center;
 }
+/* 月 */
 h2.oct {
   text-align: center;
 }
+/* 前、後の月 */
 .month {
   display: flex;
   justify-content: space-between;
   padding: 0 5rem;
 }
+/* 前、後の月リンク */
 .month h3 a{
   font-size: 2rem;
   display: flex;
   align-items: center;
   color: #000;
 }
+/* 前、後の月リンク */
 .month h3 a:hover{
   text-decoration: underline;
 }
 .nextMonth{
   margin: 0 1rem;
 }
+/* トータル4項目 */
 .total {
   display: flex;
   margin: 3rem auto;
@@ -51,6 +58,11 @@ h2.oct {
   display: flex;
   justify-content: center;
 }
+/* トータル項目名、値 */
+.total table tr{
+  font-size: 2rem;
+}
+/* トータルの項目名 */
 .total table th{
   padding: 0 1rem;
   font-weight: 400;
@@ -58,18 +70,17 @@ h2.oct {
   color: #fff;
   border-radius: 10px 0 0 10px;
 }
+/* トータルの値 */
 .total table td{
   background: #fff;
   border-radius: 0 10px 10px 0;
   padding: 1rem 1rem;
 }
-.total table tr{
-  font-size: 2rem;
-}
+/* グラフ全体 */
 table.glaf {
   width: 80vw;
   margin: 0 auto;
-  font-size: 1.8rem;
+  font-size: 1.8rem;//グラフ全てのフォントサイズ
   position: relative;
 	border-collapse: collapse; 
 }
@@ -77,16 +88,20 @@ table.glaf thead tr th{
   background-color: #0099CC;
   color: #fff;
   position: sticky;
-	top: 0; 
+	top: 0;
+  vertical-align: middle;
+  text-align: center; 
 }
+/* グラフの横一列 */
 table.glaf tr{
   height: 6vh;
-  font-size: 2rem;
 }
+/* グラフの日付部分 */
 table.glaf th{
   vertical-align: middle;
   text-align: center;
 }
+/* グラフの値 */
 table.glaf td{
   vertical-align: middle;
   text-align: center;
@@ -109,46 +124,51 @@ table.glaf td{
   background-color: #777;
   border-radius: 5px;
 }
+/* スクロールバーここまで */
+
+
+/* 1280px以下 */
 @media screen and (max-width: 1280px){
   .Card{
-    width: 95vw;
+    width: 95vw;//カードの幅
   }
   .total {
-    width: 70vw;
+    width: 70vw;//トータル全体の幅
   }
-  .total table {
+  /* .total table {
     display: flex;
-  }
-  .total table th{
-    font-size: 1.2rem;
-  }
-  .total table td{
-    font-size: 1.2rem;
+  } */
+  .total table tr{
+    font-size: 1.2rem;//トータルのフォントサイズ
   }
   table.glaf {
-    width: 80vw;
+    width: 80vw;//グラフの幅
     font-size: 1.2rem;
   }
+  table.glaf thead tr th{
+    font-size: 1.2rem;//グラフ全体のフォントサイズ
+  }
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 912px){
   .month h3 a{
     font-size: 1.5rem;
     display: flex;
     align-items: center;
   }
   .total {
-    width: 75vw;
+    width: 75vw;//トータルの幅
+  }
+  .total table tr{
+    height: 6rem;//トータルの全体の高さ
+    font-size: 1.4rem;//トータルのフォントサイズ
   }
   table.glaf {
-    width: 80vw;
-    margin: 0 auto;
     font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 834px){
   .Card{
-    width: 100vw;
-    padding: 2rem;
+    width: 95vw;
   }
   .id_name {
     padding: 0 2rem 0 0;
@@ -165,17 +185,17 @@ table.glaf td{
   }
   table.glaf th {
     height: 5vh;
-    font-size: 1.2rem;
   }
   table.glaf td {
     height: 5vh;
-    font-size: 1.2rem;
+  }
+  table.glaf thead tr th{
+    font-size: 1rem;
+    font-weight: 300;
   }
 }
+/* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){
-  .Card{
-    height: max-content;
-  }
   button.btn.btn-outline-info {
     height: 4vh;
   }
@@ -192,21 +212,14 @@ table.glaf td{
     border-radius: 0 0 10px 10px;
     margin: 0 0 1.5rem 0;
   }
-  /* スクロールバー */
+  /* スクロールバー隠す */
   .scroll_bar{
     overflow-y: hidden;
   }
 }
 @media screen and (max-width: 480px){
-  #main{
-    height: 92vh;
-  }
-  .Card{
-    height: 92vh;
-  }
   .Card{
     padding: 0rem;
-    height: max-content;
   }
   .id_name {
     padding: 2rem 2rem 0 0;
@@ -215,18 +228,15 @@ table.glaf td{
     padding: 2rem 0;
   }
   .total {
-    margin: 0 auto;
+    margin: 1.5rem auto;
     font-size: 1rem;
   }
-  @media screen and (max-width: 280px){#main{
-    height: 92vh;
-    }
-    .Card{
-      width: 100vw;
-      padding: 0rem;
-    }
+  table.glaf tr td{
+    height: 5vh;
+  }
+  @media screen and (max-width: 280px){
     .id_name {
-      padding: 0 2rem 0 0;
+      padding: 1rem 2rem 0 0;
     }
     .month h3 a{
       padding: 2rem 0;
