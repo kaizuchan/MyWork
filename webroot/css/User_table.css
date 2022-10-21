@@ -80,7 +80,7 @@ h2.oct {
 table.glaf {
   width: 80vw;
   margin: 0 auto;
-  font-size: 1.8rem;//グラフ全てのフォントサイズ
+  font-size: 1.6rem;//グラフ全てのフォントサイズ
   position: relative;
 	border-collapse: collapse; 
 }
@@ -182,7 +182,8 @@ table.glaf td{
   table.glaf td {
     height: 5vh;
   }
-  table.glaf thead tr th{
+  table.glaf thead tr th.fir_row{
+    padding: 0;
     font-size: 1rem;
     font-weight: 300;
   }
@@ -197,6 +198,12 @@ table.glaf td{
     text-align: center;
     border-radius: 0 0 10px 10px;
     margin: 0 0 1.5rem 0;
+  }
+  table.glaf {
+    margin: 4rem 0 0 0;
+  }
+  table.glaf thead tr th.fir_row{
+    padding: 1.2rem 1rem 0 1rem;
   }
   /* スクロールバー隠す */
   .scroll_bar{
