@@ -36,8 +36,9 @@ class Punches extends AbstractMigration
                 'limit' => MysqlAdapter::INT_TINY,
                 'null' => false,
             ])
-            ->addColumn('modified_info', 'boolean', [
-                'default' => false,
+            ->addColumn('info', 'integer', [
+                'default' => 1,
+                'limit' => MysqlAdapter::INT_TINY,
                 'null' => false,
             ])
             ->addForeignKey('user_id', 'users', 'id')

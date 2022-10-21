@@ -36,6 +36,10 @@ class PuncheDataComponent extends Component
             $a = [
                 'date' => $i,
                 'day'  => date('w', strtotime($year.'-'.$month.'-'.$i)),
+                'start_work' => array(),
+                'start_break' => array(),
+                'end_break' => array(),
+                'end_work' => array(),
             ];
             array_push($array['dates'], $a);
         }
@@ -45,36 +49,35 @@ class PuncheDataComponent extends Component
             // その日の勤怠データを取得
             $res = $this->getPunchdData($year.'/'.$month.'/'.$date['date'], $user_id);
             // 上のデータをもとに「労働時間,休憩時間,残業時間,総勤務時間」の計算
-            $res = $this->calculateHours($res);
+            //$res = $this->calculateHours($res);
             // 取得したデータをマージ
             $array['dates'][$key] = array_merge($array['dates'][$key], $res);
         }
-        $array = calculateMonthlyHours($array);
+        //$array = calculateMonthlyHours($array);
         return $array;
     }
     /* 配列にユーザーの勤怠データを登録して返す */
     public function getPunchdData($date, $user_id)
     {
-        $data = array();
         $identify = array('start_work', 'start_break', 'end_break', 'end_work');
         $this->loadModel('Punches');
         for ($i = 1; $i <= 4; $i++) {
-            // 最新のレコードを１つのみ取得
+            $data = array();
+            // 対象のレコードを全て取得
             $res = $this->Punches->find('all')->where([
                 'user_id' => $user_id,
                 'date' => $date,
                 'identify' => $i,
-            ])->last();
-
+            ]);
             // 取得したデータ != null ならば、取得したデータから時:分のみを取得
             if($res != null){
-                $time = date('H:i', strtotime($res->time));
-            }else{
-                $time = "";
+                foreach($res as $r){
+                    array_push($data, date('H:i', strtotime($r->time)));
+                }
             }
-            $data = array_merge($data, [$identify[$i-1] => $time]);
+            $return[$identify[$i-1]] = $data;
         }
-        return $data;
+        return $return;
     }
 
 

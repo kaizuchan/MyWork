@@ -13,7 +13,7 @@ use Cake\ORM\Entity;
  * @property \Cake\I18n\FrozenDate $date
  * @property \Cake\I18n\Time $time
  * @property int $identify
- * @property bool $modified_info
+ * @property int $info
  *
  * @property \App\Model\Entity\User $user
  */
@@ -33,7 +33,7 @@ class Punch extends Entity
         'date' => true,
         'time' => true,
         'identify' => true,
-        'modified_info' => true,
+        'info' => true,
         'user' => true,
     ];
 }
