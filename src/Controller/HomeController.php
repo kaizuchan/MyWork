@@ -36,9 +36,11 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
+        // ログイン中ユーザーの勤怠情報を送信
+        $flag = $this->PuncheData->getPunchStatement($me->id);
 
         // 社員情報を取得
-        $users = $this->SerchUser->getEmployee($me->enterprise_id);
+        $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
 
 
         if ($this->request->is('post')) {
@@ -62,7 +64,7 @@ class HomeController extends AppController
                 }
             }
             if(isset($_POST['leave'])) {
-                    
+                
                 $punches = $this->punch->newEmptyEntity();
 
                 $punches->user_id = $me->id;
@@ -111,7 +113,7 @@ class HomeController extends AppController
                 // 入力値受け取り
                 $find = $this->request->getData('find');
                 // 条件に一致する社員の情報を取り出す
-                $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id, $find);
                 //ユーザーの人数を取得
                 $count = $users->count();
                 $this->set('count', $count);
@@ -124,6 +126,7 @@ class HomeController extends AppController
         
         // Viewへの受け渡し
         $this->set('users', $users);
+        $this->set('flag', $flag);
     }
 
     public function works($month = null, $year = null)
@@ -145,54 +148,30 @@ class HomeController extends AppController
     {
         $array = array();
         foreach($users as $user){
-            array_push($array, $this->solveStatus($user->id));
+            switch($this->solveStatus($user->id)){
+                case null:
+                    $data = "退勤";
+                    break;
+                case 1:
+                    $data = "勤務中";
+                    break;
+                case 2:
+                    $data = "休憩中";
+                    break;
+                case 3:
+                    $data = "勤務中";
+                    break;
+                case 4:
+                    $data = "退勤";
+                    break;
+            }
+            array_push($array, $data);
         }
         return $array;
     }
     private function solveStatus($id)
     {
-        $this->loadModel('Punches');
-        
-        // 当日のその人のデータを全て取得
-
-        if($this->checkStatus($id, 4)){
-            // 退勤済み
-            return "退勤";
-            exit();
-        }elseif($this->checkStatus($id, 3)){
-            // 休憩終了後 勤務中
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 2)){
-            // 休憩終了開始後
-            return "休憩中";
-            exit();
-        }elseif($this->checkStatus($id, 1)){
-            // 出勤後
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 4, "yesterday")){
-            // 退勤済み
-            return "退勤";
-            exit();
-        }elseif($this->checkStatus($id, 3, "yesterday")){
-            // 休憩終了後 勤務中
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 2, "yesterday")){
-            // 休憩終了開始後
-            return "休憩中";
-            exit();
-        }elseif($this->checkStatus($id, 1, "yesterday")){
-            // 出勤後
-            return "勤務中";
-            exit();
-        }else{
-            // 直近2日間の勤怠情報がない場合
-            return "退勤";
-            exit();
-        }
-
+        return $this->PuncheData->getPunchStatement($id);
     }
     private function checkStatus($id,$identify,$date = null)
     {
