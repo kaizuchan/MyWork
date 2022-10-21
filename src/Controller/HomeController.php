@@ -135,7 +135,7 @@ class HomeController extends AppController
         $data = $this->PuncheData->getMonthlyData($me, $month, $year);
         $this->set(compact('data'));
         //debug($this->PuncheData->getPunchedData(1, '2022-10-21', 1));
-        debug($data);
+        //debug($data);
 
     }
 
