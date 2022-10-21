@@ -39,7 +39,7 @@ class UsersController extends AppController
                     'employee_id'=>$data['employee_id'],
                 ])->first();
             }else{
-                $res = null;
+                $res['id'] = null;
             }
         }
 

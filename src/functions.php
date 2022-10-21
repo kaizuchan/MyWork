@@ -136,3 +136,19 @@
       'workday' => $workday,
     ]);
   }
+
+  /* 勤怠履歴 表示
+   * 使用場所
+   * template/Home/works.php
+  */
+  function setTime($data)
+  {
+    $i = 0;
+    foreach($data as $d){
+      if($i != 0){
+        echo '<br>';
+      }
+      echo $d;
+      $i++;
+    }
+  }
