@@ -72,12 +72,39 @@ class PuncheDataComponent extends Component
             // 取得したデータ != null ならば、取得したデータから時:分のみを取得
             if($res != null){
                 foreach($res as $r){
-                    array_push($data, date('H:i', strtotime($r->time)));
+                    array_push($data, date('H:i', strtotime((string) $r->time)));
                 }
             }
             $return[$identify[$i-1]] = $data;
         }
         return $return;
+    }
+    /* 打刻時間取得 */
+    public function getPunchStatement($user_id)
+    {
+        // 対象のレコードを全て取得
+        $this->loadModel('Punches');
+        $res = $this->Punches
+            ->find('all')->where([
+                [
+                    'user_id' => $user_id,
+                ],
+                'not' => [
+                    'info' => 9
+                ],
+                'or' => [
+                    ['date' => date('Y-m-d', strtotime('-1 day'))],
+                    ['date' => date('Y-m-d')],
+                ],
+            ])
+            ->order([
+                'time ASC',
+            ])
+            ->last();
+        if ($res != null){
+            $res = $res->get('identify');
+        }
+        return $res;
     }
 
 

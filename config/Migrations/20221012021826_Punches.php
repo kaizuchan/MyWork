@@ -30,7 +30,7 @@ class Punches extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('date', 'date')
-            ->addColumn('time', 'time')
+            ->addColumn('time', 'datetime')
             ->addColumn('identify', 'integer', [
                 'default' => null,
                 'limit' => MysqlAdapter::INT_TINY,
