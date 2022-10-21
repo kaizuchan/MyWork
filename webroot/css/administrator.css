@@ -77,7 +77,7 @@ form#searchForm{
 }
 /* ユーザー一覧全体 */
 #tbody{
-    height: 6vh;
+    height: 5vh;
 }
 /* 縦真ん中　寄せ */
 #form table tr td,th{
@@ -92,10 +92,15 @@ form#searchForm{
     font-size: 1.6rem;
     color: #000;
 }
+/* 勤務履歴遷移ボタン */
+#lookTableButton a{
+    font-size: 2rem;
+    color: grey;
+}
 /* 編集ボタン */
 #editButton a{
-    font-size: 1rem;
-    color: #007bff;
+    font-size: 2rem;
+    color: #87CEFA;
 }
 /* 編集ボタン　ホバー */
 #editButton a:hover{
@@ -187,11 +192,13 @@ form#searchForm{
 /* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){
     #form table tr td{
+        height: 8vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
     #form table tr th{
+        height: 8vh;
         display: flex;
         align-items: center;
         justify-content: center;
