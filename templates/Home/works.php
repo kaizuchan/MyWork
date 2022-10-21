@@ -17,7 +17,9 @@
 
     <div id="main">
         <div class="Card">
-    <?php echo $this->element('components/backButton'); ?>
+            <a href="/">
+                <?php echo $this->element('components/backButton'); ?>
+            </a>
             <div class="id_name">
                 <p>ID:<?= $me->employee_id ?></p>
                 <p><?= $me->last_name.$me->first_name ?></p>
