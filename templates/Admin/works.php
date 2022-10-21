@@ -31,19 +31,19 @@
             <div class="total">
                 <table>
                         <th>総労働時間</th>
-                        <td><!-- <?= $dates['total'] ?> -->時間</td>
+                        <td><?= $dates['total'] ?>時間</td>
                 </table>
                 <table>
                         <th>総残業時間</th>
-                        <td><!-- <?= $dates['overtime'] ?> -->時間</td>
+                        <td><?= $dates['overtime'] ?>時間</td>
                 </table>
                 <table>
                         <th>総勤務時間</th>
-                        <td><!-- <?= $dates['work'] ?> -->時間</td>
+                        <td><?= $dates['work'] ?>時間</td>
                 </table>
                 <table>
                         <th>出勤日数</th>
-                        <td><!-- <?= $dates['workday'] ?> -->日</td>
+                        <td><?= $dates['workday'] ?>日</td>
                 </table>
             </div>
 
@@ -73,10 +73,10 @@
                                 <td data-label="退勤時間" class="time"><?= setTime($date['end_work']) ?></td>
                                 <td data-label="休憩開始時間" class="time"><?= setTime($date['start_break']) ?></td>
                                 <td data-label="休憩終了時間" class="time"><?= setTime($date['end_break']) ?></td>
-                                <td data-label="労働時間" class="time"><!-- <?= $date['work'] ?> --></td>
-                                <td data-label="休憩時間" class="time"><!-- <?= $date['break'] ?> --></td>
-                                <td data-label="残業時間" class="time"><!-- <?= $date['overtime'] ?> --></td>
-                                <td data-label="総労働時間" class="time"><!-- <?= $date['total'] ?> --></td>
+                                <td data-label="労働時間" class="time"><?= $date['work'] ?></td>
+                                <td data-label="休憩時間" class="time"><?= $date['break'] ?></td>
+                                <td data-label="残業時間" class="time"><?= $date['overtime'] ?></td>
+                                <td data-label="総労働時間" class="time"><?= $date['total'] ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>

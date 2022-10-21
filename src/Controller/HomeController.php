@@ -136,6 +136,7 @@ class HomeController extends AppController
         $this->set(compact('data'));
         //debug($this->PuncheData->getPunchedData(1, '2022-10-21', 1));
         debug($data);
+        //debug($this->PuncheData->calculateHours($data['dates'][20]));
 
     }
 

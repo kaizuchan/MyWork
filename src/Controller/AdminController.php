@@ -187,7 +187,7 @@ class AdminController extends AppController
     public function editwork($id, $date)
     {
         // 該当する打刻データを取得して、Viewに送信
-        $times = $this->PuncheData->getPunchdData($date, $id); 
+        $times = $this->PuncheData->getPunchedDatas($date, $id); 
         $this->set(compact('times', 'date'));
 
         // データベース登録処理
