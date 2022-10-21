@@ -76,9 +76,11 @@
         
                 <div id="mask" class="hidden"></div>
                 <section id="modal" class="hidden">
-                    <?php foreach ($users as $user): ?>
-                        <input id="deleteList" class="deleteList" type="hidden" value="" readonly="readonly">
-                    <?php endforeach; ?>
+                    <div id="delete_scl">
+                        <?php foreach ($users as $user): ?>
+                            <input id="deleteList" class="deleteList" type="hidden" value="" readonly="readonly">
+                        <?php endforeach; ?>
+                    </div>
                     <p id="editMessage">
                         <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
                         上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません)
