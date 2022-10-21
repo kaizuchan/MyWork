@@ -36,12 +36,11 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
-        $times = $this->PuncheData->getPunchStatement(1, '2022-10-07');
+        // ログイン中ユーザーの勤怠情報を送信
+        $flag = $this->PuncheData->getPunchStatement($me->id);
 
         // 社員情報を取得
         $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
-        //debug($users);
-        //$users = $users->where(['not' => ['id' => $me->id]]);
 
 
         if ($this->request->is('post')) {
@@ -127,6 +126,7 @@ class HomeController extends AppController
         
         // Viewへの受け渡し
         $this->set('users', $users);
+        $this->set('flag', $flag);
     }
 
     public function works($month = null, $year = null)
