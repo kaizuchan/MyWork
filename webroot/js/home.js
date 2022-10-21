@@ -24,3 +24,22 @@ function showClock() {
     document.getElementById("nowTime").innerHTML = nowTime;
 }
 setInterval('showClock()',1000);
+
+// 勤務状況の背景色の変更
+window.addEventListener("load", function myWork () {
+    
+    var color = document.getElementsByClassName('userLabel');
+    for(var i = 0; i < color.length; i++){
+        
+        if(color.item(i).textContent == '勤務中') {
+            color.item(i).style.backgroundColor = '#9BE9AD';
+        }
+        if(color.item(i).textContent == '休憩中') {
+            color.item(i).style.backgroundColor = '#A3B1D8';
+        }
+        if(color.item(i).textContent == '退勤') {
+            color.item(i).style.backgroundColor = '#E6A3A3';
+        }
+    }
+
+});
