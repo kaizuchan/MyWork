@@ -36,8 +36,6 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
-        // ログイン中ユーザーの勤怠情報を送信
-        $flag = $this->PuncheData->getPunchStatement($me->id);
 
         // 社員情報を取得
         $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
@@ -123,6 +121,8 @@ class HomeController extends AppController
         // 出勤状況表示部分
         $status = $this->solve($users);
         $this->set('status', $status);
+        // ログイン中ユーザーの勤怠情報を送信
+        $flag = $this->PuncheData->getPunchStatement($me->id);
         
         // Viewへの受け渡し
         $this->set('users', $users);
