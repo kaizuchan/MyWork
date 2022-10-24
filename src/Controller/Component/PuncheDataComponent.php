@@ -104,32 +104,43 @@ class PuncheDataComponent extends Component
         ]);
         return $res;
     }
-    /* 打刻時間取得 */
+    /* 打刻 identify取得 */
     public function getPunchStatement($user_id)
     {
-        // 対象のレコードを全て取得
+        // 対象ユーザーの最後の打刻情報を取得
+        $res = $this->getPunchData($user_id);
+        if ($res != null){
+            $res = $res->get('identify');
+        }
+        return $res;
+    }
+    /* 打刻 date取得 */
+    public function getPunchedDate($user_id)
+    {
+        // 対象ユーザーの最後の打刻情報を取得
+        $res = $this->getPunchData($user_id);
+        if ($res != null){
+            $res = $res->get('date');
+        }
+        return $res;
+    }
+    /* 対象ユーザーの最後の打刻情報を取得 */
+    private function getPunchData($user_id)
+    {
         $this->loadModel('Punches');
-        $res = $this->Punches
+        return $this->Punches
             ->find('all')->where([
                 [
                     'user_id' => $user_id,
                 ],
                 'not' => [
                     'info' => 9
-                ],
-                'or' => [
-                    ['date' => date('Y-m-d', strtotime('-1 day'))],
-                    ['date' => date('Y-m-d')],
-                ],
+                ]
             ])
             ->order([
                 'time ASC',
             ])
             ->last();
-        if ($res != null){
-            $res = $res->get('identify');
-        }
-        return $res;
     }
 
 

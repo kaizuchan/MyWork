@@ -83,30 +83,37 @@ class HomeController extends AppController
             $punches = $this->punch->newEmptyEntity();
             // データの登録
             $punches->user_id = $me->id;
-            $punches->date = date("Y/m/d");
             $punches->time = date('Y-m-d H:i:s');
-
+            
             // 出勤
             if(isset($_POST['attend'])) {
+                $punches->date = date("Y/m/d");
                 $punches->identify = 1;
-            }
-            // 休憩開始
-            if(isset($_POST['restStart'])) {
-                $punches->identify = 2;
-            }
-            // 休憩終了
-            if(isset($_POST['restFinish'])) {
-                $punches->identify = 3;
-            }
-            // 退勤
-            if(isset($_POST['leave'])) {
-                $punches->identify = 4;
-            }
-            // データ登録
-            try {
-                $this->punch->saveOrFail($punches);
-            } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
-                echo $e->getEntity();
+            }else{
+                // 出勤処理以外の場合
+                // Punches.dateに 出勤打刻した日の日付を登録
+                $date = $this->PuncheData->getPunchedDate($me->id);
+                $punches->date = $date->i18nFormat('yyyy-MM-dd');
+                
+
+                // 休憩開始
+                if(isset($_POST['restStart'])) {
+                    $punches->identify = 2;
+                }
+                // 休憩終了
+                if(isset($_POST['restFinish'])) {
+                    $punches->identify = 3;
+                }
+                // 退勤
+                if(isset($_POST['leave'])) {
+                    $punches->identify = 4;
+                }
+                // データ登録
+                try {
+                    $this->punch->saveOrFail($punches);
+                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                    echo $e->getEntity();
+                }
             }
         }
         // HOME画面へリダイレクトさせる
@@ -123,7 +130,7 @@ class HomeController extends AppController
     {
         $array = array();
         foreach($users as $user){
-            switch($this->solveStatus($user->id)){
+            switch($this->PuncheData->getPunchStatement($user->id)){
                 case null:
                     $data = "退勤";
                     break;
@@ -144,30 +151,5 @@ class HomeController extends AppController
         }
         return $array;
     }
-    private function solveStatus($id)
-    {
-        return $this->PuncheData->getPunchStatement($id);
-    }
-    private function checkStatus($id,$identify,$date = null)
-    {
-        if($date!=null){
-            // 昨日
-            $date = date('Y-m-d', strtotime('-1 day'));
-        }else{
-            // 今日
-            $date = date('Y-m-d');
-        }
-        // 指定されたユーザー 及び 日付の最新（最後に追加された）データを取得
-        $query = $this->Punches
-        ->find('all')
-        ->where(['user_id'=>$id, 'date'=>$date, 'identify'=>$identify])
-        ->last();
-        // 取得したデータが空ならFalse あるならTrueを返す
-        if($query == null){
-            return false;
-        }else{
-            return true;
-        }
-    }
-    
+
 }
