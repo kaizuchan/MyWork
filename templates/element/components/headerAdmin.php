@@ -18,13 +18,13 @@
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
 
-        <div id="logo">
-            <a href="/">
+        <a href="/">
+            <div id="logo">
                 <?php
-                    echo $this->Html->image("rogo.png");
-                ?>
-            </a>
-        </div>
+                    echo $this->Html->image("LOGO_04.png");
+                    ?>
+            </div>
+        </a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">

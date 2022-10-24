@@ -17,13 +17,13 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
-        <div id="logo">
-            <a href="/">  
-            <?php
-                echo $this->Html->image("LOGO_04.png");
-            ?>
-            </a>   
-        </div>
+        <a href="/"> 
+            <div id="logo"> 
+                <?php
+                    echo $this->Html->image("LOGO_04.png");
+                ?>  
+            </div>
+        </a> 
 
 
 
