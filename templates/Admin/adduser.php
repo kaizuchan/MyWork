@@ -57,14 +57,14 @@
 
         <div class="input-group mb-3">
           <span class="input-group-text">セイ</span>
-          <input name="last_name_kana" value="<?= setValue('last_name_kana') ?>" type="text" class="form-control" placeholder="ヤマダ" aria-label="セイ" pattern="[\u30A1-\u30F6]*" required>
+          <input name="last_name_kana" value="<?= setValue('last_name_kana') ?>" type="text" class="form-control" placeholder="ヤマダ" aria-label="セイ" pattern="[\u30A1-\u30FC]*" required>
           <span class="input-group-text">メイ</span>
-          <input name="first_name_kana" value="<?= setValue('first_name_kana') ?>" type="text" class="form-control" placeholder="タロウ" aria-label="メイ" pattern="[\u30A1-\u30F6]*" required>
+          <input name="first_name_kana" value="<?= setValue('first_name_kana') ?>" type="text" class="form-control" placeholder="タロウ" aria-label="メイ" pattern="[\u30A1-\u30FC]*" required>
         </div>
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">電話番号</span>
-          <input name="phone_number" value="<?= setValue('phone_number') ?>" type="text" id="validationTextarea" class="form-control" placeholder="ハイフン(-)なし" aria-label="電話番号" aria-describedby="basic-addon1" pattern="\d{2,4}-?\d{2,4}-?\d{3,4}" required>
+          <input name="phone_number" value="<?= setValue('phone_number') ?>" type="text" id="validationTextarea" class="form-control" placeholder="ハイフン(-)なし" aria-label="電話番号" aria-describedby="basic-addon1" pattern="^0\d{9,10}$" required>
         </div>
 
         <div class="input-group mb-3 ">
@@ -106,7 +106,7 @@
         <h2 class="itemsTitle">住所</h2>
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">郵便番号</span>
-          <input name="postalcode" value="<?= setValue('postalcode') ?>" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="ハイフン(-)なし" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
+          <input name="postalcode" value="<?= setValue('postalcode') ?>" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="ハイフン(-)なし" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="^\d{7}$" required>
         </div>
 
         <div class="input-group mb-3">
@@ -134,10 +134,16 @@
           <span class="input-group-text" id="basic-addon1">パスワード</span>
           <input name="password" type="password" id="userpass" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
         </div>
+        <div id="passwordCheck">
+          <input type="checkbox" id="passCheck">パスワードを表示
+        </div>
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
           <input type="password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
+        </div>
+        <div id="passwordCheck">
+          <input type="checkbox" id="passconfCheck">パスワードを表示
         </div>
 
         <input
@@ -157,5 +163,6 @@
       </form>
     </div>
   </div>
+  <?php echo $this->Html->script("admin"); ?>
 </body>
 </html>
