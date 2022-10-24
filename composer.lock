@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3b3a17a59727f10ef6f9f1ebb075fd4",
+    "content-hash": "10d38c6cbad46126a170451d2bec31ad",
     "packages": [
         {
             "name": "cakephp/authentication",
@@ -76,20 +76,20 @@
         },
         {
             "name": "cakephp/authorization",
-            "version": "2.0.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/authorization.git",
-                "reference": "f4269fecbd77ebf56736300cc4bf486711388114"
+                "reference": "bb9aca461a4fe7c789ef841ca064f0577450f658"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/authorization/zipball/f4269fecbd77ebf56736300cc4bf486711388114",
-                "reference": "f4269fecbd77ebf56736300cc4bf486711388114",
+                "url": "https://api.github.com/repos/cakephp/authorization/zipball/bb9aca461a4fe7c789ef841ca064f0577450f658",
+                "reference": "bb9aca461a4fe7c789ef841ca064f0577450f658",
                 "shasum": ""
             },
             "require": {
-                "cakephp/cakephp": "^4.0",
+                "cakephp/http": "^4.0",
                 "php": ">=7.2",
                 "psr/http-client": "^1.0",
                 "psr/http-message": "^1.0",
@@ -99,10 +99,13 @@
             "require-dev": {
                 "cakephp/authentication": "^2.0",
                 "cakephp/bake": "^2.0",
-                "cakephp/cakephp-codesniffer": "dev-next",
-                "phpunit/phpunit": "^8.0"
+                "cakephp/cakephp": "^4.0",
+                "cakephp/cakephp-codesniffer": "^4.0",
+                "cakephp/plugin-installer": "^1.3",
+                "phpunit/phpunit": "^8.5 || ^9.3"
             },
             "suggest": {
+                "cakephp/http": "To use \"RequestPolicyInterface\" (Not needed separately if using full CakePHP framework).",
                 "cakephp/orm": "To use \"OrmResolver\" (Not needed separately if using full CakePHP framework)."
             },
             "type": "cakephp-plugin",
@@ -135,7 +138,7 @@
                 "issues": "https://github.com/cakephp/authorization/issues",
                 "source": "https://github.com/cakephp/authorization"
             },
-            "time": "2019-12-16T02:49:49+00:00"
+            "time": "2021-11-15T14:38:00+00:00"
         },
         {
             "name": "cakephp/cakephp",
@@ -243,16 +246,16 @@
         },
         {
             "name": "cakephp/chronos",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/chronos.git",
-                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd"
+                "reference": "1075511e200c2333793f4625829e40607a4d1cc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/chronos/zipball/3ecd6e7ae191c676570cd1bed51fd561de4606dd",
-                "reference": "3ecd6e7ae191c676570cd1bed51fd561de4606dd",
+                "url": "https://api.github.com/repos/cakephp/chronos/zipball/1075511e200c2333793f4625829e40607a4d1cc9",
+                "reference": "1075511e200c2333793f4625829e40607a4d1cc9",
                 "shasum": ""
             },
             "require": {
@@ -283,22 +286,21 @@
                 },
                 {
                     "name": "The CakePHP Team",
-                    "homepage": "http://cakephp.org"
+                    "homepage": "https://cakephp.org"
                 }
             ],
             "description": "A simple API extension for DateTime.",
-            "homepage": "http://cakephp.org",
+            "homepage": "https://cakephp.org",
             "keywords": [
                 "date",
                 "datetime",
                 "time"
             ],
             "support": {
-                "irc": "irc://irc.freenode.org/cakephp",
                 "issues": "https://github.com/cakephp/chronos/issues",
                 "source": "https://github.com/cakephp/chronos"
             },
-            "time": "2021-10-17T02:44:05+00:00"
+            "time": "2022-10-21T08:22:45+00:00"
         },
         {
             "name": "cakephp/migrations",
