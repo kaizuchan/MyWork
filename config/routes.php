@@ -50,6 +50,8 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/home.php)...
          */
+        
+        /* 共通ページ */
         $builder->connect('/', ['controller' => 'home', 'action' => 'home']);
         $builder->connect('/logout', ['controller' => 'users', 'action' => 'logout']);
         
@@ -60,6 +62,8 @@ return static function (RouteBuilder $routes) {
                         'year' => '[12][0-9]{3}',
                         ])
                 ->setPass(['month', 'year']);
+        $builder->connect('/punch', ['controller' => 'home', 'action' => 'punch']);
+        /* 管理者ページ */
         $builder->connect('/admin', ['controller' => 'admin', 'action' => 'index']);
         $builder->connect('/admin/works/:id', ['controller' => 'admin', 'action' => 'works'])
                 ->setPatterns(['id' => '\d+'])
