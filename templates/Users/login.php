@@ -17,11 +17,6 @@
       <div class="card" id="loginCard">
         <h1>
         <div id="logo">
-          <a>
-            <?php
-            echo $this->Html->image("rogo.png");
-            ?>
-          </a>
           MyWork
         </h1>
         <div class="card-body">
