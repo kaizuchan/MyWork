@@ -37,12 +37,13 @@
                 ?>
                     <h2 class="oct"><?= $month ?>月<?= $date ?>日</h2>
 
+                <div class="scroll_bar">
                     <div id="editTable">
                         <table class="table">
                             <thead  class="table-light">
                                 <tr>
                                     <th>打刻種別</th>
-                                    <th>打刻時間</th>
+                                    <th>打刻日付</th>
                                     <th>打刻時間</th>
                                     <th>保存</th>
                                     <th>削除</th>
@@ -54,10 +55,7 @@
                                         <tr>
                                             <td><?= setText($time->identify) ?></td>
                                             <td>
-                                                <select name="">
-                                                    <option value="">当日</option>
-                                                    <option value=""<?= setDateSelected($time->date,$time->time) ?>>翌日</option>
-                                                </select>
+                                                <input type="date" value="<?= $time->date->i18nFormat('Y-M-d') ?>">
                                             </td>
                                             <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" ></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
@@ -73,6 +71,7 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
 
 
                         
