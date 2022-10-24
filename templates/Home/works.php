@@ -10,7 +10,13 @@
     <!-- 戻るアイコンボタン -->
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
+    <?php
+        if($me->role == 1){
+            echo $this->element('components/headerNormalUser'); 
+        }else if($me->role == 2){
+            echo $this->element('components/header'); 
+        }
+    ?>
 </head>
 <body>
     
