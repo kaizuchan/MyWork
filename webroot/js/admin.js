@@ -24,3 +24,7 @@ function addRecord() {
     var addrecord = document.getElementById('addRecord');
     addrecord.classList.remove('hidden');
 }
+function removeRecord() {
+    var addrecord = document.getElementById('addRecord');
+    addrecord.classList.add('hidden');
+}
