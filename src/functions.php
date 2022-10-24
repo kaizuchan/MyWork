@@ -192,3 +192,21 @@
       echo $data;
     }
   }
+
+    /* 「編集/打刻」表示用
+   * 使用場所
+   * templates/Admin/works.php
+   * templates/Admin/editworks.php
+   * templates/Home/works.php
+  */
+  function echoPunchedStatement($info, $start_work = 'non_null'){
+    if($start_work != null){
+      if($info == 1){
+        echo '打刻';
+      }else if($info == 2){
+        echo '編集';
+      }
+    }else{
+      echo'-';
+    }
+  }

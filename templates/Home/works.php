@@ -19,7 +19,7 @@
     ?>
 </head>
 <body>
-    
+    <?= debug($data) ?>
 
     <div id="main">
         <div class="Card">
@@ -84,7 +84,7 @@
                                 <td data-label="休憩時間" class="time"><?= echoFloat($date['break']) ?></td>
                                 <td data-label="残業時間" class="time"><?= echoFloat($date['overtime']) ?></td>
                                 <td data-label="総労働時間" class="time"><?= echoFloat($date['total']) ?></td>
-                                <td data-label="打刻方法" class="time"></td>
+                                <td data-label="打刻方法" class="time"><?= echoPunchedStatement($date['info'], $date['start_work']) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
