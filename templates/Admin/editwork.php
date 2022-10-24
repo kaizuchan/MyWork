@@ -90,7 +90,7 @@
                                             </td>
                                             <td><input name="time" type="time" value="" ></td>
                                             <td class="edit"><button name="insert" class="btn btn-outline-info" type="submit">追加</button></td>
-                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="submit">削除</button></td>
+                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="button" onclick="removeRecord()">削除</button></td>
                                             <td>編集</td>
                                         </tr>
                                         <input
