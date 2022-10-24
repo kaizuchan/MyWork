@@ -87,17 +87,15 @@ class PuncheDataComponent extends Component
     {
         $this->loadModel('Punches');
         $where = [
-            [
+            0 => [
             'user_id' => $user_id,
             'date' => $date,
-            ],
-            'not' => [
-                'info' => 9,
             ]
             ];
         if($identify != null){
             $where = array_merge($where[0], ['identify' => $identify,]);
         }
+        $where = array_merge($where, ['not' => ['info' => 9,]]);
         // 対象のレコードを全て取得
         $res = $this->Punches->find('all')
         ->where($where)
@@ -153,8 +151,9 @@ class PuncheDataComponent extends Component
         // 退勤の数だけ繰り返す
         foreach($data['end_work'] as $k => $d){
             $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
-            $total -= $break;
         }
+        $total -= $break;
+        // 切り捨て処理
         $total = round($total, 1, PHP_ROUND_HALF_DOWN);
         $break = round($break, 1, PHP_ROUND_HALF_DOWN);
         // 勤務時間 & 残業時間 計算
