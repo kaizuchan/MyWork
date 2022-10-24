@@ -20,3 +20,7 @@ passconfcheck.addEventListener('change',function() {
     }
 });
 
+function addRecord() {
+    var addrecord = document.getElementById('addRecord');
+    addrecord.classList.remove('hidden');
+}
