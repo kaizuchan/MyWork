@@ -16,7 +16,7 @@
     <div id="main">
         <div class="Card">
         <!-- 戻るボタン -->
-        <?php echo $this->element('components/backButton'); ?>
+        <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
             <div class="id_name">
                 <p>ID:<?= $user->employee_id ?></p>
                 <p><?= $user->last_name.$user->first_name ?></p>

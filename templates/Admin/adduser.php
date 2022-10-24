@@ -36,7 +36,7 @@
   <div id="main">
     <div class="Card">
       <!-- 戻るボタン -->
-      <?php echo $this->element('components/backButton'); ?>
+      <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
       <h1>社員登録</h1>
       
 
