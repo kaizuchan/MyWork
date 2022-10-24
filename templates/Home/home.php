@@ -7,7 +7,13 @@
     <title>HOME</title>
     <?php echo $this->Html->css("home"); ?>
     <!-- ヘッダー -->
-    <?php echo $this->element('components/header'); ?>
+    <?php
+        if($me->role == 1){
+            echo $this->element('components/headerNormalUser'); 
+        }else if($me->role == 2){
+            echo $this->element('components/header'); 
+        }
+    ?>
 </head>
 <body>
     <div id="main">
@@ -22,7 +28,7 @@
                     <!-- ページ読込の際のダミーデータ -->00:00:00
                 </div>
             </div>
-            <form method="POST">
+            <form method="POST" action="punch">
                 <div class="buttonFlex">
                     <button name="attend" class="engButton" id="attendanceButton" <?php echo $flag == "" || $flag == 4  ? '' : 'disabled' ?>>出勤</button>
                     <button name="leave" class="engButton" id="leavingButton" <?php echo $flag == 1 || $flag == 3 ? '' : 'disabled' ?>>退勤</button>

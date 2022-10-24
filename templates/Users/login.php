@@ -27,13 +27,13 @@
         <div class="card-body">
           <form id="loginForm" method="POST" action="/users">
             <div class="mb-3">
-              <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
+              <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID" required>
             </div>
             <div class="mb-3">
-              <input name="employee_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID">
+              <input name="employee_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID" required>
             </div>
             <div class="mb-3">
-              <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+              <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード" required>
             </div>
             <input
                   type="hidden" name="_csrfToken" autocomplete="off"
