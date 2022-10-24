@@ -80,7 +80,7 @@ h2.oct {
 table.glaf {
   width: 80vw;
   margin: 0 auto;
-  font-size: 1.6rem;//グラフ全てのフォントサイズ
+  font-size: 1.6rem;/*グラフ全てのフォントサイズ*/
 }
 /* グラフの項目名 */
 table.glaf thead tr th{
@@ -127,17 +127,17 @@ table.glaf td{
 /* 1280px以下 */
 @media screen and (max-width: 1280px){
   .Card{
-    width: 95vw;//カードの幅
+    width: 95vw;/*ードの幅*/
   }
   .total {
-    width: 70vw;//トータル全体の幅
+    width: 70vw;/*トータル全体の幅*/
   }
   .total table tr{
-    font-size: 1.2rem;//トータルのフォントサイズ
+    font-size: 1.2rem;/*トータルのフォントサイズ*/
   }
   table.glaf {
-    width: 80vw;//グラフの幅
-    font-size: 1.2rem;//グラフ全体のフォントサイズ
+    width: 80vw;/*グラフの幅*/
+    font-size: 1.2rem;/*グラフ全体のフォントサイズ*/
   }
 }
 @media screen and (max-width: 912px){
@@ -148,11 +148,11 @@ table.glaf td{
     align-items: center;
   }
   .total {
-    width: 75vw;//トータルの幅
+    width: 75vw;/*トータルの幅*/
   }
   .total table tr{
-    height: 6rem;//トータルの全体の高さ
-    font-size: 1.4rem;//トータルのフォントサイズ
+    height: 6rem;/*トータルの全体の高さ*/
+    font-size: 1.4rem;/*トータルのフォントサイズ*/
   }
   table.glaf {
     font-size: 1.2rem;
@@ -160,7 +160,7 @@ table.glaf td{
 }
 @media screen and (max-width: 834px){
   .Card{
-    width: 95vw;//カードの幅
+    width: 95vw;/*カードの幅*/
   }
   .id_name {
     padding: 0 2rem 0 0;
@@ -237,6 +237,7 @@ table.glaf td{
   table.glaf tr td{
     height: 5vh;
   }
+}
 @media screen and (max-width: 280px){
   .id_name {
     padding: 1rem 2rem 0 0;

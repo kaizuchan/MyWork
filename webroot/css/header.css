@@ -1,22 +1,22 @@
 nav{
     /* margin-bottom: 8rem; */
     opacity: 0.9;
-    background-color: #fff;
+    background-color: #0099CC;
     height: 8vh;
 }
 nav a{
     font-size: 1.6rem;
     margin: 1rem 3rem;
-    color: #0099CC;
+    color: #FFF;
 }
 nav a:hover{
-    color: #0099CC;
+    color: #FFF;
 }
 nav li{
     margin: 0 0 0 0;
 }
 #logoButton{
-    color: #0099CC;
+    color: #FFF;
 }
 #logo{
     width: 50px;
