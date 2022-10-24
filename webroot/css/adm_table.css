@@ -80,7 +80,7 @@ h2.oct {
 table.glaf {
   width: 80vw;
   margin: 0 auto;
-  font-size: 1.6rem;//グラフ全てのフォントサイズ
+  font-size: 1.6rem;
   position: relative;
 	border-collapse: collapse; 
 }
@@ -132,23 +132,23 @@ th.fir_row {
 /* 1280px以下 */
 @media screen and (max-width: 1280px){
   .Card{
-    width: 95vw;//カードの幅
+    width: 95vw;
   }
   .total {
-    width: 70vw;//トータル全体の幅
+    width: 70vw;
   }
   /* .total table {
     display: flex;
   } */
   .total table tr{
-    font-size: 1.2rem;//トータルのフォントサイズ
+    font-size: 1.2rem;
   }
   table.glaf {
-    width: 80vw;//グラフの幅
+    width: 80vw;
     font-size: 1.2rem;
   }
   table.glaf thead tr th{
-    font-size: 1.2rem;//グラフ全体のフォントサイズ
+    font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 912px){
@@ -158,11 +158,11 @@ th.fir_row {
     align-items: center;
   }
   .total {
-    width: 75vw;//トータルの幅
+    width: 75vw;
   }
   .total table tr{
-    height: 6rem;//トータルの全体の高さ
-    font-size: 1.4rem;//トータルのフォントサイズ
+    height: 6rem;
+    font-size: 1.4rem;
   }
   table.glaf {
     font-size: 1.2rem;
@@ -273,4 +273,5 @@ th.fir_row {
       margin: 1.5rem auto;
       font-size: 1rem;
     }
+  }
 }
