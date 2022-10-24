@@ -47,6 +47,7 @@
                                     <th>打刻時間</th>
                                     <th>保存</th>
                                     <th>削除</th>
+                                    <th>打刻方法</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -60,6 +61,7 @@
                                             <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" ></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
                                             <td class="edit"><button name="delete" class="btn btn-outline-danger" type="submit">削除</button></td>
+                                            <td>打刻方法</td>
                                         </tr>
                                         <input
                                             type="hidden" name="_csrfToken" autocomplete="off"
