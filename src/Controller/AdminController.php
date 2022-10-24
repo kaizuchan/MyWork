@@ -216,7 +216,7 @@ class AdminController extends AppController
                 $punche_new = $this->Punches->newEmptyEntity();
                 $punche_new->user_id = $id;
                 $punche_new->date = $punch_date;
-                $punche_new->time = $punch_date.' '.$data['time'];
+                $punche_new->time = $data['date'].' '.$data['time'];
                 $punche_new->identify = $data['identify'];
                 $punche_new->info = 2;
                 if ($this->Punches->save($punche_new)) {

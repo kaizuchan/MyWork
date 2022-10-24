@@ -32,9 +32,14 @@ class SerchUserComponent extends Component
                 ['last_name LIKE' => '%'.$keyword.'%'],
                 ['first_name LIKE' => '%'.$keyword.'%'],
                 ['CONCAT(last_name,first_name) LIKE' => '%'.$keyword.'%'],
+                // カタカナ検索
                 ['last_name_kana LIKE' => '%'.$keyword.'%'],
                 ['first_name_kana LIKE' => '%'.$keyword.'%'],
                 ['CONCAT(last_name_kana,first_name_kana) LIKE' => '%'.$keyword.'%'],
+                // ひらがな検索
+                ['last_name_kana LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
+                ['first_name_kana LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
+                ['CONCAT(last_name_kana,first_name_kana) LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
             ]]);
         }
         $order = [];

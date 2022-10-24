@@ -55,7 +55,7 @@
                                         <tr>
                                             <td><?= setText($time->identify) ?></td>
                                             <td>
-                                                <input type="date" value="<?= $time->date->i18nFormat('Y-M-d') ?>">
+                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('Y-M-d') ?>">
                                             </td>
                                             <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" ></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
