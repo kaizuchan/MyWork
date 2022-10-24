@@ -36,9 +36,16 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
+/*         $times = $this->PuncheData->getPunchStatement(1, '2022-10-07');
+        //debug($times);
+        foreach($times as $time){
+            //debug($time);
+        } */
 
         // 社員情報を取得
         $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
+        //debug($users);
+        //$users = $users->where(['not' => ['id' => $me->id]]);
 
 
         if ($this->request->is('post')) {

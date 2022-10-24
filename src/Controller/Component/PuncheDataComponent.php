@@ -83,20 +83,24 @@ class PuncheDataComponent extends Component
         return $return;
     }
     /* 配列にユーザーの勤怠データを登録して返す */
-    public function getPunchedData($user_id, $date, $identify)
+    public function getPunchedData($user_id, $date, $identify = null)
     {
         $this->loadModel('Punches');
-        // 対象のレコードを全て取得
-        $res = $this->Punches->find('all')->where([
+        $where = [
             [
             'user_id' => $user_id,
             'date' => $date,
-            'identify' => $identify,
             ],
             'not' => [
                 'info' => 9,
             ]
-        ])
+            ];
+        if($identify != null){
+            $where = array_merge($where[0], ['identify' => $identify,]);
+        }
+        // 対象のレコードを全て取得
+        $res = $this->Punches->find('all')
+        ->where($where)
         ->order([
             'time ASC',
         ]);
@@ -140,17 +144,18 @@ class PuncheDataComponent extends Component
         $break = 0;
         $overtime = 0;
         $total = 0;
-        /* 総勤務時間 計算 */
-        // 退勤の数だけ繰り返す
-        foreach($data['end_work'] as $k => $d){
-            $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
-        }
-        $total = round($total, 1, PHP_ROUND_HALF_DOWN);
         /* 休憩時間 計算 */
         // 休憩終了時間と同じだけ繰り返す
         foreach($data['end_break'] as $k => $d){
             $break += (strtotime($d) - strtotime($data['start_break'][$k])) / 3600;
         }
+        /* 総勤務時間 計算 */
+        // 退勤の数だけ繰り返す
+        foreach($data['end_work'] as $k => $d){
+            $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
+            $total -= $break;
+        }
+        $total = round($total, 1, PHP_ROUND_HALF_DOWN);
         $break = round($break, 1, PHP_ROUND_HALF_DOWN);
         // 勤務時間 & 残業時間 計算
         $work = $total;
@@ -159,10 +164,10 @@ class PuncheDataComponent extends Component
             $work = 8;
         }
         $res = array(
-            'work' => $work,
-            'break' => $break,
-            'overtime' => $overtime,
-            'total' => $total
+            'work' => (float) $work,
+            'break' => (float) $break,
+            'overtime' => (float) $overtime,
+            'total' => (float) $total
         );
         // 0 の場合は「-」
         foreach($res as $k => $r){

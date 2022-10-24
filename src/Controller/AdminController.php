@@ -186,15 +186,45 @@ class AdminController extends AppController
 
     public function editwork($id, $date)
     {
-        // 該当する打刻データを取得して、Viewに送信
-        $times = $this->PuncheData->getPunchedDatas($date, $id); 
-        $this->set(compact('times', 'date'));
-
         // データベース登録処理
-        //debug($times);
+        $this->loadModel('Punches');
+        $data = $this->request->getData();
         if ($this->request->is('post')) {
-            $data = $this->request->getData();
-            //debug($data);
+            // 対象データを削除済みに変更
+            if(isset($data['delete'])){
+                $punche = $this->Punches->get($data['id']);
+                $punche->info = 9;
+                if ($this->Punches->save($punche)) {
+                    $this->Flash->success(__('削除しました'));
+                }else{
+                    $this->Flash->error(__('削除に失敗しました'));
+                }
+            }
+            if(isset($data['update'])){
+                // 元データを削除済みに変更
+                $punche_old = $this->Punches->get($data['id']);
+                $punche_old->info = 9;
+                if ($this->Punches->save($punche_old)) {
+                    $this->Flash->success(__('削除しました'));
+                }else{
+                    $this->Flash->error(__('削除に失敗しました'));
+                }
+                // 更新データの登録
+                $date = substr($date, 4, 2).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
+                $punche_new = $this->Punches->newEmptyEntity();
+                $punche_new->user_id = $id;
+                $punche_new->date = $date;
+                $punche_new->time = $date.' '.$data['time'];
+                $punche_new->identify = $data['identify'];
+                $punche_new->info = 2;
+                debug($punche_new);
+                if ($this->Punches->save($punche_new)) {
+                    $this->Flash->success(__('更新しました'));
+                }else{
+                    $this->Flash->error(__('更新に失敗しました'));
+                }
+            }
+            /* //debug($data);
             $this->loadModel('Punches');
 
             $identify = array('start_work', 'start_break', 'end_break', 'end_work');
@@ -218,9 +248,20 @@ class AdminController extends AppController
                 return $this->redirect(['controller' => 'admin', 'action' => 'works', $id]);
             }else{
                 $this->Flash->error(__('更新に失敗しました'));
-            }
+            } */
         }
         // 
+
+
+
+        // 該当する打刻データを取得して、Viewに送信
+        $times = $this->PuncheData->getPunchedData($id, $date);
+        //debug($times); 
+/*         foreach($times as $t){
+        debug($t->time->i18nFormat('yyyy-MM-dd HH:mm:ss'));
+        } */
+        $this->set(compact('times', 'date'));
+
     }
 
 }

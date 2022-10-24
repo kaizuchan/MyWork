@@ -155,3 +155,40 @@
       echo '-';
     }
   }
+
+  /* 勤怠編集ページ */
+  //打刻種別 表示
+  function setText($identify){
+    switch($identify){
+      case 1:
+        echo "出勤時間";
+        break;
+      case 2:
+        echo "休憩開始時間";
+        break;
+      case 3:
+        echo "休憩終了時間";
+        break;
+      case 4:
+        echo "退勤時間";
+        break;
+    }
+  }
+  function setDateSelected($date, $time){
+    if($date->i18nFormat('yyyy-MM-dd') != $time->i18nFormat('yyyy-MM-dd')){
+      echo ' selected';
+    }
+  }
+
+  /* 勤怠履歴 労働時間	休憩時間	残業時間	総勤務時間 小数点表示 
+   * 使用場所
+   * templates/Admin/works.php
+   * templates/Home/works.php
+  */
+  function echoFloat($data){
+    if(gettype($data) == "double"){
+      echo number_format($data, 1);
+    }else{
+      echo $data;
+    }
+  }

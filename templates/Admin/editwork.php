@@ -37,74 +37,43 @@
                 ?>
                     <h2 class="oct"><?= $month ?>月<?= $date ?>日</h2>
 
-                    <form method="post">
-                        <div id="editTable">
-                            <table class="table">
-                                <thead  class="table-light">
-                                    <tr>
-                                        <th>打刻種別</th>
-                                        <th>打刻時間</th>
-                                        <th>打刻時間</th>
-                                        <th>保存</th>
-                                        <th>削除</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>出勤時間</td>
-                                        <td>
-                                            <select>
-                                                <option value="">当日</option>
-                                                <option value="">翌日</option>
-                                            </select>
-                                        </td>
-                                        <td><input name="start_work" type="time" value="<?= $times['start_work'] ?>" ></td>
-                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
-                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>退勤時間</td>
-                                        <td>
-                                            <select>
-                                                <option value="">当日</option>
-                                                <option value="">翌日</option>
-                                            </select>
-                                        </td>
-                                        <td><input name="end_work" type="time" value="<?= $times['end_work'] ?>"></td>
-                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
-                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>休憩開始時間</td>
-                                        <td>
-                                            <select>
-                                                <option value="">当日</option>
-                                                <option value="">翌日</option>
-                                            </select>
-                                        </td>
-                                        <td><input name="start_break" type="time" value="<?= $times['start_break'] ?>"></td>
-                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
-                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
-                                    </tr>
-                                    <tr>
-                                        <td>休憩終了時間</td>
-                                        <td>
-                                            <select>
-                                                <option value="">当日</option>
-                                                <option value="">翌日</option>
-                                            </select>
-                                        </td>
-                                        <td><input name="end_break" type="time" value="<?= $times['end_break'] ?>"></td>
-                                        <td class="edit"><button class="btn btn-outline-info" type="button">保存</button></td>
-                                        <td class="edit"><button class="btn btn-outline-danger" type="button">削除</button></td>
-                                    </tr>   
+                    <div id="editTable">
+                        <table class="table">
+                            <thead  class="table-light">
+                                <tr>
+                                    <th>打刻種別</th>
+                                    <th>打刻時間</th>
+                                    <th>打刻時間</th>
+                                    <th>保存</th>
+                                    <th>削除</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach($times as $time): ?>
+                                    <form method="post">
+                                        <tr>
+                                            <td><?= setText($time->identify) ?></td>
+                                            <td>
+                                                <select name="">
+                                                    <option value="">当日</option>
+                                                    <option value=""<?= setDateSelected($time->date,$time->time) ?>>翌日</option>
+                                                </select>
+                                            </td>
+                                            <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" ></td>
+                                            <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
+                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="submit">削除</button></td>
+                                        </tr>
+                                        <input
+                                            type="hidden" name="_csrfToken" autocomplete="off"
+                                            value="<?= $this->request->getAttribute('csrfToken') ?>">
+                                        <input type="hidden" name="id" value="<?= $time->id ?>">
+                                        <input type="hidden" name="identify" value="<?= $time->identify ?>">
+                                        </form>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
 
-                        <input
-                            type="hidden" name="_csrfToken" autocomplete="off"
-                            value="<?= $this->request->getAttribute('csrfToken') ?>">
 
                         
                         <div id="mask" class="hidden"></div>
@@ -119,7 +88,6 @@
                                 </div>
                             </div>
                         </section>
-                    </form>
                     
 
                 </div>
