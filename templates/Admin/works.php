@@ -61,6 +61,7 @@
                             <th class="fir_row"scope="col">休憩時間</th>
                             <th class="fir_row"scope="col">残業時間</th>
                             <th class="fir_row"scope="col">総勤務時間</th>
+                            <th class="fir_row"scope="col">打刻方法</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -77,6 +78,7 @@
                                 <td data-label="休憩時間" class="time"><?= echoFloat($date['break']) ?></td>
                                 <td data-label="残業時間" class="time"><?= echoFloat($date['overtime']) ?></td>
                                 <td data-label="総労働時間" class="time"><?= echoFloat($date['total']) ?></td>
+                                <td data-label="打刻方法" class="time"></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
