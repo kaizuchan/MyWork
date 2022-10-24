@@ -24,7 +24,7 @@
     <div id="main">
         <div class="Card">
             <a href="/">
-                <?php echo $this->element('components/backButton'); ?>
+            <div id="backButtonBox"><a href="/" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
             </a>
             <div class="id_name">
                 <p>ID:<?= $me->employee_id ?></p>

@@ -27,7 +27,7 @@ if ($this->request->is('post')) {
 <div id="main">
     <div class="Card">
       <!-- 戻るボタン -->
-      <?php echo $this->element('components/backButton'); ?>
+      <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
       <h1>社員編集</h1>
       
 
@@ -142,7 +142,7 @@ if ($this->request->is('post')) {
                 value="<?= $this->request->getAttribute('csrfToken') ?>">
         <input type="hidden" name="enterprise_id" value="<?= $me->enterprise_id ?>">
 
-          <div class="form-check">
+          <div class="form-check" id="checkBox">
             <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked"<?= setCheckdAdmin($user['role']); ?>>
             <label for="validationFormCheck2" class="form-check-label">管理者として登録する場合はチェック</label>
           </div>
