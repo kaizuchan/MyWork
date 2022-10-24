@@ -18,6 +18,11 @@ button.btn{
     margin: 3rem 0;
     background-color: #1F78B4;
 }
+button.btn:hover{
+    color: #fff;
+    border: 1px solid #5FA6D5;
+    background-color: #5FA6D5;
+}
 #main{
     height: auto;
     background-color: #D7EEFF;
