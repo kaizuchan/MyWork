@@ -41,6 +41,27 @@
     return $res;
   }
   // 都道府県 セレクトボックス option生成
+  function setIdentifyOptions($default = null){
+    $prefectures = array(
+      1 => '出勤時間',
+      2 => '休憩開始時間',
+      3 => '休憩終了時間',
+      4 => '退勤時間',
+    );
+    $res = "";
+    if($default == null){
+      $res .= '<option value="" selected hidden>選択してください</option>';
+    }
+    foreach($prefectures as $k => $p){
+      if($default == $k){
+          $res .= '<option value="'.$k.'" selected>'.$p.'</option>';
+      }else{
+          $res .= '<option value="'.$k.'">'.$p.'</option>';
+      }
+    }
+    return $res;
+  }
+  // 数値 セレクトボックス option生成
   function setNumberOptions($min, $max, $default = null){
     $res = '';
     if($default == null){

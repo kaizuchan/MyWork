@@ -91,7 +91,7 @@
         <div class="input-group birth-select mb-3">
           <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年" required>
             <?php echo setNumberOptions(1920, date('Y'), setValue('birthday-year')); ?>
-            </select>
+          </select>
           <label class="input-group-text" for="inputGroupSelect01">年</label>
           <select name="birthday-month"  class="form-select" aria-label="月" required>
               <?php echo setNumberOptions(1, 12, setValue('birthday-month')); ?>
