@@ -57,10 +57,10 @@
                             <th class="fir_row"scope="col">退勤時間</th>
                             <th class="fir_row"scope="col">休憩開始時間</th>
                             <th class="fir_row"scope="col">休憩終了時間</th>
-                            <th class="fir_row"scope="col">労働時間(h)</th>
-                            <th class="fir_row"scope="col">休憩時間(h)</th>
-                            <th class="fir_row"scope="col">残業時間(h)</th>
-                            <th class="fir_row"scope="col">総勤務時間(h)</th>
+                            <th class="fir_row"scope="col">労働時間</th>
+                            <th class="fir_row"scope="col">休憩時間</th>
+                            <th class="fir_row"scope="col">残業時間</th>
+                            <th class="fir_row"scope="col">総勤務時間</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -73,10 +73,10 @@
                                 <td data-label="退勤時間" class="time"><?= setTime($date['end_work']) ?></td>
                                 <td data-label="休憩開始時間" class="time"><?= setTime($date['start_break']) ?></td>
                                 <td data-label="休憩終了時間" class="time"><?= setTime($date['end_break']) ?></td>
-                                <td data-label="労働時間" class="time"><?= $date['work'] ?></td>
-                                <td data-label="休憩時間" class="time"><?= $date['break'] ?></td>
-                                <td data-label="残業時間" class="time"><?= $date['overtime'] ?></td>
-                                <td data-label="総労働時間" class="time"><?= $date['total'] ?></td>
+                                <td data-label="労働時間" class="time"><?= echoFloat($date['work']) ?></td>
+                                <td data-label="休憩時間" class="time"><?= echoFloat($date['break']) ?></td>
+                                <td data-label="残業時間" class="time"><?= echoFloat($date['overtime']) ?></td>
+                                <td data-label="総労働時間" class="time"><?= echoFloat($date['total']) ?></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
