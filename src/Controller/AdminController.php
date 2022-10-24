@@ -13,9 +13,11 @@ class AdminController extends AppController
         // コンポーネントの読み込み
         $this->loadComponent("PuncheData");
         $this->loadComponent("SerchUser");
-        // ログイン中のユーザー情報を読み込み
+        // 自分の情報をViewに送信
         $me = $this->Authentication->getIdentity();
-        $this->set(compact('me'));
+        $this->loadModel('Enterprises');
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
         // アクセス制限
         $this->loadModel('Users');
         $user = $this->Users->get($me->id);
@@ -70,14 +72,12 @@ class AdminController extends AppController
                         'users.role' => '9',
                         'users.deleted_at' => $time,
                     );
-                    //debug($data);
                     
                     foreach($userId as $i){
                         // 条件
                         $where = array(
                             'users.id' => $i,
                         );
-                        //debug($where);
                         $this->Users->updateAll($data, $where);
                     }
                 }
@@ -256,10 +256,7 @@ class AdminController extends AppController
 
         // 該当する打刻データを取得して、Viewに送信
         $times = $this->PuncheData->getPunchedData($id, $date);
-        //debug($times); 
-/*         foreach($times as $t){
-        debug($t->time->i18nFormat('yyyy-MM-dd HH:mm:ss'));
-        } */
+        
         $this->set(compact('times', 'date'));
 
     }
