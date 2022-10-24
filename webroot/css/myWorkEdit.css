@@ -57,7 +57,7 @@ select{
 /* 1280px以下 */
 @media screen and (max-width: 1280px){
     .Card{
-      width: 95vw;//カードの幅
+      width: 95vw;
     }
     #editTable{
         width: 80vw;
@@ -70,7 +70,7 @@ select{
 }
 @media screen and (max-width: 834px){
     .Card{
-      width: 95vw;//カードの幅
+      width: 95vw;
     }
     .id_name {
       padding: 0 2rem 0 0;
