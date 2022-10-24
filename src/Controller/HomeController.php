@@ -108,12 +108,12 @@ class HomeController extends AppController
                 if(isset($_POST['leave'])) {
                     $punches->identify = 4;
                 }
-                // データ登録
-                try {
-                    $this->punch->saveOrFail($punches);
-                } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
-                    echo $e->getEntity();
-                }
+            }
+            // データ登録
+            try {
+                $this->punch->saveOrFail($punches);
+            } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                echo $e->getEntity();
             }
         }
         // HOME画面へリダイレクトさせる
