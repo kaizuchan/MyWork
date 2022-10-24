@@ -16,8 +16,9 @@
     <?php echo $this->Html->css("message"); ?>
 </head>
 <body>
-
-    <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+    <div id="toast">
+        <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+    </div>
 
     <div id="main">
 

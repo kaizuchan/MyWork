@@ -73,6 +73,10 @@
   line-height: 2.2rem;
 }
 /* 隠す */
+#toast.hidden {
+  display: none;
+}
+/* 隠す */
 #mask.hidden {
   display: none;
 }
