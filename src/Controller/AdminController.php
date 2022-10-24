@@ -110,10 +110,10 @@ class AdminController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->getData());
     
                 // 誕生日のみ連結処理が必要
-                $year = $this->request->getData("birthday_year");
-                $month = $this->request->getData("birthday_month");
-                $date = $this->request->getData("birthday_date");
-                $user->birthday = mktime(0,0,0,$month,$date,$year);
+                $year = $this->request->getData("birthday-year");
+                $month = $this->request->getData("birthday-month");
+                $date = $this->request->getData("birthday-date");
+                $user->birthday = $year.'-'.$month.'-'.$date;
     
                 if ($this->Users->save($user)) {
                     // 登録成功
@@ -154,11 +154,11 @@ class AdminController extends AppController
                 $user = $this->Users->patchEntity($user, $this->request->getData());
 
                 // 誕生日のみ連結処理が必要
-                $year = $this->request->getData("birthday_year");
-                $month = $this->request->getData("birthday_month");
-                $date = $this->request->getData("birthday_date");
+                $year = $this->request->getData("birthday-year");
+                $month = $this->request->getData("birthday-month");
+                $date = $this->request->getData("birthday-date");
+                $user->birthday = $year.'-'.$month.'-'.$date;
 
-                $user->birthday = mktime(0,0,0,$month,$date,$year);
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('更新しました'));
                     return $this->redirect(['controller' => 'admin', 'action' => 'index']);
