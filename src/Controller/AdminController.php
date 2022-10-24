@@ -210,14 +210,13 @@ class AdminController extends AppController
                     $this->Flash->error(__('削除に失敗しました'));
                 }
                 // 更新データの登録
-                $date = substr($date, 4, 2).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
+                $date = substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
                 $punche_new = $this->Punches->newEmptyEntity();
                 $punche_new->user_id = $id;
                 $punche_new->date = $date;
                 $punche_new->time = $date.' '.$data['time'];
                 $punche_new->identify = $data['identify'];
                 $punche_new->info = 2;
-                debug($punche_new);
                 if ($this->Punches->save($punche_new)) {
                     $this->Flash->success(__('更新しました'));
                 }else{
@@ -250,14 +249,14 @@ class AdminController extends AppController
                 $this->Flash->error(__('更新に失敗しました'));
             } */
         }
-        // 
 
 
 
         // 該当する打刻データを取得して、Viewに送信
+        $user = $this->Users->find('all')->where(['id'=> $id])->first();
         $times = $this->PuncheData->getPunchedData($id, $date);
         
-        $this->set(compact('times', 'date'));
+        $this->set(compact('times', 'date', 'user'));
 
     }
 
