@@ -38,15 +38,17 @@ class UsersController extends AppController
                     'enterprise_id'=>$enterprise->id,
                     'employee_id'=>$data['employee_id'],
                 ])->first();
-            }else{
-                $res['id'] = null;
             }
         }
 
         // 無理やりリダイレクト処理書いてます...
         // 要変更
         echo '<form method="post" action="/users/login" id="myform">';
-        echo '<input type="hidden" name="id" value="'. $res["id"].'" />';
+        echo '<input type="hidden" name="id" value="';
+        if(isset($res['id'])){
+            echo $res['id'];
+        }
+        echo '" />';
         echo '<input type="hidden" name="password" value="'.$data["password"].'" />';
         echo '<input type="hidden" name="_csrfToken" autocomplete="off"
         value="'.$this->request->getAttribute('csrfToken').'">';
@@ -55,21 +57,6 @@ class UsersController extends AppController
 
     public function login()
     {
-        // sample code
-/*         if ($this->request->is('post')) {
-            $data = $this->request->getData();
-            debug($data);
-            $connection = ConnectionManager::get('default');
-            $query = 'SELECT id FROM enterprises where login_id = "'.$data['enterprise_id'].'";';
-            $enterprise = $connection->execute($query)->fetch('assoc');
-            debug($enterprise['id']);
-            $query = 'SELECT id FROM users where enterprise_id = '.$enterprise['id'].' and employee_id = "'.$data['employee_id'].'";';
-            $user = $connection->execute($query)->fetch('assoc');
-            debug($user['id']);
-            $this->request = $this->request->withData('id', (string) $user['id']);
-            $this->request['loin'];
-        } */
-
         $result = $this->Authentication->getResult();
         // 認証成功
         if ($result->isValid()) {
