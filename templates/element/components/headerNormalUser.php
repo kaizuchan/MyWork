@@ -20,7 +20,7 @@
         <div id="logo">
             <a href="/">  
             <?php
-                echo $this->Html->image("rogo.png");
+                echo $this->Html->image("LOGO_04.png");
             ?>
             </a>   
         </div>
