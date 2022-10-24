@@ -44,6 +44,7 @@ class PuncheDataComponent extends Component
                 'break' => array(),
                 'overtime' => array(),
                 'total' => array(),
+                'info' => array(),
             ];
             array_push($array['dates'], $a);
         }
@@ -59,6 +60,10 @@ class PuncheDataComponent extends Component
             $res = $this->calculateHours($res);
             // 取得したデータをマージ
             $array['dates'][$key] = array_merge($array['dates'][$key], $res);
+            
+            //その日の更新情報を取得
+            $res = $this->getPunchedInfo($year.'/'.$month.'/'.$date['date'], $user_id);
+            $array['dates'][$key]['info'] = $res;
         }
         $array = calculateMonthlyHours($array);
         return $array;
@@ -82,6 +87,26 @@ class PuncheDataComponent extends Component
         }
         return $return;
     }
+    /* ユーザーの勤怠データ編集情報を登録して返す */
+    public function getPunchedInfo($date, $user_id)
+    {
+        $info = 1;
+        for ($i = 1; $i <= 4; $i++) {
+            $data = array();
+            // 対象のレコードを全て取得
+            $res = $this->getPunchedData($user_id, $date, $i);
+            // 取得したデータ != null ならば、取得したデータから時:分のみを取得
+            if($res != null){
+                foreach($res as $r){
+                    array_push($data, $r->time->i18nFormat('yyyy-MM-dd HH:mm:ss'));
+                    if($r->info == 2){
+                        $info = 2;
+                    }
+                }
+            }
+        }
+        return $info;
+    }
     /* 配列にユーザーの勤怠データを登録して返す */
     public function getPunchedData($user_id, $date, $identify = null)
     {
@@ -93,9 +118,9 @@ class PuncheDataComponent extends Component
             ]
             ];
         if($identify != null){
-            $where = array_merge($where[0], ['identify' => $identify,]);
+            $where = array_merge($where[0], ['identify' => $identify]);
         }
-        $where = array_merge($where, ['not' => ['info' => 9,]]);
+        $where = array_merge($where, ['not' => ['info' => 9]]);
         // 対象のレコードを全て取得
         $res = $this->Punches->find('all')
         ->where($where)
