@@ -13,9 +13,11 @@ class AdminController extends AppController
         // コンポーネントの読み込み
         $this->loadComponent("PuncheData");
         $this->loadComponent("SerchUser");
-        // ログイン中のユーザー情報を読み込み
+        // 自分の情報をViewに送信
         $me = $this->Authentication->getIdentity();
-        $this->set(compact('me'));
+        $this->loadModel('Enterprises');
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
         // アクセス制限
         $this->loadModel('Users');
         $user = $this->Users->get($me->id);
@@ -70,14 +72,12 @@ class AdminController extends AppController
                         'users.role' => '9',
                         'users.deleted_at' => $time,
                     );
-                    //debug($data);
                     
                     foreach($userId as $i){
                         // 条件
                         $where = array(
                             'users.id' => $i,
                         );
-                        //debug($where);
                         $this->Users->updateAll($data, $where);
                     }
                 }
@@ -187,15 +187,17 @@ class AdminController extends AppController
     public function editwork($id, $date)
     {
         // データベース登録処理
-        $this->loadModel('Punches');
-        $data = $this->request->getData();
         if ($this->request->is('post')) {
+            $this->loadModel('Punches');
+            $data = $this->request->getData();
+
             // 対象データを削除済みに変更
             if(isset($data['delete'])){
                 $punche = $this->Punches->get($data['id']);
                 $punche->info = 9;
                 if ($this->Punches->save($punche)) {
                     $this->Flash->success(__('削除しました'));
+                    return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                 }else{
                     $this->Flash->error(__('削除に失敗しました'));
                 }
@@ -210,57 +212,29 @@ class AdminController extends AppController
                     $this->Flash->error(__('削除に失敗しました'));
                 }
                 // 更新データの登録
-                $date = substr($date, 4, 2).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
+                $punch_date = substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
                 $punche_new = $this->Punches->newEmptyEntity();
                 $punche_new->user_id = $id;
-                $punche_new->date = $date;
-                $punche_new->time = $date.' '.$data['time'];
+                $punche_new->date = $punch_date;
+                $punche_new->time = $punch_date.' '.$data['time'];
                 $punche_new->identify = $data['identify'];
                 $punche_new->info = 2;
-                debug($punche_new);
                 if ($this->Punches->save($punche_new)) {
                     $this->Flash->success(__('更新しました'));
+                    return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                 }else{
                     $this->Flash->error(__('更新に失敗しました'));
                 }
             }
-            /* //debug($data);
-            $this->loadModel('Punches');
-
-            $identify = array('start_work', 'start_break', 'end_break', 'end_work');
-            
-            $stmt = false;
-            for ($i = 1; $i <= 4; $i++) {
-                // 更新されたデータを特定し、そのデータのみ登録処理を行う
-                if($times[$identify[$i-1]] != $data[$identify[$i-1]]){
-                    $punche = $this->Punches->newEmptyEntity();
-                    $punche->user_id = $id;
-                    $punche->date = $date;
-                    $punche->time = $data[$identify[$i-1]];
-                    $punche->identify = $i;
-                    $punche->modified_info = 1;
-                    $stmt = $this->Punches->save($punche);
-                }
-            }
-
-            if ($stmt) {
-                $this->Flash->success(__('更新しました'));
-                return $this->redirect(['controller' => 'admin', 'action' => 'works', $id]);
-            }else{
-                $this->Flash->error(__('更新に失敗しました'));
-            } */
         }
-        // 
 
 
 
         // 該当する打刻データを取得して、Viewに送信
+        $user = $this->Users->find('all')->where(['id'=> $id])->first();
         $times = $this->PuncheData->getPunchedData($id, $date);
-        //debug($times); 
-/*         foreach($times as $t){
-        debug($t->time->i18nFormat('yyyy-MM-dd HH:mm:ss'));
-        } */
-        $this->set(compact('times', 'date'));
+        
+        $this->set(compact('times', 'date', 'user'));
 
     }
 

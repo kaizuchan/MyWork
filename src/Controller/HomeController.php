@@ -25,8 +25,11 @@ class HomeController extends AppController
         // テーブル取得
         $this->users = TableRegistry::getTableLocator()->get('users');
         $this->punch = TableRegistry::getTableLocator()->get('punches');
+        // 自分の情報をViewに送信
         $me = $this->Authentication->getIdentity();
-        $this->set(compact('me'));
+        $this->loadModel('Enterprises');
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
         // アクセス制限にかからないよう
         $this->Authorization->skipAuthorization();
     }
@@ -57,13 +60,11 @@ class HomeController extends AppController
         
         // 出勤状況表示部分
         $status = $this->solve($users);
-        $this->set('status', $status);
         // ログイン中ユーザーの勤怠情報を送信
         $flag = $this->PuncheData->getPunchStatement($me->id);
         
         // Viewへの受け渡し
-        $this->set('users', $users);
-        $this->set('flag', $flag);
+        $this->set(compact('users', 'flag', 'status'));
     }
 
     public function works($month = null, $year = null)

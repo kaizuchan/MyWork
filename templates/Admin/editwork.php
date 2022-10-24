@@ -26,8 +26,8 @@
                 <?php echo $this->element('components/backButton'); ?>
 
                 <div class="id_name">
-                    <p>ID:123456</p>
-                    <p>横田守生</p>
+                    <p>ID:<?= $user->employee_id ?></p>
+                    <p><?= $user->last_name.$user->first_name ?></p>
                 </div>
 
                 <div><h1 class="title">勤務表履歴</h1></div>
