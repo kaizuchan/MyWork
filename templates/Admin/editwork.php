@@ -40,6 +40,9 @@
                 <div class="scroll_bar">
                     <div id="editTable">
                         <table class="table">
+                        <div>
+                            <button  onclick="addRecord()">社員追加</button>
+                        </div>
                             <thead  class="table-light">
                                 <tr>
                                     <th>打刻種別</th>
@@ -68,12 +71,32 @@
                                             value="<?= $this->request->getAttribute('csrfToken') ?>">
                                         <input type="hidden" name="id" value="<?= $time->id ?>">
                                         <input type="hidden" name="identify" value="<?= $time->identify ?>">
-                                        </form>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                    </form>
+                                <?php endforeach; ?>
+                                <!-- レコード挿入部分 -->
+                                <div>
+                                    <form method="post">
+                                        <tr id="addRecord" class="hidden">
+                                            <td><?= setText($time->identify) ?></td>
+                                            <td>
+                                                <input name="date" type="date" value="">
+                                            </td>
+                                            <td><input name="time" type="time" value="" ></td>
+                                            <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
+                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="submit">削除</button></td>
+                                            <td><?= echoPunchedStatement($time->info) ?></td>
+                                        </tr>
+                                        <input
+                                            type="hidden" name="_csrfToken" autocomplete="off"
+                                            value="<?= $this->request->getAttribute('csrfToken') ?>">
+                                        <input type="hidden" name="id" value="">
+                                        <input type="hidden" name="identify" value="">
+                                    </form>
+                                </div>
+                            </tbody>
+                        </table>
                     </div>
+                </div>
 
 
                         
@@ -93,6 +116,7 @@
 
                 </div>
                 <?php echo $this->Html->script("modal"); ?>
+                <?php echo $this->Html->script("admin"); ?>
             </div>
         </div>
         
