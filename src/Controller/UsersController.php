@@ -65,7 +65,7 @@ class UsersController extends AppController
         }
         // ログインできなかった場合
         if ($this->request->is('post') && !$result->isValid()) {
-            $this->Flash->error('Invalid username or password');
+            $this->Flash->error('ユーザー名又はパスワードが間違っています');
         }
     }
 
