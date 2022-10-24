@@ -7,16 +7,16 @@ nav{
 nav a{
     font-size: 1.6rem;
     margin: 1rem 3rem;
-    color: #fff;
+    color: #FFF;
 }
 nav a:hover{
-    color: #fff;
+    color: #FFF;
 }
 nav li{
     margin: 0 0 0 0;
 }
 #logoButton{
-    color: #fff;
+    color: #FFF;
 }
 #logo{
     width: 50px;
