@@ -59,10 +59,10 @@
                             <th class="fir_row"scope="col">退勤時間</th>
                             <th class="fir_row"scope="col">休憩開始時間</th>
                             <th class="fir_row"scope="col">休憩終了時間</th>
-                            <th class="fir_row"scope="col">労働時間</th>
-                            <th class="fir_row"scope="col">休憩時間</th>
-                            <th class="fir_row"scope="col">残業時間</th>
-                            <th class="fir_row"scope="col">総勤務時間</th>
+                            <th class="fir_row"scope="col">労働時間(h)</th>
+                            <th class="fir_row"scope="col">休憩時間(h)</th>
+                            <th class="fir_row"scope="col">残業時間(h)</th>
+                            <th class="fir_row"scope="col">総勤務時間(h)</th>
                         </tr>
                     </thead>
                     <tbody>

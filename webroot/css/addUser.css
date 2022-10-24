@@ -4,7 +4,7 @@ h1{
     text-align: center;
 }
 /* 入力項目名 */
-h2{
+.itemsTitle{
     font-size: 1.8rem;
 }
 form{
@@ -59,6 +59,10 @@ box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
     padding: 2rem 0 0 2rem;
 }
 @media screen and (max-width: 1024px){
+    /* 入力項目名 */
+    .itemsTitle{
+        font-size: 1.6rem;
+    }
     .Card{
         padding: 5rem;
     }

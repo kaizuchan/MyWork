@@ -60,7 +60,7 @@ h2.oct {
 }
 /* トータル項目名、値 */
 .total table tr{
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 /* トータルの項目名 */
 .total table th{
@@ -90,7 +90,7 @@ table.glaf thead tr th{
   position: sticky;
 	top: 0;
   vertical-align: middle;
-  text-align: center; 
+  text-align: center;
 }
 /* グラフの横一列 */
 table.glaf tr{
@@ -106,6 +106,9 @@ table.glaf td{
   vertical-align: middle;
   text-align: center;
 }
+th.fir_row {
+  font-weight: 400;
+}
 /* スクロールバー */
 .scroll_bar{
   width: max-content;
@@ -119,11 +122,9 @@ table.glaf td{
 }
 .scroll_bar::-webkit-scrollbar-track{
   background-color: #ccc;
-  border-radius: 5px;
 }
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
-  border-radius: 5px;
 }
 /* スクロールバーここまで */
 
