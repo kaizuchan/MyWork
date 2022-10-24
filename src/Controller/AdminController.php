@@ -191,7 +191,7 @@ class AdminController extends AppController
             $this->loadModel('Punches');
             $data = $this->request->getData();
 
-            // 対象データを削除済みに変更
+            // 削除処理
             if(isset($data['delete'])){
                 $punche = $this->Punches->get($data['id']);
                 $punche->info = 9;
@@ -202,6 +202,7 @@ class AdminController extends AppController
                     $this->Flash->error(__('削除に失敗しました'));
                 }
             }
+            // 更新処理
             if(isset($data['update'])){
                 // 元データを削除済みに変更
                 $punche_old = $this->Punches->get($data['id']);
@@ -224,6 +225,23 @@ class AdminController extends AppController
                     return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                 }else{
                     $this->Flash->error(__('更新に失敗しました'));
+                }
+            }
+            // レコード追加処理
+            if(isset($data['insert'])){
+                // 新規レコードの追加
+                $punch_date = substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2);
+                $punche_new = $this->Punches->newEmptyEntity();
+                $punche_new->user_id = $id;
+                $punche_new->date = $punch_date;
+                $punche_new->time = $data['date'].' '.$data['time'];
+                $punche_new->identify = $data['identify'];
+                $punche_new->info = 2;
+                if ($this->Punches->save($punche_new)) {
+                    $this->Flash->success(__('追加しました'));
+                    return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                }else{
+                    $this->Flash->error(__('追加に失敗しました'));
                 }
             }
         }
