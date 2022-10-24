@@ -17,7 +17,9 @@
 
     <div id="main">
         <div class="Card">
-    <?php echo $this->element('components/backButton'); ?>
+            <a href="/">
+                <?php echo $this->element('components/backButton'); ?>
+            </a>
             <div class="id_name">
                 <p>ID:<?= $me->employee_id ?></p>
                 <p><?= $me->last_name.$me->first_name ?></p>
@@ -57,20 +59,20 @@
                             <th class="fir_row"scope="col">退勤時間</th>
                             <th class="fir_row"scope="col">休憩開始時間</th>
                             <th class="fir_row"scope="col">休憩終了時間</th>
-                            <th class="fir_row"scope="col">労働時間</th>
-                            <th class="fir_row"scope="col">休憩時間</th>
-                            <th class="fir_row"scope="col">残業時間</th>
-                            <th class="fir_row"scope="col">総勤務時間</th>
+                            <th class="fir_row"scope="col">労働時間(h)</th>
+                            <th class="fir_row"scope="col">休憩時間(h)</th>
+                            <th class="fir_row"scope="col">残業時間(h)</th>
+                            <th class="fir_row"scope="col">総勤務時間(h)</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($data['dates'] as $date): ?>
                             <tr>
                                 <th class="date"><?= $date['date'] ?>日</th>
-                                <td data-label="出勤時間" class="time"><?= $date['start_work'] ?></td>
-                                <td data-label="退勤時間" class="time"><?= $date['end_work'] ?></td>
-                                <td data-label="休憩開始時間" class="time"><?= $date['start_break'] ?></td>
-                                <td data-label="休憩終了時間" class="time"><?= $date['end_break'] ?></td>
+                                <td data-label="出勤時間" class="time"><?= setTime($date['start_work']) ?></td>
+                                <td data-label="退勤時間" class="time"><?= setTime($date['end_work']) ?></td>
+                                <td data-label="休憩開始時間" class="time"><?= setTime($date['start_break']) ?></td>
+                                <td data-label="休憩終了時間" class="time"><?= setTime($date['end_break']) ?></td>
                                 <td data-label="労働時間" class="time"><?= $date['work'] ?></td>
                                 <td data-label="休憩時間" class="time"><?= $date['break'] ?></td>
                                 <td data-label="残業時間" class="time"><?= $date['overtime'] ?></td>

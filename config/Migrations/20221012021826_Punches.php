@@ -30,14 +30,15 @@ class Punches extends AbstractMigration
                 'null' => false,
             ])
             ->addColumn('date', 'date')
-            ->addColumn('time', 'time')
+            ->addColumn('time', 'datetime')
             ->addColumn('identify', 'integer', [
                 'default' => null,
                 'limit' => MysqlAdapter::INT_TINY,
                 'null' => false,
             ])
-            ->addColumn('modified_info', 'boolean', [
-                'default' => false,
+            ->addColumn('info', 'integer', [
+                'default' => 1,
+                'limit' => MysqlAdapter::INT_TINY,
                 'null' => false,
             ])
             ->addForeignKey('user_id', 'users', 'id')

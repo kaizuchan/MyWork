@@ -21,10 +21,10 @@ class SerchUserComponent extends Component
      * 企業IDに該当するユーザー情報を取得する
      * $keywordを設定すれば、名前が一致するユーザーのみを取得 
      */
-    public function getEmployee($id, $keyword = null){
+    public function getEmployee($enterprise_id, $id = null, $keyword = null){
         $this->loadModel('Users');
         $where = [
-            'enterprise_id' => $id,
+            'enterprise_id' => $enterprise_id,
             'not' => ['role' => '9'],
         ];
         if($keyword != null){
@@ -32,9 +32,17 @@ class SerchUserComponent extends Component
                 ['last_name LIKE' => '%'.$keyword.'%'],
                 ['first_name LIKE' => '%'.$keyword.'%'],
                 ['CONCAT(last_name,first_name) LIKE' => '%'.$keyword.'%'],
+                ['last_name_kana LIKE' => '%'.$keyword.'%'],
+                ['first_name_kana LIKE' => '%'.$keyword.'%'],
+                ['CONCAT(last_name_kana,first_name_kana) LIKE' => '%'.$keyword.'%'],
             ]]);
         }
-        $users = $this->Users->find('all')->where($where);
+        $order = [];
+        if($id != null){
+            array_push($order, 'id = '.$id.' DESC');
+        }
+        array_push($order, 'employee_id ASC');
+        $users = $this->Users->find('all')->where($where)->order($order)/* ->order(['id'=>'ASC']) */;
         return $users;
     }
 }

@@ -75,8 +75,7 @@ class PunchesTable extends Table
             ->notEmptyString('identify');
 
         $validator
-            ->boolean('modified_info')
-            ->notEmptyString('modified_info');
+            ->notEmptyString('info');
 
         return $validator;
     }

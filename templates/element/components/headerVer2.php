@@ -33,9 +33,6 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
-                    <a href="/admin">管理者</a>
-                </li>
-                <li class="nav-item active">
                     <a href="/works">勤怠履歴</a>
                 </li>
                 <li class="nav-item active">

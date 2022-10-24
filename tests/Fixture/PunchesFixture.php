@@ -21,10 +21,10 @@ class PunchesFixture extends TestFixture
             [
                 'id' => 1,
                 'user_id' => 1,
-                'date' => '2022-10-17',
-                'time' => '10:10:19',
+                'date' => '2022-10-21',
+                'time' => '09:27:53',
                 'identify' => 1,
-                'modified_info' => 1,
+                'info' => 1,
             ],
         ];
         parent::init();

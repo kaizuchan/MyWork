@@ -1,116 +1,120 @@
-/* 戻るアイコンボタン */
-#backButton{
-    color: #000;
-    position: fixed;
-    top: 8rem;
-    left: 4rem;
+/* メイン全体 */
+#main{
+    height: 92vh;
+    background-color: #D7EEFF;
 }
-/* 右上の社員ID,名 */
-#userId_Name{
-    text-align: right;
-    margin-right: 8rem;
-    font-size: 2rem;
-}
-/* ページタイトル */
-#pageTitle{
-    font-size: 4rem;
-    text-align: center;
-}
-/* 日付 */
-#pageDate{
-    margin-top: 2rem;
-    font-size: 3rem;
-    text-align: center;
-}
-/* テーブルタグ */
-table{
+/* カード */
+.Card{
+    margin: 0vh auto;
     width: 80vw;
-    margin: 5rem auto 5rem auto;
-    padding: 3rem;
-    border: 1px solid #000;
+    height: 92vh;
+    padding: 4rem;
     border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-/* テーブル th td */
-table th, td{
-    border: none;
-    text-align: center;
-    font-size: 2.4rem;
-}
-/* 保存ボタン、キャンセルボタンの位置 */
-#buttonBox{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-/* 保存ボタン、キャンセルボタンのデザイン */
-#buttonBox button{
-    width: 20vw;
-    font-size: 2rem;
-    padding: 2rem;
-    border-radius: 5px;
-    border: 1px solid #1F78B4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-}
-/* 保存ボタン */
-#changeButton button{
-    background-color: #1F78B4;
-}
-/* キャンセルボタンボタン */
-#cancelButton button{
     background-color: #fff;
-    color: #1F78B4;
-    border: 1px solid #1F78B4;
+    box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
-/* スマホ、タブレット用(768px以下デザイン) */
-@media screen and (max-width: 768px){
-    #userId_Name{
-        margin-right: 1rem;
-        font-size: 1.6rem;
+/* 名前とID */
+.id_name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0 5rem 0 0;
+    font-size: 1.5rem;
+}
+/* タイトル */
+h1.title {
+    text-align: center;
+}
+/* 月 */
+h2.oct {
+    text-align: center;
+}
+#editTable{
+    width: 70vw;
+    margin: 8rem auto 0 auto;
+    font-size: 2rem;
+    position: relative;
+    border-collapse: collapse; 
+}
+#editTable table tr th{
+    height: 5vh;
+    text-align: center;
+    vertical-align: middle;
+    position: sticky;
+    top: 0;
+    font-weight: 300;
+}
+#editTable table tr td{
+    height: 10vh;
+    text-align: center;
+    vertical-align: middle;
+}
+select{
+    width: 8vw;
+}
+
+
+/* 1280px以下 */
+@media screen and (max-width: 1280px){
+    .Card{
+      width: 95vw;//カードの幅
     }
-    #pageTitle{
-        margin-top: 2rem;
-        font-size: 3rem;
+    #editTable{
+        width: 80vw;
     }
-    #pageDate{
-        margin-top: 2rem;
-        font-size: 2.5rem;
-    }  
-    table{
-        margin: 5rem auto;
-        padding: 0;
-        justify-content: center;
-    }    
-    table th{
-        font-size: 2rem;
+}
+@media screen and (max-width: 912px){
+    #editTable{
+        width: 85vw;
     }
-    #buttonBox button{
-        width: 30vw;
+}
+@media screen and (max-width: 834px){
+    .Card{
+      width: 95vw;//カードの幅
+    }
+    .id_name {
+      padding: 0 2rem 0 0;
+    }
+    #editTable{
+        width: 75vw;
+    }
+    #editTable table tr th{
+        font-size: 1.5rem;
+    }
+    #editTable table tr td{
         font-size: 1.5rem;
     }
 }
-/* スマホ用(480px以下デザイン) */
-@media screen and (max-width: 480px){
-    #pageTitle{
-        font-size: 1.8rem;
-    }
-    #userId_Name{
-        margin-right: 1rem;
-        font-size: 1.4rem;
-    }
-    #pageDate{
-        margin-top: 2rem;
-        font-size: 1.4rem;
-    }
-    table tr{
-        display: flex;
-        flex-direction: column;
+/* テーブルが横スクロールに切り替えるpx */
+@media screen and (max-width: 640px){
+    #editTable table tr th{
+        height: 10vh;
+        font-size: 1.5rem;
+        display: grid;
         align-items: center;
-        justify-content: space-around;
-    } 
+        justify-items: center;
+    }
+    #editTable table tr td{
+        font-size: 1.5rem;
+        display: grid;
+        align-items: center;
+        justify-items: center;
+    }
+  }
+/* スマホ版 */
+@media screen and (max-width: 480px){
+    .Card{
+      padding: 0rem;
+    }
+    .id_name {
+      padding: 2rem  2rem 0 0;
+    }
+    #editTable{
+        width: 90vw;
+    }
+}
+@media screen and (max-width: 280px){
+    .id_name {
+      padding: 1rem 2rem 0 0;
+    }
 }

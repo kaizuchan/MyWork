@@ -23,8 +23,6 @@
 
         <div class="Card">
 
-        <!-- 戻るボタン -->
-        <?php echo $this->element('components/backButton'); ?>
 
             <!-- 検索ボックス -->
             <div id="searchBox">
@@ -55,6 +53,7 @@
                                         <th scope="col"><i class="fas fa-check-square"></i></th>
                                         <th scope="col">社員ID</th>
                                         <th scope="col">社員名</th>
+                                        <th scope="col">勤務履歴</th>
                                         <th scope="col">編集</th>
                                     </tr>
                                 </thead>
@@ -64,8 +63,9 @@
                                             <tr id="tbody">    
                                                 <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
                                                 <td id="userId" class="userInfo"><p><?= $user->employee_id ?></p></td>
-                                                <td id="userName" class="uName"><a href="/admin/works/<?= $user->id ?>"><p><?= $user->last_name.$user->first_name ?></p></a></td>
-                                                <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="far fa-edit fa-2x"></i></i></a></td>
+                                                <td id="userName" class="uName"><p><?= $user->last_name.$user->first_name ?></p></td>
+                                                <td id="lookTableButton"><a href="/admin/works/<?= $user->id ?>"><i class="fas fa-clock"></i></a></td>
+                                                <td id="editButton"><a href="/admin/edit-user/<?= $user->id ?>"><i class="far fa-edit"></i></a></td>
                                             </tr>
                                         <?php endforeach; ?>
                                 </tbody>
@@ -76,9 +76,11 @@
         
                 <div id="mask" class="hidden"></div>
                 <section id="modal" class="hidden">
-                    <?php foreach ($users as $user): ?>
-                        <input id="deleteList" class="deleteList" type="hidden" value="" readonly="readonly">
-                    <?php endforeach; ?>
+                    <div id="delete_scl">
+                        <?php foreach ($users as $user): ?>
+                            <input id="deleteList" class="deleteList" type="hidden" value="" readonly="readonly">
+                        <?php endforeach; ?>
+                    </div>
                     <p id="editMessage">
                         <i class="fas fa-exclamation-triangle" id="exclamation-triangleIcon"></i>
                         上記の社員を本当に削除しますか？<br>(「OK」をクリックすると元には戻せません)

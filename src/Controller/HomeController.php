@@ -36,15 +36,9 @@ class HomeController extends AppController
         // ログイン中のユーザー情報取得
         $me = $this->Authentication->getIdentity();
 
-        $user = $this->Authentication->getIdentity();
 
-
-        // 勤務状況表示
-        
-        $users = $this->users->find('all')->where([
-            ['enterprise_id' => $user->enterprise_id],
-            'not' => ['role'=>9]
-        ]);
+        // 社員情報を取得
+        $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id);
 
 
         if ($this->request->is('post')) {
@@ -57,7 +51,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 1;
 
                 // データ登録
@@ -68,12 +62,12 @@ class HomeController extends AppController
                 }
             }
             if(isset($_POST['leave'])) {
-                    
+                
                 $punches = $this->punch->newEmptyEntity();
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 4;
 
                 try {
@@ -88,7 +82,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 2;
 
                 try {
@@ -103,7 +97,7 @@ class HomeController extends AppController
 
                 $punches->user_id = $me->id;
                 $punches->date = date("Y/m/d");
-                $punches->time = date("H:i:s");
+                $punches->time = date('Y-m-d H:i:s');
                 $punches->identify = 3;
 
                 try {
@@ -114,42 +108,25 @@ class HomeController extends AppController
             }
             // 社員検索処理
             if(isset($_POST['searchButton'])) {
-
-                // 配列
-                $searchUsers = [];
-                
                 // 入力値受け取り
                 $find = $this->request->getData('find');
-                // debug($find);
-
-                // 入力値が条件に合うかどうか検索
-                $users = $this->users->find('all')->where([
-                    'or' => [
-                        ['last_name LIKE' => '%'.$find.'%',],
-                        ['first_name LIKE' => '%'.$find.'%']
-                    ],
-                    'not' => ['role' => '9']
-                ]);
-
+                // 条件に一致する社員の情報を取り出す
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, $me->id, $find);
                 //ユーザーの人数を取得
-                //debug($count);
-                // 条件にあったデータを渡す
-                //$this->set('searchUsers', $searchUsers);
                 $count = $users->count();
-            $this->set('count', $count);
-            
-                // 出勤状況表示部分
-                $searchStatus = $this->solve($searchUsers);
-                $this->set('searchStatus', $searchStatus);
+                $this->set('count', $count);
             }
         }
         
         // 出勤状況表示部分
         $status = $this->solve($users);
         $this->set('status', $status);
+        // ログイン中ユーザーの勤怠情報を送信
+        $flag = $this->PuncheData->getPunchStatement($me->id);
         
         // Viewへの受け渡し
         $this->set('users', $users);
+        $this->set('flag', $flag);
     }
 
     public function works($month = null, $year = null)
@@ -170,58 +147,30 @@ class HomeController extends AppController
     {
         $array = array();
         foreach($users as $user){
-            //debug($user->id);
-            array_push($array, $this->solveStatus($user->id));
+            switch($this->solveStatus($user->id)){
+                case null:
+                    $data = "退勤";
+                    break;
+                case 1:
+                    $data = "勤務中";
+                    break;
+                case 2:
+                    $data = "休憩中";
+                    break;
+                case 3:
+                    $data = "勤務中";
+                    break;
+                case 4:
+                    $data = "退勤";
+                    break;
+            }
+            array_push($array, $data);
         }
-        //debug($array);
         return $array;
     }
     private function solveStatus($id)
     {
-        $this->loadModel('Punches');
-
-        //debug(date('Y-m-d'));
-        
-        // 当日のその人のデータを全て取得
-
-        if($this->checkStatus($id, 4)){
-            // 退勤済み
-            return "退勤";
-            exit();
-        }elseif($this->checkStatus($id, 3)){
-            // 休憩終了後 勤務中
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 2)){
-            // 休憩終了開始後
-            return "休憩中";
-            exit();
-        }elseif($this->checkStatus($id, 1)){
-            // 出勤後
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 4, "yesterday")){
-            // 退勤済み
-            return "退勤";
-            exit();
-        }elseif($this->checkStatus($id, 3, "yesterday")){
-            // 休憩終了後 勤務中
-            return "勤務中";
-            exit();
-        }elseif($this->checkStatus($id, 2, "yesterday")){
-            // 休憩終了開始後
-            return "休憩中";
-            exit();
-        }elseif($this->checkStatus($id, 1, "yesterday")){
-            // 出勤後
-            return "勤務中";
-            exit();
-        }else{
-            // 直近2日間の勤怠情報がない場合
-            return "退勤";
-            exit();
-        }
-
+        return $this->PuncheData->getPunchStatement($id);
     }
     private function checkStatus($id,$identify,$date = null)
     {
@@ -237,7 +186,6 @@ class HomeController extends AppController
         ->find('all')
         ->where(['user_id'=>$id, 'date'=>$date, 'identify'=>$identify])
         ->last();
-        //debug($query->id);
         // 取得したデータが空ならFalse あるならTrueを返す
         if($query == null){
             return false;

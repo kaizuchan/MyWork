@@ -43,7 +43,7 @@ class AdminController extends AppController
                 // 入力値受け取り
                 $find = $this->request->getData('find');
                 // 条件に一致する社員の情報を取り出す
-                $users = $this->SerchUser->getEmployee($me->enterprise_id, $find);
+                $users = $this->SerchUser->getEmployee($me->enterprise_id, null, $find);
                 // 取り出した社員の人数を数える
                 $count = $users->count();
                 // 人数を渡す
@@ -187,7 +187,7 @@ class AdminController extends AppController
     public function editwork($id, $date)
     {
         // 該当する打刻データを取得して、Viewに送信
-        $times = $this->PuncheData->getPunchdData($date, $id); 
+        $times = $this->PuncheData->getPunchedDatas($date, $id); 
         $this->set(compact('times', 'date'));
 
         // データベース登録処理

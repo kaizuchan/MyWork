@@ -11,26 +11,37 @@
     
     <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
     
-    <div class="card" id="loginCard">
-      <h1>MyWork</h1>
-      <div class="card-body">
-        <form id="loginForm" method="POST" action="/users">
-          <div class="mb-3">
-            <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
-          </div>
-          <div class="mb-3">
-            <input name="employee_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID">
-          </div>
-          <div class="mb-3">
-            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
-          </div>
-          <input
-                type="hidden" name="_csrfToken" autocomplete="off"
-                value="<?= $this->request->getAttribute('csrfToken') ?>">
-          <!-- <input type="hidden" name="id" value="87"> -->
-          <button type="submit" class="btn btn-primary">ログイン</button>
-        </form>
-      </div>
+    <div class="back">
     </div>
+
+      <div class="card" id="loginCard">
+        <h1>
+        <div id="logo">
+          <a>
+            <?php
+            echo $this->Html->image("rogo.png");
+            ?>
+          </a>
+          MyWork
+        </h1>
+        <div class="card-body">
+          <form id="loginForm" method="POST" action="/users">
+            <div class="mb-3">
+              <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID">
+            </div>
+            <div class="mb-3">
+              <input name="employee_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID">
+            </div>
+            <div class="mb-3">
+              <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード">
+            </div>
+            <input
+                  type="hidden" name="_csrfToken" autocomplete="off"
+                  value="<?= $this->request->getAttribute('csrfToken') ?>">
+            <!-- <input type="hidden" name="id" value="87"> -->
+            <button type="submit" class="btn btn-primary">ログイン</button>
+          </form>
+        </div>
+      </div>
 </body>
 </html>

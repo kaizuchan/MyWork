@@ -25,7 +25,7 @@ button:hover{
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
 #userInfoCard{
-    width: 30vw;
+    width: 35vw;
 }
 #now{
     display: flex;
@@ -162,20 +162,21 @@ button:hover{
     margin: 0 0 0 0;
 }
 #userLabel{
-    border: 1px solid #000;
     border-radius: 15px;
     padding: 0.2rem 1rem;
+    background-color: #fff;
+    color: #fff;
 }
-/* 768px以下 (タブレット、スマホ用のデザイン) */
-@media screen and (max-width: 768px){
+/* 767px以下 (タブレット、スマホ用のデザイン) */
+@media screen and (max-width: 912px){
     #main{
-        height: auto;
+        height: max-content;
         flex-direction: column;
     }
     .Card{
         margin: 2rem 0 0 0;
         padding: 4rem 0 0 0;
-        height: 80vh;
+        height: max-content;
         width: 100vw;
         box-shadow: 20px 0 20px 0 rgb(0 0 0 / 20%);
     } 
@@ -192,8 +193,8 @@ button:hover{
     }
     /* 打刻ボタン全て */
     .engButton{
-        width: 40%;
-}
+        width: 30vw;
+    }
     .buttonFlex{
         display:flex;
         justify-content: center;
@@ -203,7 +204,7 @@ button:hover{
         margin: 0 auto;
     }
     #userNameList{
-        padding: 0 3rem;
+        padding: 0 8rem;
     }
     #searchBox input{
         width: 70vw;
@@ -219,7 +220,15 @@ button:hover{
         font-size: 6rem;
         text-align: center;
     }
+    /* 打刻ボタン全て */
+    .engButton{
+        width: 40vw;
+    }
     input[type="text"]{
         width: 70vw;
+    }
+    /* スクロールバー */
+    .scroll_bar{
+        height: 54vh;
     }
 }

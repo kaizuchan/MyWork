@@ -1,16 +1,19 @@
+/* メイン全体 */
 #main{
-  height: auto;
+  height: max-content;
   background-color: #D7EEFF;
 }
+/* カード */
 .Card{
   margin: 0vh auto;
-  width: 80vw;
-  height: auto;
+  width: 90vw;
+  height: max-content;
   padding: 4rem;
   border-radius: 10px;
   background-color: #fff;
   box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
+/* 名前とID */
 .id_name {
   display: flex;
   flex-direction: column;
@@ -18,29 +21,35 @@
   padding: 0 5rem 0 0;
   font-size: 1.5rem;
 }
+/* タイトル */
 h1.title {
   text-align: center;
 }
+/* 月 */
 h2.oct {
   text-align: center;
 }
+/* 前、後の月 */
 .month {
   display: flex;
   justify-content: space-between;
   padding: 0 5rem;
 }
+/* 前、後の月リンク */
 .month h3 a{
   font-size: 2rem;
   display: flex;
   align-items: center;
   color: #000;
 }
+/* 前、後の月リンク */
 .month h3 a:hover{
   text-decoration: underline;
 }
 .nextMonth{
   margin: 0 1rem;
 }
+/* トータル4項目 */
 .total {
   display: flex;
   margin: 3rem auto;
@@ -49,6 +58,11 @@ h2.oct {
   display: flex;
   justify-content: center;
 }
+/* トータル項目名、値 */
+.total table tr{
+  font-size: 1.6rem;
+}
+/* トータルの項目名 */
 .total table th{
   padding: 0 1rem;
   font-weight: 400;
@@ -56,41 +70,49 @@ h2.oct {
   color: #fff;
   border-radius: 10px 0 0 10px;
 }
+/* トータルの値 */
 .total table td{
   background: #fff;
   border-radius: 0 10px 10px 0;
   padding: 1rem 1rem;
 }
-.total table tr{
-  font-size: 2rem;
-}
+/* グラフ全体 */
 table.glaf {
   width: 80vw;
   margin: 0 auto;
-  font-size: 2rem;
-  position: relative;
-	border-collapse: collapse; 
+  font-size: 1.6rem;/*グラフ全てのフォントサイズ*/
 }
+/* グラフの項目名 */
 table.glaf thead tr th{
   background-color: #0099CC;
   color: #fff;
   position: sticky;
-	top: 0; 
-}
-table.glaf tr{
-  height: 6vh;
-}
-table.glaf th{
+	top: 0;
   vertical-align: middle;
   text-align: center;
 }
+/* グラフの横一列 */
+table.glaf tr{
+  height: 6vh;
+}
+/* グラフの日付部分 */
+table.glaf th{
+  text-align: center;
+  vertical-align: middle;
+}
+/* グラフの値 */
 table.glaf td{
   vertical-align: middle;
   text-align: center;
 }
+th.fir_row {
+  font-weight: 400;
+}
 /* スクロールバー */
 .scroll_bar{
+  width: max-content;
   height: 70vh;
+  margin: 0 auto;
   overflow-y: scroll;
 }
 .scroll_bar::-webkit-scrollbar{
@@ -102,55 +124,49 @@ table.glaf td{
 .scroll_bar::-webkit-scrollbar-thumb{
   background-color: #777;
 }
-@media screen and (max-width: 1279px){
+/* スクロールバーここまで */
+
+
+/* 1280px以下 */
+@media screen and (max-width: 1280px){
+  .Card{
+    width: 95vw;/*ードの幅*/
+  }
   .total {
-    width: 70vw;
+    width: 70vw;/*トータル全体の幅*/
   }
-  .total table {
-    display: flex;
-  }
-  .total table th{
-    font-size: 1.2rem;
-  }
-  .total table td{
-    font-size: 1.2rem;
+  .total table tr{
+    font-size: 1.2rem;/*トータルのフォントサイズ*/
   }
   table.glaf {
-    width: 80vw;
-    font-size: 1.2rem;
+    width: 80vw;/*グラフの幅*/
+    font-size: 1.2rem;/*グラフ全体のフォントサイズ*/
   }
 }
-@media screen and (max-width: 900px){
+@media screen and (max-width: 912px){
+  /* 前、後の月リンク */
   .month h3 a{
     font-size: 1.5rem;
     display: flex;
     align-items: center;
   }
   .total {
-    width: 75vw;
+    width: 75vw;/*トータルの幅*/
   }
-  .total table th{
-    font-size: 1.2rem;
-  }
-  .total table td{
-    font-size: 1.2rem;
+  .total table tr{
+    height: 6rem;/*トータルの全体の高さ*/
+    font-size: 1.4rem;/*トータルのフォントサイズ*/
   }
   table.glaf {
-    width: 80vw;
-    margin: 0 auto;
     font-size: 1.2rem;
   }
 }
 @media screen and (max-width: 834px){
   .Card{
-    width: 90vw;
-    padding: 2rem;
+    width: 95vw;/*カードの幅*/
   }
   .id_name {
     padding: 0 2rem 0 0;
-  }
-  .month{
-    padding: 0 2rem;
   }
   .month h3 a{
     padding: 2rem 0;
@@ -159,40 +175,60 @@ table.glaf td{
     width: 75vw;
     margin: 1.5rem auto;
   }
-  .total table th{
-    border-radius: 10px 10px 0 0;
-    font-size: 0.8rem;
-  }
-  .total table td{
-    text-align: center;
-    border-radius: 0 0 10px 10px;
-    margin: 0 0 1.5rem 0;
-  }
   table.glaf th {
     height: 5vh;
   }
   table.glaf td {
     height: 5vh;
   }
+  table.glaf thead tr th.fir_row{
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 300;
+  }
 }
+/* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){
-  /* スクロールバー */
+  .total table th{
+    border-radius: 10px 10px 0 0;
+    font-size: 1.2rem;
+  }
+  .total table td{
+    text-align: center;
+    border-radius: 0 0 10px 10px;
+    margin: 0 0 1.5rem 0;
+  }
+  table.glaf {
+    margin: 4rem 0 0 0;
+  }
+  table.glaf thead tr th.fir_row{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  table.glaf tbody tr td{
+    padding: 0;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  table.glaf tbody tr th{
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+  /* スクロールバー隠す */
   .scroll_bar{
     overflow-y: hidden;
   }
 }
+/* スマホ版 */
 @media screen and (max-width: 480px){
-  #main{
-    height: 92vh;
-  }
-  .Card{
-    height: 92vh;
-  }
   .Card{
     padding: 0rem;
   }
   .id_name {
-    padding: 0 2rem 0 0;
+    padding: 2rem  2rem 0 0;
   }
   .month h3 a{
     padding: 2rem 0;
@@ -201,22 +237,20 @@ table.glaf td{
     margin: 1.5rem auto;
     font-size: 1rem;
   }
-  @media screen and (max-width: 280px){#main{
-    height: 92vh;
-    }
-    .Card{
-      width: 100vw;
-      padding: 0rem;
-    }
-    .id_name {
-      padding: 0 2rem 0 0;
-    }
-    .month h3 a{
-      padding: 2rem 0;
-    }
-    .total {
-      width: 98vw;
-      margin: 1.5rem auto;
-      font-size: 1rem;
-    }
+  table.glaf tr td{
+    height: 5vh;
+  }
+}
+@media screen and (max-width: 280px){
+  .id_name {
+    padding: 1rem 2rem 0 0;
+  }
+  .month h3 a{
+    padding: 2rem 0;
+  }
+  .total {
+    width: 98vw;
+    margin: 1.5rem auto;
+    font-size: 1rem;
+  }
 }

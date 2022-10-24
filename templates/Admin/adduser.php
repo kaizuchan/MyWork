@@ -72,7 +72,7 @@
           <input name="email" value="<?= setValue('email') ?>" type="email" id="validationTextarea" class="form-control" placeholder="メールアドレス" aria-label="メールアドレス" aria-describedby="basic-addon1" required>
         </div>
 
-        <h2>性別</h2>
+        <h2 class="itemsTitle">性別</h2>
 
         <div class="form-check-group">
           <div class="form-check">
@@ -87,7 +87,7 @@
     <?php
     ?>
         
-        <h2>生年月日</h2>
+        <h2 class="itemsTitle">生年月日</h2>
         <div class="input-group birth-select mb-3">
           <select name="birthday-year" class="form-select" id="inputGroupSelect01" aria-label="年" required>
             <?php echo setNumberOptions(1920, date('Y'), setValue('birthday-year')); ?>
@@ -103,7 +103,7 @@
           <label class="input-group-text" for="inputGroupSelect01">日</label>
         </div>
         
-        <h2>住所</h2>
+        <h2 class="itemsTitle">住所</h2>
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">郵便番号</span>
           <input name="postalcode" value="<?= setValue('postalcode') ?>" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="xxx-xxxx" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="\d{3}-?\d{4}" required>
