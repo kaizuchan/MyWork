@@ -48,7 +48,7 @@
             </div>
 
             <div class="scroll_bar">
-                <table class="glaf table table-striped">
+                <table class="glaf table">
                     <thead>
                         <tr>
                             <th class="fir_row"scope="col">編集</th>
