@@ -58,14 +58,14 @@
                                     <form method="post">
                                         <tr>
                                             <td>
-                                                <select name="identify" class="form-select">
+                                                <select name="identify" class="form-select" required>
                                                     <?= setIdentifyOptions($time->identify) ?>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('Y-M-d') ?>">
+                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('Y-M-d') ?>" required>
                                             </td>
-                                            <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" ></td>
+                                            <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" required></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
                                             <td class="edit"><button name="delete" class="btn btn-outline-danger" type="submit">削除</button></td>
                                             <td><?= echoPunchedStatement($time->info) ?></td>
@@ -74,6 +74,7 @@
                                             type="hidden" name="_csrfToken" autocomplete="off"
                                             value="<?= $this->request->getAttribute('csrfToken') ?>">
                                         <input type="hidden" name="id" value="<?= $time->id ?>">
+                                        <input type="hidden" name="old_identify" value="<?= $time->identify ?>">
                                     </form>
                                 <?php endforeach; ?>
                                 <!-- レコード挿入部分 -->
@@ -81,14 +82,14 @@
                                     <form method="post">
                                         <tr id="addRecord" class="hidden">
                                             <td>
-                                                <select name="identify" class="form-select">
+                                                <select name="identify" class="form-select" required>
                                                     <?= setIdentifyOptions() ?>
                                                 </select>
                                             </td>
                                             <td>
-                                                <input name="date" type="date" value="">
+                                                <input name="date" type="date" value="" required>
                                             </td>
-                                            <td><input name="time" type="time" value="" ></td>
+                                            <td><input name="time" type="time" value="" required></td>
                                             <td class="edit"><button name="insert" class="btn btn-outline-info" type="submit">追加</button></td>
                                             <td class="edit"><button name="delete" class="btn btn-outline-danger" type="button" onclick="removeRecord()">削除</button></td>
                                             <td>編集</td>
