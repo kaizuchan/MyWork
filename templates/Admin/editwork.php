@@ -33,10 +33,11 @@
                 <div><h1 class="title">勤務表履歴</h1></div>
 
                 <?php 
+                    $year = (int) substr($date, 0, 4); 
                     $month = (int) substr($date, 4, 2); 
                     $date = (int) substr($date, 6, 2); 
                 ?>
-                    <h2 class="oct"><?= $month ?>月<?= $date ?>日</h2>
+                    <h2 class="oct"><?= $year ?>年 <?= $month ?>月<?= $date ?>日</h2>
 
                 <div id="addPunch">
                     <button  class="btn btn-outline-info" onclick="addRecord()">打刻追加<i class="far fa-hourglass"></i></button>
@@ -112,7 +113,12 @@
                             <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
                             <div  id="selectButton">
                                 <div id="yesClose">
-                                <a href="/admin/works/<?= $user->id ?>"><button id="yesButton">はい</button>
+                                    <?php 
+                                        if($month < 10){
+                                            $month = (string) '0'.$month;
+                                        }
+                                    ?>
+                                <a href="/admin/works/<?= $user->id ?>/<?= $month ?>/<?= $year ?>"><button id="yesButton">はい</button></a>
                                 </div>
                                 <div id="noClose">
                                     <button id="noButton">いいえ</button>
