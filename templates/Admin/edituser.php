@@ -19,6 +19,8 @@ if ($this->request->is('post')) {
   <?php echo $this->Html->css("addUser"); ?>
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
   <?php echo $this->Html->css("backButton"); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
 </head>
@@ -27,7 +29,7 @@ if ($this->request->is('post')) {
 <div id="main">
     <div class="Card">
       <!-- 戻るボタン -->
-      <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
+      <div id="backButtonBox"><button id="open"><i class="fas fa-angle-double-left"></i></button></div>
       <h1>社員編集</h1>
       
 
@@ -152,7 +154,20 @@ if ($this->request->is('post')) {
           </div>
         </div>
       </div>
-  </form>
+  </form> 
+  <div id="mask" class="hidden"></div>
+  <section id="modal" class="hidden">
+      <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
+      <div  id="selectButton">
+          <div id="yesClose">
+              <button id="yesButton"><a href="/admin/" id="backButton">はい</a></button>
+          </div>
+          <div id="noClose">
+              <button id="noButton">いいえ</button>
+          </div>
+      </div>
+  </section>
   <?php echo $this->Html->script("admin"); ?>
+  <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
