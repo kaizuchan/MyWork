@@ -177,6 +177,12 @@ class AdminController extends AppController
 
     public function works($id, $month = null, $year = null)
     {
+        
+        // アクセス制限
+        $this->loadModel('Users');
+        $user = $this->Users->get($id);
+        $this->Authorization->authorize($user, 'edit');
+        
         $this->loadModel('Users');
         $user = $this->Users->find('all')->where(['id'=> $id])->first();
         $dates = $this->PuncheData->getMonthlyData($id, $month, $year);
@@ -186,6 +192,12 @@ class AdminController extends AppController
 
     public function editwork($id, $date)
     {
+        
+        // アクセス制限
+        $this->loadModel('Users');
+        $user = $this->Users->get($id);
+        $this->Authorization->authorize($user, 'edit');
+        
         // データベース登録処理
         if ($this->request->is('post')) {
             $this->loadModel('Punches');

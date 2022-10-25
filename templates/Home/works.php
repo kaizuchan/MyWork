@@ -19,7 +19,6 @@
     ?>
 </head>
 <body>
-    <?= debug($data) ?>
 
     <div id="main">
         <div class="Card">
