@@ -58,9 +58,6 @@ h2.oct {
   display: flex;
   justify-content: center;
 }
-.total table tbody{
-  height: 10vh;
-}
 /* トータル項目名、値 */
 .total table tr{
   font-size: 1.6rem;
