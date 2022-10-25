@@ -22,7 +22,7 @@
                 <p><?= $user->last_name.$user->first_name ?></p>
             </div>
                 <h1 class="title">勤務時間表</h1>
-                <h2 class="oct"><?= $dates['month'] ?>月</h2>
+                <h2 class="oct"><?= (int) $dates['year'] ?>年 <?= (int) $dates['month'] ?>月</h2>
             <div class="month">
                 <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']-1,1,2022)); ?>"><i class="fas fa-reply"></i><div class="nextMonth">前の月へ</div></a></h3>
                 <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']+1,1,2022)); ?>"><div class="nextMonth">次の月へ</div><i class="fas fa-share"></i></a></h3>
@@ -69,7 +69,15 @@
                             <tr>
                                 <?php $d = date('Ymd', mktime(0, 0, 0, $dates['month'], $date['date'], $dates['year'])); ?>
                                 <td class="edit"><button onclick="location.href='/admin/works/<?= $id ?>/edit/<?= $d ?>'" class="btn btn-outline-info" type="button">編集</button></td>
-                                <th class="date"><?= $date['date'] ?>日</th>
+                                <?php
+                                    if($date['day'] == 6){
+                                        echo '<th class="saturday">'.$date['date'].'日</th>';
+                                    }else if($date['day'] == 0){
+                                        echo '<th class="sunday">'.$date['date'].'日</th>';
+                                    }else{
+                                        echo '<th class="weekday">'.$date['date'].'日</th>';
+                                    }
+                                ?>
                                 <td data-label="出勤時間" class="time"><?= setTime($date['start_work']) ?></td>
                                 <td data-label="退勤時間" class="time"><?= setTime($date['end_work']) ?></td>
                                 <td data-label="休憩開始時間" class="time"><?= setTime($date['start_break']) ?></td>
