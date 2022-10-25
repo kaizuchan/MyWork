@@ -110,7 +110,7 @@
         </div>
 
         <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01"(>都道府県</label>
+          <label class="input-group-text" for="inputGroupSelect01">都道府県</label>
           <select name="prefecture_id" class="form-select p-region" id="inputGroupSelect01" aria-label="都道府県" required>
             <?php echo setPrefectureOptions(setValue('prefecture_id')); ?>
           </select>

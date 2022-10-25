@@ -35,13 +35,13 @@ img{
 h1{ 
     height: 30vh;
     margin: 1.5rem 0 -1rem 0;
-    font-size: 5vh;
+    font-size: 3.5rem;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
 }
 input.form-control{
-    height: 5vh;
+    height: 4rem;
 }
 #loginForm {
     height: 50vh;
@@ -55,12 +55,12 @@ input.form-control{
 .mb-3{
     width: 25vw;
 }
-#loginForm>button {
+#loginForm button {
+    height: 4rem;
     width: 25vw;
-    margin-top: 2rem;
     background-color: #1F78B4;
 }
-#loginForm>button:hover{
+#loginForm button:hover{
     background-color: #1F78B2;
 }
 /* スマホ用、タブレット用 */
@@ -69,22 +69,14 @@ input.form-control{
         width: 60vw;
         height: 60vh;
     }
-    .form-control{
-        margin-bottom: 4rem;
-    }
-    
     #loginForm{
         margin: 0rem auto 0 auto;
     }
     .mb-3{
         width: 50vw;
     }
-    #pass{
-        height: 5vh;
-    }
-    #loginForm>button {
+    #loginForm button {
         width: 50vw;
-        height: 5vh;
     }
     #errMessage{
         position: fixed;
@@ -94,9 +86,6 @@ input.form-control{
     }
 }
 @media screen and (max-width: 481px){
-    img{
-        height: 4vh;
-    }
     h1{ 
         font-size: 3vh;
     }
@@ -116,7 +105,9 @@ input.form-control{
         width: 75vw;
         height: 55vh;
     }
-    #loginForm{
-        margin: -5rem auto 0 auto;
+}
+@media screen and (max-height: 600px){
+    #loginCard{
+        height: 100vh;
     }
 }
