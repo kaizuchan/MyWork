@@ -24,4 +24,7 @@
     #backButton{
         font-size: 2rem;
     }
+    #backButtonBox button{
+        font-size: 2rem;
+    }
 }
