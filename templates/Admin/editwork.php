@@ -74,6 +74,7 @@
                                             type="hidden" name="_csrfToken" autocomplete="off"
                                             value="<?= $this->request->getAttribute('csrfToken') ?>">
                                         <input type="hidden" name="id" value="<?= $time->id ?>">
+                                        <input type="hidden" name="old_identify" value="<?= $time->identify ?>">
                                     </form>
                                 <?php endforeach; ?>
                                 <!-- レコード挿入部分 -->

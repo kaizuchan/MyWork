@@ -210,7 +210,7 @@ class AdminController extends AppController
                         $start_break = $this->PuncheData->getPunchedData($id, $date, 2)->count();
                         $end_break = $this->PuncheData->getPunchedData($id, $date, 3)->count();
                         if(($start_break - 1) < $end_break){
-                            $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるため削除できません'));
+                            $this->Flash->error(__('休憩開始レコードよりも休憩終了レコードが多くなるため削除できません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                             exit();
                         }
@@ -230,6 +230,40 @@ class AdminController extends AppController
             // 更新処理
             if(isset($data['update'])){
                 /* --------------- 追加機能 エスケープ処理 (2/3) ここから --------------- */
+                    // 更新後のデータの数を調べる
+                    $array = [
+                        1 => $this->PuncheData->getPunchedData($id, $date, 1)->count(),
+                        2 => $this->PuncheData->getPunchedData($id, $date, 2)->count(),
+                        3 => $this->PuncheData->getPunchedData($id, $date, 3)->count(),
+                        4 => $this->PuncheData->getPunchedData($id, $date, 4)->count(),
+                    ];
+                    $array[$data['old_identify']] -= 1;
+                    $array[$data['identify']] += 1;
+                    // 休憩開始 又は 出勤 レコードを削除する場合
+                    // 休憩終了 及び 退勤 レコードのほうが多くならないことを確認
+                    if($array[1] < $array[4]){
+                        $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるため更新できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
+                    if($array[2] < $array[3]){
+                        $this->Flash->error(__('休憩開始レコードよりも休憩終了レコードが多くなるため更新できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
+                    // 休憩終了 及び 退勤 レコードの登録時に
+                    // 休憩終了 及び 退勤 レコードの数が
+                    // 休憩開始 及び 出勤 レコードの数を上回る事がないように
+                    if($array[1] < $array[4]){
+                        $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるためレコードを更新できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
+                    if($array[2] < $array[3]){
+                        $this->Flash->error(__('休憩開始レコードよりも休憩終了レコードが多くなるためレコードを更新できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
                 /* --------------- 追加機能 エスケープ処理 (2/3) ここまで --------------- */
                 // 元データを削除済みに変更
                 $punche_old = $this->Punches->get($data['id']);
@@ -273,7 +307,7 @@ class AdminController extends AppController
                         $start_break = $this->PuncheData->getPunchedData($id, $date, 2)->count();
                         $end_break = $this->PuncheData->getPunchedData($id, $date, 3)->count();
                         if(($start_break - 1) < $end_break){
-                            $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるためレコードを追加できません'));
+                            $this->Flash->error(__('休憩開始レコードよりも休憩終了レコードが多くなるためレコードを追加できません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                             exit();
                         }
