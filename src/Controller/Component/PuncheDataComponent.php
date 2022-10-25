@@ -178,25 +178,27 @@ class PuncheDataComponent extends Component
         $break = 0;
         $overtime = 0;
         $total = 0;
-        /* 休憩時間 計算 */
-        // 休憩終了時間と同じだけ繰り返す
-        foreach($data['end_break'] as $k => $d){
-            $break += (strtotime($d) - strtotime($data['start_break'][$k])) / 3600;
-        }
-        /* 総勤務時間 計算 */
-        // 退勤の数だけ繰り返す
-        foreach($data['end_work'] as $k => $d){
-            $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
-        }
-        $total -= $break;
-        // 切り捨て処理
-        $total = round($total, 1, PHP_ROUND_HALF_DOWN);
-        $break = round($break, 1, PHP_ROUND_HALF_DOWN);
-        // 勤務時間 & 残業時間 計算
-        $work = $total;
-        if($work > 8){
-            $overtime = $work - 8;
-            $work = 8;
+        if($data['end_work'] != null){
+            /* 休憩時間 計算 */
+            // 休憩終了時間と同じだけ繰り返す
+            foreach($data['end_break'] as $k => $d){
+                $break += (strtotime($d) - strtotime($data['start_break'][$k])) / 3600;
+            }
+            /* 総勤務時間 計算 */
+            // 退勤の数だけ繰り返す
+            foreach($data['end_work'] as $k => $d){
+                $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
+            }
+            $total -= $break;
+            // 切り捨て処理
+            $total = round($total, 1, PHP_ROUND_HALF_DOWN);
+            $break = round($break, 1, PHP_ROUND_HALF_DOWN);
+            // 勤務時間 & 残業時間 計算
+            $work = $total;
+            if($work > 8){
+                $overtime = $work - 8;
+                $work = 8;
+            }
         }
         $res = array(
             'work' => (float) $work,
