@@ -69,7 +69,7 @@
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">メールアドレス</span>
-          <input name="email" value="<?= setValue('email') ?>" type="email" id="validationTextarea" class="form-control" placeholder="@" aria-label="メールアドレス" aria-describedby="basic-addon1" required>
+          <input name="email" value="<?= setValue('email') ?>" type="email" id="validationTextarea" class="form-control" placeholder="例）hal.nagoya@gmail.com" aria-label="メールアドレス" aria-describedby="basic-addon1" required>
         </div>
 
         <h2 class="itemsTitle">性別</h2>
@@ -117,17 +117,17 @@
         </div>
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">市区町村</span>
-          <input name="city" value="<?= setValue('city') ?>" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="名古屋市東区東桜" aria-label="市区町村" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
+          <input name="city" value="<?= setValue('city') ?>" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="例）名古屋市東区東桜" aria-label="市区町村" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
         </div>
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">番地</span>
-          <input name="block" value="<?= setValue('block') ?>" type="text" id="validationTextarea" class="form-control p-extended-address" placeholder="1丁目9-26" aria-label="番地" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
+          <input name="block" value="<?= setValue('block') ?>" type="text" id="validationTextarea" class="form-control p-extended-address" placeholder="例）1丁目9-26" aria-label="番地" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
         </div>
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">建物名・部屋番号</span>
-          <input name="building" value="<?= setValue('building') ?>" type="text" id="validationTextarea" class="form-control" placeholder="IKKOパーク栄ビル3階階" aria-label="建物名・部屋番号" aria-describedby="basic-addon1">
+          <input name="building" value="<?= setValue('building') ?>" type="text" id="validationTextarea" class="form-control" placeholder="例）IKKOパーク栄ビル3階階" aria-label="建物名・部屋番号" aria-describedby="basic-addon1">
         </div>
 
         <div class="input-group mb-3 ">
