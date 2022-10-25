@@ -52,6 +52,7 @@ h2.oct {
 /* トータル4項目 */
 .total {
   display: flex;
+  height: 7rem;
   margin: 3rem auto;
 }
 .total table {
