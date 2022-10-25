@@ -41,6 +41,8 @@ if ($this->request->is('post')) {
     </script>
 </head>
 <body>
+  
+<?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
 
 <div id="main">
     <div class="Card">
