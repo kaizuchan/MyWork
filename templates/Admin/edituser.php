@@ -44,7 +44,7 @@ if ($this->request->is('post')) {
 <div id="main">
     <div class="Card">
       <!-- 戻るボタン -->
-      <div id="backButtonBox"><button id="open"><i class="fas fa-angle-double-left"></i></button></div>
+      <div id="backButtonBox"><button id="open" id="backButton"><i class="fas fa-angle-double-left"></i></button></div>
       <h1>社員編集</h1>
       
 
@@ -176,7 +176,7 @@ if ($this->request->is('post')) {
       <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
       <div  id="selectButton">
           <div id="yesClose">
-              <button id="yesButton"><a href="/admin/" id="backButton">はい</a></button>
+          <a href="/admin/"><button id="yesButton">はい</button></a>
           </div>
           <div id="noClose">
               <button id="noButton">いいえ</button>
