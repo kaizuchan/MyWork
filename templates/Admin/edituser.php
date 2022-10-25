@@ -3,6 +3,7 @@
 if ($this->request->is('post')) {
   $user = [];
   $data = $this->request->getData();
+  $data['role'] = '';
   foreach($data as $k => $d){
       $user = array_merge($user, [$k => $d]);
   }
@@ -40,6 +41,8 @@ if ($this->request->is('post')) {
     </script>
 </head>
 <body>
+  
+<?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
 
 <div id="main">
     <div class="Card">
