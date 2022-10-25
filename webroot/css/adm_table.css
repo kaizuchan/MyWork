@@ -236,6 +236,7 @@ th.fir_row {
     justify-items: center;
   }
   table.glaf tbody tr td{
+    overflow-y: scroll;
     padding: 0;
     display: grid;
     align-items: center;
