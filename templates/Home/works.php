@@ -56,7 +56,7 @@
             </div>
             
             <div class="scroll_bar">
-                <table class="glaf table table-striped">
+                <table class="glaf table">
                     <thead>
                         <tr>
                             <th class="fir_row">日付</th>

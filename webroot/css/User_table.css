@@ -108,6 +108,10 @@ table.glaf td{
 th.fir_row {
   font-weight: 400;
 }
+/* 日付 */
+.date{
+  color: #f00;
+}
 /* スクロールバー */
 .scroll_bar{
   width: max-content;
