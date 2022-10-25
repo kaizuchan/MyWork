@@ -70,7 +70,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?= $this->Form->create(null, ['type' => 'post','name' => 'EnterFalse']); ?>
+                                    <?= $this->Form->create(null, ['type' => 'post']); ?>
                                         <?php foreach ($users as $user): ?>
                                             <tr id="tbody">    
                                                 <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
