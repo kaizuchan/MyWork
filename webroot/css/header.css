@@ -23,6 +23,11 @@ nav li{
     width: 70px;
     height: 70px;
 }
+#enterprise p{
+    margin: 0;
+    font-size: 2rem;
+    color: #fff;
+}
 @media screen and (max-width: 767px){
     nav{
         height: auto;
