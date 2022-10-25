@@ -17,8 +17,9 @@
 </head>
 <body>
     <div>
-
-        <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+        <div id="toast">
+            <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+        </div>
 
         <div id="main">
             <div class="Card">
@@ -29,20 +30,22 @@
                     <p>ID:<?= $user->employee_id ?></p>
                     <p><?= $user->last_name.$user->first_name ?></p>
                 </div>
-
                 <div><h1 class="title">勤務表履歴</h1></div>
+
                 <?php 
                     $month = (int) substr($date, 4, 2); 
                     $date = (int) substr($date, 6, 2); 
                 ?>
                     <h2 class="oct"><?= $month ?>月<?= $date ?>日</h2>
 
+                <div id="addPunch">
+                    <button  class="btn btn-outline-info" onclick="addRecord()">打刻追加<i class="far fa-hourglass"></i></button>
+                </div>
+
                 <div class="scroll_bar">
                     <div id="editTable">
                         <table class="table">
-                        <div>
-                            <button  onclick="addRecord()">社員追加</button>
-                        </div>
+                        
                             <thead  class="table-light">
                                 <tr>
                                     <th>打刻種別</th>

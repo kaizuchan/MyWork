@@ -30,6 +30,20 @@ h2.oct {
     text-align: center;
     margin: 0 0 3rem 0;
 }
+div#addPunch {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  /* flex-wrap: nowrap; */
+  padding: 0 5rem 2rem 0;
+}
+#addPunch button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4rem;
+  font-size: 1.8rem;
+}
 #editTable{
     width: 70vw;
     font-size: 2rem;
@@ -59,7 +73,7 @@ select{
 /* スクロールバー */
 .scroll_bar{
   width: max-content;
-  height: 60vh;
+  height: 52vh;
   margin: 0 auto;
   overflow-y: scroll;
 }
@@ -108,14 +122,22 @@ select{
 }
 /* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){
+    h2.oct {
+      margin: 0;
+    } 
+    div#addPunch {
+      justify-content: center;
+      padding: 2rem 0;
+    }
     #editTable table tr th{
-        height: 10vh;
+        height: 8vh;
         font-size: 1.5rem;
         display: grid;
         align-items: center;
         justify-items: center;
     }
     #editTable table tr td{
+        height: 8vh;
         font-size: 1.5rem;
         display: grid;
         align-items: center;
