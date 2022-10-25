@@ -11,7 +11,7 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property int $user_id
  * @property \Cake\I18n\FrozenDate $date
- * @property \Cake\I18n\Time $time
+ * @property \Cake\I18n\FrozenTime $time
  * @property int $identify
  * @property int $info
  *

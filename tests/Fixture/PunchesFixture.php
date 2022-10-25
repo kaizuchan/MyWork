@@ -22,7 +22,7 @@ class PunchesFixture extends TestFixture
                 'id' => 1,
                 'user_id' => 1,
                 'date' => '2022-10-21',
-                'time' => '09:27:53',
+                'time' => '2022-10-21 15:52:25',
                 'identify' => 1,
                 'info' => 1,
             ],
