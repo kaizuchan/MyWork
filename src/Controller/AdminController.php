@@ -190,17 +190,32 @@ class AdminController extends AppController
         if ($this->request->is('post')) {
             $this->loadModel('Punches');
             $data = $this->request->getData();
+            $times = $this->PuncheData->getPunchedData($id, $date);
 
             // 削除処理
             if(isset($data['delete'])){
-                $punche = $this->Punches->get($data['id']);
-                $punche->info = 9;
-                if ($this->Punches->save($punche)) {
-                    $this->Flash->success(__('削除しました'));
-                    return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
-                }else{
-                    $this->Flash->error(__('削除に失敗しました'));
+                // 休憩開始 又は 出勤 レコードを削除する場合
+                // 休憩終了 及び 退勤 レコードのほうが多くならないことを確認
+                if($data['identify'] == 1){
+                    $start_work = $this->PuncheData->getPunchedData($id, $date, 1)->count();
+                    $end_work = $this->PuncheData->getPunchedData($id, $date, 4)->count();
+                    if(($start_work - 1) < $end_work){
+                        $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるため削除できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
                 }
+                if($data['identify'] == 2){
+                    $start_break = $this->PuncheData->getPunchedData($id, $date, 2)->count();
+                    $end_break = $this->PuncheData->getPunchedData($id, $date, 3)->count();
+                    if(($start_break - 1) < $end_break){
+                        $this->Flash->error(__('出勤レコードよりも退勤レコードが多くなるため削除できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        exit();
+                    }
+                }
+                // 削除処理
+                return $this->delPunchesRecord($id, $data['id'], $date);
             }
             // 更新処理
             if(isset($data['update'])){
@@ -254,6 +269,21 @@ class AdminController extends AppController
         
         $this->set(compact('times', 'date', 'user'));
 
+    }
+
+
+    /* Punchesテーブル DB操作
+     * editwork()内で使用
+    */
+    private function delPunchesRecord($id, $punch_id, $date){
+        $punch = $this->Punches->get($punch_id);
+        $punch->info = 9;
+        if ($this->Punches->save($punch)) {
+            $this->Flash->success(__('削除しました'));
+            return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+        }else{
+            $this->Flash->error(__('削除に失敗しました'));
+        }
     }
 
 }
