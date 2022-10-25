@@ -46,7 +46,8 @@ if ($this->request->is('post')) {
       <h1>社員編集</h1>
       
 
-      <form class="was-validated" method="POST">
+      <form class="was-validated h-adr" method="POST">
+      <input type="hidden" class="p-country-name" value="Japan">
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">社員ID</span>
@@ -116,7 +117,7 @@ if ($this->request->is('post')) {
 
         <div class="input-group mb-3">
           <label class="input-group-text" for="inputGroupSelect01">都道府県</label>
-          <select name="prefecture_id" class="form-select p-region" id="inputGroupSelect01" aria-label="都道府県" required>
+          <select name="prefecture_id" class="form-select p-region-id" id="inputGroupSelect01" aria-label="都道府県" required>
             <?php echo setPrefectureOptions($user['prefecture_id']); ?>
           </select>
         </div>
