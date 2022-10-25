@@ -65,7 +65,7 @@ class PuncheDataComponent extends Component
             $res = $this->getPunchedInfo($year.'/'.$month.'/'.$date['date'], $user_id);
             $array['dates'][$key]['info'] = $res;
         }
-        $array = calculateMonthlyHours($array);
+        $array = $this->calculateMonthlyHours($array);
         return $array;
     }
     /* 配列にユーザーの勤怠データを登録して返す */
@@ -178,25 +178,27 @@ class PuncheDataComponent extends Component
         $break = 0;
         $overtime = 0;
         $total = 0;
-        /* 休憩時間 計算 */
-        // 休憩終了時間と同じだけ繰り返す
-        foreach($data['end_break'] as $k => $d){
-            $break += (strtotime($d) - strtotime($data['start_break'][$k])) / 3600;
-        }
-        /* 総勤務時間 計算 */
-        // 退勤の数だけ繰り返す
-        foreach($data['end_work'] as $k => $d){
-            $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
-        }
-        $total -= $break;
-        // 切り捨て処理
-        $total = round($total, 1, PHP_ROUND_HALF_DOWN);
-        $break = round($break, 1, PHP_ROUND_HALF_DOWN);
-        // 勤務時間 & 残業時間 計算
-        $work = $total;
-        if($work > 8){
-            $overtime = $work - 8;
-            $work = 8;
+        if($data['end_work'] != null){
+            /* 休憩時間 計算 */
+            // 休憩終了時間と同じだけ繰り返す
+            foreach($data['end_break'] as $k => $d){
+                $break += (strtotime($d) - strtotime($data['start_break'][$k])) / 3600;
+            }
+            /* 総勤務時間 計算 */
+            // 退勤の数だけ繰り返す
+            foreach($data['end_work'] as $k => $d){
+                $total += (strtotime($d) - strtotime($data['start_work'][$k])) / 3600;
+            }
+            $total -= $break;
+            // 切り捨て処理
+            $total = round($total, 1, PHP_ROUND_HALF_DOWN);
+            $break = round($break, 1, PHP_ROUND_HALF_DOWN);
+            // 勤務時間 & 残業時間 計算
+            $work = $total;
+            if($work > 8){
+                $overtime = $work - 8;
+                $work = 8;
+            }
         }
         $res = array(
             'work' => (float) $work,
@@ -214,9 +216,9 @@ class PuncheDataComponent extends Component
     }
     /* 月ごとの総労働時間、労働時間、残業時間、出勤日数の計算 */
     private function calculateMonthlyHours($data){
-        $work = 0;
-        $total = 0;
-        $overtime = 0;
+        $work = (float) 0;
+        $total = (float) 0;
+        $overtime = (float) 0;
         $workday = 0;
         foreach($data['dates'] as $date){
             if($date['end_work'] != null){
@@ -225,12 +227,12 @@ class PuncheDataComponent extends Component
                 $overtime += (float) $date['overtime'];
                 $workday += 1;
             }
-            }
-            return array_merge($data, [
-                'work' => $work,
-                'total' => $total,
-                'overtime' => $overtime,
-                'workday' => $workday,
-            ]);
         }
+        return array_merge($data, [
+            'work' => $work,
+            'total' => $total,
+            'overtime' => $overtime,
+            'workday' => $workday,
+        ]);
     }
+}

@@ -28,8 +28,7 @@ class HomeController extends AppController
         // 自分の情報をViewに送信
         $me = $this->Authentication->getIdentity();
         $this->loadModel('Enterprises');
-        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
-        $this->set(compact('me', 'enterprise'));
+        $this->set(compact('me'));
         // アクセス制限にかからないよう
         $this->Authorization->skipAuthorization();
     }
@@ -62,6 +61,11 @@ class HomeController extends AppController
         $status = $this->solve($users);
         // ログイン中ユーザーの勤怠情報を送信
         $flag = $this->PuncheData->getPunchStatement($me->id);
+
+        
+        // 企業情報をViewに送信
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('enterprise'));
         
         // Viewへの受け渡し
         $this->set(compact('users', 'flag', 'status'));
@@ -69,10 +73,13 @@ class HomeController extends AppController
 
     public function works($month = null, $year = null)
     {
-        $me = $this->Authentication->getIdentity()->get('id');
-        $data = $this->PuncheData->getMonthlyData($me, $month, $year);
+        $me = $this->Authentication->getIdentity();
+        $data = $this->PuncheData->getMonthlyData($me->id, $month, $year);
         $this->set(compact('data'));
 
+        // 企業情報をViewに送信
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('enterprise'));
     }
 
     /* 打時刻処理 */
@@ -118,6 +125,8 @@ class HomeController extends AppController
         }
         // HOME画面へリダイレクトさせる
         $this->redirect(['action' => 'home']);
+
+
     }
 
     // 実験用

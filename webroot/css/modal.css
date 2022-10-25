@@ -28,7 +28,6 @@
 /* メッセージ */
 #editMessage{
   text-align: center;
-  font-size: 1.5rem;
 }
 /* はいボタン */
 #yesButton{
@@ -69,7 +68,7 @@
 /* モーダルのpタグ */
 #modal p {
   margin: 1rem 1rem;
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   line-height: 2.2rem;
 }
 /* 隠す */
@@ -107,10 +106,6 @@
   #modal{
     width: 50vw;
   }
-  /* メッセージのフォントサイズ */
-  #editMessage{
-    font-size: 1.4rem;
-  }
 }
 /* スマホ、タブレット用 */
 @media screen and (max-width: 768px){
@@ -132,7 +127,12 @@
   /* メッセージのフォントサイズ */
   #editMessage{
     margin: 1rem 1rem;
-    font-size: 1rem;
+    line-height: 2.2rem;
+  }
+  /* モーダルのpタグ */
+  #modal p {
+    margin: 1rem 1rem;
+    font-size: 1.5rem;
     line-height: 2.2rem;
   }
 }

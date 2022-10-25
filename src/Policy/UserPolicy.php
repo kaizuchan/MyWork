@@ -42,6 +42,7 @@ class UserPolicy
      */
     public function canDelete(IdentityInterface $user, User $resource)
     {
+        return $user->enterprise_id === $resource->enterprise_id;
     }
 
     /**
@@ -53,6 +54,6 @@ class UserPolicy
      */
     public function canView(IdentityInterface $user, User $resource)
     {
-        return $user->role === 2;
+        return ($user->role === 2) && ($user->enterprise_id === $resource->enterprise_id);
     }
 }

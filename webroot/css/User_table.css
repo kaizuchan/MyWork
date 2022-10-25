@@ -108,6 +108,18 @@ table.glaf td{
 th.fir_row {
   font-weight: 400;
 }
+/* 土曜 */
+.saturday{
+  color: #3366CC;//青
+}
+/* 日曜 */
+.sunday{
+  color: #FF3333;//赤
+}
+/* 平日 */
+.weekday{
+  color: #000;//黒
+}
 /* スクロールバー */
 .scroll_bar{
   width: max-content;
