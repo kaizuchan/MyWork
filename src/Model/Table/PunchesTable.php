@@ -66,9 +66,9 @@ class PunchesTable extends Table
             ->notEmptyDate('date');
 
         $validator
-            ->time('time')
+            ->dateTime('time')
             ->requirePresence('time', 'create')
-            ->notEmptyTime('time');
+            ->notEmptyDateTime('time');
 
         $validator
             ->requirePresence('identify', 'create')
