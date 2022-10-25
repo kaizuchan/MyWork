@@ -112,7 +112,7 @@
                             <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
                             <div  id="selectButton">
                                 <div id="yesClose">
-                                <a href="/admin/works/<?= $user->id ?>"><button id="yesButton">はい</button></a>
+                                <a href="/admin/works/<?= $user->id ?>"><button id="yesButton">はい</button>
                                 </div>
                                 <div id="noClose">
                                     <button id="noButton">いいえ</button>

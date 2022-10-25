@@ -24,6 +24,8 @@ if ($this->request->is('post')) {
     <?php echo $this->Html->css("modal"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
 
     <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
     <script>
@@ -42,7 +44,9 @@ if ($this->request->is('post')) {
 </head>
 <body>
   
-<?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+  <div id="toast">
+    <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+  </div>
 
 <div id="main">
     <div class="Card">
