@@ -24,7 +24,7 @@
         <div id="main">
             <div class="Card">
                 <!-- 戻るボタン -->
-                <div id="backButtonBox"><a href="/admin/works/<?= $user->id ?>" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
+                <div id="backButtonBox"><button id="open"><i class="fas fa-angle-double-left"></i></button></div>
 
                 <div class="id_name">
                     <p>ID:<?= $user->employee_id ?></p>
@@ -57,6 +57,28 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <!-- レコード挿入部分 -->
+                                <div>
+                                    <form method="post">
+                                        <tr id="addRecord" class="hidden">
+                                            <td>
+                                                <select name="identify" class="form-select" required>
+                                                    <?= setIdentifyOptions() ?>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input name="date" type="date" value="" required>
+                                            </td>
+                                            <td><input name="time" type="time" value="" required></td>
+                                            <td class="edit"><button name="insert" class="btn btn-outline-info" type="submit">追加</button></td>
+                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="button" onclick="removeRecord()">削除</button></td>
+                                            <td>編集</td>
+                                        </tr>
+                                        <input
+                                            type="hidden" name="_csrfToken" autocomplete="off"
+                                            value="<?= $this->request->getAttribute('csrfToken') ?>">
+                                    </form>
+                                </div>
                                 <?php foreach($times as $time): ?>
                                     <form method="post">
                                         <tr>
@@ -80,41 +102,17 @@
                                         <input type="hidden" name="old_identify" value="<?= $time->identify ?>">
                                     </form>
                                 <?php endforeach; ?>
-                                <!-- レコード挿入部分 -->
-                                <div>
-                                    <form method="post">
-                                        <tr id="addRecord" class="hidden">
-                                            <td>
-                                                <select name="identify" class="form-select" required>
-                                                    <?= setIdentifyOptions() ?>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <input name="date" type="date" value="" required>
-                                            </td>
-                                            <td><input name="time" type="time" value="" required></td>
-                                            <td class="edit"><button name="insert" class="btn btn-outline-info" type="submit">追加</button></td>
-                                            <td class="edit"><button name="delete" class="btn btn-outline-danger" type="button" onclick="removeRecord()">削除</button></td>
-                                            <td>編集</td>
-                                        </tr>
-                                        <input
-                                            type="hidden" name="_csrfToken" autocomplete="off"
-                                            value="<?= $this->request->getAttribute('csrfToken') ?>">
-                                    </form>
-                                </div>
+
                             </tbody>
                         </table>
                     </div>
                 </div>
-
-
-                        
                         <div id="mask" class="hidden"></div>
                         <section id="modal" class="hidden">
                             <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
                             <div  id="selectButton">
                                 <div id="yesClose">
-                                    <button id="yesButton">はい</button>
+                                    <button id="yesButton"><a href="/admin/works/<?= $user->id ?>" id="backButton">はい</a></button>
                                 </div>
                                 <div id="noClose">
                                     <button id="noButton">いいえ</button>

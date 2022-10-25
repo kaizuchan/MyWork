@@ -8,6 +8,12 @@
     border: transparent;
     background-color:transparent;
 }
+#backButtonBox button{
+    color: #000;
+    font-size: 3rem;
+    position: absolute;
+    z-index: 100;
+}
 #backButton{
     color: #000;
     font-size: 3rem;

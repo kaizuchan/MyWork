@@ -20,19 +20,37 @@ if ($this->request->is('post')) {
   <?php echo $this->Html->css("addUser"); ?>
     <!-- 戻るアイコンボタン　コンポーネントリンク -->
   <?php echo $this->Html->css("backButton"); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/headerAdmin'); ?>
+
+    <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
+    <script>
+            function CheckPassword(password_confirm) {
+                // 入力値取得
+                var input1 = userpass.value;
+                var input2 = password_confirm.value;
+                // パスワード比較
+                if (input1 != input2) {
+                    password_confirm.setCustomValidity("入力値が一致しません。");
+                } else {
+                    password_confirm.setCustomValidity('');
+                }
+            }
+    </script>
 </head>
 <body>
 
 <div id="main">
     <div class="Card">
       <!-- 戻るボタン -->
-      <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
+      <div id="backButtonBox"><button id="open"><i class="fas fa-angle-double-left"></i></button></div>
       <h1>社員編集</h1>
       
 
-      <form class="was-validated" method="POST">
+      <form class="was-validated h-adr" method="POST">
+      <input type="hidden" class="p-country-name" value="Japan">
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">社員ID</span>
@@ -97,19 +115,19 @@ if ($this->request->is('post')) {
         <h2 class="itemsTitle">住所</h2>
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">郵便番号</span>
-          <input name="postalcode" value="<?= $user['postalcode'] ?>" type="text" id="validationTextarea" class="form-control" placeholder="ハイフン(-)なし" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="^\d{7}$" required>
+          <input name="postalcode" value="<?= $user['postalcode'] ?>" type="text" id="validationTextarea" class="form-control p-postal-code" placeholder="ハイフン(-)なし" aria-label="郵便番号" aria-describedby="basic-addon1"  pattern="^\d{7}$" required>
         </div>
 
         <div class="input-group mb-3">
           <label class="input-group-text" for="inputGroupSelect01">都道府県</label>
-          <select name="prefecture_id" class="form-select" id="inputGroupSelect01" aria-label="都道府県" required>
+          <select name="prefecture_id" class="form-select p-region-id" id="inputGroupSelect01" aria-label="都道府県" required>
             <?php echo setPrefectureOptions($user['prefecture_id']); ?>
           </select>
         </div>
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">市区町村</span>
-          <input name="city" value="<?= $user['city'] ?>" type="text" id="validationTextarea" class="form-control" placeholder="名古屋市東区東桜" aria-label="市区町村" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
+          <input name="city" value="<?= $user['city'] ?>" type="text" id="validationTextarea" class="form-control p-locality p-street-address" placeholder="名古屋市東区東桜" aria-label="市区町村" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
         </div>
 
         <div class="input-group mb-3 ">
@@ -132,7 +150,7 @@ if ($this->request->is('post')) {
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+          <input type="password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
         </div>
         <div id="passwordCheck">
           <input type="checkbox" id="passconfCheck">パスワードを表示
@@ -153,7 +171,20 @@ if ($this->request->is('post')) {
           </div>
         </div>
       </div>
-  </form>
+  </form> 
+  <div id="mask" class="hidden"></div>
+  <section id="modal" class="hidden">
+      <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
+      <div  id="selectButton">
+          <div id="yesClose">
+              <button id="yesButton"><a href="/admin/" id="backButton">はい</a></button>
+          </div>
+          <div id="noClose">
+              <button id="noButton">いいえ</button>
+          </div>
+      </div>
+  </section>
   <?php echo $this->Html->script("admin"); ?>
+  <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
