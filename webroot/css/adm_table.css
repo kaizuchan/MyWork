@@ -111,15 +111,15 @@ th.fir_row {
 }
 /* 土曜 */
 .saturday{
-  color: #f00;
+  color: #3366CC;//青
 }
 /* 日曜 */
 .sunday{
-  color: #00f;
+  color: #FF3333;//赤
 }
 /* 平日 */
 .weekday{
-  color: #000;
+  color: #000;//黒
 }
 /* スクロールバー */
 .scroll_bar{
