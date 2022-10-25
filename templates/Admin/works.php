@@ -22,7 +22,7 @@
                 <p><?= $user->last_name.$user->first_name ?></p>
             </div>
                 <h1 class="title">勤務時間表</h1>
-                <h2 class="oct"><?= $dates['month'] ?>月</h2>
+                <h2 class="oct"><?= (int) $dates['month'] ?>月</h2>
             <div class="month">
                 <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']-1,1,2022)); ?>"><i class="fas fa-reply"></i><div class="nextMonth">前の月へ</div></a></h3>
                 <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']+1,1,2022)); ?>"><div class="nextMonth">次の月へ</div><i class="fas fa-share"></i></a></h3>
