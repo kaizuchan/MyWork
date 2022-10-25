@@ -110,8 +110,8 @@
         </div>
 
         <div class="input-group mb-3">
-          <label class="input-group-text" for="inputGroupSelect01"(>都道府県</label>
-          <select name="prefecture_id" class="form-select p-region" id="inputGroupSelect01" aria-label="都道府県" required>
+          <label class="input-group-text" for="inputGroupSelect01">都道府県</label>
+          <select name="prefecture_id" class="form-select p-region-id" id="inputGroupSelect01" aria-label="都道府県" required>
             <?php echo setPrefectureOptions(setValue('prefecture_id')); ?>
           </select>
         </div>
@@ -122,7 +122,7 @@
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">番地</span>
-          <input name="block" value="<?= setValue('block') ?>" type="text" id="validationTextarea" class="form-control" placeholder="1丁目9-26" aria-label="番地" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
+          <input name="block" value="<?= setValue('block') ?>" type="text" id="validationTextarea" class="form-control p-extended-address" placeholder="1丁目9-26" aria-label="番地" aria-describedby="basic-addon1"  pattern=".*\S+.*" required>
         </div>
 
         <div class="input-group mb-3 ">
