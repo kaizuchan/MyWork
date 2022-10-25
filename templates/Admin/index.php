@@ -14,6 +14,17 @@
     <?php echo $this->Html->css("modal"); ?>
     <!-- エラーメッセージや成功メッセージ -->
     <?php echo $this->Html->css("message"); ?>
+    <script type="text/javascript">
+        $(function(){
+            $("input").on("keydown",function(ev){
+                if ((ev.which && ev.which === 13) ||(ev.keyCode && ev.keyCode === 13)){
+                return false;
+                } else {
+                return true;
+                }
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="toast">
@@ -59,7 +70,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?= $this->Form->create(null, ['type' => 'post']); ?>
+                                    <?= $this->Form->create(null, ['type' => 'post','name' => 'EnterFalse']); ?>
                                         <?php foreach ($users as $user): ?>
                                             <tr id="tbody">    
                                                 <td id="checkBox"><input class="check" type="checkbox" name="delete[]" value="<?= $user->id ?>"></td>
