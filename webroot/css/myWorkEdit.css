@@ -1,13 +1,13 @@
 /* メイン全体 */
 #main{
-    height: 92vh;
+    height: max-content;
     background-color: #D7EEFF;
 }
 /* カード */
 .Card{
     margin: 0vh auto;
     width: 80vw;
-    height: 92vh;
+    height: max-content;
     padding: 4rem;
     border-radius: 10px;
     background-color: #fff;
