@@ -1,6 +1,6 @@
 .message.success,.error {
-    height: 12vh;
-    width: 30vw;
+    height: 8vh;
+    width: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,6 +11,7 @@
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     z-index: 100;
+    opacity: 0.8;
 }
 @media screen and (max-width: 768px){
     .message.success,.error {
