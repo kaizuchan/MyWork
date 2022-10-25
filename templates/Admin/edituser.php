@@ -3,6 +3,7 @@
 if ($this->request->is('post')) {
   $user = [];
   $data = $this->request->getData();
+  $data['role'] = '';
   foreach($data as $k => $d){
       $user = array_merge($user, [$k => $d]);
   }

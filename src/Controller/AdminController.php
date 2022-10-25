@@ -13,27 +13,21 @@ class AdminController extends AppController
         // コンポーネントの読み込み
         $this->loadComponent("PuncheData");
         $this->loadComponent("SerchUser");
-        // 自分の情報をViewに送信
-        $me = $this->Authentication->getIdentity();
-        $this->loadModel('Enterprises');
-        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
-        $this->set(compact('me', 'enterprise'));
-        // アクセス制限
+        // モデルの読み込み
         $this->loadModel('Users');
-        $user = $this->Users->get($me->id);
-        $this->Authorization->authorize($user, 'view');
+        $this->loadModel('Enterprises');
     }
 
     public function index()
-    {        
-        // ログイン中のユーザー情報取得
+    {
+        // 自分の情報と企業情報をViewに送信
         $me = $this->Authentication->getIdentity();
-/*         $this->loadModel('Users');
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
+        // アクセス制限
         $user = $this->Users->get($me->id);
-        $this->Authorization->authorize($user, 'view'); */
+        $this->Authorization->authorize($user, 'view');
         
-        // 使うモデルの選択
-        $this->loadModel('Users');
 
         // 社員全員の情報を取り出す
         $users = $this->SerchUser->getEmployee($me->enterprise_id);
@@ -90,6 +84,13 @@ class AdminController extends AppController
 
     public function adduser()
     {
+        // 自分の情報と企業情報をViewに送信
+        $me = $this->Authentication->getIdentity();
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
+        // アクセス制限
+        $user = $this->Users->get($me->id);
+        $this->Authorization->authorize($user, 'view');
         /*
          * Users.email の isUniqueを削除
          * ↑ 自動生成のままだと、emailはuniqueとして扱われる
@@ -97,8 +98,6 @@ class AdminController extends AppController
          */
         if ($this->request->is('post')) {
             // 同じ社員IDを持ったユーザーがいないかの確認
-            $me = $this->Authentication->getIdentity();
-            $this->loadModel('Users');
             $employee_id = $this->request->getData('employee_id');
             $res = $this->Users->find('all')->where([
                 'enterprise_id' => $me->enterprise_id,
@@ -130,16 +129,16 @@ class AdminController extends AppController
 
     public function edituser($id)
     {
-        // ログイン中のユーザー情報取得
+        // 自分の情報と企業情報をViewに送信
         $me = $this->Authentication->getIdentity();
-        // データセット
-        $this->set(compact('me'));
-        
-        $this->loadModel('Users');
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
+        // アクセス制限
+        $user = $this->Users->get($id);
+        $this->Authorization->authorize($user, 'view');
 
         if ($this->request->is('post')) {
             // 同じ社員IDを持ったユーザーがいないかの確認
-            $me = $this->Authentication->getIdentity();
             $employee_id = $this->request->getData('employee_id');
             $res = $this->Users->find('all')->where([
                 'enterprise_id' => $me->enterprise_id,
@@ -177,11 +176,14 @@ class AdminController extends AppController
 
     public function works($id, $month = null, $year = null)
     {
-        
+        // 自分の情報と企業情報をViewに送信
+        $me = $this->Authentication->getIdentity();
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
         // アクセス制限
         $this->loadModel('Users');
         $user = $this->Users->get($id);
-        $this->Authorization->authorize($user, 'edit');
+        $this->Authorization->authorize($user, 'view');
         
         $this->loadModel('Users');
         $user = $this->Users->find('all')->where(['id'=> $id])->first();
@@ -192,11 +194,14 @@ class AdminController extends AppController
 
     public function editwork($id, $date)
     {
-        
+        // 自分の情報と企業情報をViewに送信
+        $me = $this->Authentication->getIdentity();
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
         // アクセス制限
         $this->loadModel('Users');
         $user = $this->Users->get($id);
-        $this->Authorization->authorize($user, 'edit');
+        $this->Authorization->authorize($user, 'view');
         
         // データベース登録処理
         if ($this->request->is('post')) {
