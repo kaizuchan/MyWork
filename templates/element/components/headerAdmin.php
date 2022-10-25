@@ -25,7 +25,7 @@
             </div>
         </a>
         <div id="enterprise">
-            <?= $enterprise ?>
+            <p><?= $enterprise ?></p>
         </div>
 
 
