@@ -17,7 +17,6 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-md navbar-light sticky-top">
     <div class="container-fluid">
-
         <a href="/">
             <div id="logo">
                 <?php
@@ -25,6 +24,9 @@
                     ?>
             </div>
         </a>
+        <div id="enterprise">
+        <p><?= $enterprise ?></p>
+        </div>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
