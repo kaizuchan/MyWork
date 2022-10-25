@@ -6,10 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
     <?php echo $this->Html->css("login");?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
 </head>
 <body>
     
-    <div id="errMessage"><?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 --></div>
+    <div id="toast">
+      <?= $this->Flash->render() ?>
+    </div>
     
     <div class="back">
     </div>
@@ -38,5 +42,7 @@
           </form>
         </div>
       </div>
+      <?php echo $this->Html->script("admin"); ?>
+      <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
