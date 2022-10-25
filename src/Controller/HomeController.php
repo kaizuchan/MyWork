@@ -73,8 +73,8 @@ class HomeController extends AppController
 
     public function works($month = null, $year = null)
     {
-        $me = $this->Authentication->getIdentity()->get('id');
-        $data = $this->PuncheData->getMonthlyData($me, $month, $year);
+        $me = $this->Authentication->getIdentity();
+        $data = $this->PuncheData->getMonthlyData($me->id, $month, $year);
         $this->set(compact('data'));
 
         // 企業情報をViewに送信
@@ -126,7 +126,7 @@ class HomeController extends AppController
         // HOME画面へリダイレクトさせる
         $this->redirect(['action' => 'home']);
 
-        
+
     }
 
     // 実験用
