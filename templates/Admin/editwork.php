@@ -24,7 +24,8 @@
         <div id="main">
             <div class="Card">
                 <!-- 戻るボタン -->
-                <div id="backButtonBox"><button id="open"><i class="fas fa-angle-double-left"></i></button></div>
+                <div id="backButtonBox">
+                <a href="/admin/works/<?= $user->id ?>"><button><i class="fas fa-angle-double-left"></i></button></a></div>
 
                 <div class="id_name">
                     <p>ID:<?= $user->employee_id ?></p>
@@ -89,7 +90,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('Y-M-d') ?>" required>
+                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('YYYY-MM-dd') ?>" required>
                                             </td>
                                             <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" required></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>
@@ -108,30 +109,11 @@
                         </table>
                     </div>
                 </div>
-                        <div id="mask" class="hidden"></div>
-                        <section id="modal" class="hidden">
-                            <p id="editMessage">編集が完了してません。<br>終了してよろしいですか？</p>
-                            <div  id="selectButton">
-                                <div id="yesClose">
-                                    <?php 
-                                        if($month < 10){
-                                            $month = (string) '0'.$month;
-                                        }
-                                    ?>
-                                <a href="/admin/works/<?= $user->id ?>/<?= $month ?>/<?= $year ?>"><button id="yesButton">はい</button></a>
-                                </div>
-                                <div id="noClose">
-                                    <button id="noButton">いいえ</button>
-                                </div>
-                            </div>
-                        </section>
-                    
-
-                </div>
-                <?php echo $this->Html->script("modal"); ?>
-                <?php echo $this->Html->script("admin"); ?>
             </div>
+            <?php echo $this->Html->script("modal"); ?>
+            <?php echo $this->Html->script("admin"); ?>
         </div>
+    </div>
         
 </body>
 </html>

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
     <?php echo $this->Html->css("login");?>
+    <?php echo $this->Html->css("modal");?>
     <!-- エラーメッセージや成功メッセージ -->
     <?php echo $this->Html->css("message"); ?>
 </head>
@@ -36,7 +37,7 @@
                   type="hidden" name="_csrfToken" autocomplete="off"
                   value="<?= $this->request->getAttribute('csrfToken') ?>">
             <!-- <input type="hidden" name="id" value="87"> -->
-            <button type="submit" class="btn btn-primary">ログイン</button>
+            <button type="submit">ログイン</button>
           </form>        
           <div id="toast">
             <?= $this->Flash->render() ?>

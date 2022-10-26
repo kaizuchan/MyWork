@@ -211,7 +211,12 @@ th.fir_row {
   }
 }
 /* テーブルが横スクロールに切り替えるpx */
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px){ 
+  .total {
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+  }
   button.btn.btn-outline-info {
     height: 4vh;
   }
@@ -283,9 +288,15 @@ th.fir_row {
       padding: 2rem 0;
     }
     .total {
-      width: 98vw;
+      /* width: 98vw; */
       margin: 1.5rem auto;
       font-size: 1rem;
+    }
+    .total table th {
+      font-size: 0.8rem;
+    }
+    .total table td {
+      font-size: 0.8rem;
     }
   }
 }
