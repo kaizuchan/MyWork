@@ -12,6 +12,7 @@
     <?php echo $this->element('components/headerAdmin'); ?>
     <!-- エラーメッセージや成功メッセージ -->
     <?php echo $this->Html->css("message"); ?>
+    <?php echo $this->Html->css("modal"); ?>
 
     <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
     <script>
@@ -30,7 +31,7 @@
     
 </head>
 <body>
-  
+
   <div id="toast">
     <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
   </div>
@@ -165,7 +166,7 @@
       </form>
     </div>
   </div>
-  <?php echo $this->Html->script("admin"); ?>
   <?php echo $this->Html->script("modal"); ?>
+  <?php echo $this->Html->script("admin"); ?>
 </body>
 </html>

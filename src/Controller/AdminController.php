@@ -238,7 +238,7 @@ class AdminController extends AppController
                 $punch = $this->Punches->get($data['id']);
                 $punch->info = 9;
                 if ($this->Punches->save($punch)) {
-                    $this->Flash->success(__('削除しました'));
+                    $this->Flash->error(__('削除しました'));
                     return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                 }else{
                     $this->Flash->error(__('削除に失敗しました'));
