@@ -281,6 +281,14 @@ class AdminController extends AppController
                         return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         exit();
                     }
+                    // 出勤日は編集中の日限定
+                    //if($data['date'])
+                    if($data['identify'] == 1){
+                        if(strtotime($data['date']) != strtotime(substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2))){
+                            $this->Flash->error(__('日付が適切ではありません'));
+                            return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
+                        }
+                    }
                 /* --------------- 追加機能 エスケープ処理 (2/3) ここまで --------------- */
                 // 元データを削除済みに変更
                 $punche_old = $this->Punches->get($data['id']);
@@ -327,6 +335,14 @@ class AdminController extends AppController
                             $this->Flash->error(__('休憩開始レコードよりも休憩終了レコードが多くなるためレコードを追加できません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                             exit();
+                        }
+                    }
+                    // 出勤日は編集中の日限定
+                    //if($data['date'])
+                    if($data['identify'] == 1){
+                        if(strtotime($data['date']) != strtotime(substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2))){
+                            $this->Flash->error(__('日付が適切ではありません'));
+                            return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         }
                     }
                 /* --------------- 追加機能 エスケープ処理 (3/3) ここまで --------------- */
