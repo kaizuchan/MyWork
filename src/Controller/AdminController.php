@@ -284,10 +284,15 @@ class AdminController extends AppController
                     // 出勤日は編集中の日限定
                     //if($data['date'])
                     if($data['identify'] == 1){
-                        if(strtotime($data['date']) != strtotime(substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2))){
+                        if(strtotime($data['date']) != strtotime($data['date'])){
                             $this->Flash->error(__('日付が適切ではありません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         }
+                    }
+                    // 未来のデータ登録を拒否
+                    if(strtotime($data['date'].' '.$data['time']) >= strtotime(date('Y-m-d H:i:s'))){
+                        $this->Flash->error(__('現在時刻より先のデータは設定できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                     }
                 /* --------------- 追加機能 エスケープ処理 (2/3) ここまで --------------- */
                 // 元データを削除済みに変更
@@ -340,10 +345,15 @@ class AdminController extends AppController
                     // 出勤日は編集中の日限定
                     //if($data['date'])
                     if($data['identify'] == 1){
-                        if(strtotime($data['date']) != strtotime(substr($date, 0, 4).'/'.substr($date, 4, 2).'/'.substr($date, 6, 2))){
+                        if(strtotime($data['date']) != strtotime($data['date'])){
                             $this->Flash->error(__('日付が適切ではありません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         }
+                    }
+                    // 未来のデータ登録を拒否
+                    if(strtotime($data['date'].' '.$data['time']) >= strtotime(date('Y-m-d H:i:s'))){
+                        $this->Flash->error(__('現在時刻より先のデータは設定できません'));
+                        return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                     }
                 /* --------------- 追加機能 エスケープ処理 (3/3) ここまで --------------- */
                 // 新規レコードの追加
