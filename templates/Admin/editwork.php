@@ -90,7 +90,7 @@
                                                 </select>
                                             </td>
                                             <td>
-                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('Y-M-d') ?>" required>
+                                                <input name="date" type="date" value="<?= $time->time->i18nFormat('YYYY-MM-dd') ?>" required>
                                             </td>
                                             <td><input name="time" type="time" value="<?= $time->time->i18nFormat('HH:mm') ?>" required></td>
                                             <td class="edit"><button name="update" class="btn btn-outline-info" type="submit">保存</button></td>

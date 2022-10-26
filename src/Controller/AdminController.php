@@ -282,9 +282,8 @@ class AdminController extends AppController
                         exit();
                     }
                     // 出勤日は編集中の日限定
-                    //if($data['date'])
                     if($data['identify'] == 1){
-                        if(strtotime($data['date']) != strtotime($data['date'])){
+                        if(strtotime($data['date']) != strtotime($date)){
                             $this->Flash->error(__('日付が適切ではありません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         }
@@ -343,9 +342,8 @@ class AdminController extends AppController
                         }
                     }
                     // 出勤日は編集中の日限定
-                    //if($data['date'])
                     if($data['identify'] == 1){
-                        if(strtotime($data['date']) != strtotime($data['date'])){
+                        if(strtotime($data['date']) != strtotime($date)){
                             $this->Flash->error(__('日付が適切ではありません'));
                             return $this->redirect('/admin/works/'.$id.'/edit/'.$date);
                         }
