@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ログイン画面</title>
     <?php echo $this->Html->css("login");?>
+    <?php echo $this->Html->css("modal");?>
     <!-- エラーメッセージや成功メッセージ -->
     <?php echo $this->Html->css("message"); ?>
 </head>
