@@ -116,11 +116,22 @@ class HomeController extends AppController
                     $punches->identify = 4;
                 }
             }
-            // データ登録
-            try {
-                $this->punch->saveOrFail($punches);
-            } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
-                echo $e->getEntity();
+            // 連続で押された場合のエスケープ処理
+            //$identify = $this->PuncheData->getPunchStatement($me->id);
+            $identify = $this->solve(array($me));
+            $identify = $identify[0];
+            if($identify == '退勤'){$identify = array(1);}// 出勤
+            if($identify == '勤務中'){$identify = array(2, 4);}// 休憩開始 退勤
+            if($identify == '休憩中'){$identify = array(3);}// 休憩終了
+            foreach($identify as $i){
+                if(($i == $punches->identify)){
+                    // データ登録
+                    try {
+                        $this->punch->saveOrFail($punches);
+                    } catch (\Cake\ORM\Exception\PersistenceFailedException $e) {
+                        echo $e->getEntity();
+                    }
+                }
             }
         }
         // HOME画面へリダイレクトさせる
