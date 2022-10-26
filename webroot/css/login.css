@@ -10,6 +10,7 @@ img{
     margin: 10px auto;
 }
 .message.error {
+    height: auto;
     width: 60%; 
     position: relative;
     bottom: 0;
@@ -24,7 +25,8 @@ img{
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 h1{ 
-    height: 10vh;
+    height: 15vh;
+    margin: 0;
     font-size: 3.5rem;
     display: flex;
     align-items: center;
@@ -49,6 +51,10 @@ input.form-control{
     height: 4rem;
     width: 25vw;
     background-color: #1F78B4;
+    border: 1px solid #1F78B4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #loginForm button:hover{
     background-color: #1F78B2;
@@ -94,5 +100,17 @@ input.form-control{
     }
     #loginCard{
         width: 75vw;
+    }
+}
+@media screen and (max-height: 600px){
+    .message.error {
+        margin: 10rem 0 0 0;
+        font-size: 1.2rem;
+    }
+    #loginCard{
+        height: auto;
+    }
+    h1{
+        margin: 0 0 5rem 0;
     }
 }
