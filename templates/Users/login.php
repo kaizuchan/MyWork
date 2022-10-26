@@ -11,9 +11,7 @@
 </head>
 <body>
     
-    <div id="toast">
-      <?= $this->Flash->render() ?>
-    </div>
+    
     
     <div class="back">
     </div>
@@ -39,8 +37,12 @@
                   value="<?= $this->request->getAttribute('csrfToken') ?>">
             <!-- <input type="hidden" name="id" value="87"> -->
             <button type="submit" class="btn btn-primary">ログイン</button>
-          </form>
+          </form>        
+          <div id="toast">
+            <?= $this->Flash->render() ?>
+          </div>
         </div>
+
       </div>
       <?php echo $this->Html->script("admin"); ?>
       <?php echo $this->Html->script("modal"); ?>
