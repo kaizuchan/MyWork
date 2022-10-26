@@ -202,6 +202,11 @@ th.fir_row {
 }
 /* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){
+  .total {
+    display: flex;
+    font-size: 1rem;
+    justify-content: center;
+  }
   .total table th{
     border-radius: 10px 10px 0 0;
     font-size: 1.2rem;
@@ -247,10 +252,6 @@ th.fir_row {
   .month h3 a{
     padding: 2rem 0;
   }
-  .total {
-    margin: 1.5rem auto;
-    font-size: 1rem;
-  }
   table.glaf tr td{
     height: 5vh;
   }
@@ -263,8 +264,14 @@ th.fir_row {
     padding: 2rem 0;
   }
   .total {
-    width: 98vw;
+    /* width: 98vw; */
     margin: 1.5rem auto;
     font-size: 1rem;
+  }
+  .total table th {
+    font-size: 0.8rem;
+  }
+  .total table td {
+    font-size: 0.8rem;
   }
 }
