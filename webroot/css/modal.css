@@ -87,8 +87,23 @@
   border: none;
   text-align: center;
 }
-  #delete_scl{
-    overflow: auto;
+/* スクロールバー */
+#delete_scl{
+  height: max-content;
+  width: -webkit-fill-available;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+#delete_scl::-webkit-scrollbar{
+  width: 0.5rem;
+}
+#delete_scl::-webkit-scrollbar-track{
+  background-color: #ccc;
+  border-radius: 5px;
+}
+#scroll_bar::-webkit-scrollbar-thumb{
+  background-color: #777;
+  border-radius: 5px;
 }
 /* タブレット用 */
 @media screen and (max-width: 1000px){
