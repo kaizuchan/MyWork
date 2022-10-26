@@ -101,7 +101,7 @@
   background-color: #ccc;
   border-radius: 5px;
 }
-#scroll_bar::-webkit-scrollbar-thumb{
+#delete_scl::-webkit-scrollbar-thumb{
   background-color: #777;
   border-radius: 5px;
 }
