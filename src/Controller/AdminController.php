@@ -112,7 +112,7 @@ class AdminController extends AppController
                 $year = $this->request->getData("birthday-year");
                 $month = $this->request->getData("birthday-month");
                 $date = $this->request->getData("birthday-date");
-                $user->birthday = $year.'-'.$month.'-'.$date;
+                $user->birthday = date('Y-m-d', strtotime($year.'-'.$month.'-'.$date));
     
                 if ($this->Users->save($user)) {
                     // 登録成功
@@ -156,7 +156,7 @@ class AdminController extends AppController
                 $year = $this->request->getData("birthday-year");
                 $month = $this->request->getData("birthday-month");
                 $date = $this->request->getData("birthday-date");
-                $user->birthday = $year.'-'.$month.'-'.$date;
+                $user->birthday = date('Y-m-d', strtotime($year.'-'.$month.'-'.$date));
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('更新しました'));
