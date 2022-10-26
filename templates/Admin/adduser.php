@@ -167,6 +167,7 @@
     </div>
   </div>
   <?php echo $this->Html->script("modal"); ?>
+  <?php echo $this->Html->script("toast"); ?>
   <?php echo $this->Html->script("admin"); ?>
 </body>
 </html>

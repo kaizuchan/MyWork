@@ -139,11 +139,6 @@ class HomeController extends AppController
 
 
     }
-
-    // 実験用
-    public function index()
-    {
-    }
     
     //内部処理
     private function solve($users)
