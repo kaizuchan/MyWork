@@ -31,7 +31,9 @@
 </head>
 <body>
   
-  <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+  <div id="toast">
+    <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+  </div>
 
   <div id="main">
     <div class="Card">
@@ -164,5 +166,6 @@
     </div>
   </div>
   <?php echo $this->Html->script("admin"); ?>
+  <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>
