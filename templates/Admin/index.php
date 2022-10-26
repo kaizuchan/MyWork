@@ -49,12 +49,7 @@
                         <a href="/Admin/adduser" id="addButton"><i class="fas fa-user-plus fa-3x"></i></a>
                         <div id="deleteButton"><button id="open" name="deleteButton" onclick="myCheck();"><i class="fas fa-trash-alt fa-3x"></i></button></div>
                 </div>
-                <!-- 検索結果 -->
-                <?php if(isset($count)): ?>
-                    <p id="searchMessage">
-                        <?php if($count == 0): echo '検索結果が見つかりません'; endif; ?>
-                    </p>
-                <?php endif; ?>
+                
 
                     
                 <div class="scroll_bar">
@@ -82,6 +77,12 @@
                                         <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <!-- 検索結果 -->
+                            <?php if(isset($count)): ?>
+                                <p id="searchMessage">
+                                    <?php if($count == 0): echo '検索結果が見つかりません'; endif; ?>
+                                </p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
