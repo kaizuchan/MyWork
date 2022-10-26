@@ -37,7 +37,7 @@
                   type="hidden" name="_csrfToken" autocomplete="off"
                   value="<?= $this->request->getAttribute('csrfToken') ?>">
             <!-- <input type="hidden" name="id" value="87"> -->
-            <button type="submit" class="btn btn-primary">ログイン</button>
+            <button type="submit">ログイン</button>
           </form>        
           <div id="toast">
             <?= $this->Flash->render() ?>

@@ -175,7 +175,7 @@ button:hover{
     }
     .Card{
         margin: 2rem 0 0 0;
-        padding: 4rem 0 0 0;
+        padding: 4rem 0 2rem 0;
         height: max-content;
         width: 100vw;
         box-shadow: 20px 0 20px 0 rgb(0 0 0 / 20%);
@@ -208,6 +208,10 @@ button:hover{
     }
     #searchBox input{
         width: 70vw;
+    }
+    /* スクロールバー */
+    .scroll_bar{
+        height: 55vh;
     }
 }
 /* 480px以下（スマホ用デザイン） */

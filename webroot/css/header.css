@@ -15,17 +15,31 @@ nav a:hover{
 nav li{
     margin: 0 0 0 0;
 }
+.navbar-light .navbar-toggler {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+.navbar-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
 #logoButton{
     color: #FFF;
 }
-#logo{  
-    width: 70px;
-    height: 50px;
+#logo{ 
+    width: 7rem;
+    height: 5rem;
 }
 #enterprise p{
     margin: 0;
     font-size: 2rem;
     color: #fff;
+}
+@media screen and (max-width: 900px){
+    #enterprise p{
+        margin: 0;
+        font-size: 1.7rem;
+        color: #fff;
+    }
 }
 @media screen and (max-width: 767px){
     nav{
