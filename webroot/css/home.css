@@ -209,6 +209,10 @@ button:hover{
     #searchBox input{
         width: 70vw;
     }
+    /* スクロールバー */
+    .scroll_bar{
+        height: 55vh;
+    }
 }
 /* 480px以下（スマホ用デザイン） */
 @media screen and (max-width: 480px){

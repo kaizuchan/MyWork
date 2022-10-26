@@ -68,7 +68,7 @@
 /* モーダルのpタグ */
 #modal p {
   margin: 1rem 1rem;
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   line-height: 2.2rem;
 }
 /* 隠す */
@@ -147,7 +147,15 @@
   /* モーダルのpタグ */
   #modal p {
     margin: 1rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    line-height: 2.2rem;
+  }
+}/* スマホ、タブレット用 */
+@media screen and (max-width: 480px){
+  /* モーダルのpタグ */
+  #modal p {
+    margin: 1rem 1rem;
+    font-size: 1rem;
     line-height: 2.2rem;
   }
 }
