@@ -56,16 +56,16 @@ class Enterprises extends AbstractMigration
                 ],
                 [
                 'id' => 2, 
+                'login_id' => 'hal.osaka',
+                'name' => 'HAL大阪',
+                'name_kana' => 'ハルオオサカ'
+                ],
+                [
+                'id' => 3, 
                 'login_id' => 'hal.nagoya',
                 'name' => 'HAL名古屋',
                 'name_kana' => 'ハルナゴヤ'
                 ],
-                [
-                'id' => 3, 
-                'login_id' => 'hal.osaka',
-                'name' => 'HAL大阪',
-                'name_kana' => 'ハルオオサカ'
-                ]
             ];
             $this->insert('enterprises', $rows);
     }
