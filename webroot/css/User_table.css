@@ -51,8 +51,7 @@ margin-bottom: 3rem;
   margin: 0 1rem;
   }
   .thisMonth{
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
+    font-size: 2rem;
   }
 /* トータル4項目 */
 .total {
@@ -150,6 +149,9 @@ th.fir_row {
   .Card{
     width: 95vw;/*ードの幅*/
   }
+  .thisMonth{
+    font-size: 1.5rem;
+  }
   .total {
     width: 70vw;/*トータル全体の幅*/
   }
@@ -162,6 +164,9 @@ th.fir_row {
   }
 }
 @media screen and (max-width: 912px){
+  .thisMonth{
+    font-size: 1.5rem;
+  }
   /* 前、後の月リンク */
   .month h3 a{
     font-size: 1.5rem;
@@ -185,9 +190,16 @@ th.fir_row {
   }
   .id_name {
     padding: 0 2rem 0 0;
-  }
+  }.month {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
   .month h3 a{
     padding: 2rem 0;
+  }
+  .thisMonth{
+    font-size: 1.5rem;
   }
   .total {
     width: 75vw;

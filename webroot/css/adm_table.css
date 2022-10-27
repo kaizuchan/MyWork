@@ -51,8 +51,7 @@ h2.oct {
   margin: 0 1rem;
 }
 .thisMonth{
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
+  font-size: 2rem;
 }
 /* トータル4項目 */
 .total {
@@ -152,6 +151,9 @@ th.fir_row {
   .Card{
     width: 95vw;
   }
+  .thisMonth{
+    font-size: 2rem;
+  }
   .total {
     width: 70vw;
   }
@@ -170,6 +172,9 @@ th.fir_row {
   }
 }
 @media screen and (max-width: 912px){
+  .thisMonth{
+    font-size: 1.5rem;
+  }
   .month h3 a{
     font-size: 1.5rem;
     display: flex;
@@ -192,6 +197,9 @@ th.fir_row {
   }
   .id_name {
     padding: 0 2rem 0 0;
+  }
+  .thisMonth{
+    font-size: 1.5rem;
   }
   .month{
     padding: 0 2rem;
@@ -217,6 +225,9 @@ th.fir_row {
 }
 /* テーブルが横スクロールに切り替えるpx */
 @media screen and (max-width: 640px){ 
+  .thisMonth{
+    font-size: 1.5rem;
+  }
   .total {
     display: flex;
     font-size: 1rem;
@@ -275,6 +286,9 @@ th.fir_row {
   .id_name {
     padding: 2rem 2rem 0 0;
   }
+  .thisMonth{
+    font-size: 1.5rem;
+  }
   .month h3 a{
     padding: 2rem 0;
   }
@@ -285,23 +299,26 @@ th.fir_row {
   table.glaf tr td{
     height: 5vh;
   }
-  @media screen and (max-width: 280px){
-    .id_name {
-      padding: 1rem 2rem 0 0;
-    }
-    .month h3 a{
-      padding: 2rem 0;
-    }
-    .total {
-      /* width: 98vw; */
-      margin: 1.5rem auto;
-      font-size: 1rem;
-    }
-    .total table th {
-      font-size: 0.8rem;
-    }
-    .total table td {
-      font-size: 0.8rem;
-    }
+}
+@media screen and (max-width: 280px){
+  .id_name {
+    padding: 1rem 2rem 0 0;
+  }
+  .thisMonth{
+    font-size: 1.5rem;
+  }
+  .month h3 a{
+    padding: 2rem 0;
+  }
+  .total {
+    /* width: 98vw; */
+    margin: 1.5rem auto;
+    font-size: 1rem;
+  }
+  .total table th {
+    font-size: 0.8rem;
+  }
+  .total table td {
+    font-size: 0.8rem;
   }
 }
