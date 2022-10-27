@@ -49,7 +49,7 @@
                     </div>
                     <div><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
                     <div id="passwordCheck">
-                      <input type="checkbox" id="oldPassCheck">現在のパスワードを表示
+                      <input type="checkbox" id="oldPassCheck">パスワードを表示
                     </div>
 
                     <div class="input-group mb-3 ">
@@ -58,7 +58,7 @@
                     </div>
                     <div><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
                     <div id="passwordCheck">
-                      <input type="checkbox" id="passCheck">新しいパスワードを表示
+                      <input type="checkbox" id="passCheck">パスワードを表示
                     </div>
                     
                     <div class="input-group mb-3 ">
@@ -67,7 +67,7 @@
                     </div>
                     <div><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
                     <div id="passwordCheck">
-                      <input type="checkbox" id="passconfCheck">新しいパスワードを表示
+                      <input type="checkbox" id="passconfCheck">パスワードを表示
                     </div>
 
                     <input
