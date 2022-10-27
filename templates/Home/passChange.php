@@ -45,7 +45,7 @@
 
                     <div class="input-group mb-3">
                       <span class="input-group-text" id="basic-addon1">現在のパスワード</span>
-                      <input name="password" type="password" id="olduserpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+                      <input name="old-password" type="password" id="olduserpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
                     </div>
                     <div><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
                     <div id="passwordCheck">
@@ -54,7 +54,7 @@
 
                     <div class="input-group mb-3 ">
                       <span class="input-group-text" id="basic-addon1">新しいパスワード</span>
-                      <input name="password" type="password" id="userpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+                      <input name="new-password" type="password" id="userpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
                     </div>
                     <div><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
                     <div id="passwordCheck">
@@ -69,6 +69,10 @@
                     <div id="passwordCheck">
                       <input type="checkbox" id="passconfCheck">新しいパスワードを表示
                     </div>
+
+                    <input
+                        type="hidden" name="_csrfToken" autocomplete="off"
+                        value="<?= $this->request->getAttribute('csrfToken') ?>">
 
                     <div class="d-grid gap-2">
                         <button class="btn" type="submit">登録</button>

@@ -9,9 +9,7 @@ use Punches;
 use Migrations\Command\Phinx\Dump;
 use App\Utils\AppUtility;
 
-use Cake\Http\Cookie\Cookie;
-use DateTime;
-use Cake\I18n\Time;
+use Cake\Auth\DefaultPasswordHasher;
 /**
  * Home Controller
  *
@@ -30,10 +28,12 @@ class HomeController extends AppController
         $this->punch = TableRegistry::getTableLocator()->get('punches');
         // 自分の情報をViewに送信
         $me = $this->Authentication->getIdentity();
-        $this->loadModel('Enterprises');
         $this->set(compact('me'));
         // アクセス制限にかからないよう
         $this->Authorization->skipAuthorization();
+        // モデルのロード
+        $this->loadModel('Enterprises');
+        $this->loadModel('Users');
     }
 
     public function home()
@@ -144,6 +144,32 @@ class HomeController extends AppController
     }
 
     public function passchange(){
+        // 自分の情報と企業情報をViewに送信
+        $me = $this->Authentication->getIdentity();
+        $enterprise = $this->Enterprises->find('all')->where(['id'=>$me->enterprise_id])->first()->get('name');
+        $this->set(compact('me', 'enterprise'));
+    
+        if ($this->request->is('post')) {
+            $user = $this->Users->get($me->id);
+            // 現在のパスワードと比較
+            $old_password = $this->request->getData("old-password");
+            $hasher = new DefaultPasswordHasher();
+            // パスワードが一致してたらtrueを返す
+            $res = $hasher->check($old_password, $user->password);
+            if($res == false){
+                //現在のパスワードが違います
+                $this->Flash->error(__('現在のパスワードが違います'));
+                return $this->redirect(['action' => 'passchange']);
+            }
+
+            // パスワードの変更
+            $user->password = $this->request->getData("new-password");
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('パスワードを変更しました'));
+                return $this->redirect(['action' => 'home']);
+            }
+            $this->Flash->error(__('パスワード変更に失敗しました'));
+        }
         
     }
 
