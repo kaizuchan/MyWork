@@ -33,10 +33,14 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
             <span class="navbar-toggler-icon"></span>
         </button>
+        
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item active">
                     <a href="/works">勤怠履歴</a>
+                </li>
+                <li class="nav-item active">
+                    <a href="/passChange">パスワード変更</a>
                 </li>
                 <li class="nav-item active">
                     <a href="/logout">ログアウト</a>
