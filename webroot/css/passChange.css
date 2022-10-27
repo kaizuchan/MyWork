@@ -38,6 +38,9 @@ form.was-validated.h-adr {
     flex-direction: column;
     justify-content: center;
 }
+input[type="checkbox"] {
+    margin: 0 0.5rem 0 0;
+}
 button.btn{
     color: #fff;
     margin: 3rem 0;
