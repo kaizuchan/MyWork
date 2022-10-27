@@ -40,7 +40,7 @@
                     <a href="/works">勤怠履歴</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="/passChange">パスワード変更</a>
+                    <a href="/change-password">パスワード変更</a>
                 </li>
                 <li class="nav-item active">
                     <a href="/logout">ログアウト</a>
