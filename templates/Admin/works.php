@@ -24,9 +24,10 @@
                 <h1 class="title">勤務時間表</h1>
                 <h2 class="oct"><?= (int) $dates['year'] ?>年 <?= (int) $dates['month'] ?>月</h2>
             <div class="month">
-                <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']-1,1,2022)); ?>"><i class="fas fa-reply"></i><div class="nextMonth">前の月へ</div></a></h3>
-                <h3><a href="/works/<?php echo date('m/Y'); ?>"><div class="thisMonth">現在の月へ</div></a></h3>
-                <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']+1,1,2022)); ?>"><div class="nextMonth">次の月へ</div><i class="fas fa-share"></i></a></h3>
+                <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']-1,1,$dates['year'])); ?>"><i class="fas fa-reply"></i><div class="nextMonth">前の月へ</div></a></h3>
+                <h3><a href="/admin/works/<?= $id ?>"><div class="thisMonth">現在の月へ</div></a></h3>
+                <h3><a href="/admin/works/<?= $id ?>/<?php echo date('m/Y', mktime(0,0,0,$dates['month']+1,1,$dates['year'])); ?>"><div class="nextMonth">次の月へ</div><i class="fas fa-share"></i></a></h3>
+
             </div>
 
             <div class="total">

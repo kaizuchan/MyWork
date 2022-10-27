@@ -45,7 +45,7 @@
         </div>
 
       </div>
+      <?php echo $this->Html->script("toast"); ?>
       <?php echo $this->Html->script("admin"); ?>
-      <?php echo $this->Html->script("modal"); ?>
 </body>
 </html>

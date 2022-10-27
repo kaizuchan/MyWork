@@ -111,5 +111,6 @@
         <?= $this->Form->end() ?>
 
     <?php echo $this->Html->script("modal"); ?>
+    <?php echo $this->Html->script("toast"); ?>
 </body>
 </html> 

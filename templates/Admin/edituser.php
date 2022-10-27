@@ -192,5 +192,6 @@ if ($this->request->is('post')) {
   </section>
   <?php echo $this->Html->script("admin"); ?>
   <?php echo $this->Html->script("modal"); ?>
+  <?php echo $this->Html->script("toast"); ?>
 </body>
 </html>

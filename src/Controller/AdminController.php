@@ -74,8 +74,11 @@ class AdminController extends AppController
                         );
                         $this->Users->updateAll($data, $where);
                     }
+                    $this->Flash->error(__('社員を削除しました'));
                 }
             }
+            // 自分自身にリダイレクト
+            return $this->redirect(['action' => 'index']);
         }
         
         // データセット
