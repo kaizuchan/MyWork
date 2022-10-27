@@ -24,11 +24,12 @@
 /* タイトル */
 h1.title {
   text-align: center;
+  font-size: 3rem;
 }
 /* 月 */
 h2.oct {
   text-align: center;
-margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 /* 前、後の月 */
 .month {
