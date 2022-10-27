@@ -9,6 +9,9 @@ use Punches;
 use Migrations\Command\Phinx\Dump;
 use App\Utils\AppUtility;
 
+use Cake\Http\Cookie\Cookie;
+use DateTime;
+use Cake\I18n\Time;
 /**
  * Home Controller
  *
@@ -138,6 +141,11 @@ class HomeController extends AppController
         $this->redirect(['action' => 'home']);
 
 
+    }
+
+    // 実験用
+    public function index(){
+        
     }
     
     //内部処理
