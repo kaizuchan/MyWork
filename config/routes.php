@@ -62,6 +62,7 @@ return static function (RouteBuilder $routes) {
                         'year' => '[12][0-9]{3}',
                         ])
                 ->setPass(['month', 'year']);
+        $builder->connect('/change-password', ['controller' => 'home', 'action' => 'passchange']);
         $builder->connect('/punch', ['controller' => 'home', 'action' => 'punch']);
         /* 管理者ページ */
         $builder->connect('/admin', ['controller' => 'admin', 'action' => 'index']);

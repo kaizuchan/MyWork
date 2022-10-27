@@ -143,6 +143,10 @@ class HomeController extends AppController
 
     }
 
+    public function passchange(){
+        
+    }
+
     // 実験用
     public function index(){
         
