@@ -24,6 +24,7 @@ img{
     inset: 0;
     margin: auto;
     box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+    border-radius: 10px;
 }
 h1{ 
     height: 15vh;
