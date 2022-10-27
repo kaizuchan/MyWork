@@ -40,7 +40,7 @@
     <div class="Card">
       <!-- 戻るボタン -->
       <div id="backButtonBox"><a href="/admin" id="backButton"><i class="fas fa-angle-double-left"></i></a></div>
-      <h1>社員登録</h1>
+      <h1 class="title">社員登録</h1>
       
 
       <form class="was-validated h-adr" method="POST">
@@ -135,16 +135,18 @@
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード</span>
-          <input name="password" type="password" id="userpass" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+          <input name="password" type="password" id="userpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
         </div>
+        <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
         <div id="passwordCheck">
           <input type="checkbox" id="passCheck">パスワードを表示
         </div>
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
+          <input type="password" id="password_confirm" class="form-control" placeholder="" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
         </div>
+        <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
         <div id="passwordCheck">
           <input type="checkbox" id="passconfCheck">パスワードを表示
         </div>
