@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HOME</title>
     <?php echo $this->Html->css("home"); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
     <!-- ヘッダー -->
     <?php
         if($me->role == 1){
@@ -16,6 +18,9 @@
     ?>
 </head>
 <body>
+    <div id="toast">
+        <?= $this->Flash->render() ?><!-- ← レイアウトになければ追加 -->
+    </div>
     <div id="main">
         <div class="Card">
             <div id="now">
@@ -77,6 +82,7 @@
             </div>
         </div>
     </div>
+    <?php echo $this->Html->script("toast"); ?>
     <?php echo $this->Html->script("home"); ?>
 </body>
 </html>

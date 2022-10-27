@@ -10,6 +10,8 @@
     <?php echo $this->Html->css("backButton"); ?>
     <!-- ヘッダー -->
     <?php echo $this->element('components/header'); ?>
+    <!-- モーダルウィンドウ -->
+    <?php echo $this->Html->css("modal"); ?>
     <!-- エラーメッセージや成功メッセージ -->
     <?php echo $this->Html->css("message"); ?>
     <script>
@@ -82,7 +84,7 @@
         </div>
     
 
-    <?php echo $this->Html->script("modal"); ?>
+    <?php echo $this->Html->script("toast"); ?>
     <?php echo $this->Html->script("admin"); ?>
 </body>
 </html>
