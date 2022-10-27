@@ -74,6 +74,20 @@ button:hover{
     background-color: #C0ECCB;
     border: 1px solid #C0ECCB;
 }
+/* 非活性出勤ボタン */
+#attendanceButton:disabled{
+    background-color: #557e5f;
+    border: 1px solid #557e5f;
+    color: #bbb;
+    opacity: 1;
+}
+/* 非活性出勤ボタン */
+#attendanceButton:disabled:hover{
+    background-color: #557e5f;
+    border: 1px solid #557e5f;
+    color: #bbb;
+    opacity: 1;
+}
 /* 退勤ボタン */
 #leavingButton{
     background-color: #E6A3A3;
@@ -83,6 +97,19 @@ button:hover{
 #leavingButton:hover{
     background-color: #F3C2C2;
     border: 1px solid #F3C2C2;
+}
+/* 非活性退勤ボタンホバー */
+#leavingButton:disabled{
+    background-color: #876060;
+    border: 1px solid #876060;
+    color: #bbb;
+    opacity: 1;
+}
+/* 非活性退勤ボタンホバー */
+#leavingButton:disabled:hover{
+    background-color: #876060;
+    border: 1px solid #876060;
+    opacity: 1;
 }
 /* 休憩開始ボタン */
 #restStartButton{
@@ -94,6 +121,20 @@ button:hover{
     background-color: #C6CEE3;
     border: 1px solid #C6CEE3;
 }
+/* 非活性休憩開始ボタン */
+#restStartButton:disabled{
+    background-color: #636b83;
+    border: 1px solid #636b83;
+    color: #bbb;
+    opacity: 1;
+}
+/* 非活性休憩開始ボタンホバー */
+#restStartButton:disabled:hover{
+    background-color: #636b83;
+    border: 1px solid #636b83;
+    color: #bbb;
+    opacity: 1;
+}
 /* 休憩終了ボタン */
 #restFinishButton{
     background-color: #F2DCA0;
@@ -103,6 +144,20 @@ button:hover{
 #restFinishButton:hover{
     background-color: #F0E2BD;
     border: 1px solid #F0E2BD;
+}
+/* 非活性休憩終了ボタン */
+#restFinishButton:disabled{
+    background-color: #9f9168;
+    border: 1px solid #9f9168;
+    color: #bbb;
+    opacity: 1;
+}
+/* 非活性休憩終了ボタンホバー */
+#restFinishButton:disabled:hover{
+    background-color: #9f9168;
+    border: 1px solid #9f9168;
+    color: #bbb;
+    opacity: 1;
 }
 /* スクロールバー */
 .scroll_bar{
