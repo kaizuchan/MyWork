@@ -60,7 +60,7 @@
                                         <th scope="col"><i class="fas fa-check-square"></i></th>
                                         <th scope="col">社員ID</th>
                                         <th scope="col">社員名</th>
-                                        <th scope="col">勤務履歴確認</th>
+                                        <th scope="col">勤務履歴確認/編集</th>
                                         <th scope="col">社員情報編集</th>
                                     </tr>
                                 </thead>

@@ -33,6 +33,7 @@
                 <h2 class="oct"><?= (int) $data['year'] ?>年 <?= (int) $data['month'] ?>月</h2>    
             <div class="month">
                 <h3><a href="/works/<?php echo date('m/Y', mktime(0,0,0,$data['month']-1,1,$data['year'])); ?>"><i class="fas fa-reply"></i><div class="nextMonth">前の月へ</div></a></h3>
+                <h3><a href="/works/<?php echo date('m/Y'); ?>"><div class="thisMonth">現在の月へ</div></a></h3>
                 <h3><a href="/works/<?php echo date('m/Y', mktime(0,0,0,$data['month']+1,1,$data['year'])); ?>"><div class="nextMonth">次の月へ</div><i class="fas fa-share"></i></a></h3>
             </div>
 

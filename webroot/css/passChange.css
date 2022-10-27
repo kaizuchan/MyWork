@@ -1,0 +1,93 @@
+/* メイン全体 */
+#main{
+    height: 92vh;
+    background-color: #D7EEFF;
+}
+.Card{
+    position: fixed;
+    inset: 0;
+    margin: 8vh auto;
+    width: 70vw;
+    height: 92vh;
+    padding: 5rem;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
+}
+/* ページタイトル */
+h1{
+    height: 8vh;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* 入力項目名 */
+.itemsTitle{
+    font-size: 1.8rem;
+}
+form{
+    margin: 4rem 14rem;
+}
+form .input-group{
+    margin: 3rem 0;
+}
+form.was-validated.h-adr {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+button.btn{
+    color: #fff;
+    margin: 3rem 0;
+    background-color: #1F78B4;
+}
+button.btn:hover{
+    color: #fff;
+    border: 1px solid #5FA6D5;
+    background-color: #5FA6D5;
+}
+/* 入力項目名の高さ調整 */
+.input-group-text{
+    height: 38px;
+}
+#passwordCheck{
+    display: flex;
+    align-items: center;
+}
+@media screen and (max-width: 1280px){
+    form{
+        margin: 4rem 12rem;
+    }
+}
+@media screen and (max-width: 1024px){
+    /* 入力項目名 */
+    .itemsTitle{
+        font-size: 1.6rem;
+    }
+    .Card{
+        padding: 5rem;
+    }
+    form{
+        margin: 4rem 2rem;
+    }
+}
+@media screen and (max-width: 768px){
+    .Card{
+        margin: 6rem auto;
+        width: 90vw;
+    }
+    form{
+        margin: 4rem 2rem;
+    }
+}
+@media screen and (max-width: 480px){
+    .Card{
+        width: 100vw;
+        padding: 2rem;
+    }
+    form{
+        margin: 4rem 2rem;
+    }
+}
