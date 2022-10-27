@@ -8,6 +8,8 @@
     <?php echo $this->Html->css("home"); ?>
     <!-- モーダルウィンドウ -->
     <?php echo $this->Html->css("modal"); ?>
+    <!-- エラーメッセージや成功メッセージ -->
+    <?php echo $this->Html->css("message"); ?>
     <!-- ヘッダー -->
     <?php
         if($me->role == 1){
