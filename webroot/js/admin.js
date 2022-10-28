@@ -4,8 +4,16 @@ const passconf = document.getElementById('password_confirm');
 const oldpasscheck = document.getElementById('oldPassCheck');
 const passcheck = document.getElementById('passCheck');
 const passconfcheck = document.getElementById('passconfCheck');
+const logincheck = document.getElementById('exampleInputPassword1');
 
-
+passcheck.addEventListener('change',function() {
+    if(passcheck.checked) {
+        logincheck.type = 'text';
+        logincheck.textContent = 'パスワードを非表示';
+    } else {
+        logincheck.type = 'password';
+    }
+});
 passcheck.addEventListener('change',function() {
     if(passcheck.checked) {
         userpass.type = 'text';
