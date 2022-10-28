@@ -28,19 +28,7 @@ if ($this->request->is('post')) {
     <?php echo $this->Html->css("message"); ?>
 
     <script src="https://yubinbango.github.io/yubinbango/yubinbango.js" charset="UTF-8"></script>
-    <script>
-            function CheckPassword(password_confirm) {
-                // 入力値取得
-                var input1 = userpass.value;
-                var input2 = password_confirm.value;
-                // パスワード比較
-                if (input1 != input2) {
-                    password_confirm.setCustomValidity("入力値が一致しません。");
-                } else {
-                    password_confirm.setCustomValidity('');
-                }
-            }
-    </script>
+
 </head>
 <body>
   
@@ -148,7 +136,7 @@ if ($this->request->is('post')) {
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード</span>
-          <input name="new_password" type="password" id="userpass" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}">
+          <input name="new_password" type="password" id="userpass" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword()">
 
         </div>
         <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
@@ -158,7 +146,7 @@ if ($this->request->is('post')) {
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="new_password" id="password_confirm" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword(this)">
+          <input type="new_password" id="password_confirm" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword()">
 
         </div>
         <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
@@ -194,6 +182,19 @@ if ($this->request->is('post')) {
           </div>
       </div>
   </section>
+  <script>
+    function CheckPassword() {
+        // 入力値取得
+        var input1 = userpass.value;
+        var input2 = password_confirm.value;
+        // パスワード比較
+        if (input1 != input2) {
+            password_confirm.setCustomValidity("入力値が一致しません。");
+        } else {
+            password_confirm.setCustomValidity('');
+        }
+    }
+  </script>
   <?php echo $this->Html->script("admin"); ?>
   <?php echo $this->Html->script("modal"); ?>
   <?php echo $this->Html->script("toast"); ?>

@@ -37,6 +37,7 @@ class UsersController extends AppController
                 $res = $this->Users->find('all')->where([
                     'enterprise_id'=>$enterprise->id,
                     'employee_id'=>$data['employee_id'],
+                    'not' => ['role' => 9],
                 ])->first();
             }
         }
@@ -61,9 +62,11 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         // 認証成功
         if ($result->isValid()) {
-            // 企業IDをcookieに保存
-            $enterprise_id = $this->request->getData('inputed_enterprise_id');
-            setcookie("inputed_enterprise_id", $enterprise_id, strtotime( '+30 days' ));
+            if($this->request->is('post')){
+                // 企業IDをcookieに保存
+                $enterprise_id = $this->request->getData('inputed_enterprise_id');
+                setcookie("inputed_enterprise_id", $enterprise_id, strtotime( '+30 days' ));
+            }
             // HOME画面へリダイレクト
             $target = $this->Authentication->getLoginRedirect() ?? '/';
             return $this->redirect($target);

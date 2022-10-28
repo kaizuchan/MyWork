@@ -177,7 +177,7 @@ class Users extends AbstractMigration
                 ],
                 //
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 1,
                     "employee_id" => "00000",
                     "last_name" => "谷",
                     "first_name" => "まさる",
@@ -291,7 +291,7 @@ class Users extends AbstractMigration
                     "password" => $password
                 ],
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 1,
                     "employee_id" => "21125",
                     "last_name" => "長浜",
                     "first_name" => "晴夫",
@@ -310,7 +310,7 @@ class Users extends AbstractMigration
                     "password" => $password
                 ],
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 1,
                     "employee_id" => "17856",
                     "last_name" => "田所",
                     "first_name" => "孝行",
@@ -329,7 +329,7 @@ class Users extends AbstractMigration
                     "password" => $password
                 ],
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 3,
                     "employee_id" => "99558",
                     "last_name" => "芳賀",
                     "first_name" => "雪子",
@@ -348,7 +348,7 @@ class Users extends AbstractMigration
                     "password" => $password
                 ],
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 3,
                     "employee_id" => "84089",
                     "last_name" => "嶋田",
                     "first_name" => "麻里子",
@@ -367,7 +367,7 @@ class Users extends AbstractMigration
                     "password" => $password
                 ],
                 [
-                    "enterprise_id" => 2,
+                    "enterprise_id" => 3,
                     "employee_id" => "41048",
                     "last_name" => "森下",
                     "first_name" => "璃子",
