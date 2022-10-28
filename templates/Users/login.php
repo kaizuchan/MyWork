@@ -7,8 +7,6 @@
     <title>ログイン画面</title>
     <?php echo $this->Html->css("login");?>
     <?php echo $this->Html->css("modal");?>
-    <!-- エラーメッセージや成功メッセージ -->
-    <?php echo $this->Html->css("message"); ?>
 </head>
 <body>
     
