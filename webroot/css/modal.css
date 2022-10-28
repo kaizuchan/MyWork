@@ -92,7 +92,7 @@
   height: max-content;
   width: -webkit-fill-available;
   margin: 0 auto;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 #delete_scl::-webkit-scrollbar{
   width: 0.5rem;
