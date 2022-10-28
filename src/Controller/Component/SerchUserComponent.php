@@ -40,6 +40,8 @@ class SerchUserComponent extends Component
                 ['last_name_kana LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
                 ['first_name_kana LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
                 ['CONCAT(last_name_kana,first_name_kana) LIKE' => '%'.mb_convert_kana($keyword, 'C').'%'],
+                // 社員番号
+                ['employee_id' => $keyword],
             ]]);
         }
         $order = [];

@@ -148,7 +148,7 @@ if ($this->request->is('post')) {
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード</span>
-          <input name="password" type="password" id="userpass" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required>
+          <input name="new_password" type="password" id="userpass" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}">
         </div>
         <div id="passwordCheck">
           <input type="checkbox" id="passCheck">パスワードを表示
@@ -156,7 +156,7 @@ if ($this->request->is('post')) {
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" required oninput="CheckPassword(this)">
+          <input type="new_password" id="password_confirm" class="form-control" placeholder="半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword(this)">
         </div>
         <div id="passwordCheck">
           <input type="checkbox" id="passconfCheck">パスワードを表示
