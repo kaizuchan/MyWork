@@ -24,6 +24,7 @@
 /* タイトル */
 h1.title {
     text-align: center;
+    font-size: 3rem;
 }
 /* 月 */
 h2.oct {

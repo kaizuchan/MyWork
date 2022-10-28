@@ -15,7 +15,7 @@
     box-shadow: 0 10px 25px 0 rgb(0 0 0 / 40%);
 }
 /* ページタイトル */
-h1{
+h1.title{
     height: 8vh;
     font-size: 3rem;
     display: flex;
@@ -40,6 +40,9 @@ form.was-validated.h-adr {
 }
 input[type="checkbox"] {
     margin: 0 0.5rem 0 0;
+}
+.inputMessage p{
+    font-size:  1.4rem;
 }
 button.btn{
     color: #fff;

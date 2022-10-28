@@ -1,5 +1,5 @@
 /* ページタイトル */
-h1{
+h1.title{
     font-size: 3rem;
     text-align: center;
 }
@@ -15,6 +15,9 @@ form .input-group{
 }
 input[type="checkbox"] {
     margin: 0 0.5rem 0 0;
+}
+.inputMessage p{
+    font-size:  1.4rem;
 }
 button.btn{
     color: #fff;
