@@ -4,6 +4,7 @@
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
+        パスワード変更
     </title>
     <?php echo $this->Html->css("passChange"); ?>
         <!-- 戻るアイコンボタン　コンポーネントリンク -->
@@ -77,7 +78,7 @@
                         value="<?= $this->request->getAttribute('csrfToken') ?>">
 
                     <div class="d-grid gap-2">
-                        <button class="btn" type="submit">登録</button>
+                        <button class="btn" type="submit">変更</button>
                     </div>
                 </form>       
             </div> 
