@@ -127,6 +127,10 @@ form#searchForm{
     display: flex;
     align-items: center;
 }
+/* 社員削除リスト モーダル */
+#deleteList{
+    font-size: 1.5rem;
+}
 /* スクロールバー */
 .scroll_bar{
     width: max-content;
@@ -218,5 +222,9 @@ form#searchForm{
     }
     #searchBox input {
         width: 80vw;
+    }
+    /* 社員削除リスト モーダル */
+    #deleteList{
+        font-size: 1.2rem;
     }
 }
