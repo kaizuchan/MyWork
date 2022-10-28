@@ -42,13 +42,14 @@ class UsersController extends AppController
         }
 
         // 無理やりリダイレクト処理書いてます...
-        // 要変更
         echo '<form method="post" action="/users/login" id="myform">';
         echo '<input type="hidden" name="id" value="';
         if(isset($res['id'])){
             echo $res['id'];
         }
         echo '" />';
+        echo '<input type="hidden" name="inputed_enterprise_id" value="'.$data["enterprise_id"].'" />';
+        echo '<input type="hidden" name="inputed_employee_id" value="'.$data["employee_id"].'" />';
         echo '<input type="hidden" name="password" value="'.$data["password"].'" />';
         echo '<input type="hidden" name="_csrfToken" autocomplete="off"
         value="'.$this->request->getAttribute('csrfToken').'">';
@@ -60,12 +61,16 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         // 認証成功
         if ($result->isValid()) {
+            // 企業IDをcookieに保存
+            $enterprise_id = $this->request->getData('inputed_enterprise_id');
+            setcookie("inputed_enterprise_id", $enterprise_id, strtotime( '+30 days' ));
+            // HOME画面へリダイレクト
             $target = $this->Authentication->getLoginRedirect() ?? '/';
             return $this->redirect($target);
         }
         // ログインできなかった場合
         if ($this->request->is('post') && !$result->isValid()) {
-            $this->Flash->error('社員IDまたはパスワードが正しくありません。');
+            $this->Flash->error('入力内容が正しくありません。');
         }
     }
 

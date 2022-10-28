@@ -11,7 +11,6 @@
 <body>
     
     
-    
     <div class="back">
     </div>
 
@@ -23,10 +22,10 @@
         <div class="card-body">
           <form id="loginForm" method="POST" action="/users">
             <div class="mb-3">
-              <input name="enterprise_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID" required>
+              <input name="enterprise_id" value="<?= setValue('inputed_enterprise_id', true) ?>" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="企業ID" required>
             </div>
             <div class="mb-3">
-              <input name="employee_id" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID" required>
+              <input name="employee_id" value="<?= setValue('inputed_employee_id') ?>" type="id" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="社員ID" required>
             </div>
             <div class="mb-3">
               <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード" required>

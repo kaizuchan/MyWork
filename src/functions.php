@@ -5,10 +5,12 @@
   * template/admin/edituser.php
  */
   // postで受け取ったデータがあるなら返す
-  function setValue($name){
+  function setValue($name, $use_cookie = false){
     $res = "";
     if(isset($_POST[$name])){
       $res = $_POST[$name];
+    }else if(isset($_COOKIE[$name]) && $use_cookie){
+      $res = $_COOKIE[$name];
     }
     //echo $res;
     return $res;
