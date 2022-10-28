@@ -64,6 +64,7 @@ class UsersController extends AppController
             // 企業IDをcookieに保存
             $enterprise_id = $this->request->getData('inputed_enterprise_id');
             setcookie("inputed_enterprise_id", $enterprise_id, strtotime( '+30 days' ));
+            // HOME画面へリダイレクト
             $target = $this->Authentication->getLoginRedirect() ?? '/';
             return $this->redirect($target);
         }
