@@ -40,7 +40,7 @@
             <div class="total">
                 <table>
                         <th>総労働時間</th>
-                        <td><?= $data['total'] ?>時間</td>
+                        <td><?= $data['work'] ?>時間</td>
                 </table>
                 <table>
                         <th>総残業時間</th>
@@ -48,7 +48,7 @@
                 </table>
                 <table>
                         <th>総勤務時間</th>
-                        <td><?= $data['work'] ?>時間</td>
+                        <td><?= $data['total'] ?>時間</td>
                 </table>
                 <table>
                         <th>出勤日数</th>
