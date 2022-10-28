@@ -19,10 +19,11 @@ DB_PASSWORD
 DB_DATABASE
 を使用するDBに合わせて変更
 
-
 #### xammpを使っている場合
 
 php.ini 内の「;extension=intl」のセミコロンを外す
+
+#### 以下のコマンドを実行
 
 ```jsx
     // プラグインのインストール
