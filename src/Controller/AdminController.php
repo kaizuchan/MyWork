@@ -170,6 +170,8 @@ class AdminController extends AppController
                 $month = $this->request->getData("birthday-month");
                 $date = $this->request->getData("birthday-date");
                 $user->birthday = date('Y-m-d', strtotime($year.'-'.$month.'-'.$date));
+                // 更新日時の登録
+                $user->modified_at = date('Y-m-d H:i:s');
 
                 // 「管理者として登録」にチェックボックスがついてない場合
                 if($role == null){

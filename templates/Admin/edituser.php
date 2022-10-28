@@ -146,7 +146,7 @@ if ($this->request->is('post')) {
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="new_password" id="password_confirm" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword()">
+          <input type="password" id="password_confirm" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword()">
 
         </div>
         <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
