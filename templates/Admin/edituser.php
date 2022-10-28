@@ -91,7 +91,7 @@ if ($this->request->is('post')) {
 
         <div class="form-check-group">
           <div class="form-check">
-            <input name="gender" value="0" type="radio" class="form-check-input" name="radio-stacked" required<?= setCheckdGender(0, $user['gender']); ?>>
+            <input name="gender" value="0" type="radio" class="form-check-input"  id="validationFormCheck2" name="radio-stacked" required<?= setCheckdGender(0, $user['gender']); ?>>
             <label for="validationFormCheck2" class="form-check-label">男性</label>
           </div>
           <div class="form-check mb-3 woman-radioButton">
@@ -148,7 +148,7 @@ if ($this->request->is('post')) {
 
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード</span>
-          <input name="new_password" type="password" id="userpass" class="form-control" placeholder="" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}">
+          <input name="new_password" type="password" id="userpass" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-label="パスワード" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}">
 
         </div>
         <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
@@ -158,7 +158,7 @@ if ($this->request->is('post')) {
         
         <div class="input-group mb-3 ">
           <span class="input-group-text" id="basic-addon1">パスワード(確認)</span>
-          <input type="new_password" id="password_confirm" class="form-control" placeholder="" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword(this)">
+          <input type="new_password" id="password_confirm" class="form-control" placeholder="パスワードが未入力の場合変更されません" aria-describedby="basic-addon1" pattern="(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}" oninput="CheckPassword(this)">
 
         </div>
         <div class="inputMessage"><p>半角英大文字、半角英小文字、半角数字を必ず含み、8文字以上（その他は文字含ませない）</p></div>
@@ -172,8 +172,8 @@ if ($this->request->is('post')) {
         <input type="hidden" name="enterprise_id" value="<?= $me->enterprise_id ?>">
 
           <div class="form-check" id="checkBox">
-            <input name="role" value="2" type="checkbox" class="form-check-input" name="radio-stacked"<?= setCheckdAdmin($user['role']); ?>>
-            <label for="validationFormCheck2" class="form-check-label">管理者として登録する場合はチェック</label>
+            <input name="role" value="2" type="checkbox" class="form-check-input" id="validationFormCheck4" name="radio-stacked"<?= setCheckdAdmin($user['role']); ?>>
+            <label for="validationFormCheck4" class="form-check-label">管理者として登録する場合はチェック</label>
           </div>
 
           <div class="d-grid gap-2">
