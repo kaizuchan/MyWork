@@ -149,9 +149,19 @@ class AdminController extends AppController
                 'not' => ['id' => $id],
             ])->first();
             if($res == null){
-
-
                 $user = $this->Users->get($id);
+
+                // 管理者が0人にならないか確認
+                $role = $this->request->getData('role');
+                $admins = $this->Users->find('all')->where([
+                    'enterprise_id' => $me->enterprise_id,
+                    'role'   => 2
+                ])->count();
+                if(($admins <= 1) && ($role == null) && ($user->role == 2)){
+                    $this->Flash->error(__('管理者がいなくなるため変更できません'));
+                    return $this->redirect(['action' => 'edituser', $id]);
+                    exit();
+                }
                 // 3.4.0 より前は $this->request->data() が使われました。
                 $user = $this->Users->patchEntity($user, $this->request->getData());
 
@@ -160,6 +170,17 @@ class AdminController extends AppController
                 $month = $this->request->getData("birthday-month");
                 $date = $this->request->getData("birthday-date");
                 $user->birthday = date('Y-m-d', strtotime($year.'-'.$month.'-'.$date));
+
+                // 「管理者として登録」にチェックボックスがついてない場合
+                if($role == null){
+                    $user->role = 1;
+                }
+                
+                // パスワード登録
+                $password = $this->request->getData('new_password');
+                if($password != ''){
+                    $user->password = $password;
+                }
 
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('更新しました'));
