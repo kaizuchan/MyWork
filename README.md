@@ -13,9 +13,9 @@ config/.env.example を .envに変更
 config/app_local.example.php を app_local.phpに変更
 
 .env 内の
-DB_HOST
-DB_USERNAME
-DB_PASSWORD
+DB_HOST,
+DB_USERNAME,
+DB_PASSWORD,
 DB_DATABASE
 を使用するDBに合わせて変更
 
