@@ -29,6 +29,10 @@
             </div>
             <div class="mb-3">
               <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="パスワード" required>
+              
+            <div id="passwordCheck">
+              <input type="checkbox" id="passCheck">パスワードを表示
+            </div>
             </div>
             <input
                   type="hidden" name="_csrfToken" autocomplete="off"

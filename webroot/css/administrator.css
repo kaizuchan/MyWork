@@ -136,7 +136,7 @@ form#searchForm{
     width: max-content;
     height: 70vh;
     margin: 0 auto;
-    overflow-y: scroll;
+    overflow-y: auto;
  }
  .scroll_bar::-webkit-scrollbar{
     width: 1rem;
