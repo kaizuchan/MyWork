@@ -164,6 +164,8 @@ class HomeController extends AppController
 
             // パスワードの変更
             $user->password = $this->request->getData("new-password");
+            // 更新日時の登録
+            $user->modified_at = date('Y-m-d H:i:s');
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('パスワードを変更しました'));
                 return $this->redirect(['action' => 'home']);
