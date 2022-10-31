@@ -98,7 +98,7 @@ class Users extends AbstractMigration
                     "building" => "スパイラルタワーズ",
                     "role" => 2,
                     "password" => $password
-                ],[
+                ]/* ,[
                     "id" => 2,
                     "enterprise_id" => 3,
                     "employee_id" => "00533",
@@ -117,7 +117,7 @@ class Users extends AbstractMigration
                     "building" => "スパイラルタワーズ",
                     "role" => 1,
                     "password" => $password
-                ],[
+                ] */,[
                     "id" => 3,
                     "enterprise_id" => 3,
                     "employee_id" => "00764",
