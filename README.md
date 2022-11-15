@@ -4,6 +4,8 @@ XAMMP
 
 PHP 8.1.10
 
+CakePHP 4.4.6
+
 mysql
 
 ## 起動手順
